@@ -30,13 +30,13 @@
     <AppXManifest Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-02-25T00:53:35.202</Modified>
+      <Modified>2021-03-01T09:42:04.290</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\ITstudii.exe">
       <PackagePath>entrypoint\ITstudii.exe</PackagePath>
-      <Modified>2021-02-25T00:53:34.418</Modified>
+      <Modified>2021-03-01T09:42:03.359</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -81,6 +81,10 @@
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\logo-footer-transp.png">
       <PackagePath>Assets\logo-footer-transp.png</PackagePath>
       <Modified>2021-02-24T05:28:15.181</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\Run_16x.png">
+      <PackagePath>Assets\Run_16x.png</PackagePath>
+      <Modified>2021-02-24T00:49:38.880</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\StatusBlocked_16x.png">
       <PackagePath>Assets\StatusBlocked_16x.png</PackagePath>
@@ -132,21 +136,37 @@
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2021-02-22T19:24:28.058</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\StarWarsKenobiHelloThere.gif">
+      <PackagePath>Assets\StarWarsKenobiHelloThere.gif</PackagePath>
+      <Modified>2021-02-25T03:42:56.994</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2021-02-22T21:33:59.803</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\ITstudii.xr.xml">
       <PackagePath>ITstudii.xr.xml</PackagePath>
-      <Modified>2021-02-25T00:53:34.321</Modified>
+      <Modified>2021-03-01T09:42:03.248</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2021-02-24T22:14:44.595</Modified>
+      <Modified>2021-03-01T09:42:03.267</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\ExtraProjects\TalkToMe.xbf">
+      <PackagePath>ExtraProjects\TalkToMe.xbf</PackagePath>
+      <Modified>2021-03-01T09:42:03.267</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2021-02-25T00:53:34.329</Modified>
+      <Modified>2021-03-01T09:42:03.262</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\RedProjects\Calculator.xbf">
+      <PackagePath>RedProjects\Calculator.xbf</PackagePath>
+      <Modified>2021-03-01T09:42:03.266</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\TestPage1.xbf">
+      <PackagePath>TestPage1.xbf</PackagePath>
+      <Modified>2021-03-01T09:42:03.268</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -154,11 +174,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2021-02-25T00:53:34.763</Modified>
+      <Modified>2021-02-28T13:31:42.905</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\Core\ITstudii.exe">
       <PackagePath>ITstudii.exe</PackagePath>
-      <Modified>2021-02-25T00:53:35.198</Modified>
+      <Modified>2021-03-01T09:42:04.286</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

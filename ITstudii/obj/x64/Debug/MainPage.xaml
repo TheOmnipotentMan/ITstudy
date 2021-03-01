@@ -22,39 +22,87 @@
     
     Background="{ThemeResource SystemControlBackgroundChromeBlackLowBrush}"    
     
+   
+    TEMPLATE FOR NAV MENU ITEMS, PROJECTS
+    <Canvas Width="255" Height="32">
+        <TextBlock Text="x. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+        <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+        <Button Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="ProjectSelected_Extra_TestPage"/>
+    </Canvas>
+
+    
+    
+    TEST BUTTON with speech function, has its own project; TalkToMe
+    <Button Content="Hello World!" Name="HelloWorld" Canvas.Left="0" Canvas.Top="10" Width="120" Height="40"
+                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" BorderThickness="1"
+                    FontSize="16" FontWeight="Medium"
+                    Click="HelloWorldButton_Click"/>
+
+
+    
+    
+    
+    
+    
+    ______NEW PAGE STENCIL_______
+    
+    Width="960" Height="660">
+    
+    
+
+    <Grid Width="960" Height="660">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" BorderThickness="2"/>
+
+
+        <TextBlock Text="I want to be a calculator when I grow up!" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+        <Pivot >
+
+            <PivotItem Header="Calculator" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+
+                <Canvas>
+
+                </Canvas>
+
+            </PivotItem>
+
+
+            <PivotItem Header="Project Code" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+                <Canvas>
+                    <TextBlock Text="Still to come" Canvas.Left="10" Canvas.Top="10"/>
+                </Canvas>
+
+            </PivotItem>
+
+        </Pivot>
+
+    </Grid>
+    
+    ______STENCIL END______    
+    
+    
+    
+    <TextBlock x:Name="SelectedProjectTitle" Width="720" Height="36" Canvas.Left="78" Canvas.Top="2"
+                           FontSize="24" HorizontalTextAlignment="Center"
+                           Text="Select a Project"/>
+                <TextBlock x:Name="SelectedProjectCategory" Width="60" Height="20" Canvas.Left="10" Canvas.Top="10"
+                           FontSize="18" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+    
+
+
+
     -->
-    
-    
-    
-
-    <!-- EXTRA PROJECTS DATA TEMPLATE           NOT WORKING, if trying paste this to ListViews; ItemTemplate="{StaticResource ExtraProjectsListViewTemplate}"
-    <Page.Resources>
-        
-        
-        <DataTemplate x:Key="ExtraProjectsListViewTemplate" x:DataType="local:ExtraProject">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="5*"/>
-                </Grid.ColumnDefinitions>
-                
-                <TextBlock Text="{x:Bind ProjectName}" x:Phase="1" Margin="0 2 0 2"/>
-            </Grid>
-
-        </DataTemplate>
-
-    </Page.Resources>
-    
-    
-    Width="1280"    MinWidth="1280" MaxWidth="1280"
-    Height="720"   MinHeight="720" MaxHeight="720"
-    
-    
-    
-
-    
-    -->
-
 
 
 
@@ -92,45 +140,68 @@
             <Canvas Width="{Binding ActualWidth, ElementName=CommandRegion}" Height="60">
 
                 <TextBlock Text="C# Projects" FontSize="28" FontWeight="Medium" HorizontalTextAlignment="Center" Canvas.Left="20" Canvas.Top="16"/>
-                <TextBlock Text="by Thomas A." FontSize="16" HorizontalTextAlignment="Center" Canvas.Left="200" Canvas.Top="28"/>
+                <TextBlock Text="by Thomas A." FontSize="16" HorizontalTextAlignment="Center" Canvas.Left="190" Canvas.Top="28"/>
 
             </Canvas>
 
             <!-- Project overview, navigation list-->
             <Canvas Width="{Binding ActualWidth, ElementName=CommandRegion}" Height="642" Canvas.Top="60" Canvas.Left="0">
 
-                <Pivot x:ConnectionId='14' x:Name="ProjectCategoryTab" Width="304" Height="640" Margin="0 0 0 0">
+                <Pivot x:ConnectionId='18' x:Name="ProjectCategoryTab" Width="304" Height="640" Margin="0 0 0 0">
 
-                    <!-- Red Projects -->
+                    <!-- #region Red Projects -->
                     <PivotItem Header="Red" Margin="10 2 0 10" HorizontalAlignment="Left">
-                        <ListView x:ConnectionId='17' Name="RedProjects" Width="282" Height="580" MaxHeight="580" VerticalAlignment="Top"
+                        <ListView x:ConnectionId='23' Name="RedProjects" Width="282" Height="580" MaxHeight="580" VerticalAlignment="Top"
                                   BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1"
                                   SelectionMode="Single">
+                            
+                                                        
+                            <!-- 1. Calculator -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="1. Calculator" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='26' Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                              />
+                            </Canvas>
 
-                            <TextBlock Text="PLACEHOLDER RED 1"/>
-                            <TextBlock Text="PLACEHOLDER RED 2"/>
-                            <TextBlock Text="PLACEHOLDER RED 3"/>
+                            <!-- 2. Flags of the World -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="2. Flags of the World" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='25' Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                              />
+                            </Canvas>
+
+                            <!-- x. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="x. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='24' Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                              />
+                            </Canvas>
 
                         </ListView>
                     </PivotItem>
+                    <!-- #endregion Red Projects -->
+                    
 
-                    <!-- Green Projects -->
+                    <!-- #region Green Projects -->
                     <PivotItem Header="Green"  Margin="10 2 0 10" HorizontalAlignment="Left">
-                        <ListView x:ConnectionId='16' Name="GreenProjects" Width="282" Height="590" MaxHeight="600" VerticalAlignment="Top"
+                        <ListView x:ConnectionId='22' Name="GreenProjects" Width="282" Height="590" MaxHeight="600" VerticalAlignment="Top"
                                   BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1"
                                   SelectionMode="Single">
 
-                            <TextBlock Text="PLACEHOLDER GREEN 1"/>
-                            <TextBlock Text="PLACEHOLDER GREEN 2"/>
-                            <TextBlock Text="PLACEHOLDER GREEN 3"/>
-                            <TextBlock Text="PLACEHOLDER GREEN 4"/>
-                            <TextBlock Text="PLACEHOLDER GREEN 5"/>
-                            <TextBlock Text="PLACEHOLDER GREEN 6"/>
-                            <TextBlock Text="PLACEHOLDER GREEN 7"/>
-                            <TextBlock Text="PLACEHOLDER GREEN 8"/>
-                            <TextBlock Text="PLACEHOLDER GREEN 9"/>
-                            <TextBlock Text="PLACEHOLDER GREEN 10"/>
-                            <TextBlock Text="PLACEHOLDER GREEN 11"/>
+                            <TextBlock Text="1. Taxi Service"/>
+                            <TextBlock Text="2. School Tuition"/>
+                            <TextBlock Text="3. Car Rental"/>
+                            <TextBlock Text="4. Zoo Subscription"/>
+                            <TextBlock Text="5. Child Support"/>
+                            <TextBlock Text="6. Camping"/>
+                            <TextBlock Text="7. Transport Company"/>
+                            <TextBlock Text="8. Water Bill"/>
+                            <TextBlock Text="9. Glass Pricing"/>
+                            <TextBlock Text="10. Lumberyard"/>
+                            <TextBlock Text="11. etcetera "/>
                             <TextBlock Text="PLACEHOLDER GREEN 12"/>
                             <TextBlock Text="PLACEHOLDER GREEN 13"/>
                             <TextBlock Text="PLACEHOLDER GREEN 14"/>
@@ -140,22 +211,37 @@
 
                         </ListView>
                     </PivotItem>
+                    <!-- #endregion Green Projects-->
 
 
-                    <!-- Extra Projects -->
+                    <!-- #region Extra Projects -->
                     <PivotItem Header="Extra" Margin="10 2 0 10" HorizontalAlignment="Left">
-                        <ListView x:ConnectionId='15' Name="ExtraProjects" Width="282" Height="590" MaxHeight="600" VerticalAlignment="Top"
+                        <ListView x:ConnectionId='19' Name="ExtraProjects" Width="282" Height="590" MaxHeight="600" VerticalAlignment="Top"
                                   BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1"
-                                  SelectionMode="Single" IsItemClickEnabled="True">
+                                  SelectionMode="Single">
+                           
+                            <!-- Hello There (test page) -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="1. Hello There (test page)" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusOK_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='21' Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                              />
+                            </Canvas>
 
-                            <TextBlock Text="PLACEHOLDER EXTRA 1"/>
-                            <TextBlock Text="PLACEHOLDER EXTRA 2"/>
-                            <TextBlock Text="PLACEHOLDER EXTRA 3"/>
+                            <!-- Talk To Me -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="2. Talk To Me" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusOK_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='20' Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                              />
+                            </Canvas>
+                            
 
 
 
                         </ListView>
                     </PivotItem>
+                    <!-- #endregion Extra Projects-->
 
 
 
@@ -165,20 +251,27 @@
 
         </Canvas>
 
-        
-        
-        
 
+
+
+        <!-- Content Header, general info and application options-->
         <Canvas x:ConnectionId='9' x:Name="ContentHeader" Grid.Column="2" Grid.ColumnSpan="1" Grid.Row="1" Grid.RowSpan="1">
 
-            <!-- TEST BUTTON with speech function-->
-            <Button x:ConnectionId='12' Content="Hello World!" Name="HelloWorld" Canvas.Left="0" Canvas.Top="10" Width="120" Height="40"
-                    BorderBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" BorderThickness="1"
-                    FontSize="16" FontWeight="Medium"
-                                                  />
+            <Canvas x:ConnectionId='13' x:Name="ProgressCanvas" Width="800" Height="40" Canvas.Left="24" Canvas.Top="10" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
+                <TextBlock x:ConnectionId='15' x:Name="RedProjectsProgress" Width="240" Height="20" Canvas.Left="10" Canvas.Top="10"
+                           FontSize="18" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
+                           Text="Red Projects = 0/11"/>
+                <TextBlock x:ConnectionId='16' x:Name="GreenProjectsProgress" Width="240" Height="20" Canvas.Left="250" Canvas.Top="10"
+                           FontSize="18" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
+                           Text="Green Projects = 0/19"/>
+                <TextBlock x:ConnectionId='17' x:Name="ExtraProjectsProgress" Width="240" Height="20" Canvas.Left="490" Canvas.Top="10"
+                           FontSize="18" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
+                           Text="Extra Projects = 2"/>
+            </Canvas>
             
+
             <!-- Button to change Theme of Application -->
-            <Button x:ConnectionId='13' x:Name="ThemeButton" Width="80" Height="40" Canvas.Left="870" Canvas.Top="10"
+            <Button x:ConnectionId='14' x:Name="ThemeButton" Width="80" Height="40" Canvas.Left="870" Canvas.Top="10"
                                               ClickMode="Release">
                 <Canvas Width="80" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Border Width="{Binding ActualWidth, ElementName=ThemeButton}" Height="{Binding ActualHeight, ElementName=ThemeButton}" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseHighBrush}" />
@@ -187,26 +280,20 @@
                 </Canvas>
             </Button>
 
-            
-
         </Canvas>
 
 
-
-
-           
-
-       
         
         
+        <!-- Content Region, contains Frame that can be requested to load the desired project page -->
         <Canvas x:ConnectionId='10' x:Name="ContentRegion" Grid.Column="2" Grid.ColumnSpan="1" Grid.Row="2" Grid.RowSpan="1" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
 
-            
+
             <Border BorderBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" BorderThickness="1"
                     Width="{Binding ActualWidth, ElementName=ContentRegion}"
                     Height="{Binding ActualHeight, ElementName=ContentRegion}">
 
-               
+
 
             </Border>
 
@@ -222,33 +309,12 @@
                 <Image Source="/Assets/graduation-58-458507.png" Width="256" Canvas.Left="112" Canvas.Top="112" Opacity="0.6"/>
 
             </Canvas>
-           
+            
+            
+            <!-- Frame that will display the content selected in the left-side navigation -->
+            <Frame x:ConnectionId='12' x:Name="ContentFrame" Width="{Binding ActualWidth, ElementName=ContentRegion}" Height="{Binding ActualHeight, ElementName=ContentRegion}"/>
 
         </Canvas>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

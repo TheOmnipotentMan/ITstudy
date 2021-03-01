@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="ITstudii.TestPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ITstudii"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Width="960" Height="660">
+
+    <Grid Width="960" Height="660">
+
+        
+        <Border Width="820" Height="420" Margin="0 0 0 60" 
+                BorderBrush="{ThemeResource SystemChromeAltLowColor}" BorderThickness="2"
+                Background="{ThemeResource SystemChromeBlackMediumColor}">
+            
+        </Border>
+        
+        <TextBlock Text="Hello There" FontSize="40" Foreground="#FFE81F" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 280 0 0"/>
+        <Image Source="/Assets/StarWarsKenobiHelloThere.gif" HorizontalAlignment="Center" VerticalAlignment="Center" Width="800" Margin="0 0 0 120"/>
+
+    </Grid>
+</Page>

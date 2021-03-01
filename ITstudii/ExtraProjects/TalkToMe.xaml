@@ -1,0 +1,101 @@
+﻿<Page
+    x:Class="ITstudii.ExtraProjects.TalkToMe"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ITstudii.ExtraProjects"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    
+     Width="960" Height="660">
+
+
+    <!--
+    Test page made to see if it was possible to call a page, this page, with a certain method.   
+    
+    -->
+
+
+
+
+
+    <Grid Width="960" Height="660">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+
+
+        <Border Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" BorderThickness="2"/>
+
+
+        <Pivot >
+            
+            <PivotItem Header="Talk To Me" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+
+                <Canvas>
+                    
+                    <TextBlock Width="800" Height="40" Canvas.Top="40" Canvas.Left="20" Style="{StaticResource SubtitleTextBlockStyle}"
+                               Text="// Enter some text in the input field and click play to hear it read back to you."/>
+
+                    <RichEditBox x:Name="TalkToMeInput" Header="Input" Width="750" Height="460" Canvas.Left="20" Canvas.Top="120" PlaceholderText="Hello World!"/>
+
+                    <Canvas x:Name="VoiceSelectCanvas" Width="100" Height="90" Canvas.Top="240" Canvas.Left="800">
+                        <Border Width="{Binding ActualWidth, ElementName=VoiceSelectCanvas}" Height="{Binding ActualHeight, ElementName=VoiceSelectCanvas}" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1"/>
+                        <TextBlock Text="Voice:" Margin="10 4 0 0"/>
+                        <RadioButton Content="Male" GroupName="VoiceSelectButton" Canvas.Left="10" Canvas.Top="24" Checked="Voice_SetMale"/>
+                        <RadioButton Content="Female"  GroupName="VoiceSelectButton" Canvas.Left="10" Canvas.Top="54" Checked="Voice_SetFemale"/>
+                    </Canvas>
+
+                    <Button x:Name="TalkToMeButton" Width="100" Height="40" Canvas.Top="400" Canvas.Left="800"
+                            BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1"
+                            Click="TextToSpeech">
+                        <Canvas Width="{Binding ActualWidth, ElementName=TalkToMeButton}" Height="{Binding ActualHeight, ElementName=TalkToMeButton}" Margin="-10">
+                            <Border Width="{Binding ActualWidth, ElementName=TalkToMeButton}" Height="{Binding ActualHeight, ElementName=TalkToMeButton}" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+                            <TextBlock Text="Play" Style="{StaticResource BaseTextBlockStyle}" FontSize="24" Canvas.Left="40" Canvas.Top="2"/>
+                            <Polygon Points="12,8 32,20 12,32">
+                                <Polygon.Fill>
+                                    <SolidColorBrush Color="#0D9602"/>
+                                </Polygon.Fill>
+                            </Polygon>
+                        </Canvas>
+                    </Button>
+
+                </Canvas>               
+
+
+            </PivotItem>
+
+            <PivotItem Header="Project Code" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+                <Canvas>
+                    <TextBlock Text="Still to come" Canvas.Left="10" Canvas.Top="10"/>
+                </Canvas>
+                             
+            </PivotItem>
+            
+        </Pivot>
+        
+        
+        
+        
+        <Canvas x:Name="TalkToMeCanvas" HorizontalAlignment="Center" VerticalAlignment="Center" Width="10" 
+                Background="{ThemeResource SystemBaseMediumColor}">
+            
+            
+        </Canvas>
+
+
+
+
+
+
+    </Grid>
+
+
+</Page>

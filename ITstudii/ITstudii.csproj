@@ -119,10 +119,19 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ExtraProjects\TalkToMe.xaml.cs">
+      <DependentUpon>TalkToMe.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RedProjects\Calculator.xaml.cs">
+      <DependentUpon>Calculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TestPage1.xaml.cs">
+      <DependentUpon>TestPage1.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -139,6 +148,8 @@
     <Content Include="Assets\Create_16x.png" />
     <Content Include="Assets\graduation-58-458507.png" />
     <Content Include="Assets\logo-footer-transp.png" />
+    <Content Include="Assets\Run_16x.png" />
+    <Content Include="Assets\StarWarsKenobiHelloThere.gif" />
     <Content Include="Assets\StatusBlocked_16x.png" />
     <Content Include="Assets\StatusOK_16x.png" />
     <Content Include="Assets\TestProject_16x.png" />
@@ -157,9 +168,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ExtraProjects\TalkToMe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RedProjects\Calculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TestPage1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -168,9 +191,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ExtraProjects\" />
     <Folder Include="GreenProjects\" />
-    <Folder Include="RedProjects\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
