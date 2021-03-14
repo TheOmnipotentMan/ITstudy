@@ -10,7 +10,6 @@ D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\Core\ITstudii.exe
 D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\ITstudii.build.appxrecipe
 D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\System.Runtime.dll
 D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\Microsoft.UI.Xaml.Markup.winmd
-D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\ITstudii.csprojAssemblyReference.cache
 D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\App.g.i.cs
 D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\App.g.cs
 D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\MainPage.g.i.cs
@@ -58,3 +57,15 @@ D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\ExtraProjects\TalkToMe.g.
 D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\ExtraProjects\TalkToMe.g.cs
 D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\ExtraProjects\TalkToMe.xaml
 D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\ExtraProjects\TalkToMe.xbf
+D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\RedProjects\NameTheImage.g.i.cs
+D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\RedProjects\NameTheImage.g.cs
+D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\RedProjects\NameTheImage.xaml
+D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\RedProjects\NameTheImage.xbf
+D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\GreenProjects\TaxiService.g.i.cs
+D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\GreenProjects\TaxiService.g.cs
+D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\GreenProjects\TaxiService.xaml
+D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\GreenProjects\TaxiService.xbf
+D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\GreenProjects\TaxiService.xbf
+D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\RedProjects\NameTheImage.xbf
+D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\Microsoft.UI.Xaml.pri.xml
+D:\Development\ITvitae\ITstudii\ITstudii\obj\x64\Debug\ITstudii.csprojAssemblyReference.cache

@@ -18,7 +18,7 @@ using Windows.UI.Xaml.Navigation;
 namespace ITstudii
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Test page for testing purposes.
     /// </summary>
     public sealed partial class TestPage1 : Page
     {

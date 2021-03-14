@@ -89,7 +89,7 @@
 
             <PivotItem Header="Project Code" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
                 <Canvas>
-                    <TextBlock Text="Still to come" Canvas.Left="10" Canvas.Top="10"/>
+                    <TextBlock Text="Empty" Canvas.Left="10" Canvas.Top="10"/>
                 </Canvas>
 
             </PivotItem>

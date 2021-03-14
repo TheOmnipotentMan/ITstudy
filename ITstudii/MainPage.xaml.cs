@@ -32,6 +32,16 @@ namespace ITstudii
     public sealed partial class MainPage : Page
     {
 
+
+
+
+        string SelectedProjectName;
+
+       
+
+
+
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -97,7 +107,7 @@ namespace ITstudii
         /* TODO A lot of this stuff, and project selection in general can be done better
          * Templates for xaml and variables in the classes (like IsCompleted) could automate most of the navigation menu
          * Might be implemented in future
-         * !! could use button-name as argument !!
+         * could maybe use button-name as argument
          */
 
         /* At the moment, every project has its own function to load the corresponding page.
@@ -112,9 +122,33 @@ namespace ITstudii
 
 
 
+        // -----!!! OLD !!!------- no longer in use
 
-        // ----     EXTRA PROJECTS PAGE CALL      ------------
+        // ----     RED PROJECTS PAGE CALL      ------      Depricated
+        #region RedProjects
+        private void ProjectSelected_Red_Calculator(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Content = null;
+            // TODO figure out why "RedProjects." is present here, it is a folder but apparently this is also a namespace?
+            // Is this just for clarification about the location of the project, or is a folder in visual studio actually a namespace?
+            ContentFrame.Content = new RedProjects.Calculator();
+        }
+        private void ProjectSelected_Red_NameTheImage(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Content = null;
+            // TODO figure out why "RedProjects." is present here, it is a folder but apparently this is also a namespace?
+            // Is this just for clarification about the location of the project, or is a folder in visual studio actually a namespace?
+            ContentFrame.Content = new RedProjects.NameTheImage();
+        }
+        #endregion RedProjects
 
+        // ----     GREEN PROJECTS PAGE CALL    ------      Depricated
+        #region GreenProjects
+
+        #endregion GreenProjects
+
+        // ----     EXTRA PROJECTS PAGE CALL    ------      Depricated
+        #region ExtraProjects
         private void ProjectSelected_Extra_TestPage(object sender, RoutedEventArgs e)
         {         
             ContentFrame.Content = null;
@@ -126,22 +160,59 @@ namespace ITstudii
             ContentFrame.Content = null;
             ContentFrame.Content = new ExtraProjects.TalkToMe();
         }
+        #endregion ExtraProjects
+
+        // -----!!! OLD !!!-------
 
 
 
 
-
-
-
-        // ----     RED PROJECTS PAGE CALL      ------------
-
-        private void ProjectSelected_Red_Calculator(object sender, RoutedEventArgs e)
+        private void NewProjectSelected_Click(object sender, RoutedEventArgs e)
         {
+            // get the triggering button and take its name
+            Button selectedProjectButton = sender as Button;
+            if (selectedProjectButton != null) { SelectedProjectName = selectedProjectButton.Name; }
+
+            // clear current content, should trigger garbage collection (I hope)
             ContentFrame.Content = null;
-            // TODO figure out why "RedProjects." is present here, it is a folder but apparently this is also a namespace?
-            // Is this just for clarification about the location of the project, or is a folder in visual studio actually a namespace?
-            ContentFrame.Content = new RedProjects.Calculator();
+            SelectNewProject();
         }
+
+        private bool SelectNewProject()
+        {
+            // make sure we actually have a project name
+            if (SelectedProjectName == null) { return false; }
+
+            // fill the ContentFrame with the selected project (add any new projects/pages here to make them selectable)
+            switch (SelectedProjectName)
+            {
+                // RED
+                case "Calculator": { ContentFrame.Content = new RedProjects.Calculator(); return true; }
+                case "NameTheImage": { ContentFrame.Content = new RedProjects.NameTheImage(); return true; }
+
+                // GREEN
+                case "TaxiService": { ContentFrame.Content = new GreenProjects.TaxiService(); return true; }
+
+                // EXTRA
+                case "TestPage1": { ContentFrame.Content = new TestPage1(); return true; }
+                case "TalkToMe": { ContentFrame.Content = new ExtraProjects.TalkToMe(); return true; }
+
+
+                default: 
+                    { 
+                        ContentFrame.Content = new TestPage1(); 
+                        Debug.WriteLine(string.Format("SelectNewProject couldn't detect a valid SelectedProjectName, make sure the Button.Name is the desired ProjectName.\n", "SelectedProjectName was: {0}", SelectedProjectName)); 
+                        return false; 
+                    }
+            }
+        }
+
+
+
+
+
+
+
 
 
 

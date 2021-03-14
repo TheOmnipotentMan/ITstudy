@@ -27,7 +27,7 @@
     <Canvas Width="255" Height="32">
         <TextBlock Text="x. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
         <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
-        <Button Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+        <Button x:Name="TestPage1" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
                                         Click="ProjectSelected_Extra_TestPage"/>
     </Canvas>
 
@@ -64,14 +64,14 @@
         <Border Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" BorderThickness="2"/>
 
 
-        <TextBlock Text="I want to be a calculator when I grow up!" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 
         <Pivot >
 
-            <PivotItem Header="Calculator" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+            <PivotItem Header="PLACEHOLDER" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
 
                 <Canvas>
+                    <TextBlock Text="Something" FontSize="32" Canvas.Left="100" Canvas.Top="100"/>
 
                 </Canvas>
 
@@ -160,24 +160,88 @@
                             <Canvas Width="255" Height="32">
                                 <TextBlock Text="1. Calculator" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
                                 <Image Source="/Assets/StatusOK_16x.png" Canvas.Left="0" Canvas.Top="8"/>
-                                <Button Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
-                                        Click="ProjectSelected_Red_Calculator"/>
+                                <Button x:Name="Calculator" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="NewProjectSelected_Click"/>
                             </Canvas>
 
                             <!-- 2. Flags of the World -->
                             <Canvas Width="255" Height="32">
                                 <TextBlock Text="2. Flags of the World" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
                                 <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
-                                <Button Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
-                                        Click="ProjectSelected_Extra_TestPage"/>
+                                <Button x:Name="NameTheImage" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="NewProjectSelected_Click"/>
                             </Canvas>
 
-                            <!-- x. PLACEHOLDER -->
+                            <!-- 3. PLACEHOLDER -->
                             <Canvas Width="255" Height="32">
-                                <TextBlock Text="x. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <TextBlock Text="3. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
                                 <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
-                                <Button Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
-                                        Click="ProjectSelected_Extra_TestPage"/>
+                                <Button x:Name="RedPlaceholder3" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="NewProjectSelected_Click"/>
+                            </Canvas>
+
+                            <!-- 4. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="4. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:Name="RedPlaceholder4" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="NewProjectSelected_Click"/>
+                            </Canvas>
+
+                            <!-- 5. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="5. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:Name="RedPlaceholder5" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="NewProjectSelected_Click"/>
+                            </Canvas>
+
+                            <!-- 6. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="6. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:Name="RedPlaceholder6" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="NewProjectSelected_Click"/>
+                            </Canvas>
+
+                            <!-- 7. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="7. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:Name="RedPlaceholder7" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="NewProjectSelected_Click"/>
+                            </Canvas>
+
+                            <!-- 8. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="8. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:Name="RedPlaceholder8" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="NewProjectSelected_Click"/>
+                            </Canvas>
+
+                            <!-- 9. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="9. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:Name="RedPlaceholder9" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="NewProjectSelected_Click"/>
+                            </Canvas>
+
+                            <!-- 10. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="10. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:Name="RedPlaceholder10" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="NewProjectSelected_Click"/>
+                            </Canvas>
+
+                            <!-- 11. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="11. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:Name="RedPlaceholder11" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="NewProjectSelected_Click"/>
                             </Canvas>
 
                         </ListView>
@@ -191,6 +255,15 @@
                                   BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1"
                                   SelectionMode="Single">
 
+                            <!-- 1. Taxi Service -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="1. Taxi Service" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusOK_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:Name="TaxiService" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="NewProjectSelected_Click"/>
+                            </Canvas>
+
+                            <!--
                             <TextBlock Text="1. Taxi Service"/>
                             <TextBlock Text="2. School Tuition"/>
                             <TextBlock Text="3. Car Rental"/>
@@ -208,6 +281,7 @@
                             <TextBlock Text="PLACEHOLDER GREEN 15"/>
                             <TextBlock Text="PLACEHOLDER GREEN 16"/>
                             <TextBlock Text="PLACEHOLDER GREEN 17"/>
+                            -->
 
                         </ListView>
                     </PivotItem>
@@ -224,16 +298,16 @@
                             <Canvas Width="255" Height="32">
                                 <TextBlock Text="1. Hello There (test page)" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
                                 <Image Source="/Assets/StatusOK_16x.png" Canvas.Left="0" Canvas.Top="8"/>
-                                <Button Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
-                                        Click="ProjectSelected_Extra_TestPage"/>
+                                <Button x:Name="TestPage1" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="NewProjectSelected_Click"/>
                             </Canvas>
 
                             <!-- Talk To Me -->
                             <Canvas Width="255" Height="32">
                                 <TextBlock Text="2. Talk To Me" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
                                 <Image Source="/Assets/StatusOK_16x.png" Canvas.Left="0" Canvas.Top="8"/>
-                                <Button Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
-                                        Click="ProjectSelected_Extra_TalkToMe"/>
+                                <Button x:Name="TalkToMe" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                        Click="NewProjectSelected_Click"/>
                             </Canvas>
                             
 
@@ -260,10 +334,10 @@
             <Canvas x:Name="ProgressCanvas" Width="800" Height="40" Canvas.Left="24" Canvas.Top="10" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                 <TextBlock x:Name="RedProjectsProgress" Width="240" Height="20" Canvas.Left="10" Canvas.Top="10"
                            FontSize="18" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
-                           Text="Red Projects = 0/11"/>
+                           Text="Red Projects = 1"/>
                 <TextBlock x:Name="GreenProjectsProgress" Width="240" Height="20" Canvas.Left="250" Canvas.Top="10"
                            FontSize="18" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
-                           Text="Green Projects = 0/19"/>
+                           Text="Green Projects = 1"/>
                 <TextBlock x:Name="ExtraProjectsProgress" Width="240" Height="20" Canvas.Left="490" Canvas.Top="10"
                            FontSize="18" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
                            Text="Extra Projects = 2"/>

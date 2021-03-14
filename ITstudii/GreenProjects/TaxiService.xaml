@@ -1,0 +1,143 @@
+﻿<Page
+    x:Class="ITstudii.GreenProjects.TaxiService"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ITstudii.GreenProjects"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    
+    Width="960" Height="660">
+
+
+
+    <Grid Width="960" Height="660">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" BorderThickness="2"/>
+
+
+        
+
+
+        <Pivot >
+
+            <PivotItem Header="Taxi Service" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+
+                <Canvas>
+                    <TextBlock Width="800" Height="40" Canvas.Top="20" Canvas.Left="20" Style="{StaticResource SubtitleTextBlockStyle}"
+                               Text="// Specify your taxi-drive and its price will be calculated."/>
+
+                    <Canvas Width="940" Height="540" Canvas.Top="60">
+
+                        <Canvas x:Name="PricingParametersCanvas" Width="660" Height="60" Canvas.Left="140" Canvas.Top="20">
+                            <Border Width="{Binding ActualWidth, ElementName=PricingParametersCanvas}" Height="{Binding ActualHeight, ElementName=PricingParametersCanvas}"
+                                    BorderBrush="{ThemeResource SystemBaseMediumLowColor}" BorderThickness="1"/>
+
+                            <TextBlock Text="Pricing Parameters" Width="80" Canvas.Left="10" Canvas.Top="10"
+                                       TextWrapping="WrapWholeWords" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+
+                            <muxc:NumberBox x:Name="PricePerKmInput" Width="120" Canvas.Left="100" Canvas.Top="20" SpinButtonPlacementMode="Compact"
+                                            Value="1" ToolTipService.ToolTip="Enter the price for every kilometer driven." SmallChange="0.01"/>
+                            <TextBlock Text="Price/Km" FontSize="12" Canvas.Left="104" Canvas.Top="4" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+
+                            <muxc:NumberBox x:Name="PricePerMinuteDayInput" Width="120" Canvas.Left="240" Canvas.Top="20" SpinButtonPlacementMode="Compact"
+                                            Value="0.25" ToolTipService.ToolTip="Enter the price per minute driven, during the day. (08:00 - 18:00)" SmallChange="0.01"/>
+                            <TextBlock Text="Price/Min Day" FontSize="12" Canvas.Left="244" Canvas.Top="4" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+
+                            <muxc:NumberBox x:Name="PricePerMinuteNightInput" Width="120" Canvas.Left="380" Canvas.Top="20" SpinButtonPlacementMode="Compact"
+                                            Value="0.45" ToolTipService.ToolTip="Enter the price per minute driven, during the night. (18:00 - 08:00)" SmallChange="0.01"/>
+                            <TextBlock Text="Price/Min Night" FontSize="12" Canvas.Left="384" Canvas.Top="4" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+
+                            <muxc:NumberBox x:Name="WeekendPremiumInput" Width="120" Canvas.Left="520" Canvas.Top="20" SpinButtonPlacementMode="Hidden"
+                                            Value="15" ToolTipService.ToolTip="Enter the precentage added on top of the standard price during the weekend. (Fri 22:00 - Mon 07:00)"/>
+                            <TextBlock Text="Weekend Premium %" FontSize="12" Canvas.Left="524" Canvas.Top="4" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+                        </Canvas>
+
+                        <Canvas x:Name="RideSpecificationCanvas" Width="600" Height="210" Canvas.Left="170" Canvas.Top="100">
+                            <Border Width="{Binding ActualWidth, ElementName=RideSpecificationCanvas}" Height="{Binding ActualHeight, ElementName=RideSpecificationCanvas}"
+                                    BorderBrush="{ThemeResource SystemBaseMediumLowColor}" BorderThickness="2"/>
+
+                            <TextBlock Text="Ride Parameters" Width="80" Canvas.Left="10" Canvas.Top="30"
+                                       TextWrapping="WrapWholeWords" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+
+                            <Canvas x:Name="RideStartCanvas" Width="320" Height="100" Canvas.Left="120" Canvas.Top="6">
+
+                                <TextBlock Text="Start" Canvas.Left="10" Canvas.Top="30" FontSize="18" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+                                
+                                <!-- A calender might be more appropriate -->
+                                <ComboBox x:Name="TimeStartDayInput" PlaceholderText="Day" Width="180" Canvas.Left="60" Canvas.Top="10" ToolTipService.ToolTip="Enter the day of the week on which the ride started.">
+                                    <ComboBoxItem x:Name="DayInputMonday" Content="Monday"/>
+                                    <ComboBoxItem x:Name="DayInputTuesday" Content="Tuesday"/>
+                                    <ComboBoxItem x:Name="DayInputWednesday" Content="Wednesday"/>
+                                    <ComboBoxItem x:Name="DayInputThursday" Content="Thursday"/>
+                                    <ComboBoxItem x:Name="DayInputFriday" Content="Friday"/>
+                                    <ComboBoxItem x:Name="DayInputSaturday" Content="Saturday"/>
+                                    <ComboBoxItem x:Name="DayInputSunday" Content="Sunday"/>
+                                </ComboBox>
+
+                                <TimePicker x:Name="TimeStartInput" ClockIdentifier="24HourClock" Canvas.Left="60" Canvas.Top="50"/>
+
+                                <Button Content="Now" Click="SetTimeStartInput_Click" Canvas.Left="250" Canvas.Top="10"/>
+
+                            </Canvas>
+
+                            <Canvas x:Name="RideDurationCanvas"  Width="330" Height="110" Canvas.Left="100" Canvas.Top="100">
+
+                                <TextBlock Text="Duration" Canvas.Left="10" Canvas.Top="14" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+                                <TimePicker x:Name="RideDurationInput" ClockIdentifier="24HourClock" Canvas.Left="80" Canvas.Top="10" ToolTipService.ToolTip="Enter the duration of the ride. How long did it take?"/>
+                                
+                                <TextBlock Text="Distance" Canvas.Left="10" Canvas.Top="64" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+                                <muxc:NumberBox x:Name="DistanceDrivenInput" Width="120" Canvas.Left="80" Canvas.Top="60" SpinButtonPlacementMode="Hidden"
+                                            Value="20" ToolTipService.ToolTip="Enter the Distance driven in Kilometers."/>
+                                <TextBlock Text="Km"  Canvas.Left="204" Canvas.Top="66" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+
+                            </Canvas>
+
+                            <TextBlock x:Name="DurationInputError" Width="140" Height="20" Canvas.Left="440" Canvas.Top="116" Foreground="#D10000"/>
+
+                        </Canvas>
+
+                        <Canvas x:Name="PricingOutputCanvas" Width="500" Height="80" Canvas.Left="220" Canvas.Top="360">
+                            <Border Width="{Binding ActualWidth, ElementName=PricingOutputCanvas}" Height="{Binding ActualHeight, ElementName=PricingOutputCanvas}"
+                                    BorderBrush="{ThemeResource SystemBaseMediumLowColor}" BorderThickness="1"/>
+
+                            <Button Content="Calculate" Width="120" Height="40" Canvas.Left="20" Canvas.Top="20" BorderBrush="{ThemeResource SystemBaseMediumHighColor}"
+                                    Click="CalculateButton_Click"/>
+
+                            <TextBlock x:Name="PriceOutput" Width="200" Height="50" Canvas.Left="260" Canvas.Top="15" FontSize="30" HorizontalTextAlignment="Center"/>
+                            <Border Width="240" Height="60" Canvas.Left="240" Canvas.Top="10"
+                                    BorderBrush="{ThemeResource SystemBaseMediumHighColor}" BorderThickness="1"/>
+                            <TextBlock Text="Price;" Canvas.Left="200" Canvas.Top="30" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+
+                        </Canvas>
+                        
+                    </Canvas>
+
+                </Canvas>
+
+            </PivotItem>
+
+
+            <PivotItem Header="Project Code" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+                <Canvas>
+                    <TextBlock Text="Empty" Canvas.Left="10" Canvas.Top="10"/>
+                </Canvas>
+
+            </PivotItem>
+
+        </Pivot>
+
+    </Grid>
+    
+</Page>

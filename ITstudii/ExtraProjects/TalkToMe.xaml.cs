@@ -21,7 +21,7 @@ using System.Diagnostics;
 namespace ITstudii.ExtraProjects
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Lets you enter text and can then read it back to you.
     /// </summary>
     public sealed partial class TalkToMe : Page
     {
@@ -86,7 +86,7 @@ namespace ITstudii.ExtraProjects
             mediaElement.SetSource(stream, stream.ContentType);
             mediaElement.Play();
 
-            Debug.WriteLine("Trying to SpeechSynthesis {0}.", TextToSpeak);
+            Debug.WriteLine(string.Format("Trying to SpeechSynthesis {0}.", TextToSpeak));
         }
 
 

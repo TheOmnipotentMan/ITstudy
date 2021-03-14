@@ -5,7 +5,10 @@
     <RootPropertyPathName Name="ActualHeight" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
-    <RootType FullName="Windows.UI.Xaml.Application" />
+    <RootType FullName="Windows.UI.Xaml.Application">
+      <RootProperty Name="Resources" />
+    </RootType>
+    <RootType FullName="Microsoft.UI.Xaml.Controls.XamlControlsResources" />
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Background" />
       <RootProperty Name="Width" />
@@ -13,6 +16,7 @@
       <RootProperty Name="Content" />
       <RootProperty Name="Name" />
       <RootProperty Name="RequestedTheme" />
+      <RootProperty Name="Resources" />
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
@@ -81,10 +85,10 @@
       <RootProperty Name="Style" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="Margin" />
-      <RootProperty Name="TextWrapping" />
       <RootProperty Name="HorizontalTextAlignment" />
-      <RootProperty Name="FontFamily" />
       <RootProperty Name="Foreground" />
+      <RootProperty Name="TextWrapping" />
+      <RootProperty Name="FontFamily" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="TextAlignment" />
       <RootProperty Name="Padding" />
@@ -109,6 +113,8 @@
       <RootProperty Name="ClickMode" />
       <RootProperty Name="Opacity" />
       <RootProperty Name="Background" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="VerticalAlignment" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
@@ -128,6 +134,34 @@
       <RootEvent Name="Checked" />
     </RootType>
     <RootType FullName="ITstudii.ExtraProjects.TalkToMe" />
+    <RootType FullName="Windows.UI.Xaml.Controls.TimePicker">
+      <RootProperty Name="ClockIdentifier" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ToolTipService">
+      <RootMethod Name="GetToolTip" />
+      <RootMethod Name="SetToolTip" />
+    </RootType>
+    <RootType FullName="Microsoft.UI.Xaml.Controls.NumberBox">
+      <RootProperty Name="Width" />
+      <RootProperty Name="SpinButtonPlacementMode" />
+      <RootProperty Name="Value" />
+      <RootProperty Name="SmallChange" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
+      <RootProperty Name="PlaceholderText" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Items" />
+      <RootProperty Name="Height" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="HorizontalContentAlignment" />
+      <RootProperty Name="IsEditable" />
+      <RootEvent Name="SelectionChanged" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ComboBoxItem">
+      <RootProperty Name="Content" />
+      <RootProperty Name="FontSize" />
+    </RootType>
+    <RootType FullName="ITstudii.GreenProjects.TaxiService" />
     <RootType FullName="Windows.UI.Xaml.Controls.Frame">
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
@@ -137,6 +171,7 @@
       <RootProperty Name="Width" />
       <RootProperty Name="Opacity" />
       <RootProperty Name="Height" />
+      <RootProperty Name="Stretch" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListView">
       <RootProperty Name="Name" />
@@ -150,20 +185,20 @@
       <RootProperty Name="Items" />
     </RootType>
     <RootType FullName="ITstudii.MainPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
+    <RootType FullName="ITstudii.RedProjects.Calculator" />
+    <RootType FullName="Windows.UI.Xaml.Media.Imaging.BitmapImage">
+      <RootProperty Name="UriSource" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Shapes.Rectangle">
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
-      <RootProperty Name="FontSize" />
-      <RootProperty Name="HorizontalContentAlignment" />
-      <RootProperty Name="IsEditable" />
-      <RootProperty Name="Items" />
-      <RootEvent Name="SelectionChanged" />
+      <RootProperty Name="Fill" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ComboBoxItem">
-      <RootProperty Name="Content" />
-      <RootProperty Name="FontSize" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
+      <RootProperty Name="OnContent" />
+      <RootProperty Name="OffContent" />
     </RootType>
-    <RootType FullName="ITstudii.RedProjects.Calculator" />
+    <RootType FullName="ITstudii.RedProjects.NameTheImage" />
     <RootType FullName="ITstudii.TestPage1" />
   </Roots.RootTypes>
 </Roots>

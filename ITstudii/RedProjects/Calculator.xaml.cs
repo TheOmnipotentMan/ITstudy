@@ -21,7 +21,7 @@ using System.Diagnostics;
 namespace ITstudii.RedProjects
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// It's a calculator.
     /// </summary>
     public sealed partial class Calculator : Page
     {

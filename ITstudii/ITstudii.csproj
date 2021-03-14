@@ -122,12 +122,18 @@
     <Compile Include="ExtraProjects\TalkToMe.xaml.cs">
       <DependentUpon>TalkToMe.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GreenProjects\TaxiService.xaml.cs">
+      <DependentUpon>TaxiService.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RedProjects\Calculator.xaml.cs">
       <DependentUpon>Calculator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RedProjects\NameTheImage.xaml.cs">
+      <DependentUpon>NameTheImage.xaml</DependentUpon>
     </Compile>
     <Compile Include="TestPage1.xaml.cs">
       <DependentUpon>TestPage1.xaml</DependentUpon>
@@ -146,14 +152,280 @@
     <Content Include="Assets\ColorPicker_12x_16x.png" />
     <Content Include="Assets\ColorPicker_16x.png" />
     <Content Include="Assets\Create_16x.png" />
+    <Content Include="Assets\ErrorImage640x640.png" />
     <Content Include="Assets\graduation-58-458507.png" />
     <Content Include="Assets\logo-footer-transp.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Afghanistan.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Albania.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Algeria.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\American Samoa.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Andorra.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Angola.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Anguilla.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Antarctica.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Antigua and Barbuda.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Argentina.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Armenia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Aruba.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Australia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Austria.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Azerbaijan.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Bahamas.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Bahrain.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Bangladesh.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Barbados.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Belarus.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Belgium.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Belize.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Benin.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Bermuda.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Bhutan.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Bolivia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Bosnia and Herzegovina.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Botswana.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Brazil.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\British Indian Ocean Territory.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\British Virgin Islands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Brunei.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Bulgaria.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Burkina Faso.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Burundi.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Cambodia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Cameroon.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Canada.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Cape Verde.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Caribbean Netherlands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Cayman Islands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Central African Republic.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Chad.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Chile.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\China.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Christmas Island.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Cocos Islands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Colombia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Comoros.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Cook Islands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Costa Rica.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Croatia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Cuba.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Curaçao.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Cyprus.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Czechia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Côte d%27Ivoire.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Democratic Republic of Congo.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Denmark.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Djibouti.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Dominica.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Dominican Republic.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Ecuador.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Egypt.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\El Salvador.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\England.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Equatorial Guinea.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Eritrea.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Estonia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Eswatini.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Ethiopia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Falkland Islands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Faroe Islands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Fiji.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Finland.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\France.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\French Guiana.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\French Polynesia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\French Southern and Antarctic Lands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Gabon.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Gambia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Georgia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Germany.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Ghana.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Gibraltar.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Greece.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Greenland.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Grenada.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Guadeloupe.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Guam.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Guatemala.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Guernsey.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Guinea-Bissau.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Guinea.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Guyana.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Haiti.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Honduras.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Hong Kong.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Hungary.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Iceland.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\India.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Indonesia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Iran.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Iraq.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Ireland.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Isle of Man.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Israel.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Italy.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Jamaica.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Japan.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Jersey.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Jordan.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Kazakhstan.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Kenya.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Kiribati.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Kosovo.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Kuwait.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Kyrgyzstan.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Laos.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Latvia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Lebanon.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Lesotho.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Liberia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Libya.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Liechtenstein.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Lithuania.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Luxembourg.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Macau.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Madagascar.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Malawi.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Malaysia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Maldives.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Mali.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Malta.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Marshall Islands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Martinique.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Mauritania.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Mauritius.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Mayotte.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Mexico.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Micronesia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Moldova.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Monaco.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Mongolia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Montenegro.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Montserrat.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Morocco.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Mozambique.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Myanmar.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Namibia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Nauru.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Nepal.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Netherlands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\New Caledonia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\New Zealand.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Nicaragua.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Niger.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Nigeria.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Niue.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Norfolk Island.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\North Korea.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\North Macedonia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Northern Ireland.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Northern Mariana Islands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Norway.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Oman.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Pakistan.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Palau.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Palestine.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Panama.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Papua New Guinea.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Paraguay.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Peru.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Philippines.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Pitcairn Islands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Poland.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Portugal.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Puerto Rico.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Qatar.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\README.txt" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Republic of the Congo.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Romania.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Russia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Rwanda.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Réunion.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Saint Barthélemy.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Saint Helena, Ascension and Tristan da Cunha.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Saint Kitts and Nevis.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Saint Lucia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Saint Marino.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Saint Martin.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Saint Pierre and Miquelon.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Saint Vincent and the Grenadines.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Samoa.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Saudi Arabia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Scotland.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Senegal.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Serbia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Seychelles.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Sierra Leone.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Singapore.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Sint Maarten.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Slovakia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Slovenia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Solomon Islands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Somalia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\South Africa.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\South Georgia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\South Korea.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\South Sudan.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Spain.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Sri Lanka.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Sudan.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Suriname.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Sweden.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Switzerland.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Syria.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\São Tomé and Príncipe.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Taiwan.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Tajikistan.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Tanzania.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Thailand.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Timor-Leste.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Togo.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Tokelau.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Tonga.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Trinidad and Tobago.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Tunisia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Turkey.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Turkmenistan.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Turks and Caicos Islands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Tuvalu.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Uganda.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Ukraine.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\United Arab Emirates.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\United Kingdom.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\United States Virgin Islands.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\United States.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Uruguay.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Uzbekistan.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Vanuata.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Vatican City.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Venezuela.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Vietnam.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Wales.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Wallis and Futuna.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Western Sahara.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Yemen.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Zambia.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Zimbabwe.png" />
+    <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Åland Islands.png" />
+    <Content Include="Assets\NameTheImage\OneTwoThree\Eight.png" />
+    <Content Include="Assets\NameTheImage\OneTwoThree\Five.png" />
+    <Content Include="Assets\NameTheImage\OneTwoThree\Four.png" />
+    <Content Include="Assets\NameTheImage\OneTwoThree\Nine.png" />
+    <Content Include="Assets\NameTheImage\OneTwoThree\One.png" />
+    <Content Include="Assets\NameTheImage\OneTwoThree\Seven.png" />
+    <Content Include="Assets\NameTheImage\OneTwoThree\Six.png" />
+    <Content Include="Assets\NameTheImage\OneTwoThree\Three.png" />
+    <Content Include="Assets\NameTheImage\OneTwoThree\Two.png" />
+    <Content Include="Assets\NameTheImage\OneTwoThree\Zero.png" />
+    <Content Include="Assets\NameTheImage\RandomTest\%24^%25 ~#!.png" />
+    <Content Include="Assets\NameTheImage\RandomTest\Desk Lamp.png" />
+    <Content Include="Assets\NameTheImage\RandomTest\Mouse &amp; Keyboard.png" />
     <Content Include="Assets\Run_16x.png" />
     <Content Include="Assets\StarWarsKenobiHelloThere.gif" />
     <Content Include="Assets\StatusBlocked_16x.png" />
     <Content Include="Assets\StatusOK_16x.png" />
     <Content Include="Assets\TestProject_16x.png" />
     <Content Include="Assets\Test_16x.png" />
+    <Content Include="Assets\VeryNiceBorat.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -172,11 +444,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GreenProjects\TaxiService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="RedProjects\Calculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RedProjects\NameTheImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,10 +469,11 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.UI.Xaml">
+      <Version>2.5.0</Version>
+    </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GreenProjects\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

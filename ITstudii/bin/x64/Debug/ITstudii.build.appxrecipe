@@ -55,11 +55,815 @@
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\Create_16x.png">
       <PackagePath>Assets\Create_16x.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\ErrorImage640x640.png">
+      <PackagePath>Assets\ErrorImage640x640.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\graduation-58-458507.png">
       <PackagePath>Assets\graduation-58-458507.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\logo-footer-transp.png">
       <PackagePath>Assets\logo-footer-transp.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Afghanistan.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Afghanistan.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Albania.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Albania.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Algeria.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Algeria.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\American Samoa.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\American Samoa.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Andorra.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Andorra.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Angola.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Angola.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Anguilla.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Anguilla.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Antarctica.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Antarctica.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Antigua and Barbuda.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Antigua and Barbuda.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Argentina.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Argentina.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Armenia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Armenia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Aruba.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Aruba.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Australia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Australia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Austria.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Austria.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Azerbaijan.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Azerbaijan.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Bahamas.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Bahamas.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Bahrain.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Bahrain.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Bangladesh.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Bangladesh.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Barbados.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Barbados.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Belarus.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Belarus.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Belgium.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Belgium.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Belize.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Belize.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Benin.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Benin.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Bermuda.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Bermuda.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Bhutan.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Bhutan.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Bolivia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Bolivia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Bosnia and Herzegovina.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Bosnia and Herzegovina.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Botswana.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Botswana.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Bouvet Island.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Bouvet Island.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Brazil.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Brazil.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\British Indian Ocean Territory.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\British Indian Ocean Territory.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\British Virgin Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\British Virgin Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Brunei.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Brunei.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Bulgaria.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Bulgaria.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Burkina Faso.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Burkina Faso.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Burundi.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Burundi.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Cambodia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Cambodia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Cameroon.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Cameroon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Canada.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Canada.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Cape Verde.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Cape Verde.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Caribbean Netherlands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Caribbean Netherlands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Cayman Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Cayman Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Central African Republic.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Central African Republic.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Chad.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Chad.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Chile.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Chile.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\China.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\China.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Christmas Island.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Christmas Island.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Cocos Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Cocos Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Colombia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Colombia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Comoros.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Comoros.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Cook Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Cook Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Costa Rica.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Costa Rica.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Croatia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Croatia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Cuba.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Cuba.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Curaçao.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Curaçao.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Cyprus.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Cyprus.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Czechia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Czechia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Côte d%27Ivoire.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Côte d%27Ivoire.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Democratic Republic of Congo.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Democratic Republic of Congo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Denmark.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Denmark.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Djibouti.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Djibouti.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Dominica.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Dominica.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Dominican Republic.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Dominican Republic.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Ecuador.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Ecuador.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Egypt.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Egypt.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\El Salvador.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\El Salvador.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\England.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\England.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Equatorial Guinea.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Equatorial Guinea.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Eritrea.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Eritrea.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Estonia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Estonia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Eswatini.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Eswatini.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Ethiopia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Ethiopia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Falkland Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Falkland Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Faroe Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Faroe Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Fiji.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Fiji.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Finland.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Finland.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\France.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\France.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\French Guiana.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\French Guiana.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\French Polynesia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\French Polynesia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\French Southern and Antarctic Lands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\French Southern and Antarctic Lands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Gabon.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Gabon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Gambia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Gambia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Georgia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Georgia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Germany.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Germany.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Ghana.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Ghana.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Gibraltar.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Gibraltar.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Greece.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Greece.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Greenland.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Greenland.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Grenada.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Grenada.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Guadeloupe.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Guadeloupe.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Guam.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Guam.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Guatemala.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Guatemala.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Guernsey.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Guernsey.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Guinea-Bissau.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Guinea-Bissau.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Guinea.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Guinea.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Guyana.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Guyana.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Haiti.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Haiti.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Heard Island and McDonald Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Heard Island and McDonald Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Honduras.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Honduras.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Hong Kong.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Hong Kong.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Hungary.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Hungary.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Iceland.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Iceland.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\India.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\India.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Indonesia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Indonesia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Iran.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Iran.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Iraq.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Iraq.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Ireland.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Ireland.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Isle of Man.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Isle of Man.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Israel.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Israel.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Italy.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Italy.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Jamaica.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Jamaica.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Japan.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Japan.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Jersey.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Jersey.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Jordan.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Jordan.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Kazakhstan.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Kazakhstan.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Kenya.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Kenya.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Kiribati.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Kiribati.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Kosovo.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Kosovo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Kuwait.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Kuwait.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Kyrgyzstan.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Kyrgyzstan.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Laos.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Laos.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Latvia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Latvia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Lebanon.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Lebanon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Lesotho.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Lesotho.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Liberia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Liberia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Libya.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Libya.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Liechtenstein.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Liechtenstein.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Lithuania.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Lithuania.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Luxembourg.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Luxembourg.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Macau.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Macau.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Madagascar.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Madagascar.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Malawi.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Malawi.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Malaysia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Malaysia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Maldives.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Maldives.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Mali.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Mali.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Malta.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Malta.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Marshall Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Marshall Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Martinique.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Martinique.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Mauritania.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Mauritania.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Mauritius.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Mauritius.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Mayotte.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Mayotte.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Mexico.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Mexico.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Micronesia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Micronesia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Moldova.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Moldova.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Monaco.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Monaco.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Mongolia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Mongolia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Montenegro.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Montenegro.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Montserrat.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Montserrat.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Morocco.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Morocco.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Mozambique.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Mozambique.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Myanmar.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Myanmar.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Namibia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Namibia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Nauru.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Nauru.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Nepal.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Nepal.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Netherlands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Netherlands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\New Caledonia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\New Caledonia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\New Zealand.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\New Zealand.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Nicaragua.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Nicaragua.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Niger.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Niger.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Nigeria.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Nigeria.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Niue.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Niue.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Norfolk Island.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Norfolk Island.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\North Korea.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\North Korea.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\North Macedonia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\North Macedonia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Northern Ireland.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Northern Ireland.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Northern Mariana Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Northern Mariana Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Norway.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Norway.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Oman.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Oman.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Pakistan.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Pakistan.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Palau.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Palau.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Palestine.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Palestine.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Panama.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Panama.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Papua New Guinea.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Papua New Guinea.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Paraguay.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Paraguay.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Peru.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Peru.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Philippines.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Philippines.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Pitcairn Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Pitcairn Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Poland.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Poland.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Portugal.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Portugal.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Puerto Rico.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Puerto Rico.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Qatar.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Qatar.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Republic of the Congo.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Republic of the Congo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Romania.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Romania.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Russia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Russia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Rwanda.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Rwanda.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Réunion.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Réunion.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Saint Barthélemy.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Saint Barthélemy.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Saint Helena, Ascension and Tristan da Cunha.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Saint Helena, Ascension and Tristan da Cunha.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Saint Kitts and Nevis.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Saint Kitts and Nevis.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Saint Lucia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Saint Lucia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Saint Marino.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Saint Marino.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Saint Martin.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Saint Martin.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Saint Pierre and Miquelon.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Saint Pierre and Miquelon.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Saint Vincent and the Grenadines.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Saint Vincent and the Grenadines.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Samoa.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Samoa.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Saudi Arabia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Saudi Arabia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Scotland.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Scotland.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Senegal.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Senegal.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Serbia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Serbia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Seychelles.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Seychelles.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Sierra Leone.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Sierra Leone.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Singapore.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Singapore.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Sint Maarten.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Sint Maarten.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Slovakia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Slovakia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Slovenia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Slovenia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Solomon Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Solomon Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Somalia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Somalia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\South Africa.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\South Africa.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\South Georgia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\South Georgia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\South Korea.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\South Korea.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\South Sudan.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\South Sudan.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Spain.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Spain.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Sri Lanka.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Sri Lanka.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Sudan.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Sudan.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Suriname.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Suriname.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Svalbard and Jan Mayen.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Svalbard and Jan Mayen.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Sweden.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Sweden.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Switzerland.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Switzerland.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Syria.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Syria.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\São Tomé and Príncipe.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\São Tomé and Príncipe.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Taiwan.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Taiwan.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Tajikistan.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Tajikistan.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Tanzania.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Tanzania.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Thailand.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Thailand.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Timor-Leste.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Timor-Leste.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Togo.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Togo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Tokelau.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Tokelau.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Tonga.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Tonga.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Trinidad and Tobago.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Trinidad and Tobago.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Tunisia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Tunisia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Turkey.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Turkey.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Turkmenistan.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Turkmenistan.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Turks and Caicos Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Turks and Caicos Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Tuvalu.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Tuvalu.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Uganda.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Uganda.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Ukraine.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Ukraine.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\United Arab Emirates.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\United Arab Emirates.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\United Kingdom.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\United Kingdom.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\United States Minor Outlying Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\United States Minor Outlying Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\United States Virgin Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\United States Virgin Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\United States.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\United States.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Uruguay.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Uruguay.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Uzbekistan.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Uzbekistan.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Vanuata.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Vanuata.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Vatican City.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Vatican City.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Venezuela.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Venezuela.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Vietnam.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Vietnam.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Wales.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Wales.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Wallis and Futuna.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Wallis and Futuna.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Western Sahara.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Western Sahara.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Yemen.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Yemen.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Zambia.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Zambia.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Zimbabwe.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Zimbabwe.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Åland Islands.png">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Åland Islands.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\OneTwoThree\Eight.png">
+      <PackagePath>Assets\NameTheImage\OneTwoThree\Eight.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\OneTwoThree\Five.png">
+      <PackagePath>Assets\NameTheImage\OneTwoThree\Five.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\OneTwoThree\Four.png">
+      <PackagePath>Assets\NameTheImage\OneTwoThree\Four.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\OneTwoThree\Nine.png">
+      <PackagePath>Assets\NameTheImage\OneTwoThree\Nine.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\OneTwoThree\One.png">
+      <PackagePath>Assets\NameTheImage\OneTwoThree\One.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\OneTwoThree\Seven.png">
+      <PackagePath>Assets\NameTheImage\OneTwoThree\Seven.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\OneTwoThree\Six.png">
+      <PackagePath>Assets\NameTheImage\OneTwoThree\Six.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\OneTwoThree\Three.png">
+      <PackagePath>Assets\NameTheImage\OneTwoThree\Three.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\OneTwoThree\Two.png">
+      <PackagePath>Assets\NameTheImage\OneTwoThree\Two.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\OneTwoThree\Zero.png">
+      <PackagePath>Assets\NameTheImage\OneTwoThree\Zero.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\RandomTest\%24^%25 ~#!.png">
+      <PackagePath>Assets\NameTheImage\RandomTest\%24^%25 ~#!.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\RandomTest\Desk Lamp.png">
+      <PackagePath>Assets\NameTheImage\RandomTest\Desk Lamp.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\RandomTest\Mouse &amp; Keyboard.png">
+      <PackagePath>Assets\NameTheImage\RandomTest\Mouse &amp; Keyboard.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\Run_16x.png">
       <PackagePath>Assets\Run_16x.png</PackagePath>
@@ -75,6 +879,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\Test_16x.png">
       <PackagePath>Assets\Test_16x.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\VeryNiceBorat.png">
+      <PackagePath>Assets\VeryNiceBorat.png</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
@@ -118,17 +925,29 @@
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\ExtraProjects\TalkToMe.xbf">
       <PackagePath>ExtraProjects\TalkToMe.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\GreenProjects\TaxiService.xbf">
+      <PackagePath>GreenProjects\TaxiService.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\RedProjects\Calculator.xbf">
       <PackagePath>RedProjects\Calculator.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\RedProjects\NameTheImage.xbf">
+      <PackagePath>RedProjects\NameTheImage.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\TestPage1.xbf">
       <PackagePath>TestPage1.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.18362.0\\redist\Debug\X64\ucrtbased.dll">
+      <PackagePath>ucrtbased.dll</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\ammer\.nuget\packages\microsoft.ui.xaml\2.5.0\buildTransitive\..\lib\uap10.0\Microsoft.UI.Xaml.winmd">
+      <PackagePath>WinMetadata\Microsoft.UI.Xaml.winmd</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
@@ -138,6 +957,46 @@
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
+    <ResolvedSDKReference Include="C:\Users\ammer\.nuget\packages\microsoft.ui.xaml\2.5.0\buildTransitive\..\tools\AppX\x86\Release\Microsoft.UI.Xaml.2.5.appx">
+      <Name>Microsoft.UI.Xaml.2.5</Name>
+      <Version>2.52012.2002.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.UI.Xaml.2.5, MinVersion = 2.52012.2002.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Users\ammer\.nuget\packages\microsoft.ui.xaml\2.5.0\buildTransitive\..\tools\AppX\x86\Release\Microsoft.UI.Xaml.2.5.appx</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Users\ammer\.nuget\packages\microsoft.ui.xaml\2.5.0\buildTransitive\..\tools\AppX\x86\Release\Microsoft.UI.Xaml.2.5.appx">
+      <Name>Microsoft.UI.Xaml.2.5</Name>
+      <Version>2.52012.2002.0</Version>
+      <Architecture>Win32</Architecture>
+      <FrameworkIdentity>Name = Microsoft.UI.Xaml.2.5, MinVersion = 2.52012.2002.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Users\ammer\.nuget\packages\microsoft.ui.xaml\2.5.0\buildTransitive\..\tools\AppX\x86\Release\Microsoft.UI.Xaml.2.5.appx</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Users\ammer\.nuget\packages\microsoft.ui.xaml\2.5.0\buildTransitive\..\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.5.appx">
+      <Name>Microsoft.UI.Xaml.2.5</Name>
+      <Version>2.52012.2002.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.UI.Xaml.2.5, MinVersion = 2.52012.2002.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Users\ammer\.nuget\packages\microsoft.ui.xaml\2.5.0\buildTransitive\..\tools\AppX\x64\Release\Microsoft.UI.Xaml.2.5.appx</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Users\ammer\.nuget\packages\microsoft.ui.xaml\2.5.0\buildTransitive\..\tools\AppX\arm\Release\Microsoft.UI.Xaml.2.5.appx">
+      <Name>Microsoft.UI.Xaml.2.5</Name>
+      <Version>2.52012.2002.0</Version>
+      <Architecture>arm</Architecture>
+      <FrameworkIdentity>Name = Microsoft.UI.Xaml.2.5, MinVersion = 2.52012.2002.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Users\ammer\.nuget\packages\microsoft.ui.xaml\2.5.0\buildTransitive\..\tools\AppX\arm\Release\Microsoft.UI.Xaml.2.5.appx</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Users\ammer\.nuget\packages\microsoft.ui.xaml\2.5.0\buildTransitive\..\tools\AppX\arm64\Release\Microsoft.UI.Xaml.2.5.appx">
+      <Name>Microsoft.UI.Xaml.2.5</Name>
+      <Version>2.52012.2002.0</Version>
+      <Architecture>arm64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.UI.Xaml.2.5, MinVersion = 2.52012.2002.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Users\ammer\.nuget\packages\microsoft.ui.xaml\2.5.0\buildTransitive\..\tools\AppX\arm64\Release\Microsoft.UI.Xaml.2.5.appx</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x86.microsoft.net.uwpcoreruntimesdk\2.2.10\build\..\tools\Appx\Microsoft.NET.CoreRuntime.2.2.appx">
       <Name>Microsoft.NET.CoreRuntime.2.2</Name>
       <Version>2.2.27902.3</Version>

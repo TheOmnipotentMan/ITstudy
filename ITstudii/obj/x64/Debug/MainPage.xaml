@@ -27,7 +27,7 @@
     <Canvas Width="255" Height="32">
         <TextBlock Text="x. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
         <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
-        <Button Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+        <Button x:Name="TestPage1" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
                                         Click="ProjectSelected_Extra_TestPage"/>
     </Canvas>
 
@@ -64,14 +64,14 @@
         <Border Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" BorderThickness="2"/>
 
 
-        <TextBlock Text="I want to be a calculator when I grow up!" FontSize="32" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
 
         <Pivot >
 
-            <PivotItem Header="Calculator" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+            <PivotItem Header="PLACEHOLDER" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
 
                 <Canvas>
+                    <TextBlock Text="Something" FontSize="32" Canvas.Left="100" Canvas.Top="100"/>
 
                 </Canvas>
 
@@ -151,7 +151,7 @@
 
                     <!-- #region Red Projects -->
                     <PivotItem Header="Red" Margin="10 2 0 10" HorizontalAlignment="Left">
-                        <ListView x:ConnectionId='23' Name="RedProjects" Width="282" Height="580" MaxHeight="580" VerticalAlignment="Top"
+                        <ListView x:ConnectionId='24' Name="RedProjects" Width="282" Height="580" MaxHeight="580" VerticalAlignment="Top"
                                   BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1"
                                   SelectionMode="Single">
                             
@@ -159,25 +159,89 @@
                             <!-- 1. Calculator -->
                             <Canvas Width="255" Height="32">
                                 <TextBlock Text="1. Calculator" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
-                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
-                                <Button x:ConnectionId='26' Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
-                                                                              />
+                                <Image Source="/Assets/StatusOK_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='35' x:Name="Calculator" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                        />
                             </Canvas>
 
                             <!-- 2. Flags of the World -->
                             <Canvas Width="255" Height="32">
                                 <TextBlock Text="2. Flags of the World" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
                                 <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
-                                <Button x:ConnectionId='25' Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
-                                                                              />
+                                <Button x:ConnectionId='34' x:Name="NameTheImage" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                        />
                             </Canvas>
 
-                            <!-- x. PLACEHOLDER -->
+                            <!-- 3. PLACEHOLDER -->
                             <Canvas Width="255" Height="32">
-                                <TextBlock Text="x. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <TextBlock Text="3. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
                                 <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
-                                <Button x:ConnectionId='24' Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
-                                                                              />
+                                <Button x:ConnectionId='33' x:Name="RedPlaceholder3" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                        />
+                            </Canvas>
+
+                            <!-- 4. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="4. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='32' x:Name="RedPlaceholder4" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                        />
+                            </Canvas>
+
+                            <!-- 5. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="5. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='31' x:Name="RedPlaceholder5" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                        />
+                            </Canvas>
+
+                            <!-- 6. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="6. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='30' x:Name="RedPlaceholder6" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                        />
+                            </Canvas>
+
+                            <!-- 7. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="7. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='29' x:Name="RedPlaceholder7" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                        />
+                            </Canvas>
+
+                            <!-- 8. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="8. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='28' x:Name="RedPlaceholder8" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                        />
+                            </Canvas>
+
+                            <!-- 9. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="9. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='27' x:Name="RedPlaceholder9" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                        />
+                            </Canvas>
+
+                            <!-- 10. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="10. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='26' x:Name="RedPlaceholder10" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                        />
+                            </Canvas>
+
+                            <!-- 11. PLACEHOLDER -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="11. PLACEHOLDER" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='25' x:Name="RedPlaceholder11" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                        />
                             </Canvas>
 
                         </ListView>
@@ -191,6 +255,15 @@
                                   BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1"
                                   SelectionMode="Single">
 
+                            <!-- 1. Taxi Service -->
+                            <Canvas Width="255" Height="32">
+                                <TextBlock Text="1. Taxi Service" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusOK_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <Button x:ConnectionId='23' x:Name="TaxiService" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                        />
+                            </Canvas>
+
+                            <!--
                             <TextBlock Text="1. Taxi Service"/>
                             <TextBlock Text="2. School Tuition"/>
                             <TextBlock Text="3. Car Rental"/>
@@ -208,6 +281,7 @@
                             <TextBlock Text="PLACEHOLDER GREEN 15"/>
                             <TextBlock Text="PLACEHOLDER GREEN 16"/>
                             <TextBlock Text="PLACEHOLDER GREEN 17"/>
+                            -->
 
                         </ListView>
                     </PivotItem>
@@ -224,16 +298,16 @@
                             <Canvas Width="255" Height="32">
                                 <TextBlock Text="1. Hello There (test page)" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
                                 <Image Source="/Assets/StatusOK_16x.png" Canvas.Left="0" Canvas.Top="8"/>
-                                <Button x:ConnectionId='21' Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
-                                                                              />
+                                <Button x:ConnectionId='21' x:Name="TestPage1" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                        />
                             </Canvas>
 
                             <!-- Talk To Me -->
                             <Canvas Width="255" Height="32">
                                 <TextBlock Text="2. Talk To Me" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
                                 <Image Source="/Assets/StatusOK_16x.png" Canvas.Left="0" Canvas.Top="8"/>
-                                <Button x:ConnectionId='20' Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
-                                                                              />
+                                <Button x:ConnectionId='20' x:Name="TalkToMe" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
+                                                                        />
                             </Canvas>
                             
 
@@ -260,10 +334,10 @@
             <Canvas x:ConnectionId='13' x:Name="ProgressCanvas" Width="800" Height="40" Canvas.Left="24" Canvas.Top="10" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                 <TextBlock x:ConnectionId='15' x:Name="RedProjectsProgress" Width="240" Height="20" Canvas.Left="10" Canvas.Top="10"
                            FontSize="18" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
-                           Text="Red Projects = 0/11"/>
+                           Text="Red Projects = 1"/>
                 <TextBlock x:ConnectionId='16' x:Name="GreenProjectsProgress" Width="240" Height="20" Canvas.Left="250" Canvas.Top="10"
                            FontSize="18" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
-                           Text="Green Projects = 0/19"/>
+                           Text="Green Projects = 1"/>
                 <TextBlock x:ConnectionId='17' x:Name="ExtraProjectsProgress" Width="240" Height="20" Canvas.Left="490" Canvas.Top="10"
                            FontSize="18" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
                            Text="Extra Projects = 2"/>
