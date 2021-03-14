@@ -8285,9 +8285,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Development\\ITvitae\\ITstudii\\ITstudii\\ITstudii.csproj",
-      "projectName": "ITstudii",
-      "projectPath": "D:\\Development\\ITvitae\\ITstudii\\ITstudii\\ITstudii.csproj",
+      "projectUniqueName": "D:\\Development\\ITvitae\\ITstudii\\ITstudii\\ITstudy.csproj",
+      "projectName": "ITstudy",
+      "projectPath": "D:\\Development\\ITvitae\\ITstudii\\ITstudii\\ITstudy.csproj",
       "packagesPath": "C:\\Users\\ammer\\.nuget\\packages\\",
       "outputPath": "D:\\Development\\ITvitae\\ITstudii\\ITstudii\\obj\\",
       "projectStyle": "PackageReference",

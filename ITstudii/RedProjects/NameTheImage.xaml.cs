@@ -34,7 +34,8 @@ namespace ITstudii.RedProjects
 
     // At the moment, creating special classes and data templates is rather steep
     // So for now a lot of content will be written directly into code
-    // Specifically; the categories and their folder-path
+    // Specifically; the folder-paths of the categories
+
 
 
     /// <summary>
@@ -196,6 +197,7 @@ namespace ITstudii.RedProjects
             // ensure the number of images is reasonable
             if (TotalNumberOfImages > MaxNumberOfImagesAllowed) { return; }
             if (TotalNumberOfImages < 1) { return; }
+            if (TotalNumberOfImages <= NumberOfChoices) { return; }
 
             // load all images in folder into a Dictionary
             for (int i = 0; i < TotalNumberOfImages; i++)
@@ -252,6 +254,8 @@ namespace ITstudii.RedProjects
                 int newvalue = Randomiser.Next(0, CategoryContent.Count);
                 // prevent the dummie answer from being correct
                 if (newvalue == ImageToGuessIndex) { i--; continue; }
+                if (RandomChoicesIndex.Contains(newvalue)) { i--; continue; }
+                if ((!IsGuessingContinuous) && (Path.GetFileNameWithoutExtension(CategoryContent.ElementAt(newvalue)) == Path.GetFileNameWithoutExtension(CategoryContentDeducting.ElementAt(ImageToGuessIndex)))) { i--; continue; }
                 RandomChoicesIndex.Add(newvalue);
                 continue;
             }

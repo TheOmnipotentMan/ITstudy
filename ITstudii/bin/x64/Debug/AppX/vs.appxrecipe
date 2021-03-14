@@ -30,13 +30,13 @@
     <AppXManifest Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-03-14T06:32:01.217</Modified>
+      <Modified>2021-03-14T06:57:27.474</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\ITstudii.exe">
       <PackagePath>entrypoint\ITstudii.exe</PackagePath>
-      <Modified>2021-03-14T06:31:59.611</Modified>
+      <Modified>2021-03-14T06:57:26.133</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.10\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -197,10 +197,6 @@
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Botswana.png">
       <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Botswana.png</PackagePath>
       <Modified>2021-03-02T05:14:33.997</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Bouvet Island.png">
-      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Bouvet Island.png</PackagePath>
-      <Modified>2021-03-02T05:14:33.981</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Brazil.png">
       <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Brazil.png</PackagePath>
@@ -473,10 +469,6 @@
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Haiti.png">
       <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Haiti.png</PackagePath>
       <Modified>2021-03-02T05:14:35.081</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Heard Island and McDonald Islands.png">
-      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Heard Island and McDonald Islands.png</PackagePath>
-      <Modified>2021-03-02T05:14:35.032</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Honduras.png">
       <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Honduras.png</PackagePath>
@@ -946,10 +938,6 @@
       <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Suriname.png</PackagePath>
       <Modified>2021-03-02T05:14:36.744</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Svalbard and Jan Mayen.png">
-      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Svalbard and Jan Mayen.png</PackagePath>
-      <Modified>2021-03-02T05:14:36.653</Modified>
-    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\Sweden.png">
       <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\Sweden.png</PackagePath>
       <Modified>2021-03-02T05:14:36.591</Modified>
@@ -1037,10 +1025,6 @@
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\United Kingdom.png">
       <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\United Kingdom.png</PackagePath>
       <Modified>2021-03-02T05:14:34.735</Modified>
-    </AppxPackagedFile>
-    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\United States Minor Outlying Islands.png">
-      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\United States Minor Outlying Islands.png</PackagePath>
-      <Modified>2021-03-02T05:14:37.135</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\United States Virgin Islands.png">
       <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\United States Virgin Islands.png</PackagePath>
@@ -1212,6 +1196,10 @@
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2021-02-22T19:24:28.058</Modified>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\NameTheImage\FlagsOfTheWorld\README.txt">
+      <PackagePath>Assets\NameTheImage\FlagsOfTheWorld\README.txt</PackagePath>
+      <Modified>2021-03-14T06:37:13.689</Modified>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\Assets\StarWarsKenobiHelloThere.gif">
       <PackagePath>Assets\StarWarsKenobiHelloThere.gif</PackagePath>
       <Modified>2021-02-25T03:42:56.994</Modified>
@@ -1226,31 +1214,31 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2021-03-14T06:17:29.888</Modified>
+      <Modified>2021-03-14T06:57:26.009</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\ExtraProjects\TalkToMe.xbf">
       <PackagePath>ExtraProjects\TalkToMe.xbf</PackagePath>
-      <Modified>2021-03-14T06:17:29.888</Modified>
+      <Modified>2021-03-14T06:57:26.009</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\GreenProjects\TaxiService.xbf">
       <PackagePath>GreenProjects\TaxiService.xbf</PackagePath>
-      <Modified>2021-03-14T06:17:29.866</Modified>
+      <Modified>2021-03-14T06:57:25.987</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2021-03-14T06:17:29.875</Modified>
+      <Modified>2021-03-14T06:57:25.996</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\RedProjects\Calculator.xbf">
       <PackagePath>RedProjects\Calculator.xbf</PackagePath>
-      <Modified>2021-03-14T06:17:29.879</Modified>
+      <Modified>2021-03-14T06:57:26.000</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\RedProjects\NameTheImage.xbf">
       <PackagePath>RedProjects\NameTheImage.xbf</PackagePath>
-      <Modified>2021-03-14T06:17:29.887</Modified>
+      <Modified>2021-03-14T06:57:26.008</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\TestPage1.xbf">
       <PackagePath>TestPage1.xbf</PackagePath>
-      <Modified>2021-03-14T06:17:29.889</Modified>
+      <Modified>2021-03-14T06:57:26.010</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.18362.0\\redist\Debug\X64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -1266,11 +1254,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2021-03-14T04:18:38.606</Modified>
+      <Modified>2021-03-14T06:46:33.322</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="D:\Development\ITvitae\ITstudii\ITstudii\bin\x64\Debug\Core\ITstudii.exe">
       <PackagePath>ITstudii.exe</PackagePath>
-      <Modified>2021-03-14T06:32:01.212</Modified>
+      <Modified>2021-03-14T06:57:27.469</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

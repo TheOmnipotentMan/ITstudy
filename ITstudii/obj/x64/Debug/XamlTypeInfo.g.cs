@@ -13,17 +13,17 @@ namespace ITstudii
     public partial class App : global::Windows.UI.Xaml.Markup.IXamlMetadataProvider
     {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
-        private global::ITstudii.ITstudii_XamlTypeInfo.XamlMetaDataProvider __appProvider;
+        private global::ITstudii.ITstudy_XamlTypeInfo.XamlMetaDataProvider __appProvider;
 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Windows.UI.Xaml.Build.Tasks"," 10.0.18362.1")]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private global::ITstudii.ITstudii_XamlTypeInfo.XamlMetaDataProvider _AppProvider
+        private global::ITstudii.ITstudy_XamlTypeInfo.XamlMetaDataProvider _AppProvider
         {
             get
             {
                 if (__appProvider == null)
                 {
-                    __appProvider = new global::ITstudii.ITstudii_XamlTypeInfo.XamlMetaDataProvider();
+                    __appProvider = new global::ITstudii.ITstudy_XamlTypeInfo.XamlMetaDataProvider();
                 }
                 return __appProvider;
             }
@@ -61,7 +61,7 @@ namespace ITstudii
     }
 }
 
-namespace ITstudii.ITstudii_XamlTypeInfo
+namespace ITstudii.ITstudy_XamlTypeInfo
 {
     /// <summary>
     /// Main class for providing metadata for the app or library
@@ -70,15 +70,15 @@ namespace ITstudii.ITstudii_XamlTypeInfo
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     public sealed class XamlMetaDataProvider : global::Windows.UI.Xaml.Markup.IXamlMetadataProvider
     {
-        private global::ITstudii.ITstudii_XamlTypeInfo.XamlTypeInfoProvider _provider = null;
+        private global::ITstudii.ITstudy_XamlTypeInfo.XamlTypeInfoProvider _provider = null;
 
-        private global::ITstudii.ITstudii_XamlTypeInfo.XamlTypeInfoProvider Provider
+        private global::ITstudii.ITstudy_XamlTypeInfo.XamlTypeInfoProvider Provider
         {
             get
             {
                 if (_provider == null)
                 {
-                    _provider = new global::ITstudii.ITstudii_XamlTypeInfo.XamlTypeInfoProvider();
+                    _provider = new global::ITstudii.ITstudy_XamlTypeInfo.XamlTypeInfoProvider();
                 }
                 return _provider;
             }

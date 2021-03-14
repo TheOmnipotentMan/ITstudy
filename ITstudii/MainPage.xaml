@@ -166,8 +166,8 @@
 
                             <!-- 2. Flags of the World -->
                             <Canvas Width="255" Height="32">
-                                <TextBlock Text="2. Flags of the World" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
-                                <Image Source="/Assets/StatusBlocked_16x.png" Canvas.Left="0" Canvas.Top="8"/>
+                                <TextBlock Text="2. Name The Image" FontSize="16" Canvas.Left="24" Canvas.Top="4"/>
+                                <Image Source="/Assets/StatusOK_16x.png" Canvas.Left="0" Canvas.Top="8"/>
                                 <Button x:Name="NameTheImage" Width="255" Height="32" Opacity="0" Canvas.ZIndex="1"
                                         Click="NewProjectSelected_Click"/>
                             </Canvas>
@@ -334,7 +334,7 @@
             <Canvas x:Name="ProgressCanvas" Width="800" Height="40" Canvas.Left="24" Canvas.Top="10" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                 <TextBlock x:Name="RedProjectsProgress" Width="240" Height="20" Canvas.Left="10" Canvas.Top="10"
                            FontSize="18" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
-                           Text="Red Projects = 1"/>
+                           Text="Red Projects = 2"/>
                 <TextBlock x:Name="GreenProjectsProgress" Width="240" Height="20" Canvas.Left="250" Canvas.Top="10"
                            FontSize="18" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
                            Text="Green Projects = 1"/>
