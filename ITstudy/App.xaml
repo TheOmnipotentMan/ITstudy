@@ -1,0 +1,15 @@
+﻿<Application
+    x:Class="ITstudy.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ITstudy">
+
+    <Application.Resources>
+        
+        <!-- Microsoft.UI.Xaml nuget-->
+        <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+        
+        
+    </Application.Resources>
+
+</Application>
