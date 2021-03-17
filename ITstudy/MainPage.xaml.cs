@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+using System.Collections.ObjectModel;
+
 // TODO remove if the app is ever finished
 using System.Diagnostics;
 
@@ -20,27 +22,16 @@ using System.Diagnostics;
 
 namespace ITstudy
 {
-
-
     
-
-
 
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
-
-
-
+                
         string SelectedProjectName;
-
-       
-
-
-
+        
 
         public MainPage()
         {
@@ -48,15 +39,6 @@ namespace ITstudy
         }
 
      
-
-
-       
-
-
-
-
-
-
 
 
 
@@ -208,21 +190,68 @@ namespace ITstudy
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         #endregion ProjectSelect
 
+
+
+        /* Trying my hand at Datatemplates again, no succes again
+
+
+        /// <summary>
+        /// Custom Class for all sub-projects. It holds their details and is required by MainPage in order to call the project.
+        /// </summary>
+        public class ITstudyProject
+        {
+            // general project info
+            public string Name { get; set; }
+            public string Address { get; set; }
+            public bool IsComplete { get; set; }
+            public string DisplayName { get; set; }
+
+            // xaml info
+            public Uri StatusImageSource { get; }
+
+            public ITstudyProject(string name, bool isComplete, string displayName = null)
+            {
+                this.Name = name;
+                this.IsComplete = isComplete;
+
+                if (displayName == null) { this.DisplayName = name; }
+                else { this.DisplayName = displayName; }
+
+                // Might need async storage stuff
+                if (isComplete) { this.StatusImageSource = new Uri("ms-appx:///Assets\\StatusOK_16x.png"); }
+                else { this.StatusImageSource = new Uri("ms-appx:///Assets\\StatusBlocked_16x.png"); }
+            }
+        }
+
+        #region ProjectDeclaration
+
+        public class ITstudyRedProjects : List<ITstudyProject>
+        {
+            public ITstudyRedProjects(string name, bool isComplete, string displayName = null)
+            {
+
+                // 3. TextEncryption
+                Add(new ITstudyProject(ITstudy.RedProjects.TextEncryption.GetProjectName(), ITstudy.RedProjects.TextEncryption.GetIsProjectCompleted(), ITstudy.RedProjects.TextEncryption.GetProjectDisplayName()));
+
+            }
+        }
+
+        public class ITstudyExtraProjects : List<ITstudyProject>
+        {
+            public ITstudyExtraProjects(string name, bool isComplete, string displayName = null)
+            {
+
+                // 2. Talk To Me
+                Add(new ITstudyProject(ITstudy.ExtraProjects.TalkToMe.GetProjectName(), ITstudy.ExtraProjects.TalkToMe.GetIsProjectCompleted(), ITstudy.ExtraProjects.TalkToMe.GetProjectDisplayName()));
+            }
+        }
+
+
+        #endregion ProjectDeclaration
+
+        */
 
     }
 

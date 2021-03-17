@@ -7,8 +7,8 @@
     <ProjectGuid>{2A463338-ECC3-4AA8-A0C4-222B3B0D8C13}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ITstudii</RootNamespace>
-    <AssemblyName>ITstudii</AssemblyName>
+    <RootNamespace>ITstudy</RootNamespace>
+    <AssemblyName>ITstudy</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
@@ -134,6 +134,9 @@
     </Compile>
     <Compile Include="RedProjects\NameTheImage.xaml.cs">
       <DependentUpon>NameTheImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RedProjects\TextEncryption.xaml.cs">
+      <DependentUpon>TextEncryption.xaml</DependentUpon>
     </Compile>
     <Compile Include="TestPage1.xaml.cs">
       <DependentUpon>TestPage1.xaml</DependentUpon>
@@ -423,6 +426,7 @@
     <Content Include="Assets\StarWarsKenobiHelloThere.gif" />
     <Content Include="Assets\StatusBlocked_16x.png" />
     <Content Include="Assets\StatusOK_16x.png" />
+    <Content Include="Assets\StatusOK_16x.svg" />
     <Content Include="Assets\TestProject_16x.png" />
     <Content Include="Assets\Test_16x.png" />
     <Content Include="Assets\VeryNiceBorat.png" />
@@ -457,6 +461,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RedProjects\NameTheImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RedProjects\TextEncryption.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

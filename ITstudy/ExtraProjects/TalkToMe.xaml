@@ -6,15 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     
-     Width="960" Height="660">
-
-
-    <!--
-    Test page made to see if it was possible to call a page, this page, with a certain method.   
-    
-    -->
+    Width="960" Height="660">
 
 
 
@@ -31,7 +24,8 @@
         </Grid.ColumnDefinitions>
 
 
-
+        <!-- General background -->
+        <Rectangle x:Name="GeneralWindowBackground" Grid.ColumnSpan="4" Grid.RowSpan="4" Fill="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
         <Border Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" BorderThickness="2"/>
 
 
@@ -72,7 +66,7 @@
 
             </PivotItem>
 
-            <PivotItem Header="Project Code" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+            <PivotItem Header="Project Details" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
                 <Canvas>
                     <TextBlock Text="Empty" Canvas.Left="10" Canvas.Top="10"/>
                 </Canvas>
