@@ -39,8 +39,6 @@ namespace ITstudy.ExtraProjects
         }
 
 
-
-        // could use sender to determine the gender
         private void Voice_SetMale(object sender, RoutedEventArgs e)
         {
             Windows.Media.SpeechSynthesis.VoiceInformation voiceInfo =
@@ -52,7 +50,6 @@ namespace ITstudy.ExtraProjects
 
             synth.Voice = voiceInfo;
         }
-
 
         private void Voice_SetFemale(object sender, RoutedEventArgs e)
         {

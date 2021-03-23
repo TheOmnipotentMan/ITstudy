@@ -22,24 +22,13 @@ using System.Diagnostics;
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 
-// Time spent on code = ~2h
-
 namespace ITstudy.RedProjects
 {
-    // stuck at the moment, haven't figured out xaml DataTemplate yet
-
-    // I would like to create a system that reads the NameTheImage folder and creates a game-category for every folder found therein
-    // When a category is selected, read the png files in those folders, so that they can be used in the guessing game
-    // This would allow you to create a new folder with its own new png images and use in the game without any alterations
-
-    // At the moment, creating special classes and data templates is rather steep
-    // So for now a lot of content will be written directly into code
-    // Specifically; the folder-paths of the categories
-
-
+    
 
     /// <summary>
     /// A game in which you guess the name that belongs to the image shown.
+    /// Loads image(png) files automatically, although adding of categories (=filepath) is not possible outside of code.
     /// </summary>
 
     public sealed partial class NameTheImage : Page
@@ -92,7 +81,7 @@ namespace ITstudy.RedProjects
 
 
 
-
+        // Category setup, to add a new category add its filepath here
         private void SetFolderPaths()
         {
             // set paths relative, any path that starts with its name is automatically presumed to be located in the CurrentDirectory

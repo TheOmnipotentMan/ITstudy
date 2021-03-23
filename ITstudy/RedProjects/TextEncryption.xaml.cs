@@ -19,7 +19,9 @@ namespace ITstudy.RedProjects
 {
 
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// A project in Text Encryption.
+    /// I could use the biuld-in encryption via RSA but I would like to create my own
+    /// However, that is easier said than done, so I will let it rest for now and return later when I have more experience with C# so that I can focus on the encryption itself
     /// </summary>
     public sealed partial class TextEncryption : Page
     {

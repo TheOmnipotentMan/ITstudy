@@ -25,7 +25,7 @@ namespace ITstudy
     
 
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// The Main Page of ITstudy, shows general info and handles all navigation related tasks
     /// </summary>
     public sealed partial class MainPage : Page
     {
@@ -83,68 +83,18 @@ namespace ITstudy
 
 
 
-        // Handles the selection of Projects from the Nav-Menu, is ugly code that nobody needs to see
+        // Handles the selection of Projects from the Nav-Menu
         #region ProjectSelect
 
-        /* TODO A lot of this stuff, and project selection in general can be done better
-         * Templates for xaml and variables in the classes (like IsCompleted) could automate most of the navigation menu
-         * Might be implemented in future
-         * could maybe use button-name as argument
-         */
-
-        /* At the moment, every project has its own function to load the corresponding page.
-         * This is because the selection is done with a button, and a button, afaik, can only call a method, it doens't hold any arguments.
-         * An alternative to this would be to use something like a NavigationView, or anyhthing that can hold more information for what it wants to happen.
-         * Then you could condense all these methods down to a single one.
-         * But seeing as this is an stuy-project in programming and won't ever be perfect, I will leave it in its current state for now.
+        /* Select the desired project to be loaded into the ContentFrame
+         * This is done by using the name of the clicked/event-sender button as the argument
+         * The only problem is that there is no correcting feedback when matching that name with the project (think enum/list with projects),
+         * but seeing as this is a solo project, I don't really care
          */
 
         // TODO figure out if new pages are actually being deleted or not when a new one is made
         // currently setting the Content in the frame to null, and hope for a miracle from the garbage man
-
-
-
-        // -----!!! OLD !!!------- no longer in use
-
-        // ----     RED PROJECTS PAGE CALL      ------      Depricated
-        #region RedProjects
-        private void ProjectSelected_Red_Calculator(object sender, RoutedEventArgs e)
-        {
-            ContentFrame.Content = null;
-            // TODO figure out why "RedProjects." is present here, it is a folder but apparently this is also a namespace?
-            // Is this just for clarification about the location of the project, or is a folder in visual studio actually a namespace?
-            ContentFrame.Content = new RedProjects.Calculator();
-        }
-        private void ProjectSelected_Red_NameTheImage(object sender, RoutedEventArgs e)
-        {
-            ContentFrame.Content = null;
-            // TODO figure out why "RedProjects." is present here, it is a folder but apparently this is also a namespace?
-            // Is this just for clarification about the location of the project, or is a folder in visual studio actually a namespace?
-            ContentFrame.Content = new RedProjects.NameTheImage();
-        }
-        #endregion RedProjects
-
-        // ----     GREEN PROJECTS PAGE CALL    ------      Depricated
-        #region GreenProjects
-
-        #endregion GreenProjects
-
-        // ----     EXTRA PROJECTS PAGE CALL    ------      Depricated
-        #region ExtraProjects
-        private void ProjectSelected_Extra_TestPage(object sender, RoutedEventArgs e)
-        {         
-            ContentFrame.Content = null;
-            ContentFrame.Content = new TestPage1();
-        }
-
-        private void ProjectSelected_Extra_TalkToMe(object sender, RoutedEventArgs e)
-        {
-            ContentFrame.Content = null;
-            ContentFrame.Content = new ExtraProjects.TalkToMe();
-        }
-        #endregion ExtraProjects
-
-        // -----!!! OLD !!!-------
+        // As far as I can see, the memory usage goes up when you spam new pages, though this might alos just be because it takes a while before garbage collection starts
 
 
 
@@ -171,6 +121,8 @@ namespace ITstudy
                 // RED
                 case "Calculator": { ContentFrame.Content = new RedProjects.Calculator(); return true; }
                 case "NameTheImage": { ContentFrame.Content = new RedProjects.NameTheImage(); return true; }
+                case "TextEncryption": { ContentFrame.Content = new RedProjects.TextEncryption(); return true; }
+                case "LetterFrequency": { ContentFrame.Content = new RedProjects.LetterFrequency(); return true; }
 
                 // GREEN
                 case "TaxiService": { ContentFrame.Content = new GreenProjects.TaxiService(); return true; }

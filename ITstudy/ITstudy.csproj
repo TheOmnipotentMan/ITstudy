@@ -132,6 +132,9 @@
     <Compile Include="RedProjects\Calculator.xaml.cs">
       <DependentUpon>Calculator.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RedProjects\LetterFrequency.xaml.cs">
+      <DependentUpon>LetterFrequency.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RedProjects\NameTheImage.xaml.cs">
       <DependentUpon>NameTheImage.xaml</DependentUpon>
     </Compile>
@@ -157,7 +160,8 @@
     <Content Include="Assets\Create_16x.png" />
     <Content Include="Assets\ErrorImage640x640.png" />
     <Content Include="Assets\graduation-58-458507.png" />
-    <Content Include="Assets\logo-footer-transp.png" />
+    <Content Include="Assets\LetterFrequencyText\LetterSpam.txt" />
+    <Content Include="Assets\LetterFrequencyText\Lorem Ipsum.txt" />
     <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Afghanistan.png" />
     <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Albania.png" />
     <Content Include="Assets\NameTheImage\FlagsOfTheWorld\Algeria.png" />
@@ -426,7 +430,6 @@
     <Content Include="Assets\StarWarsKenobiHelloThere.gif" />
     <Content Include="Assets\StatusBlocked_16x.png" />
     <Content Include="Assets\StatusOK_16x.png" />
-    <Content Include="Assets\StatusOK_16x.svg" />
     <Content Include="Assets\TestProject_16x.png" />
     <Content Include="Assets\Test_16x.png" />
     <Content Include="Assets\VeryNiceBorat.png" />
@@ -457,6 +460,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="RedProjects\Calculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RedProjects\LetterFrequency.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
