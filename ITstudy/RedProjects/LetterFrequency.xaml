@@ -99,7 +99,7 @@
                         <PivotItem x:Name="PreDefinedItemsPivotItem" Header="Basic Latin">
 
                             <!-- Every Char is represented here -->
-                            <ListView x:Name="LetterResultCount" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}">
+                            <ListView x:Name="LetterResultCount" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" IsItemClickEnabled="False">
 
                                 <Canvas>
                                     <TextBlock Text="Aa" Width="20" TextAlignment="Center" Canvas.Left="{StaticResource TextAlign1}"/>
@@ -261,7 +261,7 @@
 
                         </PivotItem>
                         <PivotItem x:Name="UserDefinedItemsPivotItem" Header="Custom">
-                            <ListView x:Name="CustomResultCount" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}">
+                            <ListView x:Name="CustomResultCount" BorderThickness="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" IsItemClickEnabled="False">
 
                                 <Canvas Height="40" Margin="0 10"/> <!-- filler -->
 

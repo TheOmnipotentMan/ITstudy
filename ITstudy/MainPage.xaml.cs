@@ -84,7 +84,6 @@ namespace ITstudy
 
 
         // Handles the selection of Projects from the Nav-Menu
-        #region ProjectSelect
 
         /* Select the desired project to be loaded into the ContentFrame
          * This is done by using the name of the clicked/event-sender button as the argument
@@ -95,10 +94,6 @@ namespace ITstudy
         // TODO figure out if new pages are actually being deleted or not when a new one is made
         // currently setting the Content in the frame to null, and hope for a miracle from the garbage man
         // As far as I can see, the memory usage goes up when you spam new pages, though this might alos just be because it takes a while before garbage collection starts
-
-
-
-
         private void NewProjectSelected_Click(object sender, RoutedEventArgs e)
         {
             // get the triggering button and take its name
@@ -123,6 +118,7 @@ namespace ITstudy
                 case "NameTheImage": { ContentFrame.Content = new RedProjects.NameTheImage(); return true; }
                 case "TextEncryption": { ContentFrame.Content = new RedProjects.TextEncryption(); return true; }
                 case "LetterFrequency": { ContentFrame.Content = new RedProjects.LetterFrequency(); return true; }
+                case "RomanCalculator": { ContentFrame.Content = new RedProjects.RomanCalculator(); return true; }
 
                 // GREEN
                 case "TaxiService": { ContentFrame.Content = new GreenProjects.TaxiService(); return true; }
@@ -140,9 +136,6 @@ namespace ITstudy
                     }
             }
         }
-
-
-        #endregion ProjectSelect
 
 
 

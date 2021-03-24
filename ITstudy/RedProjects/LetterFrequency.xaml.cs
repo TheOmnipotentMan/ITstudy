@@ -13,12 +13,14 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-using System.Text;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+// TODO remove if nothing has broken
+// using System.Text;
 
 // TODO remove if the app is ever finished
 using System.Diagnostics;
+
+
+
 
 namespace ITstudy.RedProjects
 {
