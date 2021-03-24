@@ -200,7 +200,7 @@
                                 <!-- Roman Calculator -->
                                 <Canvas Width="350" Height="36">
                                     <TextBlock Text="5. Roman Calculator" FontSize="18" Canvas.Left="30" Canvas.Top="5" Canvas.ZIndex="0"/>
-                                    <Image Source="Assets\StatusBlocked_16x.png" Width="20" Canvas.Left="4" Canvas.Top="8" Canvas.ZIndex="0"/>
+                                    <Image Source="Assets\StatusOK_16x.png" Width="20" Canvas.Left="4" Canvas.Top="8" Canvas.ZIndex="0"/>
                                     <Button x:Name="RomanCalculator" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
                                 </Canvas>
 
@@ -275,7 +275,7 @@
                 <Canvas x:Name="ProgressCanvas" Width="1200" Height="60" Canvas.Left="24" Canvas.Top="15" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
                     <TextBlock x:Name="RedProjectsProgress" Width="320" Canvas.Left="10" Canvas.Top="10"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
-                           Text="Red Projects = 3"/>
+                           Text="Red Projects = 4"/>
                     <TextBlock x:Name="GreenProjectsProgress" Width="320" Canvas.Left="330" Canvas.Top="10"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
                            Text="Green Projects = 1"/>

@@ -37,6 +37,8 @@
                     <TextBlock Width="1300" Height="50" FontSize="32" Canvas.Left="50" Canvas.Top="25" TextWrapping="WrapWholeWords"
                                Text="// A calculator that uses roman numerals instead of decimal."/>
 
+                    <Button Content="Reset" Width="120" Height="60" FontSize="32" Canvas.Left="1150" Canvas.Top="260" FontFamily="Times New Roman" Click="ResetCurrentCalculator_Click"/>
+
                     <Canvas x:Name="CalculatorCanvas" Width="800" Height="600" Canvas.Left="300" Canvas.Top="200">
                         <Border Width="{Binding ActualWidth, ElementName=CalculatorCanvas}" Height="{Binding ActualHeight, ElementName=CalculatorCanvas}"
                                 BorderBrush="{ThemeResource SystemBaseMediumLowColor}" BorderThickness="4"/>
@@ -46,7 +48,7 @@
                                 BorderBrush="{ThemeResource SystemBaseMediumLowColor}" BorderThickness="2"/>
 
                             <TextBlock x:Name="DisplayTextBlock" Width="740" Height="100" Margin="10 30"
-                                       FontSize="80" FontFamily="Times New Roman" Text="placeholder"/>
+                                       FontSize="80" FontFamily="Times New Roman" Text="input..."/>
 
                         </Canvas>
 
@@ -65,54 +67,54 @@
                             </Grid.ColumnDefinitions>
 
                             <!-- Input buttons, Numbers -->
-                            <Button Width="180" Height="120" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1">
+                            <Button x:Name="CalculatorButtonI" Width="180" Height="120" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1" Click="CalculatorInputButton_Click">
                                 <TextBlock Text="I" FontSize="120" FontFamily="Times New Roman" VerticalAlignment="Center" ToolTipService.ToolTip="1"/>
                             </Button>
-                            <Button Width="180" Height="120" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1">
+                            <Button x:Name="CalculatorButtonV" Width="180" Height="120" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1" Click="CalculatorInputButton_Click">
                                 <TextBlock Text="V" FontSize="120" FontFamily="Times New Roman" VerticalAlignment="Center" ToolTipService.ToolTip="5"/>
                             </Button>
-                            <Button Width="180" Height="120" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1">
+                            <Button x:Name="CalculatorButtonX" Width="180" Height="120" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1" Click="CalculatorInputButton_Click">
                                 <TextBlock Text="X" FontSize="120" FontFamily="Times New Roman" VerticalAlignment="Center" ToolTipService.ToolTip="10"/>
                             </Button>
-                            <Button Width="180" Height="120" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1">
+                            <Button x:Name="CalculatorButtonL" Width="180" Height="120" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1" Click="CalculatorInputButton_Click">
                                 <TextBlock Text="L" FontSize="120" FontFamily="Times New Roman" VerticalAlignment="Center" ToolTipService.ToolTip="50"/>
                             </Button>
-                            <Button Width="180" Height="120" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1">
+                            <Button x:Name="CalculatorButtonC" Width="180" Height="120" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1" Click="CalculatorInputButton_Click">
                                 <TextBlock Text="C" FontSize="120" FontFamily="Times New Roman" VerticalAlignment="Center" ToolTipService.ToolTip="100"/>
                             </Button>
-                            <Button Width="180" Height="120" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1">
+                            <Button x:Name="CalculatorButtonD" Width="180" Height="120" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1" Click="CalculatorInputButton_Click">
                                 <TextBlock Text="D" FontSize="120" FontFamily="Times New Roman" VerticalAlignment="Center" ToolTipService.ToolTip="500"/>
                             </Button>
-                            <Button Width="180" Height="120" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1">
+                            <Button x:Name="CalculatorButtonM" Width="180" Height="120" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1" Click="CalculatorInputButton_Click">
                                 <TextBlock Text="M" FontSize="120" FontFamily="Times New Roman" VerticalAlignment="Center" ToolTipService.ToolTip="1000"/>
                             </Button>
 
                             <!-- Input buttons, Operators-->
-                            <Button Width="180" Height="120" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="2">
+                            <Button x:Name="CalculatorButtonPlus" Width="180" Height="120" Grid.Column="3" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="2" Click="CalculatorInputButton_Click">
                                 <TextBlock Text="+" FontSize="120" FontFamily="Times New Roman" VerticalAlignment="Center" ToolTipService.ToolTip="Plus"/>
                             </Button>
-                            <Button Width="180" Height="120" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="2">
+                            <Button x:Name="CalculatorButtonMinus" Width="180" Height="120" Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="2" Click="CalculatorInputButton_Click">
                                 <TextBlock Text="-" FontSize="120" FontFamily="Times New Roman" VerticalAlignment="Center" ToolTipService.ToolTip="Minus"/>
                             </Button>
-                            <Button Width="180" Height="120" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="2">
+                            <Button x:Name="CalculatorButtonMultiply" Width="180" Height="120" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="2" Click="CalculatorInputButton_Click">
                                 <TextBlock Text="*" FontSize="120" FontFamily="Times New Roman" VerticalAlignment="Center" ToolTipService.ToolTip="Multiply"/>
                             </Button>
-                            <Button Width="180" Height="120" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="2">
+                            <Button x:Name="CalculatorButtonDivide" Width="180" Height="120" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="2" Click="CalculatorInputButton_Click">
                                 <TextBlock Text="/" FontSize="120" FontFamily="Times New Roman" VerticalAlignment="Center" ToolTipService.ToolTip="Divide"/>
                             </Button>
-                            <Button Width="180" Height="120" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="3">
+                            <Button x:Name="CalculatorButtonEquals" Width="180" Height="120" Grid.Column="3" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="3" Click="CalculatorInputButton_Click">
                                 <TextBlock Text="=" FontSize="120" FontFamily="Times New Roman" VerticalAlignment="Center" ToolTipService.ToolTip="Equals"/>
                             </Button>
 
