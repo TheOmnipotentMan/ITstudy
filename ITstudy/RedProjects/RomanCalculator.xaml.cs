@@ -22,22 +22,21 @@ using System.Diagnostics;
 namespace ITstudy.RedProjects
 {
     /// <summary>
-    /// A calculator that uses roman numerals. Can add, subtract, multiply and divide. Can not handle a negative result of an equation, in that case will display it as positive. Neither can it handle decimal places, it leaves those out.
+    /// A calculator that uses roman numerals. Can add, subtract, multiply and divide. Can not handle a negative result of an equation, in that case will display it as positive. Neither can it display decimal places.
     /// </summary>
     public sealed partial class RomanCalculator : Page
     {
-
-        // enum RomanNumerals { I = 1, V = 5, X = 10, L =50, C = 100, D = 500, M = 1000 }
+        // A collection of all individual roman numerals
         Dictionary<int, string> RomanNumerals = new Dictionary<int, string>();
-        // enum RomanNumeralsExtended { I = 1, IV = 4, V = 5, IX = 9, X = 10, XL = 40, L = 50, XC = 90, C = 100, CD = 400, D = 500, CM = 900, M = 1000 }
+        // An copy+extention of RomanNumerals that also contains all combinations of numerals
         Dictionary<int, string> RomanNumeralsExtended = new Dictionary<int, string>();
-
+        // An array version of RomanNumerals that is used to validate user-input
         char[] ValidInput;
 
 
         enum ValidCalculatorInputs { I, V, X, L, C, D, M, Plus, Minus, Multiply, Divide, Equals }
         List<string> CurrentCalculatorInput;
-        string RomanNumeralInput;
+
 
 
         public RomanCalculator()

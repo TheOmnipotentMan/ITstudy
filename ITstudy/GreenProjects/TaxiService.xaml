@@ -33,7 +33,7 @@
 
         <Pivot >
 
-            <PivotItem Header="Taxi Service" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+            <PivotItem Header="Taxi Service" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
 
                 <Canvas>
                     <TextBlock Width="800" Height="40" Canvas.Top="20" Canvas.Left="20" Style="{StaticResource SubtitleTextBlockStyle}"
@@ -130,9 +130,22 @@
             </PivotItem>
 
 
-            <PivotItem Header="Project Details" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+            <PivotItem Header="Project Details" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
                 <Canvas>
-                    <TextBlock Text="Empty" Canvas.Left="10" Canvas.Top="10"/>
+                    <TextBlock Canvas.Left="10" Canvas.Top="10" FontSize="16"
+                               Text="The calculation for the taxi-service happens as follows;"/>
+                    <TextBlock Canvas.Left="10" Canvas.Top="30" Text="(As first created, values may have been altered since.)"/>
+                    
+                    <RichTextBlock Canvas.Left="10" Canvas.Top="100" Width="900" TextWrapping="WrapWholeWords">
+                        <Paragraph>
+                            1. Price per kilometer is €1,-. On top of that comes a price per minute, €0.25 between 08:00 and 18:00, €0.45 from 18:00 to 08:00.
+                        </Paragraph>
+                        <Paragraph></Paragraph>
+                        <Paragraph>
+                            2. From friday 22:00 to monday 07:00 the price is increased by a weekend premium of 15%.
+                            This is only added if the ride starts within the aforementioned period.
+                        </Paragraph>
+                    </RichTextBlock>
                 </Canvas>
 
             </PivotItem>

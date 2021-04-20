@@ -165,7 +165,7 @@
                     <Pivot x:Name="ProjectCategoryTab" Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="1" Margin="12 0 8 8">
 
                         <!-- Red Projects -->
-                        <PivotItem Header="Red" Margin="0 2 0 0">
+                        <PivotItem Header="General" Margin="0 2 0 0">
 
                             <ListView Name="RedProjects" SelectionMode="Single" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
 
@@ -204,6 +204,15 @@
                                     <Button x:Name="RomanCalculator" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
                                 </Canvas>
 
+                                <!-- Ransom Note -->
+                                <Canvas Width="350" Height="36">
+                                    <TextBlock Text="6. Ransom Note" FontSize="18" Canvas.Left="30" Canvas.Top="5" Canvas.ZIndex="0"/>
+                                    <Image Source="Assets\StatusBlocked_16x.png" Width="20" Canvas.Left="4" Canvas.Top="8" Canvas.ZIndex="0"/>
+                                    <Button x:Name="RansomNote" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
+                                </Canvas>
+                                
+                                
+
 
 
                             </ListView>
@@ -213,7 +222,7 @@
 
 
                         <!-- Green Projects -->
-                        <PivotItem Header="Green" Margin="4 2 8 8">
+                        <PivotItem Header="Calculation" Margin="4 2 8 8">
 
                             <ListView Name="GreenProjects" SelectionMode="Single" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
 
@@ -222,6 +231,20 @@
                                     <TextBlock Text="1. Taxi Service" FontSize="18" Canvas.Left="30" Canvas.Top="5" Canvas.ZIndex="0"/>
                                     <Image Source="Assets\StatusOK_16x.png" Width="20" Canvas.Left="4" Canvas.Top="8" Canvas.ZIndex="0"/>
                                     <Button x:Name="TaxiService" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
+                                </Canvas>
+                                
+                                <!-- Tuition -->
+                                <Canvas Width="350" Height="36">
+                                    <TextBlock Text="2. Tuition" FontSize="18" Canvas.Left="30" Canvas.Top="5" Canvas.ZIndex="0"/>
+                                    <Image Source="Assets\StatusOK_16x.png" Width="20" Canvas.Left="4" Canvas.Top="8" Canvas.ZIndex="0"/>
+                                    <Button x:Name="Tuition" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
+                                </Canvas>
+
+                                <!-- Car Rental -->
+                                <Canvas Width="350" Height="36">
+                                    <TextBlock Text="3. Car Rental" FontSize="18" Canvas.Left="30" Canvas.Top="5" Canvas.ZIndex="0"/>
+                                    <Image Source="Assets\StatusOK_16x.png" Width="20" Canvas.Left="4" Canvas.Top="8" Canvas.ZIndex="0"/>
+                                    <Button x:Name="CarRental" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
                                 </Canvas>
 
                             </ListView>
@@ -273,15 +296,24 @@
             <Canvas x:Name="ContentHeader" Width="1440" Height="90">
 
                 <Canvas x:Name="ProgressCanvas" Width="1200" Height="60" Canvas.Left="24" Canvas.Top="15" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                    <TextBlock x:Name="RedProjectsProgress" Width="320" Canvas.Left="10" Canvas.Top="10"
+                    <Grid Width="{Binding ActualWidth, ElementName=ProgressCanvas}" Height="{Binding ActualHeight, ElementName=ProgressCanvas}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock x:Name="RedProjectsProgress" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
-                           Text="Red Projects = 4"/>
-                    <TextBlock x:Name="GreenProjectsProgress" Width="320" Canvas.Left="330" Canvas.Top="10"
+                           Text="General Projects = 4"/>
+                        <TextBlock x:Name="GreenProjectsProgress" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
-                           Text="Green Projects = 1"/>
-                    <TextBlock x:Name="ExtraProjectsProgress" Width="320" Canvas.Left="650" Canvas.Top="10"
+                           Text="Calc. Projects = 2"/>
+                        <TextBlock x:Name="ExtraProjectsProgress" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
                            Text="Extra Projects = 2"/>
+
+                    </Grid>
                 </Canvas>
 
 

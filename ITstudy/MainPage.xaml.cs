@@ -29,7 +29,7 @@ namespace ITstudy
     /// </summary>
     public sealed partial class MainPage : Page
     {
-                
+        // The name of the button in the projects-ListView (navigation list on the left side in mainpage), which is equal to the actual project name, thereby determining which project to select      
         string SelectedProjectName;
         
 
@@ -93,24 +93,26 @@ namespace ITstudy
 
         // TODO figure out if new pages are actually being deleted or not when a new one is made
         // currently setting the Content in the frame to null, and hope for a miracle from the garbage man
-        // As far as I can see, the memory usage goes up when you spam new pages, though this might alos just be because it takes a while before garbage collection starts
+        // As far as I can see, the memory usage goes up when you spam new pages, though this might also just be because it takes a while before garbage collection starts
         private void NewProjectSelected_Click(object sender, RoutedEventArgs e)
         {
             // get the triggering button and take its name
             Button selectedProjectButton = sender as Button;
             if (selectedProjectButton != null) { SelectedProjectName = selectedProjectButton.Name; }
 
-            // clear current content, should trigger garbage collection (I hope)
-            ContentFrame.Content = null;
-            SelectNewProject();
+
+            SelectNewProject(SelectedProjectName);
         }
 
-        private bool SelectNewProject()
+        private bool SelectNewProject(string projectName)
         {
-            // make sure we actually have a project name
-            if (SelectedProjectName == null) { return false; }
+            // Make sure we actually have a project name
+            if (string.IsNullOrEmpty(SelectedProjectName)) { return false; }
 
-            // fill the ContentFrame with the selected project (add any new projects/pages here to make them selectable)
+            // Clear current content, should trigger auto garbage collection (I think & hope)
+            ContentFrame.Content = null;
+
+            // Fill the ContentFrame with the selected project (add any new projects/pages here to make them selectable)
             switch (SelectedProjectName)
             {
                 // RED
@@ -122,12 +124,15 @@ namespace ITstudy
 
                 // GREEN
                 case "TaxiService": { ContentFrame.Content = new GreenProjects.TaxiService(); return true; }
+                case "Tuition": { ContentFrame.Content = new GreenProjects.Tuition(); return true; }
+                case "CarRental": { ContentFrame.Content = new GreenProjects.CarRental(); return true; }
 
                 // EXTRA
                 case "TestPage1": { ContentFrame.Content = new TestPage1(); return true; }
                 case "TalkToMe": { ContentFrame.Content = new ExtraProjects.TalkToMe(); return true; }
 
-
+                // Default case, triggers when the given SelectedProjectName does not have a corresponding case in the switch-statement, and writes the situation to the Output
+                // Currently selects TestPage1, so something happens on screen that warns of an error.
                 default: 
                     { 
                         ContentFrame.Content = new TestPage1(); 
@@ -139,64 +144,6 @@ namespace ITstudy
 
 
 
-        /* Trying my hand at Datatemplates again, no succes again
-
-
-        /// <summary>
-        /// Custom Class for all sub-projects. It holds their details and is required by MainPage in order to call the project.
-        /// </summary>
-        public class ITstudyProject
-        {
-            // general project info
-            public string Name { get; set; }
-            public string Address { get; set; }
-            public bool IsComplete { get; set; }
-            public string DisplayName { get; set; }
-
-            // xaml info
-            public Uri StatusImageSource { get; }
-
-            public ITstudyProject(string name, bool isComplete, string displayName = null)
-            {
-                this.Name = name;
-                this.IsComplete = isComplete;
-
-                if (displayName == null) { this.DisplayName = name; }
-                else { this.DisplayName = displayName; }
-
-                // Might need async storage stuff
-                if (isComplete) { this.StatusImageSource = new Uri("ms-appx:///Assets\\StatusOK_16x.png"); }
-                else { this.StatusImageSource = new Uri("ms-appx:///Assets\\StatusBlocked_16x.png"); }
-            }
-        }
-
-        #region ProjectDeclaration
-
-        public class ITstudyRedProjects : List<ITstudyProject>
-        {
-            public ITstudyRedProjects(string name, bool isComplete, string displayName = null)
-            {
-
-                // 3. TextEncryption
-                Add(new ITstudyProject(ITstudy.RedProjects.TextEncryption.GetProjectName(), ITstudy.RedProjects.TextEncryption.GetIsProjectCompleted(), ITstudy.RedProjects.TextEncryption.GetProjectDisplayName()));
-
-            }
-        }
-
-        public class ITstudyExtraProjects : List<ITstudyProject>
-        {
-            public ITstudyExtraProjects(string name, bool isComplete, string displayName = null)
-            {
-
-                // 2. Talk To Me
-                Add(new ITstudyProject(ITstudy.ExtraProjects.TalkToMe.GetProjectName(), ITstudy.ExtraProjects.TalkToMe.GetIsProjectCompleted(), ITstudy.ExtraProjects.TalkToMe.GetProjectDisplayName()));
-            }
-        }
-
-
-        #endregion ProjectDeclaration
-
-        */
 
     }
 

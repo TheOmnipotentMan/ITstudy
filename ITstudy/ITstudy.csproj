@@ -122,8 +122,14 @@
     <Compile Include="ExtraProjects\TalkToMe.xaml.cs">
       <DependentUpon>TalkToMe.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GreenProjects\CarRental.xaml.cs">
+      <DependentUpon>CarRental.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GreenProjects\TaxiService.xaml.cs">
       <DependentUpon>TaxiService.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GreenProjects\Tuition.xaml.cs">
+      <DependentUpon>Tuition.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -137,6 +143,9 @@
     </Compile>
     <Compile Include="RedProjects\NameTheImage.xaml.cs">
       <DependentUpon>NameTheImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RedProjects\RansomNote.xaml.cs">
+      <DependentUpon>RansomNote.xaml</DependentUpon>
     </Compile>
     <Compile Include="RedProjects\RomanCalculator.xaml.cs">
       <DependentUpon>RomanCalculator.xaml</DependentUpon>
@@ -454,7 +463,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GreenProjects\CarRental.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GreenProjects\TaxiService.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GreenProjects\Tuition.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -471,6 +488,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RedProjects\NameTheImage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RedProjects\RansomNote.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,182 @@
+﻿<Page
+    x:Class="ITstudy.GreenProjects.CarRental"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ITstudy.GreenProjects"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d"
+    
+    Width="1440" Height="990">
+
+
+
+    <Grid Width="1440" Height="990">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- General background -->
+        <Rectangle x:Name="GeneralWindowBackground" Grid.ColumnSpan="4" Grid.RowSpan="4" Fill="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
+        <Border Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" BorderThickness="2"/>
+
+
+
+
+        <Pivot >
+
+            <PivotItem Header="Car Rental" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+
+                <Canvas>
+                    
+                    <TextBlock Width="1300" Height="50" FontSize="32" Canvas.Left="50" Canvas.Top="25" TextWrapping="WrapWholeWords"
+                               Text="// Calculate the price for renting a car, after use."/>
+
+                    
+                    <!-- User input -->
+                    <Canvas x:Name="UserInputCanvas" Width="300" Height="500" Canvas.Left="200" Canvas.Top="150">
+                        <Border Width="{Binding ActualWidth, ElementName=UserInputCanvas}" Height="{Binding ActualHeight, ElementName=UserInputCanvas}"
+                                BorderBrush="{ThemeResource SystemBaseMediumLowColor}" BorderThickness="1"/>
+                        
+                        <TextBlock Text="Enter your rental info below" FontSize="20" Style="{StaticResource SubtitleTextBlockStyle}" Canvas.Left="15" Canvas.Top="5"/>
+
+                        
+                        <!-- Type of Vehicle -->
+                        <Canvas Width="240" Height="80" Canvas.Left="5" Canvas.Top="50">
+
+                            <TextBlock Text="Type of Vehicle" FontSize="20" Canvas.Left="5" Canvas.Top="4" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+
+                            <ComboBox x:Name="VehicleTypeComboBox" PlaceholderText="Type..." FontSize="18" Width="200" Height="40" Canvas.Top="32"
+                                      ItemsSource="{x:Bind VehicleNames}" ToolTipService.ToolTip="Select the type of vehicle that was rented."
+                                      SelectionChanged="VehicleTypeComboBox_SelectionChanged"/>
+
+
+                        </Canvas>
+
+                        <!-- Distance Driven -->
+                        <Canvas Width="240" Height="100" Canvas.Left="5" Canvas.Top="150">
+
+                            <TextBlock Text="Distance Driven (Km)" FontSize="20" Canvas.Left="5" Canvas.Top="4" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+
+                            <muxc:NumberBox x:Name="DistanceDrivenInput" Width="200" Height="50" Canvas.Top="32" SpinButtonPlacementMode="Compact" FontSize="24"
+                                        PlaceholderText="km..." SmallChange="1" ToolTipService.ToolTip="Enter the distance driven with the vehicle, in kilometers."/>
+
+                        </Canvas>
+
+                        <!-- Duration -->
+                        <Canvas Canvas.Left="5" Canvas.Top="250">
+
+                            <TextBlock Canvas.Left="5" Canvas.Top="4" FontSize="20" Text="Start Date" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+                            <CalendarDatePicker x:Name="StartOfRentalCalendarDatePicker" Width="200" Height="40" Canvas.Top="32"
+                                            FontSize="24" PlaceholderText="Start Date..."/>
+                            <TimePicker x:Name="StartOfRentalTimePicker" Width="260" Canvas.Top="74" FontSize="18"/>
+
+                            <TextBlock Canvas.Left="5" Canvas.Top="124" FontSize="20" Text="End Date" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+                            <CalendarDatePicker x:Name="EndOfRentalCalendarDatePicker" Width="200" Height="40" Canvas.Top="152"
+                                            FontSize="24" PlaceholderText="End Date..."/>
+                            <TimePicker x:Name="EndOfRentalTimePicker" Width="260" Canvas.Top="194" FontSize="18"/>
+                            <Button x:Name="SetEndOfRentalToCurrentButton" Content="Now" Canvas.Left="210" Canvas.Top="156"
+                                Click="SetEndOfRentalToCurrentButton_Click"/>
+
+                        </Canvas>
+                        
+                    </Canvas>
+                    
+                    
+                    <!-- Pricing Details -->
+                    <Canvas x:Name="PricingParametersCanvas" Width="300" Height="300" Canvas.Left="600" Canvas.Top="150">
+                        <Border Width="{Binding ActualWidth, ElementName=PricingParametersCanvas}" Height="{Binding ActualHeight, ElementName=PricingParametersCanvas}"
+                                BorderBrush="{ThemeResource SystemBaseMediumLowColor}" BorderThickness="1"/>
+
+                        <Grid Width="{Binding ActualWidth, ElementName=PricingParametersCanvas}" Height="{Binding ActualHeight, ElementName=PricingParametersCanvas}">
+                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="5*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="5*"/>
+                            </Grid.ColumnDefinitions>
+                            
+
+                            <TextBlock Text="Pricing Details;" FontSize="24" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10"/>
+
+                            <TextBlock Text="Vehicle" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
+                                       Grid.Column="0" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <TextBlock Text="Price/Km" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
+                                       Grid.Column="0" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <TextBlock Text="Price/Day" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
+                                       Grid.Column="0" Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <TextBlock Text="Free Km/Day" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
+                                       Grid.Column="0" Grid.Row="4" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <TextBlock Text="Fuel (L/100KM)" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
+                                       Grid.Column="0" Grid.Row="5" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                            <TextBlock Text="Fuel Price (€/L)" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
+                                       Grid.Column="0" Grid.Row="6" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+
+
+                            <TextBlock Text="=" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="=" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="=" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="=" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="=" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}" Grid.Column="1" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Text="=" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}" Grid.Column="1" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+
+                            <TextBlock x:Name="PricingDetailsVehicleName" Text="xxxx" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="PricingDetailsPricePerKm" Text="xxxx" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="PricingDetailsPricePerDay" Text="xxxx" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="PricingDetailsFreeKmPerDay" Text="xxxx" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}" Grid.Column="2" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="PricingDetailsFuelConsumption" Text="xxxx" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}" Grid.Column="2" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="PricingDetailsFuelPrice" Text="xxxx" FontSize="16" Foreground="{ThemeResource SystemChromeDisabledLowColor}" Grid.Column="2" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+
+                        </Grid>
+
+
+                    </Canvas>
+
+
+                    <!-- Result -->
+                    <Canvas x:Name="ResultCanvas" Width="400" Height="120" Canvas.Left="550" Canvas.Top="500">
+                        
+                        <Border Width="{Binding ActualWidth, ElementName=ResultCanvas}" Height="{Binding ActualHeight, ElementName=ResultCanvas}"
+                                BorderBrush="{ThemeResource SystemBaseMediumLowColor}" BorderThickness="2"/>
+                        <Button x:Name="CalculatePriceButton" Content="Calculate" Width="160" Height="60" FontSize="32" Canvas.Left="20" Canvas.Top="30"
+                                Click="CalculatePriceButton_Click"/>
+                        <TextBlock Text="€" Canvas.Left="200" Canvas.Top="32" FontSize="40" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+                        <TextBlock x:Name="PriceOfRentalTextBlock" Text="00.00" Canvas.Left="230" Canvas.Top="25" FontSize="48"/>
+
+                    </Canvas>
+
+                </Canvas>
+
+            </PivotItem>
+
+
+            <PivotItem Header="Project Details" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+                <Canvas>
+                    <TextBlock Text="Empty" Canvas.Left="10" Canvas.Top="10"/>
+                </Canvas>
+
+            </PivotItem>
+
+        </Pivot>
+
+    </Grid>
+    
+    
+</Page>
