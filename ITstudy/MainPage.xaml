@@ -207,7 +207,7 @@
                                 <!-- Ransom Note -->
                                 <Canvas Width="350" Height="36">
                                     <TextBlock Text="6. Ransom Note" FontSize="18" Canvas.Left="30" Canvas.Top="5" Canvas.ZIndex="0"/>
-                                    <Image Source="Assets\StatusBlocked_16x.png" Width="20" Canvas.Left="4" Canvas.Top="8" Canvas.ZIndex="0"/>
+                                    <Image Source="Assets\StatusOK_16x.png" Width="20" Canvas.Left="4" Canvas.Top="8" Canvas.ZIndex="0"/>
                                     <Button x:Name="RansomNote" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
                                 </Canvas>
                                 
@@ -305,7 +305,7 @@
 
                         <TextBlock x:Name="RedProjectsProgress" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
-                           Text="General Projects = 4"/>
+                           Text="General Projects = 5"/>
                         <TextBlock x:Name="GreenProjectsProgress" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
                            Text="Calc. Projects = 2"/>

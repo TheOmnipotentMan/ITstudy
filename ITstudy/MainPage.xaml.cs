@@ -121,6 +121,7 @@ namespace ITstudy
                 case "TextEncryption": { ContentFrame.Content = new RedProjects.TextEncryption(); return true; }
                 case "LetterFrequency": { ContentFrame.Content = new RedProjects.LetterFrequency(); return true; }
                 case "RomanCalculator": { ContentFrame.Content = new RedProjects.RomanCalculator(); return true; }
+                case "RansomNote": { ContentFrame.Content = new RedProjects.RansomNote(); return true; }
 
                 // GREEN
                 case "TaxiService": { ContentFrame.Content = new GreenProjects.TaxiService(); return true; }
