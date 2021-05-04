@@ -22,7 +22,25 @@ using System.Diagnostics;
 
 namespace ITstudy
 {
+
     
+    public static class Extensions
+    {
+        // Extension for enums that returns the next value in the enum
+        // Copied from https://stackoverflow.com/questions/642542/how-to-get-next-or-previous-enum-value-in-c-sharp
+        public static T Next<T>(this T src) where T : Enum
+        {
+            if (!typeof(T).IsEnum) throw new ArgumentException(String.Format("Argument {0} is not an Enum", typeof(T).FullName));
+
+            T[] Arr = (T[])Enum.GetValues(src.GetType());
+            int j = Array.IndexOf<T>(Arr, src) + 1;
+            return (Arr.Length == j) ? Arr[0] : Arr[j];
+        }
+    }
+
+
+
+
 
     /// <summary>
     /// The Main Page of ITstudy, shows general info and handles all navigation related tasks
@@ -122,6 +140,7 @@ namespace ITstudy
                 case "LetterFrequency": { ContentFrame.Content = new RedProjects.LetterFrequency(); return true; }
                 case "RomanCalculator": { ContentFrame.Content = new RedProjects.RomanCalculator(); return true; }
                 case "RansomNote": { ContentFrame.Content = new RedProjects.RansomNote(); return true; }
+                case "TicTacToe": { ContentFrame.Content = new RedProjects.TicTacToe(); return true; }
 
                 // GREEN
                 case "TaxiService": { ContentFrame.Content = new GreenProjects.TaxiService(); return true; }
@@ -133,7 +152,7 @@ namespace ITstudy
                 case "TalkToMe": { ContentFrame.Content = new ExtraProjects.TalkToMe(); return true; }
 
                 // Default case, triggers when the given SelectedProjectName does not have a corresponding case in the switch-statement, and writes the situation to the Output
-                // Currently selects TestPage1, so something happens on screen that warns of an error.
+                // Currently selects TestPage1, so something happens on screen that can warn of an error.
                 default: 
                     { 
                         ContentFrame.Content = new TestPage1(); 
