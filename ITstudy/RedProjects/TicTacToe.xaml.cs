@@ -19,6 +19,9 @@ using System.Numerics;
 // Image display, BitmapImage
 using Windows.UI.Xaml.Media.Imaging;
 
+// Used to create a delay
+using System.Threading.Tasks;
+
 // TODO remove if the app is ever finished
 using System.Diagnostics;
 
@@ -50,38 +53,47 @@ namespace ITstudy.RedProjects
                 this.N = Math.Clamp(n, 0, 2);
             }
 
+            public bool Equals(CellCoor cell)
+            {
+                return (cell.M == this.M && cell.N == this.N);
+            }
+
         }
 
 
-
-
-
         // The types of behaviour that the computer can use when playing TicTacToe
-        enum AIBehaviour { None, Random };
+        enum AIBehaviour { CellValue, Random, None };
         public List<string> AIBehaviourList;
+        AIBehaviour CurrentAIBehaviour;
 
         // Players
         enum Players { Player, Computer };
         public List<string> PlayersList;
+        Players CurrentPlayersTurn;
+
+        // Player Symbols
+        CellState PlayerSymbol;
+        CellState ComputerSymbol;
 
         // Representation of the Gameboard and its current cell states
         enum CellState { Empty, X, O };
         CellState[,] Gameboard = new CellState[3, 3];
 
-        // Copy of gameboard with added bufferzone all around
+        // Copy of gameboard with added bufferzone all around (not used atm)
         int[,] GameboardwBuffer = new int[5, 5];
 
-        // Array of shifts in coordinates for all neighbours, clockwards starting at 3
+        // Array of shifts in coordinates for all neighbours, clockwards starting at 3 (not used atm)
         Vector2[] NeighbourCoordinates;
 
-        // Cell coordinates to analyse, all possible locations for a row of three
+        // Cell coordinates to analyse, all possible locations for a row of three.
         CellCoor[,] PossibleRows = new CellCoor[8, 3];
 
         // Path to TicTacToe symbol image files
         string SymbolX;
         string SymbolY;
 
-
+        // Random number generator, used for random AIBehaviour
+        Random Rand = new Random();
 
 
 
@@ -92,25 +104,29 @@ namespace ITstudy.RedProjects
             NewGame();
         }
 
+
         // General setup actions
         private void FinishSetup()
         {
             // Copy the enum of AIBehaviour to a List so it can be used by UI element(s)
             AIBehaviourList = new List<string>();
-            foreach(string name in Enum.GetNames(typeof(AIBehaviour)))
+            foreach(string behaviourName in Enum.GetNames(typeof(AIBehaviour)))
             {
-                AIBehaviourList.Add(name);
+                AIBehaviourList.Add(behaviourName);
             }
 
             // Copy the enum of Players to a List so it can be used by UI element(s)
+            PlayersList = new List<string>();
+            foreach(string playerName in Enum.GetNames(typeof(Players)))
+            {
+                PlayersList.Add(playerName);
+            }
 
-            // Set the default symbol for the player (0 for X, 1 for O)
+            // Set the screen representation of the starting symbol for the player (using this value, or one of the next two) in any meaningfull way results in crashes as the Objects have not been completed/finished, its item-list does not yet exist for instance even though we're setting an index value here)
             SelectPlayerSymbolComboBox.SelectedIndex = 0;
-
-            // Set the default AI behaviour (see AIBehaviour enum for index values)
+            // Set the screen representation of the starting AI behaviour
             AIBehaviourComboBox.SelectedIndex = 0;
-
-            // Set the default starting player (0 for Player, 1 for Computer)
+            // Set the screen representation of the starting player
             StartingPlayerComboBox.SelectedIndex = 0;
 
             // Set the file-path for the TicTacToe symbol image files
@@ -121,7 +137,7 @@ namespace ITstudy.RedProjects
             if (File.Exists(symbolYPath)) { SymbolY = symbolYPath; }
             else { Debug.WriteLine(string.Format("TicTacToe: Could not find image file for symbol X at {0}", symbolYPath)); }
 
-            // Create a proxy representation of the gameboard with buffer zones to make finding existing neighbours simpler
+            // Create a proxy representation of the gameboard with buffer zones to make finding existing neighbours simpler (DEPRICATED)
             /* gameboard should look like this
              * 0 0 0 0 0
              * 0 1 1 1 0
@@ -157,40 +173,23 @@ namespace ITstudy.RedProjects
                 new Vector2(-1, 1)
             };
 
-            // Fill Rows will all possible locations for a row of three
+            // Fill Rows will all possible locations for a row of three, each column starts with a 'fulcrum' cell, one of these will be present in any row of three.
+            // These starting cells can speed up going over possible cell in gameboard, since if any of these three are empty, there can be no row of three.
             PossibleRows = new CellCoor[8, 3]
             {
-                // Horizontal lines
-                {  new CellCoor(0, 0), new CellCoor(0, 1), new CellCoor(0, 2) },
-                {  new CellCoor(1, 0), new CellCoor(1, 1), new CellCoor(2, 2) },
-                {  new CellCoor(2, 0), new CellCoor(2, 1), new CellCoor(2, 2) },
-
-                // Vertical lines
+                // Lines containing the top left cell (0, 0)
+                { new CellCoor(0, 0), new CellCoor(0, 1), new CellCoor(0, 2) },
                 { new CellCoor(0, 0), new CellCoor(1, 0), new CellCoor(2, 0) },
-                { new CellCoor(0, 1), new CellCoor(1, 1), new CellCoor(2, 1) },
-                { new CellCoor(0, 2), new CellCoor(1, 2), new CellCoor(2, 2) },
-
-                // Diagonal lines
-                { new CellCoor(0, 0), new CellCoor(1, 1), new CellCoor(0, 2) },
-                { new CellCoor(2, 0), new CellCoor(1, 1), new CellCoor(2, 2) }
-            };
-
-            // Fill Rows will all possible locations for a row of three
-            PossibleRows = new CellCoor[8, 3]
-            {
-                // Lines starting in top left cell (0, 0)
-                {  new CellCoor(0, 0), new CellCoor(0, 1), new CellCoor(0, 2) },
-                {  new CellCoor(0, 0), new CellCoor(1, 0), new CellCoor(2, 0) },
-                {  new CellCoor(0, 0), new CellCoor(1, 1), new CellCoor(2, 2) },
+                { new CellCoor(0, 0), new CellCoor(1, 1), new CellCoor(2, 2) },
 
                 // Lines containing the center cell (1, 1), excluding line (0, 0)-(1, 1)-(2, 2) already in array
                 { new CellCoor(1, 1), new CellCoor(0, 1), new CellCoor(2, 1) },
                 { new CellCoor(1, 1), new CellCoor(1, 0), new CellCoor(1, 2) },
                 { new CellCoor(1, 1), new CellCoor(0, 2), new CellCoor(2, 0) },
 
-                // Lines starting in the bottom right cell (2, 2), excluding lines already in array
-                { new CellCoor(2, 2), new CellCoor(1, 2), new CellCoor(0, 2) },
-                { new CellCoor(2, 2), new CellCoor(2, 1), new CellCoor(2, 0) }
+                // Lines containing the bottom right cell (2, 2), excluding lines already in array
+                { new CellCoor(2, 2), new CellCoor(0, 2), new CellCoor(1, 2) },
+                { new CellCoor(2, 2), new CellCoor(2, 0), new CellCoor(2, 1) }
             };
         }
 
@@ -206,10 +205,22 @@ namespace ITstudy.RedProjects
             {
                 for (int j = 0; j < Gameboard.GetLength(1); j++)
                 {
-                    // Gameboard[i, j] = CellState.Empty;
-                    UpdateGameboardCell(i, j, CellState.Empty);
+                    Gameboard[i, j] = CellState.Empty;
                 }
             }
+
+            // Set the Symbols on screen to Empty
+            string imagePath = string.Empty;
+            BitmapImage newImage = new BitmapImage(new Uri("ms-appx:///" + imagePath));
+            GameboardImage00.Source = null;
+            GameboardImage01.Source = null;
+            GameboardImage02.Source = null;
+            GameboardImage10.Source = null;
+            GameboardImage11.Source = null;
+            GameboardImage12.Source = null;
+            GameboardImage20.Source = null;
+            GameboardImage21.Source = null;
+            GameboardImage22.Source = null;
 
             // Set the opacity of all row-of-three lines to 0 (invisible)
             GameboardLine00To02.Opacity = 0;
@@ -220,6 +231,41 @@ namespace ITstudy.RedProjects
             GameboardLine02To22.Opacity = 0;
             GameboardLine00To22.Opacity = 0;
             GameboardLine02To20.Opacity = 0;
+
+            // Clear the EndGame messages
+            EndGameMessageTextBlock.Text = string.Empty;
+            StartNewGameHint.Text = string.Empty;
+
+            // Set the behaviour for the computer
+            CurrentAIBehaviour = (AIBehaviourComboBox.SelectedIndex < 0) ? (AIBehaviour)0 : (AIBehaviour)AIBehaviourComboBox.SelectedIndex;
+
+            // Set the player to go first
+            CurrentPlayersTurn = (StartingPlayerComboBox.SelectedIndex < 0) ? (Players)0 : (Players)StartingPlayerComboBox.SelectedIndex;
+
+            // Set the symbols for each player
+            if (SelectPlayerSymbolComboBox.SelectedIndex == 0)
+            {
+                PlayerSymbol = CellState.X;
+                ComputerSymbol = CellState.O;
+            }
+            else
+            {
+                PlayerSymbol = CellState.O;
+                ComputerSymbol = CellState.X;
+            }
+
+            // If the user has selected for the computer to go first
+            if (CurrentPlayersTurn == Players.Computer)
+            {
+                DoComputerTurn();
+            }
+            else
+            {
+                // wait on the user to make the first move; GameboardButton_Click(), event
+            }
+
+            Debug.WriteLine(string.Format("TicTacToe: Starting a new game with setting;"));
+            Debug.WriteLine(string.Format("TicTacToe: PlayerSymbol = {0}, ComputerSymbol = {1}, AIBehaviour = {2}, First turn = {3}", PlayerSymbol, ComputerSymbol, CurrentAIBehaviour, CurrentPlayersTurn));
         }
 
 
@@ -228,6 +274,9 @@ namespace ITstudy.RedProjects
         // Registers a mouse-click on a cell in gameboard
         private void GameboardButton_Click(object sender, RoutedEventArgs e)
         {
+            // If the user gives input on the Gameboard while it is not its turn, do nothing
+            if (CurrentPlayersTurn == Players.Computer) { return; }
+
             int m = 0;
             int n = 0;
 
@@ -245,32 +294,279 @@ namespace ITstudy.RedProjects
                 case "GameboardButton20": { m = 2; n = 0; break; }
                 case "GameboardButton21": { m = 2; n = 1; break; }
                 case "GameboardButton22": { m = 2; n = 2; break; }
+                default: { Debug.WriteLine(string.Format("TicTacToe: GameboardButton_Click() did not recognise button {0}", button)); break; }
             }
 
-            // Debug.WriteLine(string.Format("TicTacToe: GameboardButton_Click trying to change image at {0} from {1} to {2}", button, Gameboard[m, n].ToString(), Gameboard[m, n].Next().ToString()));
+            // Debug.WriteLine(string.Format("TicTacToe: GameboardButton_Click() registered {0}", button));
 
-            UpdateGameboardCell(m, n, Gameboard[m, n].Next());
+            // If AI Behaviour is set to None, allow the user to change the symbols freely
+            if (CurrentAIBehaviour == AIBehaviour.None)
+            {
+                UpdateGameboardCell(new CellCoor(m, n), Gameboard[m, n].Next());
+            }
+            // Check if the selected cell is a valid choice, ie not already filled with a symbol
+            else if (Gameboard[m, n] == CellState.Empty)
+            {
+                UpdateGameboardCell(new CellCoor(m, n), PlayerSymbol);
+            }
+            else
+            {
+                Debug.WriteLine(string.Format("TicTacToe: GameboardButton_Click() selected cell is not valid"));
+                ShowInvalidCell(new CellCoor(m, n));
+            }
         }
 
 
-        private bool IsSelectedCellValid(Players player, CellCoor cell)
+
+
+        // Start of turn for the computer and its behaviour(s), selects correct behaviour based on current settings
+        private async void DoComputerTurn()
         {
-            if (Gameboard[cell.M, cell.N] == CellState.Empty) { return true; }
-            else { return false; }
+            // If this method was called but it was not the computers turn, do nothing
+            if (CurrentPlayersTurn == Players.Player) { Debug.WriteLine(string.Format("TicTacToe: DoComputerTurn() was called but it was not the computers turn.")); return; }
+
+            // If the user has selected the AIBehaviour None, don't do anything but set the CurrentPlayersTurn to the user/player
+            if (CurrentAIBehaviour == AIBehaviour.None) { CurrentPlayersTurn = Players.Player; return; }
+
+            // Wait a little bit, so as to not play a move near instantaneous
+            await Task.Delay(500);
+
+
+            // If the current behaviour is set to Random
+            if (CurrentAIBehaviour == AIBehaviour.Random)
+            {
+                DoComputerTurnRandom();
+            }
+
+            // If the current behaviour is set to CellValue
+            if (CurrentAIBehaviour == AIBehaviour.CellValue)
+            {
+                DoComputerTurnCellValue();
+            }
+
         }
+
+
+        // Computer behaviour, Random
+        private void DoComputerTurnRandom()
+        {
+            // Add all empty cells on the Gameboard to a list
+            List<CellCoor> availableCells = new List<CellCoor>();
+            for (int m = 0; m < Gameboard.GetLength(0); m++)
+            {
+                for (int n = 0; n < Gameboard.GetLength(1); n++)
+                {
+                    if (Gameboard[m, n] == CellState.Empty)
+                    {
+                        availableCells.Add(new CellCoor(m, n));
+                    }
+                }
+            }
+
+            // Randomly select a cell from the list, and play it
+            UpdateGameboardCell(availableCells[Rand.Next(0, availableCells.Count)], ComputerSymbol);
+        }
+
+
+        // Computer behaviour, CellValue
+        private void DoComputerTurnCellValue()
+        {
+            // Create an array of int with the same dimensions as Gameboard, and set each element to 0
+            int[,] cellValues = new int[Gameboard.GetLength(0), Gameboard.GetLength(1)];
+            for (int iCell = 0; iCell < cellValues.GetLength(0); iCell++)
+            {
+                for (int jCell = 0; jCell < cellValues.GetLength(1); jCell++)
+                {
+                    cellValues[iCell, jCell] = 0;
+                }
+            }
+
+            // Value of cells if the row is completely empty of symbols
+            int emptyValue = 1;
+            // Value of cells if the row contains one ComputerSymbol
+            int oneValue = 3;
+            // Value of cells if the row contains two ComputerSymbols, is always larger than the maximum value a cell can reach with just emptyValue & oneValue, meaning this cell gets absolute priority
+            int twoValue = ((emptyValue + oneValue) * PossibleRows.GetLength(0)) + 1;
+            // Value of cells if the row contains two PlayerSymbols, almost the same as twoValue but the resulting cellValue should always be lower than twoValue (except when a single cell about to complete more than one row)
+            int counterValue = (emptyValue + oneValue) * PossibleRows.GetLength(0);
+
+            // Go over PossibleRows to see which rows contain only Empty cells or cells with ComputerSymbol, if so add a certain value, one of the above, to that cell in cellValues
+            for (int i = 0; i < PossibleRows.GetLength(0); i++)
+            {
+                CellState cell0 = Gameboard[PossibleRows[i, 0].M, PossibleRows[i, 0].N];
+                CellState cell1 = Gameboard[PossibleRows[i, 1].M, PossibleRows[i, 1].N];
+                CellState cell2 = Gameboard[PossibleRows[i, 2].M, PossibleRows[i, 2].N];
+
+                // If none of the cells contain the PlayerSymbol
+                if (!cell0.Equals(PlayerSymbol) && !cell1.Equals(PlayerSymbol) && !cell2.Equals(PlayerSymbol))
+                {
+                    // Add all values of the CellStates together and adjust for the current ComputerSymbol (1 if X, 2 if O),
+                    // Resulting in the number of times the ComputerSymbols is present in that row
+                    int totalRowValue = (int)cell0 + (int)cell1 + (int)cell2;
+                    totalRowValue = totalRowValue / (int)ComputerSymbol;
+
+                    switch (totalRowValue)
+                    {
+                        // If the row contains no ComputerSymbol, ie it is empty, add emptyValue to all cells of that row
+                        case (0):
+                            {
+                                cellValues[PossibleRows[i, 0].M, PossibleRows[i, 0].N] += emptyValue;
+                                cellValues[PossibleRows[i, 1].M, PossibleRows[i, 1].N] += emptyValue;
+                                cellValues[PossibleRows[i, 2].M, PossibleRows[i, 2].N] += emptyValue;
+                                break;
+                            }
+                        // If the row contains one ComputerSymbol, add oneValue to all the empty cells in that row
+                        case (1):
+                            {
+                                cellValues[PossibleRows[i, 0].M, PossibleRows[i, 0].N] += (cell0 == CellState.Empty) ? oneValue : 0;
+                                cellValues[PossibleRows[i, 1].M, PossibleRows[i, 1].N] += (cell1 == CellState.Empty) ? oneValue : 0;
+                                cellValues[PossibleRows[i, 2].M, PossibleRows[i, 2].N] += (cell2 == CellState.Empty) ? oneValue : 0;
+                                break;
+                            }
+                        // If the row contains two ComputerSymbols, add twoValue to the empty cell
+                        case (2):
+                            {
+                                cellValues[PossibleRows[i, 0].M, PossibleRows[i, 0].N] += (cell0 == CellState.Empty) ? twoValue : 0;
+                                cellValues[PossibleRows[i, 1].M, PossibleRows[i, 1].N] += (cell1 == CellState.Empty) ? twoValue : 0;
+                                cellValues[PossibleRows[i, 2].M, PossibleRows[i, 2].N] += (cell2 == CellState.Empty) ? twoValue : 0;
+                                break;
+                            }
+                        // Something went wrong, log a message
+                        default:
+                            {
+                                Debug.WriteLine(string.Format("TicTacToe: DoComputerTurn CellValue incorrectly calculates the number of ComputerSymbols in a row."));
+                                break;
+                            }
+                    }
+
+                }
+                else
+                {
+                    // Check if the row contains two PlayerSymbols, meaning the player is about to win
+                    if (((int)cell0 + (int)cell1 + (int)cell2) / (int)PlayerSymbol == 2)
+                    {
+                        // If the cell is not empty nor already equal to counterValue (meaning it has already been adjusted for the fact the player is about to win, preventing adding counterValue more then once, and thereby the possibility of the computer prioritising countering the player instead of winning itself)
+                        if (cell0.Equals(CellState.Empty) && cellValues[PossibleRows[i, 0].M, PossibleRows[i, 0].N] != counterValue)
+                        {
+                            cellValues[PossibleRows[i, 0].M, PossibleRows[i, 0].N] += counterValue;
+                        }
+                        else if (cell1.Equals(CellState.Empty) && cellValues[PossibleRows[i, 1].M, PossibleRows[i, 1].N] != counterValue)
+                        {
+                            cellValues[PossibleRows[i, 1].M, PossibleRows[i, 1].N] += counterValue;
+                        }
+                        else if (cell2.Equals(CellState.Empty) && cellValues[PossibleRows[i, 1].M, PossibleRows[i, 1].N] != counterValue)
+                        {
+                            cellValues[PossibleRows[i, 2].M, PossibleRows[i, 2].N] += counterValue;
+                        }
+                        else
+                        {
+                            Debug.WriteLine(string.Format("TicTacToe: CellValues detected a row with two PlayerSymbols, but could not find the empty cell"));
+                        }
+                    }
+                }
+
+                // Should we log the cellValue values every loop, so each time a row in PossibleRows was analysed
+                bool logEveryLoop = false;
+                if (logEveryLoop)
+                {
+                    Debug.WriteLine(string.Format("TicTacToe: CellValues loop {0}", i.ToString()));
+                    Debug.WriteLine(string.Format("TicTacToe: CellValues {0}, {1}, {2}", cellValues[0, 0].ToString(), cellValues[0, 1].ToString(), cellValues[0, 2].ToString()));
+                    Debug.WriteLine(string.Format("TicTacToe: CellValues {0}, {1}, {2}", cellValues[1, 0].ToString(), cellValues[1, 1].ToString(), cellValues[1, 2].ToString()));
+                    Debug.WriteLine(string.Format("TicTacToe: CellValues {0}, {1}, {2}", cellValues[2, 0].ToString(), cellValues[2, 1].ToString(), cellValues[2, 2].ToString()));
+                }
+            }
+
+            // Should we log the cellValue values when all rows of PossibleRows were looked at
+            bool logFinalCellValues = true;
+            if (logFinalCellValues)
+            {
+                Debug.WriteLine(string.Format("TicTacToe: final CellValues are;"));
+                Debug.WriteLine(string.Format("TicTacToe: CellValues {0}, {1}, {2}", cellValues[0, 0].ToString(), cellValues[0, 1].ToString(), cellValues[0, 2].ToString()));
+                Debug.WriteLine(string.Format("TicTacToe: CellValues {0}, {1}, {2}", cellValues[1, 0].ToString(), cellValues[1, 1].ToString(), cellValues[1, 2].ToString()));
+                Debug.WriteLine(string.Format("TicTacToe: CellValues {0}, {1}, {2}", cellValues[2, 0].ToString(), cellValues[2, 1].ToString(), cellValues[2, 2].ToString()));
+            }
+
+            // Find the highest value in cellValues
+            int highestCellValue = 0;
+            foreach (int cellValue in cellValues)
+            {
+                if (cellValue > highestCellValue) { highestCellValue = cellValue; }
+            }
+            // Go over cellValues again, adding the coordinates of every cell that matches the highestCellValue to a List
+            List<CellCoor> highestCells = new List<CellCoor>();
+            for (int iHighestValue = 0; iHighestValue < cellValues.GetLength(0); iHighestValue++)
+            {
+                for (int jHighestValue = 0; jHighestValue < cellValues.GetLength(1); jHighestValue++)
+                {
+                    if (cellValues[iHighestValue, jHighestValue] == highestCellValue)
+                    {
+                        highestCells.Add(new CellCoor(iHighestValue, jHighestValue));
+                    }
+                }
+            }
+
+            // The cell to play
+            CellCoor cellToPlay =  new CellCoor();
+
+            // If highestCells contains more than one element look if any of the cells would hinder the player from continuing one of its rows
+            if (highestCells.Count > 1)
+            {
+                Debug.WriteLine("CellValue looking for counterPlayer cells");
+
+                // New list of possible cells to play
+                List<CellCoor> highestCells2 = new List<CellCoor>();
+
+                foreach (CellCoor highCell in highestCells)
+                {
+                    for (int iCounterPlayer = 0; iCounterPlayer < PossibleRows.GetLength(0); iCounterPlayer++)
+                    {
+                        CellCoor antiCell0 = PossibleRows[iCounterPlayer, 0];
+                        CellCoor antiCell1 = PossibleRows[iCounterPlayer, 1];
+                        CellCoor antiCell2 = PossibleRows[iCounterPlayer, 2];
+
+                        // If the current cell of highestCells is present in a row of PossibleRows
+                        if (highCell.Equals(antiCell0) || highCell.Equals(antiCell1) || highCell.Equals(antiCell2))
+                        {
+                            // If the row contains a PlayerSymbol, add it to the new list
+                            if (Gameboard[antiCell0.M, antiCell0.N].Equals(PlayerSymbol) || Gameboard[antiCell1.M, antiCell1.N].Equals(PlayerSymbol) || Gameboard[antiCell2.M, antiCell2.N].Equals(PlayerSymbol))
+                            {
+                                highestCells2.Add(highCell);
+                                Debug.WriteLine(string.Format("CellValue found a counterPlayer cell at ({0}, {1})", highCell.M, highCell.N));
+                            }
+                        }
+                    }
+                }
+
+                // If any cells were found and added to the new list, set the origional list to the new
+                if (highestCells2.Count > 0)
+                {
+                    highestCells = new List<CellCoor>(highestCells2);
+                }
+            }
+
+            // Pick a cell from highestCells, at random since all cells in the List are equally valuable
+            cellToPlay = highestCells[Rand.Next(0, highestCells.Count)];
+            Debug.WriteLine(string.Format("TicTacToe: DoComputerTurnCellValue() wants to play ({0}, {1}), out of {2} choices", cellToPlay.M, cellToPlay.N, highestCells.Count));
+
+            // Play the selected cell
+            UpdateGameboardCell(cellToPlay, ComputerSymbol);
+            
+        }
+
+
+
 
 
         /// <summary>
-        /// Update a cell on the Gameboard to the desired CellState. Returns true if succesfull, false if not.
+        /// Update a cell on the Gameboard to the desired CellState. Then calls AnalyseGameboard() to see if the new state has any rows of three, and if not checks if the Gameboard has any empty cells left for the game to continue.
+        /// Finally if it has not yet exited, it set the next player to make a move.
         /// </summary>
-        /// <param name="m">The x coordinate of the cell that should be changed. Must be between 0 and 2.</param>
-        /// <param name="n">The y coordinate of the cell that should be changed. Must be between 0 and 2.</param>
-        /// <param name="cellState">The desired state the cell will be changed to.</param>
-        private bool UpdateGameboardCell(int m, int n, CellState cellState)
+        /// <param name="cell">The coordinates of the cell that should be changed.</param>
+        /// <param name="cellState">The state the specified cell will be changed to.</param>
+        private void UpdateGameboardCell(CellCoor cell, CellState cellState)
         {
-            // Limit x and y to between 0 and 2
-            if (m < 0 || m > 2) { Debug.WriteLine(string.Format("TicTacToe: UpdateGameboardCell recieved invalid m-coordinate for cell.")); return false; }
-            if (n < 0 || n > 2) { Debug.WriteLine(string.Format("TicTacToe: UpdateGameboardCell recieved invalid n-coordinate for cell.")); return false; }
+            int m = cell.M;
+            int n = cell.N;
 
             // Update the CellState in the Gameboard array to the new cellState
             if (cellState > (CellState)2) { cellState = CellState.Empty; }
@@ -281,7 +577,7 @@ namespace ITstudy.RedProjects
             if (cellState == CellState.Empty) { imagePath = string.Empty; }
             else if (Gameboard[m, n] == CellState.X) { imagePath = SymbolX; }
             else if (Gameboard[m, n] == CellState.O) { imagePath = SymbolY; }
-            else { Debug.WriteLine(string.Format("TicTacToe: UpdateGameboardCell failed to determine the correct symbol to use from cellState")); return false; }
+            else { Debug.WriteLine(string.Format("TicTacToe: UpdateGameboardCell failed to determine the correct symbol to use from cellState")); return; }
             BitmapImage newImage = new BitmapImage(new Uri("ms-appx:///" + imagePath));
 
             // Apply the new symbol image to the correct GameboardImage
@@ -300,54 +596,107 @@ namespace ITstudy.RedProjects
                 case (2, 1): { GameboardImage21.Source = newImage; break; }
                 case (2, 2): { GameboardImage22.Source = newImage; break; }
 
-                default: { return false; }
+                default: { Debug.WriteLine(string.Format("TicTacToe: UpdateGameboardCell() failed to find a cell to update.")); return; }
             }
 
-            return true;
-
+            // Analyse the state of the Gameboard
+            // If any rows were detected, show them on screen, and end the current game
+            List<CellCoor> rowsOfThree = new List<CellCoor>(AnalyseGameboard());
+            if (rowsOfThree.Any())
+            {
+                for(int i = 0; i < rowsOfThree.Count; i += 3)
+                {
+                    ShowRowOfThree(rowsOfThree[i], rowsOfThree[i + 1]);
+                }
+                // End the game with the CellState of the first row of three found, ie the winning symbol and thereby winning player
+                EndGame(Gameboard[rowsOfThree[0].M, rowsOfThree[0].N]);
+                return;
+            }
+            // Else no rows were found, check if there are any Empty cells left, if not end the current game
+            else
+            {
+                bool noEmptyCell = true;
+                foreach (CellState state in Gameboard)
+                {
+                    if (state == CellState.Empty) { noEmptyCell = false; }
+                }
+                // If there are none, end the current game with no CellState (defaults to Empty, meaning a draw)
+                if (noEmptyCell) 
+                {
+                    EndGame();
+                    return;
+                }
+                // Else the game can continue, set the next player to make a move
+                else
+                {
+                    CurrentPlayersTurn = CurrentPlayersTurn.Next();
+                    Debug.WriteLine(string.Format("TicTacToe: Current turn is for {0}", CurrentPlayersTurn.ToString()));
+                    // If the computer is next to make a move, call its method
+                    if (CurrentPlayersTurn == Players.Computer)
+                    {
+                        DoComputerTurn();
+                    }
+                    else
+                    {
+                        // wait on user to make a move; GameboardButton_Click(), event
+                    }
+                }
+            }
         }
 
 
 
         /// <summary>
         /// Analyses the current state of the Gameboard and will try to find a row of three identical symbols.
-        /// If it finds one it will return the coordinates of the cells as an array, CellCoor[3], if it failed to find anything this array will only contain zeros.
+        /// If it finds any it will return the coordinates of the cells as a List, if it failed to find anything this List will be empty.
         /// </summary>
-        /// <returns></returns>
-        private CellCoor[] AnalyseGameboard()
+        /// <returns>A List containing the cell-coordinates of all found row of three. If no row was found the List will be empty.</returns>
+        private List<CellCoor> AnalyseGameboard()
         {
             Debug.WriteLine(string.Format("TicTacToe: AnalyseGameboard() is analysing."));
 
             // Array to return, set to default of all zero
-            CellCoor[] coordinates = new CellCoor[3]
-            {
-                new CellCoor(),
-                new CellCoor(),
-                new CellCoor()
-            };
+            List<CellCoor> coordinates = new List<CellCoor>();
 
-            // Go over every possible location of a row of three and compare the symbols in those cells
+            // Go over the three 'fulcrum' cells of PossibleRows, of which at least one will always be part of any possible row of three (located at PossibleRows[x, n] with x = 0, 3, 6)
             for (int i = 0; i < PossibleRows.GetLength(0); i+=3)
             {
-                Debug.WriteLine(string.Format("TicTacToe: AnalyseGameboard() looking at line {0}", i.ToString()));
+                Debug.WriteLine(string.Format("TicTacToe: AnalyseGameboard() looking at PossibleRows {0}; cell({1}, {2}).", i.ToString(), PossibleRows[i, 0].M.ToString(), PossibleRows[i, 0].N.ToString()));
 
-                // if the first symbol is not Empty, and the all symbols match
-                if (Gameboard[PossibleRows[i, 0].M, PossibleRows[i, 0].N] != CellState.Empty)
+                CellState cell0 = Gameboard[PossibleRows[i, 0].M, PossibleRows[i, 0].N];
+
+                // If the first symbol is not an Empty cell
+                if (cell0 != CellState.Empty)
                 {
-                    Debug.WriteLine(string.Format("TicTacToe: AnalyseGameboard() first cell was not empty."));
+                    // Go over the relevant rows of PossibleRows, checking if the symbols of the Gameboard-cells at the coordinates match
+                    int rowsToCheck = ((i == 6) ? 2 : 3) + i;
+                    for (int j = i; j < rowsToCheck; j++)
+                    {
+                        CellState cell1 = Gameboard[PossibleRows[j, 1].M, PossibleRows[j, 1].N];
+                        CellState cell2 = Gameboard[PossibleRows[j, 2].M, PossibleRows[j, 2].N];
 
+                        Debug.WriteLine(string.Format("TicTacToe: AnalyseGameboard() looking at cell0({0}, {1}).{2} cell1({3}, {4}).{5} cell2({6}, {7}).{8}.", PossibleRows[i, 0].M, PossibleRows[i, 0].N, cell0.ToString(), PossibleRows[j, 1].M, PossibleRows[j, 1].N, cell1.ToString(), PossibleRows[j, 2].M, PossibleRows[j, 2].N, cell2.ToString()));
+
+
+                        // if all the symbols match, add them to the coordinates List
+                        if (Gameboard[PossibleRows[j, 0].M, PossibleRows[j, 0].N] == Gameboard[PossibleRows[j, 1].M, PossibleRows[j, 1].N] && Gameboard[PossibleRows[j, 0].M, PossibleRows[j, 0].N] == Gameboard[PossibleRows[j, 2].M, PossibleRows[j, 2].N])
+                        {
+                            Debug.WriteLine(string.Format("TicTacToe: AnalyseGameboard() all cells, ({0}, {1}) ({2}, {3}) ({4}, {5}), from line({6}) match, adding them to coordinates List.", PossibleRows[j, 0].M.ToString(), PossibleRows[j, 0].N.ToString(), PossibleRows[j, 1].M.ToString(), PossibleRows[j, 1].N.ToString(), PossibleRows[j, 2].M.ToString(), PossibleRows[j, 2].N.ToString(), j.ToString()));
+                            coordinates.Add(new CellCoor(PossibleRows[j, 0].M, PossibleRows[j, 0].N));
+                            coordinates.Add(new CellCoor(PossibleRows[j, 1].M, PossibleRows[j, 1].N));
+                            coordinates.Add(new CellCoor(PossibleRows[j, 2].M, PossibleRows[j, 2].N));
+                        }
+
+                    }
 
                 }
 
-
-
-                else { Debug.WriteLine(string.Format("TicTacToe: AnalyseGameboard() found CellState.{0} at ({1},{2})", Gameboard[PossibleRows[i, 0].M, PossibleRows[i, 0].N].ToString(), PossibleRows[i, 0].M, PossibleRows[i, 0].N)); }
             }
 
 
 
 
-            /* OLD VERSION 2, look at each possible row of three and see if the symbols match (doesn't work in current state)
+            /* OLD VERSION 2, look at each possible row of three and see if the symbols match, inefficient since it went over every possible line although some might be excluded by previous passes, also doesn't work in current state
             
             // Go over every possible location of a row of three and compare the symbols in those cells
             for (int i = 0; i < PossibleRows.GetLength(0); i++)
@@ -422,8 +771,10 @@ namespace ITstudy.RedProjects
         }
 
 
+
+
         /// <summary>
-        /// DEPRICATED. Returns a List with the coordinates of all valid neighbouring cells. (it was only used by old version 1 of AnalyseGameboard())
+        /// DEPRICATED. Returns a List with the coordinates of all valid neighbouring cells. (was used only by old version 1 of AnalyseGameboard())
         /// </summary>
         /// <param name="cellCoor">The coordinates of the Cell from which the neighbours are determined.</param>
         /// <returns>A list containing the coordinates of all neigbouring cells.</returns>
@@ -447,27 +798,91 @@ namespace ITstudy.RedProjects
         }
 
 
+        // Give visual feedback that the cell the player selected was invalid
+        private async void ShowInvalidCell(CellCoor cell)
+        {
+            double opacity = 0.8;
+            int duration = 1000;
+            switch(cell.M, cell.N)
+            {
+                case (0, 0): { InvalidCell00Border.Opacity = opacity; await Task.Delay(duration); InvalidCell00Border.Opacity = 0; break; }
+                case (0, 1): { InvalidCell01Border.Opacity = opacity; await Task.Delay(duration); InvalidCell01Border.Opacity = 0; break; }
+                case (0, 2): { InvalidCell02Border.Opacity = opacity; await Task.Delay(duration); InvalidCell02Border.Opacity = 0; break; }
+                case (1, 0): { InvalidCell10Border.Opacity = opacity; await Task.Delay(duration); InvalidCell10Border.Opacity = 0; break; }
+                case (1, 1): { InvalidCell11Border.Opacity = opacity; await Task.Delay(duration); InvalidCell11Border.Opacity = 0; break; }
+                case (1, 2): { InvalidCell12Border.Opacity = opacity; await Task.Delay(duration); InvalidCell12Border.Opacity = 0; break; }
+                case (2, 0): { InvalidCell20Border.Opacity = opacity; await Task.Delay(duration); InvalidCell20Border.Opacity = 0; break; }
+                case (2, 1): { InvalidCell21Border.Opacity = opacity; await Task.Delay(duration); InvalidCell21Border.Opacity = 0; break; }
+                case (2, 2): { InvalidCell22Border.Opacity = opacity; await Task.Delay(duration); InvalidCell22Border.Opacity = 0; break; }
+            }
+        }
 
 
         // Show where a row of three has been detected, by setting the opacity of a line-image on the equivalent line to 1
-        private void ShowRowOfThree(CellCoor cell1, CellCoor cell2, CellCoor cell3)
+        // Takes in the first two cell-coordinates of a row, based on values in the rows of PossibleRows
+        private void ShowRowOfThree(CellCoor cell0, CellCoor cell1)
         {
-            // Show the Line where a row of three was detected
-            // Multiple argument switch, needs C# version 8.0+
-            switch (cell1.M, cell1.N, cell3.M, cell3.N)
+            bool isRowFound = true;
+
+            // Show the Line where a row of three was detected (layout is matched to PossibleRows)
+            if (cell0.Equals(PossibleRows[0, 0]))
             {
-                // Horizontal
-                case (0, 0, 0, 2): { GameboardLine00To02.Opacity = 1; break; }
-                case (1, 0, 1, 2): { GameboardLine10To12.Opacity = 1; break; }
-                case (2, 0, 2, 2): { GameboardLine20To22.Opacity = 1; break; }
-                // Vertical
-                case (0, 0, 2, 0): { GameboardLine00To20.Opacity = 1; break; }
-                case (0, 1, 2, 1): { GameboardLine01To21.Opacity = 1; break; }
-                case (0, 2, 2, 2): { GameboardLine02To22.Opacity = 1; break; }
-                // Diagonal
-                case (0, 0, 2, 2): { GameboardLine00To22.Opacity = 1; break; }
-                case (0, 2, 2, 0): { GameboardLine02To20.Opacity = 1; break; }
+                if (cell1.Equals(PossibleRows[0, 1])) { GameboardLine00To02.Opacity = 1; }
+                else if (cell1.Equals(PossibleRows[1, 1])) { GameboardLine00To20.Opacity = 1; }
+                else if (cell1.Equals(PossibleRows[2, 1])) { GameboardLine00To22.Opacity = 1; }
+                else { isRowFound = false; }
             }
+            else if (cell0.Equals(PossibleRows[3, 0]))
+            {
+                if (cell1.Equals(PossibleRows[3, 1])) { GameboardLine01To21.Opacity = 1; }
+                else if (cell1.Equals(PossibleRows[4, 1])) { GameboardLine10To12.Opacity = 1; }
+                else if (cell1.Equals(PossibleRows[5, 1])) { GameboardLine02To20.Opacity = 1; }
+                else { isRowFound = false; }
+            }
+            else if (cell0.Equals(PossibleRows[6, 0]))
+            {
+                if (cell1.Equals(PossibleRows[6, 1])) { GameboardLine02To22.Opacity = 1; }
+                else if(cell1.Equals(PossibleRows[7, 1])) { GameboardLine20To22.Opacity = 1; }
+                else { isRowFound = false; }
+            }
+            else
+            {
+                isRowFound = false;
+            }
+
+            if (!isRowFound)
+            {
+                Debug.WriteLine(string.Format("TicTacToe: ShowRowOfThree did not find a row with cell({0}, {1}) & cell({2}, {3})", cell0.M, cell0.N, cell1.M, cell1.N));
+            }
+
+        }
+
+
+
+        // Determine and set the win state of the game, takes in a CellState that represents the winner of the current game, Empty if draw
+        private void EndGame(CellState cellState = CellState.Empty)
+        {
+            // Display a message based on who won
+            if (cellState == CellState.Empty)
+            {
+                EndGameMessageTextBlock.Text = "It's a draw";
+                EndGameMessageTextBlock.Foreground = (SolidColorBrush)Resources["Draw"];
+            }
+            else
+            {
+                if (cellState == PlayerSymbol)
+                {
+                    EndGameMessageTextBlock.Text = "You win!";
+                    EndGameMessageTextBlock.Foreground = (SolidColorBrush)Resources["PlayerWon"];
+                }
+                else if (cellState == ComputerSymbol)
+                {
+                    EndGameMessageTextBlock.Text  = "You lose.";
+                    EndGameMessageTextBlock.Foreground = (SolidColorBrush)Resources["PlayerLost"];
+                }
+            }
+            // Suggest to the player to start a new game
+            StartNewGameHint.Text = "Click 'New Game' to try again";
         }
 
 
@@ -542,12 +957,18 @@ namespace ITstudy.RedProjects
             */
 
 
-            // Analyse the current state of the Gameboard
-            CellCoor[] line = AnalyseGameboard();
-            if (line[2].M != 0 && line[2].N != 0)
+            // Analyse the current state of the Gameboard, and mark any detected rows of three
+            /*
+            List<CellCoor> line = AnalyseGameboard();
+            for (int i = 0; i < line.Count; i += 3)
             {
-                ShowRowOfThree(line[1], line[2], line[3]);
+                ShowRowOfThree(line[i], line[i + 1]);
             }
+            */
+
+
+            // Cell DoCompterTurnCellValue() to test functionality, not expecting a turn to be played, only to log debug messages of its analysis of the Gameboard cells
+            DoComputerTurnCellValue();
         }
 
     }

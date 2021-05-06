@@ -11,7 +11,13 @@
 
 
     <Page.Resources>
-        <Polygon x:Key="SymbolX"/>
+
+        <SolidColorBrush x:Key="Draw" Color="{ThemeResource SystemChromeDisabledLowColor}"/>
+        <SolidColorBrush x:Key="PlayerWon" Color="#3FBF16"/>
+        <SolidColorBrush x:Key="PlayerLost" Color="#BD1313"/>
+
+        <SolidColorBrush x:Key="InvalidCell" Color="#AB0000"/>
+
     </Page.Resources>
     
     
@@ -43,31 +49,31 @@
                                Text="// Play a game of Tic-Tac-Toe."/>
 
                     <TextBlock x:Name="EndGameMessageTextBlock" FontSize="60" Canvas.Left="40" Canvas.Top="700" Width="320" Height="80" HorizontalTextAlignment="Center"/>
-                    
+                    <TextBlock x:Name="StartNewGameHint" FontSize="16" Canvas.Left="40" Canvas.Top="780" Width="320" Height="24" HorizontalTextAlignment="Center" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
+
                     <!-- TEST BUTTON -->
-                    <Button x:Name="TestButton" Content="Test" FontSize="32" Width="120" Height="60" Canvas.Left="40" Canvas.Top="800"
+                    <Button x:Name="TestButton" Content="Test" FontSize="32" Width="120" Height="60" Canvas.Left="40" Canvas.Top="850"
                             Click="TestButton_Click"/>
 
                     <!-- Options -->
-                    <Canvas Canvas.Left="40" Canvas.Top="120" Width="320" Height="600">
+                    <Canvas Canvas.Left="40" Canvas.Top="120" Width="320" Height="500">
 
-                        <ComboBox x:Name="SelectPlayerSymbolComboBox" Header="Player Symbol" Width="240" Height="200"
+                        <ComboBox x:Name="SelectPlayerSymbolComboBox" Header="Player Symbol" Width="240" Height="200" Background="#FFF2F2F2"
                                   ToolTipService.ToolTip="Select your symbol.">
-                            <ComboBoxItem x:Name="SymbolXComboBoxItem">
+                            <ComboBoxItem x:Name="SymbolXComboBoxItem" Width="190" Height="190">
                                 <Image Source="/Assets\TicTacToe\TicTacToeSymbolX.png"/>
                             </ComboBoxItem>
-                            <ComboBoxItem x:Name="SymbolOComboBoxItem">
+                            <ComboBoxItem x:Name="SymbolOComboBoxItem" Width="190" Height="190">
                                 <Image Source="/Assets\TicTacToe\TicTacToeSymbolO.png"/>
                             </ComboBoxItem>
                         </ComboBox>
+                        
 
                         <ComboBox x:Name="AIBehaviourComboBox" Header="AI Behaviour" Width="240" Canvas.Top="220" ItemsSource="{x:Bind AIBehaviourList}"
                                   ToolTipService.ToolTip="Select the behaviour of the AI. Takes effect after clicking 'New Game'."/>
 
                         <ComboBox x:Name="StartingPlayerComboBox" Header="Starting Player" Width="240" Canvas.Top="300" ItemsSource="{x:Bind PlayersList}"
                                   ToolTipService.ToolTip="Select who will go first. Takes effect after clicking 'New Game'."/>
-
-
 
                         <Button x:Name="NewGameButton" Content="New Game" FontSize="32" Width="240" Height="80" Canvas.Top="400" BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1"
                                 Click="NewGameButton_Click"/>
@@ -90,6 +96,7 @@
 
                         <Rectangle Grid.RowSpan="3" Grid.ColumnSpan="3" Fill="#FFF2F2F2"/>
 
+                        <!-- Gameboard visual grid -->
                         <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemChromeBlackMediumLowColor}" BorderThickness="1"/>
                         <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemChromeBlackMediumLowColor}" BorderThickness="1"/>
                         <Border Grid.Row="0" Grid.Column="2" Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemChromeBlackMediumLowColor}" BorderThickness="1"/>
@@ -99,6 +106,17 @@
                         <Border Grid.Row="2" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemChromeBlackMediumLowColor}" BorderThickness="1"/>
                         <Border Grid.Row="2" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemChromeBlackMediumLowColor}" BorderThickness="1"/>
                         <Border Grid.Row="2" Grid.Column="2" Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemChromeBlackMediumLowColor}" BorderThickness="1"/>
+
+                        <!-- Visual feedback for invalid cell choice-->
+                        <Border x:Name="InvalidCell00Border" Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="4 4" BorderBrush="{StaticResource InvalidCell}" BorderThickness="8" Opacity="0"/>
+                        <Border x:Name="InvalidCell01Border" Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="4 4" BorderBrush="{StaticResource InvalidCell}" BorderThickness="8" Opacity="0"/>
+                        <Border x:Name="InvalidCell02Border" Grid.Row="0" Grid.Column="2" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="4 4" BorderBrush="{StaticResource InvalidCell}" BorderThickness="8" Opacity="0"/>
+                        <Border x:Name="InvalidCell10Border" Grid.Row="1" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="4 4" BorderBrush="{StaticResource InvalidCell}" BorderThickness="8" Opacity="0"/>
+                        <Border x:Name="InvalidCell11Border" Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="4 4" BorderBrush="{StaticResource InvalidCell}" BorderThickness="8" Opacity="0"/>
+                        <Border x:Name="InvalidCell12Border" Grid.Row="1" Grid.Column="2" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="4 4" BorderBrush="{StaticResource InvalidCell}" BorderThickness="8" Opacity="0"/>
+                        <Border x:Name="InvalidCell20Border" Grid.Row="2" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="4 4" BorderBrush="{StaticResource InvalidCell}" BorderThickness="8" Opacity="0"/>
+                        <Border x:Name="InvalidCell21Border" Grid.Row="2" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="4 4" BorderBrush="{StaticResource InvalidCell}" BorderThickness="8" Opacity="0"/>
+                        <Border x:Name="InvalidCell22Border" Grid.Row="2" Grid.Column="2" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="4 4" BorderBrush="{StaticResource InvalidCell}" BorderThickness="8" Opacity="0"/>
 
 
                         <!-- Gameboard Images, Symbols -->
@@ -114,24 +132,25 @@
 
 
                         <!-- Lines showing rows of three -->
-                        <Rectangle x:Name="GameboardLine00To02" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Width="700" Height="20" Fill="#FF171717" Opacity="0" IsHitTestVisible="False"/>
-                        <Rectangle x:Name="GameboardLine10To12" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Width="700" Height="20" Fill="#FF171717" Opacity="0" IsHitTestVisible="False"/>
-                        <Rectangle x:Name="GameboardLine20To22" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="700" Height="20" Fill="#FF171717" Opacity="0" IsHitTestVisible="False"/>
-                        <Rectangle x:Name="GameboardLine00To20" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3"  Width="20" Height="700" Fill="#FF171717" Opacity="0" IsHitTestVisible="False"/>
-                        <Rectangle x:Name="GameboardLine01To21" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3"  Width="20" Height="700" Fill="#FF171717" Opacity="0" IsHitTestVisible="False"/>
-                        <Rectangle x:Name="GameboardLine02To22" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"  Width="20" Height="700" Fill="#FF171717" Opacity="0" IsHitTestVisible="False"/>
-                        <Rectangle x:Name="GameboardLine00To22" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3"  Width="895" Height="20" Fill="#FF171717" Opacity="0" IsHitTestVisible="False" RenderTransformOrigin="0.5, 0.5">
+                        <Rectangle x:Name="GameboardLine00To02" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Width="700" Height="20" Fill="#FFE32B" Opacity="0" IsHitTestVisible="False"/>
+                        <Rectangle x:Name="GameboardLine10To12" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Width="700" Height="20" Fill="#FFE32B" Opacity="0" IsHitTestVisible="False"/>
+                        <Rectangle x:Name="GameboardLine20To22" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="700" Height="20" Fill="#FFE32B" Opacity="0" IsHitTestVisible="False"/>
+                        <Rectangle x:Name="GameboardLine00To20" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3"  Width="20" Height="700" Fill="#FFE32B" Opacity="0" IsHitTestVisible="False"/>
+                        <Rectangle x:Name="GameboardLine01To21" Grid.Row="0" Grid.Column="1" Grid.RowSpan="3"  Width="20" Height="700" Fill="#FFE32B" Opacity="0" IsHitTestVisible="False"/>
+                        <Rectangle x:Name="GameboardLine02To22" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"  Width="20" Height="700" Fill="#FFE32B" Opacity="0" IsHitTestVisible="False"/>
+                        <Rectangle x:Name="GameboardLine00To22" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3"  Width="895" Height="20" Fill="#FFE32B" Opacity="0" IsHitTestVisible="False" RenderTransformOrigin="0.5, 0.5">
                             <Rectangle.RenderTransform>
                                 <CompositeTransform Rotation="45"/>
                             </Rectangle.RenderTransform>
                         </Rectangle>
-                        <Rectangle x:Name="GameboardLine02To20" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3"  Width="895" Height="20" Fill="#FF171717" Opacity="0" IsHitTestVisible="False" RenderTransformOrigin="0.5, 0.5">
+                        <Rectangle x:Name="GameboardLine02To20" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3"  Width="895" Height="20" Fill="#FFE32B" Opacity="0" IsHitTestVisible="False" RenderTransformOrigin="0.5, 0.5">
                             <Rectangle.RenderTransform>
                                 <CompositeTransform Rotation="-45"/>
                             </Rectangle.RenderTransform>
                         </Rectangle>
 
-                        <!-- Gameboard Buttons (click detection, needs to be last thing rendered on grid) -->
+                        
+                        <!-- Gameboard Buttons (click detection, needs to be last thing rendered on grid, or anything after must have IsHitTestVisible set to false) -->
                         <Button x:Name="GameboardButton00" Grid.Row="0" Grid.Column="0" Width="{Binding ActualWidth, ElementName=GameboardGridColumn}" Height="{Binding ActualHeight, ElementName=GameboardGridRow}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2 2" Opacity="0" Click="GameboardButton_Click"/>
                         <Button x:Name="GameboardButton01" Grid.Row="0" Grid.Column="1" Width="{Binding ActualWidth, ElementName=GameboardGridColumn}" Height="{Binding ActualHeight, ElementName=GameboardGridRow}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2 2" Opacity="0" Click="GameboardButton_Click"/>
                         <Button x:Name="GameboardButton02" Grid.Row="0" Grid.Column="2" Width="{Binding ActualWidth, ElementName=GameboardGridColumn}" Height="{Binding ActualHeight, ElementName=GameboardGridRow}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2 2" Opacity="0" Click="GameboardButton_Click"/>
