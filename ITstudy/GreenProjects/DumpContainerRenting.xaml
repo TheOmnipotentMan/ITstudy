@@ -220,7 +220,7 @@
                     <RichTextBlock Name="GeneralComment" Canvas.Left="710" Canvas.Top="190" FontSize="20" Width="600">
                         <Paragraph>
                             <Run>
-                                -
+                                Largely a copy-paste from another project, CampingSite, with some modifications.
                             </Run>
                         </Paragraph>
                     </RichTextBlock>

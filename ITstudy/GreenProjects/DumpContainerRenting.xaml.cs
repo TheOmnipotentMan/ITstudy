@@ -29,11 +29,11 @@ namespace ITstudy.GreenProjects
     {
         // General Project info, to be displayed under PivotItem "Project Details"
         // Total time spent on this project
-        string ProjectTimeSpent = "00:00";
+        string ProjectTimeSpent = "04:00";
         // Difficulty, general challenge when writing on a scale of 0 to 10, 0 being no effort and 10 being near impossible to completed with my current skill
-        string ProjectChallenge = "x";
+        string ProjectChallenge = "2";
         // Date when this project was finished
-        string ProjectDateFinished = "00/00/21";
+        string ProjectDateFinished = "12/05/21";
 
 
 
