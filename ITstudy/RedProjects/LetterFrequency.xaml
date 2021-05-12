@@ -51,13 +51,6 @@
                     <TextBlock Width="1300" Height="40" FontSize="24" Canvas.Left="50" Canvas.Top="25" TextWrapping="WrapWholeWords"
                                Text="// Provide a text (.txt) document and we will tell you how many times any characters appears in that document."/>
 
-                    <!-- TODO remove
-                    <TextBlock Text="Search Method" Canvas.Left="55" Canvas.Top="100" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
-                    <ComboBox x:Name="SearchMethodComboBox" Width="240" Height="40" Canvas.Left="50" Canvas.Top="120">
-                        <ComboBoxItem Content="Not sure"/>
-                    </ComboBox>
-                    -->
-
                     <TextBlock Text="Import a prefab text file" Canvas.Left="55" Canvas.Top="100" Foreground="{ThemeResource SystemChromeDisabledLowColor}"/>
                     <!-- UWP apps don't allow you to just open any file on the system, if you want to import your own text file either include it in the relevant assets folder or copy-paste its content to the main text field -->
                     <ComboBox x:Name="ImportFileComboBox" Width="420" Height="40" Canvas.Left="50" Canvas.Top="120" ToolTipService.ToolTip="Select a pre-fabricated text file."
@@ -341,8 +334,55 @@
 
 
             <PivotItem Header="Project Details" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+
                 <Canvas>
-                    <TextBlock Text="Empty" Canvas.Left="10" Canvas.Top="10"/>
+
+                    <RichTextBlock x:Name="TimeSpent" Canvas.Left="40" Canvas.Top="40" HorizontalTextAlignment="Center" ToolTipService.ToolTip="Total time I spent on this project.">
+                        <Paragraph>
+                            <Run Text="Time Spent (~)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectTimeSpent}" FontSize="32"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock x:Name="Challenge" Canvas.Left="240" Canvas.Top="40" HorizontalTextAlignment="Center"
+                                   ToolTipService.ToolTip="How challenging this project was for me.&#x0a;
+                                                           Based on how many times I got stuck, or times I needed to look things up in order to continue,&#x0a;
+                                                           or just how much I needed to concentrate to understand what I was doing and not make mistakes.">
+                        <Paragraph>
+                            <Run Text="Challenge (0-10)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectChallenge}" FontSize="32"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock x:Name="DateCompleted" Canvas.Left="540" Canvas.Top="40" HorizontalTextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Date completed" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectDateFinished}" FontSize="24"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="Goal of Project:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="10" Canvas.Top="160"/>
+                    <RichTextBlock Name="GoalOfProject" Canvas.Left="10" Canvas.Top="190" FontSize="24" Width="600">
+                        <Paragraph>
+                            <Run>
+                                Create a program that can count the frequency of each letter in a text.
+                            </Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="General comments:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="710" Canvas.Top="160"/>
+                    <RichTextBlock Name="GeneralComment" Canvas.Left="710" Canvas.Top="190" FontSize="20" Width="600">
+                        <Paragraph>
+                            <Run>
+                                I spend quite some time figuring out how to approach this, and primarily how to keep track of and store everything.
+                                It taught me a good bit. In the end the actual counting was one of the easiest things to do.
+                            </Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
                 </Canvas>
 
             </PivotItem>

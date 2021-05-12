@@ -146,6 +146,7 @@ namespace ITstudy
                 case "TaxiService": { ContentFrame.Content = new GreenProjects.TaxiService(); return true; }
                 case "Tuition": { ContentFrame.Content = new GreenProjects.Tuition(); return true; }
                 case "CarRental": { ContentFrame.Content = new GreenProjects.CarRental(); return true; }
+                case "CampingSite": { ContentFrame.Content = new GreenProjects.CampingSite(); return true; }
 
                 // EXTRA
                 case "TestPage1": { ContentFrame.Content = new TestPage1(); return true; }

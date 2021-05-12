@@ -28,6 +28,14 @@ namespace ITstudy.GreenProjects
     /// </summary>
     public sealed partial class TaxiService : Page
     {
+        // General Project info, to be displayed under PivotItem "Project Details"
+        // Total time spent on this project
+        string ProjectTimeSpent = "18:00";
+        // Difficulty, general challenge when writing on a scale of 0 to 10, 0 being no effort and 10 being near impossible to completed with my current skill
+        string ProjectChallenge = "4";
+        // Date when this project was finished
+        string ProjectDateFinished = "08/03/21";
+
 
         // ---- Taxi Service Parameters ----
 
@@ -42,7 +50,7 @@ namespace ITstudy.GreenProjects
         TimeSpan TimeDrivenDay;
         TimeSpan TimeDrivenNight;
 
-        // something like uint would require some casting around
+        // something like uint could be used, but would require casting at certain points
         double KilometersDriven;
 
         double PricePerKilometer;
@@ -97,7 +105,7 @@ namespace ITstudy.GreenProjects
             // Iterate over, the adjusted values of, rideDuration until it reaches RideDuration
             while (rideDurationAdjusted < RideDurationAdjusted)
             {
-                // if the loop runs more times then 2 days, break
+                // if the loop runs more times than 2 days, break
                 i++; if (i >= 2880) { break; }
                 Debug.WriteLine(string.Format("TaxiService: r={0}, R={1}.", rideDurationAdjusted, RideDurationAdjusted));
                 Debug.WriteLine(string.Format("TaxiService: While-loop={0} TimeDrivenDay={1}, TimeDrivenNight={2}.", i, TimeDrivenDay, TimeDrivenNight));
@@ -133,7 +141,7 @@ namespace ITstudy.GreenProjects
             }
             
 
-            // would have been nice to just use PremiumRate*IsPremiumRate, but you can't have everything
+            // would have been nice to just use PremiumRate*IsPremiumRate, using the bool as 0 or 1, but you can't have everything
             int IsPremiumRateInt = Convert.ToInt32(IsPremiumRate);
 
             // Calculate price for distance

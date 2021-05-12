@@ -155,8 +155,61 @@
             </PivotItem>
 
             <PivotItem Header="Project Details" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+
                 <Canvas>
-                    <TextBlock Text="Empty" Canvas.Left="10" Canvas.Top="10"/>
+
+                    <RichTextBlock x:Name="TimeSpent" Canvas.Left="40" Canvas.Top="40" HorizontalTextAlignment="Center" ToolTipService.ToolTip="Total time I spent on this project.">
+                        <Paragraph>
+                            <Run Text="Time Spent (~)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectTimeSpent}" FontSize="32"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock x:Name="Challenge" Canvas.Left="240" Canvas.Top="40" HorizontalTextAlignment="Center"
+                                   ToolTipService.ToolTip="How challenging this project was for me.&#x0a;
+                                                           Based on how many times I got stuck, or times I needed to look things up in order to continue,&#x0a;
+                                                           or just how much I needed to concentrate to understand what I was doing and not make mistakes.">
+                        <Paragraph>
+                            <Run Text="Challenge (0-10)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectChallenge}" FontSize="32"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock x:Name="DateCompleted" Canvas.Left="540" Canvas.Top="40" HorizontalTextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Date completed" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectDateFinished}" FontSize="24"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="Goal of Project:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="10" Canvas.Top="160"/>
+                    <RichTextBlock Name="GoalOfProject" Canvas.Left="10" Canvas.Top="190" FontSize="24" Width="600">
+                        <Paragraph>
+                            <Run>
+                                Create a calculator that can add, subtract, multiply and divide using roman numerals, between 0 and 3000.
+                            </Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="General comments:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="710" Canvas.Top="160"/>
+                    <RichTextBlock Name="GeneralComment" Canvas.Left="710" Canvas.Top="190" FontSize="20" Width="600">
+                        <Paragraph>
+                            <Run>
+                                At first I got stuck on how to translate between decimal and roman numerals, 
+                                but after some trying and writing out the behaviour I wanted on paper I managed to figure it out.
+                                After that building the calculator itself was relatively easy.
+                            </Run>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run>
+                                The calculator is rather simple, as it only needed to handle numbers between 0 and 3000.
+                            </Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
                 </Canvas>
 
             </PivotItem>

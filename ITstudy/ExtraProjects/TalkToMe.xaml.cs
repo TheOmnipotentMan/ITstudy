@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Navigation;
 // TODO remove if the app is ever finished
 using System.Diagnostics;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+
 
 namespace ITstudy.ExtraProjects
 {
@@ -25,6 +25,13 @@ namespace ITstudy.ExtraProjects
     /// </summary>
     public sealed partial class TalkToMe : Page
     {
+        // General Project info, to be displayed under PivotItem "Project Details"
+        // Total time spent on this project
+        string ProjectTimeSpent = "08:00";
+        // Difficulty, general challenge when writing on a scale of 0 to 10, 0 being no effort and 10 being near impossible to completed with my current skill
+        string ProjectChallenge = "5";
+        // Date when this project was finished
+        string ProjectDateFinished = "26/02/21";
 
 
         string TextToSpeak;
@@ -62,10 +69,6 @@ namespace ITstudy.ExtraProjects
 
             synth.Voice = voiceInfo;
         }
-
-
-
-
 
 
         private async void TextToSpeech(object sender, RoutedEventArgs e)

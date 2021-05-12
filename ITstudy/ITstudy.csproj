@@ -122,6 +122,9 @@
     <Compile Include="ExtraProjects\TalkToMe.xaml.cs">
       <DependentUpon>TalkToMe.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GreenProjects\CampingSite.xaml.cs">
+      <DependentUpon>CampingSite.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GreenProjects\CarRental.xaml.cs">
       <DependentUpon>CarRental.xaml</DependentUpon>
     </Compile>
@@ -468,6 +471,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GreenProjects\CampingSite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GreenProjects\CarRental.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -540,10 +547,8 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  
   <!-- change language version test -->
   <PropertyGroup>
-   <LangVersion>8.0</LangVersion>
-   </PropertyGroup>
-   
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
 </Project>

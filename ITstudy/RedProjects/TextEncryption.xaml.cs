@@ -20,11 +20,18 @@ namespace ITstudy.RedProjects
 
     /// <summary>
     /// A project in Text Encryption.
-    /// I could use the biuld-in encryption via RSA but I would like to create my own
+    /// I could use the build-in encryption via RSA but I would like to create my own
     /// However, that is easier said than done, so I will let it rest for now and return later when I have more experience with C# so that I can focus on the encryption itself
     /// </summary>
     public sealed partial class TextEncryption : Page
     {
+        // General Project info, to be displayed under PivotItem "Project Details"
+        // Total time spent on this project
+        string ProjectTimeSpent = "00:00";
+        // Difficulty, general challenge when writing on a scale of 0 to 10, 0 being no effort and 10 being near impossible to completed with my current skill
+        string ProjectChallenge = "0";
+        // Date when this project was finished
+        string ProjectDateFinished = "00/00/00";
 
 
         public TextEncryption()

@@ -131,21 +131,73 @@
 
 
             <PivotItem Header="Project Details" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+                
                 <Canvas>
-                    <TextBlock Canvas.Left="10" Canvas.Top="10" FontSize="16"
-                               Text="The calculation for the taxi-service happens as follows;"/>
-                    <TextBlock Canvas.Left="10" Canvas.Top="30" Text="(As first created, values may have been altered since.)"/>
-                    
-                    <RichTextBlock Canvas.Left="10" Canvas.Top="100" Width="900" TextWrapping="WrapWholeWords">
+
+                    <RichTextBlock x:Name="TimeSpent" Canvas.Left="40" Canvas.Top="40" HorizontalTextAlignment="Center" ToolTipService.ToolTip="Total time I spent on this project.">
                         <Paragraph>
-                            1. Price per kilometer is €1,-. On top of that comes a price per minute, €0.25 between 08:00 and 18:00, €0.45 from 18:00 to 08:00.
-                        </Paragraph>
-                        <Paragraph></Paragraph>
-                        <Paragraph>
-                            2. From friday 22:00 to monday 07:00 the price is increased by a weekend premium of 15%.
-                            This is only added if the ride starts within the aforementioned period.
+                            <Run Text="Time Spent (~)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectTimeSpent}" FontSize="32"/>
                         </Paragraph>
                     </RichTextBlock>
+
+                    <RichTextBlock x:Name="Challenge" Canvas.Left="240" Canvas.Top="40" HorizontalTextAlignment="Center"
+                                   ToolTipService.ToolTip="How challenging this project was for me.&#x0a;
+                                                           Based on how many times I got stuck, or times I needed to look things up in order to continue,&#x0a;
+                                                           or just how much I needed to concentrate to understand what I was doing and not make mistakes.">
+                        <Paragraph>
+                            <Run Text="Challenge (0-10)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectChallenge}" FontSize="32"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock x:Name="DateCompleted" Canvas.Left="540" Canvas.Top="40" HorizontalTextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Date completed" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectDateFinished}" FontSize="24"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="Goal of Project:" FontSize="12" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="10" Canvas.Top="160"/>
+                    <RichTextBlock Name="GoalOfProject" Canvas.Left="10" Canvas.Top="180" FontSize="16" Width="400">
+                        <Paragraph>
+                            <Run Text="A Taxi company maintains the following prices:"/>
+                            <LineBreak/>
+                            <Run Text="- The price per kilometer is €1,-. On top of that comes a price per minute, €0.25 between 08:00 and 18:00, €0.45 from 18:00 to 08:00." FontSize="12"/>
+                            <LineBreak/>
+                            <Run Text="- From friday 22:00 to monday 07:00 the price is increased by a weekend premium of 15%. This is only added if the ride starts within this period." FontSize="12"/>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run>
+                                The software needs to calculate the price a the ride based on the details of that ride.
+                                You may assume that all rides start and end on the same day.
+                            </Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="General comments:" FontSize="12" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="460" Canvas.Top="160"/>
+                    <RichTextBlock Name="GeneralComment" Canvas.Left="460" Canvas.Top="180" FontSize="14" Width="400">
+                        <Paragraph>
+                            <Run>
+                                I tried to make a system that could take a variable time-step but that was taking longer to figure out than I had expected.
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                The goal was to have it be able to detect for how long the current fare would be applicable, and jumping forward to the next fare if the ride lasts that long.
+                                And so safing on the number of calculations as it doesn't have to go over every single minute.
+                            </Run>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run>
+                                But the current version does go over the entire duration of the ride minute-by-minute, checking what price is relevant for that minute and adding it to the total.
+                                Doing what it needs to do.
+                            </Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
                 </Canvas>
 
             </PivotItem>

@@ -35,6 +35,14 @@ namespace ITstudy.RedProjects
     /// </summary>
     public sealed partial class RansomNote : Page
     {
+        // General Project info, to be displayed under PivotItem "Project Details"
+        // Total time spent on this project
+        string ProjectTimeSpent = "18:00";
+        // Difficulty, general challenge when writing on a scale of 0 to 10, 0 being no effort and 10 being near impossible to completed with my current skill
+        string ProjectChallenge = "4";
+        // Date when this project was finished
+        string ProjectDateFinished = "28/04/21";
+
 
         // The collection of available fonts on the system
         public List<TextBlock> AvailableFontsListViewItems;

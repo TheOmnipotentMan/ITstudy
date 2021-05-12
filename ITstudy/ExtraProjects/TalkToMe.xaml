@@ -30,11 +30,11 @@
 
 
         <Pivot >
-            
+
             <PivotItem Header="Talk To Me" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
 
                 <Canvas>
-                    
+
                     <TextBlock Width="800" Height="40" Canvas.Top="40" Canvas.Left="20" Style="{StaticResource SubtitleTextBlockStyle}"
                                Text="// Enter some text in the input field and click play to hear it read back to you."/>
 
@@ -61,35 +61,73 @@
                         </Canvas>
                     </Button>
 
-                </Canvas>               
+                </Canvas>
 
 
             </PivotItem>
 
             <PivotItem Header="Project Details" Height="600" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+
                 <Canvas>
-                    <TextBlock Text="Empty" Canvas.Left="10" Canvas.Top="10"/>
+
+                    <RichTextBlock x:Name="TimeSpent" Canvas.Left="40" Canvas.Top="40" HorizontalTextAlignment="Center" ToolTipService.ToolTip="Total time I spent on this project.">
+                        <Paragraph>
+                            <Run Text="Time Spent (~)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectTimeSpent}" FontSize="32"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock x:Name="Challenge" Canvas.Left="240" Canvas.Top="40" HorizontalTextAlignment="Center"
+                                   ToolTipService.ToolTip="How challenging this project was for me.&#x0a;
+                                                           Based on how many times I got stuck, or times I needed to look things up in order to continue,&#x0a;
+                                                           or just how much I needed to concentrate to understand what I was doing and not make mistakes.">
+                        <Paragraph>
+                            <Run Text="Challenge (0-10)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectChallenge}" FontSize="32"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock x:Name="DateCompleted" Canvas.Left="540" Canvas.Top="40" HorizontalTextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Date completed" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectDateFinished}" FontSize="24"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="Goal of Project:" FontSize="12" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="10" Canvas.Top="160"/>
+                    <RichTextBlock Name="GoalOfProject" Canvas.Left="10" Canvas.Top="180" FontSize="20" Width="400">
+                        <Paragraph>
+                            <Run>
+                                Create a system that can take in some text and read it back to the user.
+                            </Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="General comments:" FontSize="12" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="460" Canvas.Top="160"/>
+                    <RichTextBlock Name="GeneralComment" Canvas.Left="460" Canvas.Top="180" FontSize="16" Width="400">
+                        <Paragraph>
+                            <Run>
+                                This project came about because I found an example of how to do it. Which I could copy and implement with little alteration.
+                                So that's what I did.
+                            </Run>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Hyperlink NavigateUri="https://docs.microsoft.com/en-us/uwp/api/windows.media.speechsynthesis.speechsynthesizer?view=winrt-19041"
+                                       ToolTipService.ToolTip="https://docs.microsoft.com/en-us/uwp/api/windows.media.speechsynthesis.speechsynthesizer?view=winrt-19041">
+                                Source; Microsoft documentation
+                            </Hyperlink>
+                        </Paragraph>
+                    </RichTextBlock>
+
                 </Canvas>
-                             
+
             </PivotItem>
-            
+
         </Pivot>
-        
-        
-        
-        
-        <Canvas x:Name="TalkToMeCanvas" HorizontalAlignment="Center" VerticalAlignment="Center" Width="10" 
-                Background="{ThemeResource SystemBaseMediumColor}">
-            
-            
-        </Canvas>
-
-
-
-
-
 
     </Grid>
-
 
 </Page>

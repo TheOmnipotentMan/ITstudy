@@ -192,28 +192,74 @@
 
 
             <PivotItem Header="Project Details" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
-                <Canvas>
-                    <TextBlock Canvas.Left="10" Canvas.Top="10" FontSize="24"
-                               Text="The calculation for the tuition is as follows;"/>
-                    <TextBlock Canvas.Left="10" Canvas.Top="40" FontSize="16"
-                               Text="(As first created, values may have been altered since.)"/>
 
-                    <RichTextBlock Canvas.Left="10" Canvas.Top="100" Width="1200" TextWrapping="WrapWholeWords" FontSize="20">
+                <Canvas>
+
+                    <RichTextBlock x:Name="TimeSpent" Canvas.Left="40" Canvas.Top="40" HorizontalTextAlignment="Center" ToolTipService.ToolTip="Total time I spent on this project.">
                         <Paragraph>
-                            <Run Text="1. A standard fee of €50,-. Then, added for every child under the age of 10 is €25,- up to a maximum of 3 children."/>
+                            <Run Text="Time Spent (~)" FontSize="16"/>
                             <LineBreak/>
-                            <Run Text="   And for every child 10 years and older is added €37,-, up to a maximum of 2 children."/>
-                            <LineBreak/>
-                        </Paragraph>
-                        <Paragraph>
-                            <Run Text="2. The tuition has a cap of €150,- and will never be more than that."/>
-                            <LineBreak/>
-                        </Paragraph>
-                        <Paragraph>
-                            <Run Text="3. For a single-parent family a reduction is applied, at the very end of the calculation, of 25%."/>
-                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectTimeSpent}" FontSize="32"/>
                         </Paragraph>
                     </RichTextBlock>
+
+                    <RichTextBlock x:Name="Challenge" Canvas.Left="240" Canvas.Top="40" HorizontalTextAlignment="Center"
+                                   ToolTipService.ToolTip="How challenging this project was for me.&#x0a;
+                                                           Based on how many times I got stuck, or times I needed to look things up in order to continue,&#x0a;
+                                                           or just how much I needed to concentrate to understand what I was doing and not make mistakes.">
+                        <Paragraph>
+                            <Run Text="Challenge (0-10)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectChallenge}" FontSize="32"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock x:Name="DateCompleted" Canvas.Left="540" Canvas.Top="40" HorizontalTextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Date completed" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectDateFinished}" FontSize="24"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="Goal of Project:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="10" Canvas.Top="160"/>
+                    <RichTextBlock Name="GoalOfProject" Canvas.Left="10" Canvas.Top="190" FontSize="24" Width="600">
+                        <Paragraph>
+                            <Run>
+                                A school charges the following:
+                            </Run>
+                            <LineBreak/>
+                            <Run FontSize="20">
+                                - A standard fee of €50,-. For every child under the age of 10 is added €25,-, up to a maximum of 3 children.
+                                And for every child 10 years and older is added €37,-, up to a maximum of 2 children.
+                            </Run>
+                            <LineBreak/>
+                            <Run FontSize="20">
+                                - The tuition has a cap of €150,- and will never be more.
+                            </Run>
+                            <LineBreak/>
+                            <Run FontSize="20">
+                                - For a single-parent family a reduction is applied, at the very end of the calculation, of 25%.
+                            </Run>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run>
+                                The software must calculate the tuition for a family based on the composition of said family.
+                                The age of every child must be determined based on its date of birth and a reference-date, eg the current date.
+                            </Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="General comments:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="710" Canvas.Top="160"/>
+                    <RichTextBlock Name="GeneralComment" Canvas.Left="710" Canvas.Top="190" FontSize="20" Width="600">
+                        <Paragraph>
+                            <Run>
+                                This project was relatively easy to build as I had already used nearly everything in previous projects.
+                                I did notice that I enjoyed it a bit less as it was mostly just rehashing.
+                            </Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
                 </Canvas>
 
             </PivotItem>

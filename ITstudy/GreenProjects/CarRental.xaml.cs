@@ -54,12 +54,23 @@ namespace ITstudy.GreenProjects
         }
 
 
+        // General Project info, to be displayed under PivotItem "Project Details"
+        // Total time spent on this project
+        string ProjectTimeSpent = "09:00";
+        // Difficulty, general challenge when writing on a scale of 0 to 10, 0 being no effort and 10 being near impossible to completed with my current skill
+        string ProjectChallenge = "4";
+        // Date when this project was finished
+        string ProjectDateFinished = "20/04/21";
+
+
         // A Collection of all the rentable vehicles and a proxy-version that will contain all vehicle-names for display and selection by user (https://docs.microsoft.com/en-us/windows/uwp/data-binding/data-binding-quickstart)
         private ObservableCollection<CarRentalVehicle> Vehicles;
         private ObservableCollection<string> VehicleNames;
 
         // Fuel price per liter
         double FuelPrice = 1.50d;
+
+
 
 
         public CarRental()
@@ -78,7 +89,7 @@ namespace ITstudy.GreenProjects
             Vehicles.Add(new CarRentalVehicle("Car", 0.20f, 50.0f, 100, 6.0f));
             Vehicles.Add(new CarRentalVehicle("Van", 0.30f, 95.0f, 0, 10.0f));
 
-            // Copy every VehicleName from Vehicles to VehicleNames, which matching indexes
+            // Copy every VehicleName from Vehicles to VehicleNames, with matching indexes
             VehicleNames = new ObservableCollection<string>();
             for (int i = 0; i < Vehicles.Count; i++)
             {

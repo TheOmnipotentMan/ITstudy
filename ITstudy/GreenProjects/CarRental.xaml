@@ -169,7 +169,68 @@
 
             <PivotItem Header="Project Details" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
                 <Canvas>
-                    <TextBlock Text="Empty" Canvas.Left="10" Canvas.Top="10"/>
+
+                    <RichTextBlock x:Name="TimeSpent" Canvas.Left="40" Canvas.Top="40" HorizontalTextAlignment="Center" ToolTipService.ToolTip="Total time I spent on this project.">
+                        <Paragraph>
+                            <Run Text="Time Spent (~)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectTimeSpent}" FontSize="32"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock x:Name="Challenge" Canvas.Left="240" Canvas.Top="40" HorizontalTextAlignment="Center"
+                                   ToolTipService.ToolTip="How challenging this project was for me.&#x0a;
+                                                           Based on how many times I got stuck, or times I needed to look things up in order to continue,&#x0a;
+                                                           or just how much I needed to concentrate to understand what I was doing and not make mistakes.">
+                        <Paragraph>
+                            <Run Text="Challenge (0-10)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectChallenge}" FontSize="32"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock x:Name="DateCompleted" Canvas.Left="540" Canvas.Top="40" HorizontalTextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Date completed" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectDateFinished}" FontSize="24"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="Goal of Project:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="10" Canvas.Top="160"/>
+                    <RichTextBlock Name="GoalOfProject" Canvas.Left="10" Canvas.Top="190" FontSize="22" Width="600">
+                        <Paragraph>
+                            <Run>
+                                A car-rental service charges the following;
+                            </Run>
+                            <LineBreak/>
+                            <Run FontSize="20"> - Cars; A price of €50.- per day, and per km driven a price of €0.20, with the first 100km of every day being free.</Run>
+                            <LineBreak/>
+                            <Run FontSize="20"> - Vans; A price of €95.- per day, and per km driven a price of €0.30.</Run>
+                            <LineBreak/>
+                            <Run>
+                                The vehicles are delivered with a full tank of gas and will be filled back up on return.
+                            </Run>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run>
+                                The software needs to calculate the final price of the rental based on information provided by the user.
+                                The time-period needs to be calculated from a starting- and end-date. You may assume each month only counts 30 days.
+                                All the fuel used during renting must be included in the final price.
+                                Meaning fuel provided by the person renting the vehicle should be included.
+                            </Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="General comments:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="710" Canvas.Top="160"/>
+                    <RichTextBlock Name="GeneralComment" Canvas.Left="710" Canvas.Top="190" FontSize="20" Width="600">
+                        <Paragraph>
+                            <Run>
+                                A simple enough project. I added some extra challenge by diving in to classes and data-binding.
+                                Every type of vehicle has its own class containing its properties, meaning any additional vehicles can be quickly added.
+                            </Run>
+                        </Paragraph>
+                    </RichTextBlock>
                 </Canvas>
 
             </PivotItem>
