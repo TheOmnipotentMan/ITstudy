@@ -307,6 +307,13 @@
                                     <Button x:Name="CampingSite" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
                                 </Canvas>
 
+                                <!-- Dump Container Renting -->
+                                <Canvas Width="350" Height="36">
+                                    <TextBlock Text="5. Rent Dump Container" FontSize="18" Canvas.Left="30" Canvas.Top="5" Canvas.ZIndex="0"/>
+                                    <Image Source="Assets\StatusOK_16x.png" Width="20" Canvas.Left="4" Canvas.Top="8" Canvas.ZIndex="0"/>
+                                    <Button x:Name="DumpContainerRenting" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
+                                </Canvas>
+
                             </ListView>
 
                         </PivotItem>
@@ -369,7 +376,7 @@
                            Text="General Projects = 6"/>
                         <TextBlock x:Name="GreenProjectsProgress" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
-                           Text="Calc. Projects = 4"/>
+                           Text="Calc. Projects = 5"/>
                         <TextBlock x:Name="ExtraProjectsProgress" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
                            Text="Extra Projects = 2"/>

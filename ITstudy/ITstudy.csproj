@@ -128,6 +128,9 @@
     <Compile Include="GreenProjects\CarRental.xaml.cs">
       <DependentUpon>CarRental.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GreenProjects\DumpContainerRenting.xaml.cs">
+      <DependentUpon>DumpContainerRenting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GreenProjects\TaxiService.xaml.cs">
       <DependentUpon>TaxiService.xaml</DependentUpon>
     </Compile>
@@ -476,6 +479,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GreenProjects\CarRental.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GreenProjects\DumpContainerRenting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
