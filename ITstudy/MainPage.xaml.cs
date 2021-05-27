@@ -141,6 +141,8 @@ namespace ITstudy
                 case "RomanCalculator": { ContentFrame.Content = new RedProjects.RomanCalculator(); return true; }
                 case "RansomNote": { ContentFrame.Content = new RedProjects.RansomNote(); return true; }
                 case "TicTacToe": { ContentFrame.Content = new RedProjects.TicTacToe(); return true; }
+                case "MorseCode": { ContentFrame.Content = new RedProjects.MorseCode(); return true; }
+                case "TowerOfHanoi": { ContentFrame.Content = new RedProjects.TowerOfHanoi(); return true; }
 
                 // GREEN
                 case "TaxiService": { ContentFrame.Content = new GreenProjects.TaxiService(); return true; }

@@ -75,6 +75,7 @@
             <PivotItem Header="PLACEHOLDER" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
 
                 <Canvas>
+    
                     <TextBlock Text="Something" FontSize="32" Canvas.Left="100" Canvas.Top="100"/>
 
                 </Canvas>
@@ -264,6 +265,20 @@
                                     <Button x:Name="TicTacToe" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
                                 </Canvas>
 
+                                <!-- Morse Code -->
+                                <Canvas Width="350" Height="36">
+                                    <TextBlock Text="8. Morse Code" FontSize="18" Canvas.Left="30" Canvas.Top="5" Canvas.ZIndex="0"/>
+                                    <Image Source="Assets\StatusOK_16x.png" Width="20" Canvas.Left="4" Canvas.Top="8" Canvas.ZIndex="0"/>
+                                    <Button x:Name="MorseCode" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
+                                </Canvas>
+
+                                <!-- Tower of Hanoi -->
+                                <Canvas Width="350" Height="36">
+                                    <TextBlock Text="9. Tower of Hanoi" FontSize="18" Canvas.Left="30" Canvas.Top="5" Canvas.ZIndex="0"/>
+                                    <Image Source="Assets\StatusBlocked_16x.png" Width="20" Canvas.Left="4" Canvas.Top="8" Canvas.ZIndex="0"/>
+                                    <Button x:Name="TowerOfHanoi" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
+                                </Canvas>
+
 
 
 
@@ -362,27 +377,25 @@
         <Viewbox  Grid.Column="2" Grid.ColumnSpan="1" Grid.Row="1" Grid.RowSpan="1">
             <Canvas x:Name="ContentHeader" Width="1440" Height="90">
 
-                <Canvas x:Name="ProgressCanvas" Width="1200" Height="60" Canvas.Left="24" Canvas.Top="15" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}">
-                    <Grid Width="{Binding ActualWidth, ElementName=ProgressCanvas}" Height="{Binding ActualHeight, ElementName=ProgressCanvas}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                <Grid Width="1200" Height="60" Canvas.Left="24" Canvas.Top="15" Background="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" CornerRadius="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                        <!-- General Progress, number of completed projects -->
-                        <TextBlock x:Name="RedProjectsProgress" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    <!-- General Progress, number of completed projects -->
+                    <TextBlock x:Name="RedProjectsProgress" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
-                           Text="General Projects = 6"/>
-                        <TextBlock x:Name="GreenProjectsProgress" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                           Text="General Projects = 7"/>
+                    <TextBlock x:Name="GreenProjectsProgress" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
                            Text="Calc. Projects = 5"/>
-                        <TextBlock x:Name="ExtraProjectsProgress" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    <TextBlock x:Name="ExtraProjectsProgress" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
                            Text="Extra Projects = 2"/>
 
-                    </Grid>
-                </Canvas>
+                </Grid>
 
 
                 <!-- Button to change Theme of Application -->

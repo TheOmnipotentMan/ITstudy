@@ -1,0 +1,162 @@
+﻿<Page
+    x:Class="ITstudy.RedProjects.MorseCode"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ITstudy.RedProjects"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+
+    Width="1440" Height="990">
+
+    
+    
+
+    <Grid Width="1440" Height="990">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle x:Name="GeneralWindowBackground" Grid.ColumnSpan="4" Grid.RowSpan="4" Fill="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
+        <Border Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" BorderThickness="2"/>
+
+
+
+
+        <Pivot>
+
+            <PivotItem Header="Morse Code" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+
+                <Grid>
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="11*"/>
+                    </Grid.RowDefinitions>
+                    
+
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40 0"
+                               Text="// Translate a text into morse code, or morse code into text. Phonetic is also available" FontSize="26"/>
+
+                    <Button x:Name="TranslateButton" Width="240" Height="40" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="20 10"
+                            Content="Translate text ==>" FontSize="20" ToolTipService.ToolTip="Translate the text in the input field, translation is displayed in the output field."
+                            Click="TranslateButton_Click"/>
+
+                    <!-- Input field -->
+                    <TextBlock Height="40" Grid.Row="1" Grid.Column="0" Margin="20 10" HorizontalAlignment="Left" VerticalAlignment="Top"
+                               FontSize="32" Foreground="{ThemeResource SystemChromeDisabledLowColor}" Text="Input;"/>
+                    <TextBox x:Name="InputTextBox" Width="680" Height="780" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 40 0 0" TextWrapping="Wrap"/>
+                    <ComboBox x:Name="InputLanguageComboBox" Width="240" Height="40" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Margin="0 10 230 0"
+                              ToolTipService.ToolTip="The language of this field." ItemsSource="{x:Bind AvailableTranslations}"/>
+
+                    <!-- Output field -->
+                    <TextBlock Height="40" Grid.Row="1" Grid.Column="1" Margin="20 10" HorizontalAlignment="Left" VerticalAlignment="Top"
+                               FontSize="32" Foreground="{ThemeResource SystemChromeDisabledLowColor}" Text="Output;"/>
+                    <Border Width="680" Height="780" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 40 0 0"
+                            BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1" CornerRadius="2">
+                        <TextBlock x:Name="OutputTextBlock" Width="670" Height="770" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                   TextWrapping="WrapWholeWords" IsTextSelectionEnabled="True"/>
+                    </Border>
+                    <ComboBox x:Name="OutputLanguageComboBox" Width="240" Height="40" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Margin="0 10 180 0"
+                              ToolTipService.ToolTip="The language of this field." ItemsSource="{x:Bind AvailableTranslations}"/>
+
+
+
+                </Grid>
+
+            </PivotItem>
+
+
+            
+            
+            <PivotItem Header="Project Details" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+
+                <Canvas>
+
+                    <RichTextBlock x:Name="TimeSpent" Canvas.Left="40" Canvas.Top="40" HorizontalTextAlignment="Center" ToolTipService.ToolTip="Total time I spent on this project.">
+                        <Paragraph>
+                            <Run Text="Time Spent (~)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectTimeSpent}" FontSize="32"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock x:Name="Challenge" Canvas.Left="240" Canvas.Top="40" HorizontalTextAlignment="Center"
+                                   ToolTipService.ToolTip="How challenging this project was for me.&#x0a;
+                                                           Based on how many times I got stuck, or times I needed to look things up in order to continue,&#x0a;
+                                                           or just how much I needed to concentrate to understand what I was doing and not make mistakes.">
+                        <Paragraph>
+                            <Run Text="Challenge (0-10)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectChallenge}" FontSize="32"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock x:Name="DateCompleted" Canvas.Left="540" Canvas.Top="40" HorizontalTextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Date completed" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectDateFinished}" FontSize="24"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="Goal of Project:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="10" Canvas.Top="160"/>
+                    <RichTextBlock Name="GoalOfProject" Canvas.Left="10" Canvas.Top="190" FontSize="24" Width="600">
+                        <Paragraph>
+                            <Run>
+                                Write a program that can translate between text and morse code.
+                            </Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="General comments:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="710" Canvas.Top="160"/>
+                    <RichTextBlock Name="GeneralComment" Canvas.Left="710" Canvas.Top="190" FontSize="20" Width="600">
+                        <Paragraph>
+                            <Run>
+                                During this project I truely needed to use breakpoints in order to understand what my code was doing.
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                In previous projects breakpoints were convenient, but I only really used them to check that things were as I expected them to be.
+                                Whereas here, I used them to check if things were as I wanted them to be.
+                                Specificly I used them to figure out how to translate text from Morse, to determine if my translating-logic was correct.
+                                Keeping track of the logic and its multiple index-values, step by step, made for an interesting challenge.
+                            </Run>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run>
+                                In order to translate characters neatly, I decided to create a single dictionary which would contain any character with all its translations.
+                                Seperate collections for each language would make adding and removing a new language a lot simpler, but it can also allow for misalignment of indexes.
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                If I was to go down that route, I would want to build a system that required you to specify the base-character for each character-translation,
+                                and automatically match its the index to that of the base-character if it was present in the base-collection.</Run>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run>
+                                The method that does the translating can handle a null or empty string, and in that case will return the original input instead of a translation.
+                                Making it possible for a characters to have no or some translations, and not crash the program.
+                            </Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                </Canvas>
+
+            </PivotItem>
+
+        </Pivot>
+
+    </Grid>
+</Page>

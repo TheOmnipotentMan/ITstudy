@@ -71,6 +71,7 @@ namespace ITstudy.ExtraProjects
         }
 
 
+        // Based on Microsoft Documentation @ https://docs.microsoft.com/en-us/visualstudio/get-started/csharp/tutorial-uwp?view=vs-2019
         private async void TextToSpeech(object sender, RoutedEventArgs e)
         {
             // get the text from the input-field

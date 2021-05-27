@@ -147,6 +147,9 @@
     <Compile Include="RedProjects\LetterFrequency.xaml.cs">
       <DependentUpon>LetterFrequency.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RedProjects\MorseCode.xaml.cs">
+      <DependentUpon>MorseCode.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RedProjects\NameTheImage.xaml.cs">
       <DependentUpon>NameTheImage.xaml</DependentUpon>
     </Compile>
@@ -162,6 +165,10 @@
     <Compile Include="RedProjects\TicTacToe.xaml.cs">
       <DependentUpon>TicTacToe.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RedProjects\TowerOfHanoi.xaml.cs">
+      <DependentUpon>TowerOfHanoi.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RedProjects\TowerOfHanoiBlock.cs" />
     <Compile Include="TestPage1.xaml.cs">
       <DependentUpon>TestPage1.xaml</DependentUpon>
     </Compile>
@@ -447,6 +454,7 @@
     <Content Include="Assets\NameTheImage\RandomTest\%24^%25 ~#!.png" />
     <Content Include="Assets\NameTheImage\RandomTest\Desk Lamp.png" />
     <Content Include="Assets\NameTheImage\RandomTest\Mouse &amp; Keyboard.png" />
+    <Content Include="Assets\Refresh_16x.png" />
     <Content Include="Assets\Run_16x.png" />
     <Content Include="Assets\StarWarsKenobiHelloThere.gif" />
     <Content Include="Assets\StatusBlocked_16x.png" />
@@ -506,6 +514,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="RedProjects\MorseCode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RedProjects\NameTheImage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -523,6 +535,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RedProjects\TicTacToe.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RedProjects\TowerOfHanoi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
