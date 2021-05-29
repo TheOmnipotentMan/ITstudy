@@ -16,53 +16,51 @@ namespace ITstudy.RedProjects
     // Base for all blocks in TowerOfHanoi
     public class TowerOfHanoiBlock
     {
+        // Base variables, should not change generally
         public string BlockName;
-        public double WidthBase;
         public double Height;
+        public double WidthBase;
 
-
+        // Block values
         public double BlockWidth;
-        public double BorderWidth;
-        public double BorderThickness;
+        public double BlockOpacity;
+
+        /// <summary>
+        /// Is this block clickable by user
+        /// </summary>
+        public bool IsClickable;
+
+        // Colour values
         public SolidColorBrush BlockColour;
-
-        // Tower block colours, create a number of block-colours, used to better distinguish between blocks with adjacent/similar sizes
-        Windows.UI.Color[] BlockColours = new Windows.UI.Color[]
-        {
-                // CadetBlue, #FF5F9EA0
-                Windows.UI.Color.FromArgb(95, 158, 160, 100),
-                // Chocolate, #FFD2691E
-                Windows.UI.Color.FromArgb(210, 105, 30, 100),
-                // DarkKhaki, #FFBDB76B
-                Windows.UI.Color.FromArgb(189, 183, 107, 100),
-                // OliveDrab, #FF6B8E23
-                Windows.UI.Color.FromArgb(107, 142, 35, 100)
-        };
+        public SolidColorBrush BorderColour;
 
 
 
-    // Event, when a property/value changes, prompting an update for binded values
-    public event PropertyChangedEventHandler PropertyChanged;
+
+        // Event, when a property/value changes, prompting an update for binded values
+        public event PropertyChangedEventHandler PropertyChanged;
 
 
         /// <summary>
         /// Create a tower block for Tower of Hanoi
         /// </summary>
-        /// <param name="name">Name, can be used eg as a number in the center of the block to show its width more clearly</param>
-        /// <param name="widthBase">The base width of the UI element, must be the max width the block will ever be</param>
+        /// <param name="name">Name, used to identify the block when it is clicked</param>
         /// <param name="height">The height of the block, same for all blocks</param>
-        /// <param name="width">The current width of this block, can be 0 and thereby hiding the element</param>
-        /// <param name="isShowing">Optional, </param>
-        public TowerOfHanoiBlock(string name, double widthBase, double height, double width = 0, bool isShowing = false)
+        /// <param name="widthBase">The width of the UI element, the maximum width the block will ever be</param>
+        public TowerOfHanoiBlock(string name, double height, double widthBase)
         {
             this.BlockName = name;
-            this.WidthBase = widthBase;
             this.Height = height;
+            this.WidthBase = widthBase;
 
-            this.BlockWidth = isShowing ? width : 0;
-            this.BorderWidth = 0;
-            this.BorderThickness = 0;
+            this.BlockWidth = 0;
+            this.BlockOpacity = 0;
+
+            this.IsClickable = false;
+
             this.BlockColour = new SolidColorBrush();
+            this.BorderColour = new SolidColorBrush();
+            BorderColour.Opacity = 0;
 
             NotifyPropertyChanged();
         }
@@ -77,57 +75,50 @@ namespace ITstudy.RedProjects
 
 
         /// <summary>
-        /// Show the block on screen.
+        /// Show the block on screen
         /// </summary>
-        /// <param name="width">The width of the block on this position</param>
-        public void PlaceBlock(double width, int blockLevel)
+        /// <param name="width">The desired width of this block</param>
+        /// <param name="colour">The desired colour of this block</param>
+        public void ShowBlock(double width, Windows.UI.Color colour)
         {
-            width = Math.Clamp(width, 0, WidthBase);
-            BlockWidth = width;
-            BorderWidth = 0;
-            BlockColour.Color = BlockColours[blockLevel % BlockColours.Length];
-            NotifyPropertyChanged();
-        }
-
-        /// <summary>
-        /// Show an outline at this position, used to show possible moves
-        /// </summary>
-        /// <param name="width">The desired width of the outline</param>
-        public void ShowOutline(double width)
-        {
-            BorderWidth = width;
-            BorderThickness = 4;
+            BlockWidth = Math.Clamp(width, 0, WidthBase);
+            BlockOpacity = 1;
+            BlockColour.Color = colour;
             NotifyPropertyChanged();
         }
 
         /// <summary>
         /// Set all widths of 0, making elements no longer visible
         /// </summary>
-        public void RemoveBlock()
+        public void HideBlock()
         {
-            BlockWidth = 0;
-            BorderWidth = 0;
-            BorderThickness = 0;
+            BlockOpacity = 0;
             NotifyPropertyChanged();
         }
 
         /// <summary>
-        /// Is the current block shown on screen.
+        /// Show an outline at this position, used to show the currently selected block, and possible moves
         /// </summary>
-        /// <returns></returns>
-        public bool IsShowing()
+        /// <param name="width">The desired width of the outline, should be identical to that of the block it is representing</param>
+        /// <param name="colour">The desired colour of the outline</param>
+        /// <param name="thickness">The desired BorderThickness of the outline</param>
+        public void ShowOutline(Windows.UI.Color colour)
         {
-            return (BlockWidth > 0);
+            BorderColour.Opacity = 1;
+            BorderColour.Color = colour;
+            NotifyPropertyChanged();
         }
 
         /// <summary>
-        /// Is the current block showing its outline, suggesting that it is a position a block can be moved to.
+        /// Hide the outline at this position
         /// </summary>
-        /// <returns></returns>
-        public bool IsAvailable()
+        public void HideOutline()
         {
-            return (BorderWidth > 0);
+            BorderColour.Opacity = 0;
+            NotifyPropertyChanged();
         }
+
+
 
     }
 }

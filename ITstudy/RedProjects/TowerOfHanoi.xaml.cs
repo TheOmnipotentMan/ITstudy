@@ -46,9 +46,16 @@ namespace ITstudy.RedProjects
 
         // Tower height values (max ui-elements is 10)
         int[] TowerHeights = new int[] { 4, 5, 6, 7, 8, 9, 10 };
+        int TowerHeight;
         public int TowerHeightDefault;
         public int TowerHeightMinimum;
         public int TowerHeightMaximum;
+
+        // Tower block base values
+        double TowerBlockHeight = 40;
+        double TowerBlockWidthMinimum = 80;
+        double TowerBlockWidthStep;
+
 
         // Gameboard state, block positions
         int[,] Gameboard;
@@ -57,18 +64,22 @@ namespace ITstudy.RedProjects
 
         // Tower blocks, UI-elements
         public ObservableCollection<TowerOfHanoiBlock> Tower0;
+        public ObservableCollection<TowerOfHanoiBlock> Tower1;
+        public ObservableCollection<TowerOfHanoiBlock> Tower2;
+
+
 
         // Tower block colours, create a number of block-colours, used to better distinguish between blocks with adjacent/similar sizes
-        SolidColorBrush[] BlockColours = new SolidColorBrush[]
+        Windows.UI.Color[] BlockColours = new Windows.UI.Color[]
         {
-            // CadetBlue, #FF5F9EA0
-            new SolidColorBrush(Windows.UI.Color.FromArgb(95, 158, 160, 100)),
             // Chocolate, #FFD2691E
-            new SolidColorBrush(Windows.UI.Color.FromArgb(210, 105, 30, 100)),
-            // DarkKhaki, #FFBDB76B
-            new SolidColorBrush(Windows.UI.Color.FromArgb(189, 183, 107, 100)),
+            Windows.UI.Colors.Chocolate,
+            // CadetBlue, #FF5F9EA0
+            Windows.UI.Colors.CadetBlue,
             // OliveDrab, #FF6B8E23
-            new SolidColorBrush(Windows.UI.Color.FromArgb(107, 142, 35, 100))
+            Windows.UI.Colors.OliveDrab,
+            // DarkKhaki, #FFBDB76B
+            Windows.UI.Colors.DarkKhaki
         };
 
 
@@ -93,11 +104,6 @@ namespace ITstudy.RedProjects
             TowerHeightMaximum = TowerHeights.Last();
 
 
-            Windows.UI.Color[] colors = new Windows.UI.Color[]
-            {
-                Windows.UI.Color.FromArgb(95, 158, 160, 100),
-                Windows.UI.Color.FromArgb(95, 158, 160, 100)
-            };
 
         }
 
@@ -105,12 +111,14 @@ namespace ITstudy.RedProjects
         // Start a new game
         private void NewGame(int towerHeight = -1)
         {
-            // Ensure a correct tower height
+            // Ensure a reasonable tower height
             if (towerHeight < TowerHeightMinimum || towerHeight > TowerHeightMaximum)
             {
                 towerHeight = TowerHeightDefault;
             }
 
+            // Set TowerHeight a class-scope variable, to be available to other methods
+            TowerHeight = towerHeight;
 
 
             // Set the starting state of gameboard
@@ -128,34 +136,33 @@ namespace ITstudy.RedProjects
             }
 
 
-            // Generate the tower blocks
-            double height = 40;
-            double widthMin = 80;
-            double widthMax = GameboardGrid.ActualWidth / 3 - 10;
-            double widthStep = (widthMax - widthMin) / towerHeight;
-            double spacingFloor = GameboardFloorBorder.ActualHeight / 2;
-            double spacing = height / 5;
+            // Generate the on-screen towers and their blocks
+            double widthMax = GameboardGrid.ActualWidth / 3 - 20;
+            TowerBlockWidthStep = (widthMax - TowerBlockWidthMinimum) / towerHeight;
 
             Tower0 = new ObservableCollection<TowerOfHanoiBlock>();
+            Tower1 = new ObservableCollection<TowerOfHanoiBlock>();
+            Tower2 = new ObservableCollection<TowerOfHanoiBlock>();
+
             for (int iBlocks = 0; iBlocks < towerHeight; iBlocks++)
             {
-                Tower0.Add(new TowerOfHanoiBlock("Block" + iBlocks.ToString(), widthMax, height, widthMin + widthStep * (iBlocks + 1), true));
-                Tower0.Last().PlaceBlock(9999, iBlocks);
+                Tower0.Add(new TowerOfHanoiBlock("0" + iBlocks.ToString(), TowerBlockHeight, widthMax));
+                Tower0.Last().ShowBlock(TowerBlockWidthMinimum + iBlocks * TowerBlockWidthStep, BlockColours.ElementAt((iBlocks + BlockColours.Length) % BlockColours.Length));
                 Debug.WriteLine(string.Format("TowerOfHanoi: Tower0 added block {0}", iBlocks));
             }
 
-            // Show the blocks on Tower0
-            foreach (TowerOfHanoiBlock b in Tower0)
-            {
-
-            }
-
+            // Make the first element of Tower0 clickable
+            Tower0.First().IsClickable = true;
 
             // Set the on-screen towers to the generated collections
             GameboardTower0GridView.ItemsSource = Tower0;
-            
+            GameboardTower1GridView.ItemsSource = Tower1;
+            GameboardTower2GridView.ItemsSource = Tower2;
+
+
 
         }
+
 
 
 
@@ -180,23 +187,8 @@ namespace ITstudy.RedProjects
 
 
 
-        private void PopulateGameboard(int towerHeight)
-        {
-            for (int i = 0; i < towerHeight; i++)
-            {
-                Button button = new Button();
-                Rectangle block = new Rectangle();
-                Border outline = new Border();
-            }
-        }
 
 
-
-        // Update a element/block of the on-screen gameboard
-        private void UpdateGameboardDisplay(int blockWidth, int m, int n)
-        {
-
-        }
 
 
 
@@ -243,6 +235,36 @@ namespace ITstudy.RedProjects
         private void GameboardTower0Block_Click(object sender, SelectionChangedEventArgs e)
         {
             Debug.WriteLine(string.Format("TowerOfHanoi: tower block clicked"));
+        }
+
+        private void TowerBlockButton_Click(object sender, RoutedEventArgs e)
+        {
+            string b = (sender as Button).Name;
+            Debug.WriteLine(string.Format("TowerOfHanoi: Towerblock clicked = {0}", b));
+
+            if (!char.IsDigit(b[0]) || !char.IsDigit(b[1])) { return; }
+
+            int tower = (int)char.GetNumericValue(b[0]);
+            int level = (int)char.GetNumericValue(b[1]);
+
+            switch (tower, level)
+            {
+                case (0, 0):
+                    {
+                        if (Tower0.ElementAt(level).BorderColour.Opacity == 0)
+                        {
+                            Tower0.ElementAt(level).ShowOutline(Windows.UI.Colors.Black);
+                        }
+                        else
+                        {
+                            Tower0.ElementAt(level).HideOutline();
+                        }
+
+                        Debug.WriteLine(string.Format("TowerOfHanoi: Towerblock ShowOutline called for {0}", level));
+
+                        break;
+                    }
+            }
         }
     }
 }

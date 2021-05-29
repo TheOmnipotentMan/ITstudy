@@ -13,19 +13,31 @@
 
     <Page.Resources>
 
+        <!-- Tower block item-template-->
         <DataTemplate x:Key="TowerBlock" x:DataType="local:TowerOfHanoiBlock">
 
-            <Canvas Width="{x:Bind WidthBase}" Height="{x:Bind Height}">
+            <Grid Width="{x:Bind WidthBase}" Height="{x:Bind Height}">
 
-                <Rectangle Width="{x:Bind BlockWidth}" Height="{x:Bind Height}" Fill="{x:Bind BlockColour}"/>
-                <Border Width="{x:Bind BorderWidth}" Height="{x:Bind Height}" BorderThickness="4"
-                        BorderBrush="DarkGreen" CornerRadius="1"/>
+                <Rectangle Width="{x:Bind BlockWidth}" Height="{x:Bind Height}" Fill="{x:Bind BlockColour}" Opacity="{x:Bind BlockOpacity}"/>
+                <Border Width="{x:Bind BlockWidth}" Height="{x:Bind Height}" BorderBrush="{x:Bind BorderColour}" BorderThickness="2" CornerRadius="1">
+                    
+                </Border>
+                
+                
+                <!-- button used, instead of GridView item selection, because couldn't figure out how to easily change clicking (isHitTestVisible) and size (width) of GridView item selection hitboxes individually -->
+                <Button Name="{x:Bind BlockName}" Width="{x:Bind BlockWidth}" Height="{x:Bind Height}" Click="TowerBlockButton_Click" HorizontalAlignment="Center" IsHitTestVisible="{x:Bind IsClickable}">
+                    <Button.Background>
+                        <SolidColorBrush Opacity="0"/>
+                    </Button.Background>
+                </Button>
 
-            </Canvas>
-
+            </Grid>
 
         </DataTemplate>
-        
+
+        <SolidColorBrush x:Key="OutlineSelected" x:Name="OutlineSelectedColour" Color="{ThemeResource SystemBaseMediumHighColor}"/>
+        <SolidColorBrush x:Key="OutlineMove" x:Name="OutlineMoveColour" Color="DarkGreen"/>
+
     </Page.Resources>
 
 
@@ -152,6 +164,7 @@
 
 
                     <!-- Gameboard -->
+                    <Rectangle Grid.Row="2" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Fill="#FFF2F2F2" Margin="3"/>
                     <Grid x:Name="GameboardGrid" Grid.Row="2" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="20 120 20 40">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition x:Name="GameboardStartColumn" Width="*"/>
@@ -162,6 +175,97 @@
 
                         <Border x:Name="GameboardFloorBorder" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="40" Background="{ThemeResource SystemBaseMediumHighColor}" CornerRadius="4"
                                 BorderBrush="{ThemeResource SystemChromeAltLowColor}" BorderThickness="2"/>                        
+                        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Margin="20" Width="16" Fill="DimGray"/>
+                        <Rectangle Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Margin="20" Width="16" Height="500" Fill="DimGray"/>
+                        <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="20" Width="16" Height="500" Fill="DimGray"/>
+
+                        
+                        <!-- Tower 0 -->
+                        <GridView x:Name="GameboardTower0GridView" Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="10 0" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                  SelectionMode="None" IsItemClickEnabled="False" ItemTemplate="{StaticResource TowerBlock}" Opacity="1">
+                            <GridView.ItemContainerStyle>
+                                <Style TargetType="GridViewItem">
+                                    <Setter Property="Margin" Value="0, 2"/>
+                                </Style>
+                            </GridView.ItemContainerStyle>
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ItemsWrapGrid Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+
+                        </GridView>
+                        
+                        <!-- Tower 1 -->
+                        <GridView x:Name="GameboardTower1GridView" Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="10 0" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                  SelectionMode="None" IsItemClickEnabled="False" ItemTemplate="{StaticResource TowerBlock}" Opacity="1">
+                            <GridView.ItemContainerStyle>
+                                <Style TargetType="GridViewItem">
+                                    <Setter Property="Margin" Value="0, 2"/>
+                                </Style>
+                            </GridView.ItemContainerStyle>
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ItemsWrapGrid Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+
+                        </GridView>
+
+                        <!-- Tower 2 -->
+                        <GridView x:Name="GameboardTower2GridView" Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="10 0" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                                  SelectionMode="None" IsItemClickEnabled="False" ItemTemplate="{StaticResource TowerBlock}" Opacity="1">
+                            <GridView.ItemContainerStyle>
+                                <Style TargetType="GridViewItem">
+                                    <Setter Property="Margin" Value="0, 2"/>
+                                </Style>
+                            </GridView.ItemContainerStyle>
+                            <GridView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <ItemsWrapGrid Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </GridView.ItemsPanel>
+
+                        </GridView>
+
+
+
+                    </Grid>
+                    
+
+
+
+                </Grid>
+
+            </PivotItem>
+
+            <PivotItem Header="DUMP" Margin="10 0 10 8">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="9*"/>
+                    </Grid.RowDefinitions>
+
+
+                    <!-- Gameboard -->
+                    <Grid Grid.Row="2" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="20 120 20 40">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="40" Background="{ThemeResource SystemBaseMediumHighColor}" CornerRadius="4"
+                                BorderBrush="{ThemeResource SystemChromeAltLowColor}" BorderThickness="2"/>
                         <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Margin="20" Width="16" Fill="DimGray"/>
                         <Rectangle Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Margin="20" Width="16" Height="500" Fill="DimGray"/>
                         <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="20" Width="16" Height="500" Fill="DimGray"/>
@@ -181,26 +285,7 @@
                         <Border Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Margin="0 0 0 20" Width="440" Height="40"
                                    BorderBrush="DarkGreen" BorderThickness="6" CornerRadius="2"/>
 
-                        <!-- Tower 0 -->
-                        <GridView x:Name="GameboardTower0GridView" Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="10 0" HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                                  SelectionMode="Single" SelectionChanged="GameboardTower0Block_Click" ItemTemplate="{StaticResource TowerBlock}">
-                            <GridView.ItemContainerStyle>
-                                <Style TargetType="GridViewItem">
-                                    <Setter Property="Margin" Value="0, 5"/>
-                                </Style>
-                            </GridView.ItemContainerStyle>
-                            <GridView.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <ItemsWrapGrid Orientation="Vertical"/>
-                                </ItemsPanelTemplate>
-                            </GridView.ItemsPanel>
-                            
-                        </GridView>
-                        
-
-
                     </Grid>
-                    
 
 
 
