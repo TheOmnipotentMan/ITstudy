@@ -18,12 +18,14 @@ namespace ITstudy.RedProjects
     {
         // Base variables, should not change generally
         public string BlockName;
+        public int BlockNumber;
         public double Height;
         public double WidthBase;
 
         // Block values
         public double BlockWidth;
         public double BlockOpacity;
+        public double BorderOpacity;
 
         /// <summary>
         /// Is this block clickable by user
@@ -47,20 +49,21 @@ namespace ITstudy.RedProjects
         /// <param name="name">Name, used to identify the block when it is clicked</param>
         /// <param name="height">The height of the block, same for all blocks</param>
         /// <param name="widthBase">The width of the UI element, the maximum width the block will ever be</param>
-        public TowerOfHanoiBlock(string name, double height, double widthBase)
+        public TowerOfHanoiBlock(string name, int blockNumber, double height, double widthBase)
         {
-            this.BlockName = name;
-            this.Height = height;
-            this.WidthBase = widthBase;
+            BlockName = name;
+            BlockNumber = blockNumber;
+            Height = height;
+            WidthBase = widthBase;
 
-            this.BlockWidth = 0;
-            this.BlockOpacity = 0;
+            BlockWidth = 0;
+            BlockOpacity = 0;
+            BorderOpacity = 0;
 
-            this.IsClickable = false;
+            IsClickable = false;
 
-            this.BlockColour = new SolidColorBrush();
-            this.BorderColour = new SolidColorBrush();
-            BorderColour.Opacity = 0;
+            BlockColour = new SolidColorBrush();
+            BorderColour = new SolidColorBrush();
 
             NotifyPropertyChanged();
         }
@@ -96,15 +99,16 @@ namespace ITstudy.RedProjects
             NotifyPropertyChanged();
         }
 
+
         /// <summary>
         /// Show an outline at this position, used to show the currently selected block, and possible moves
         /// </summary>
         /// <param name="width">The desired width of the outline, should be identical to that of the block it is representing</param>
         /// <param name="colour">The desired colour of the outline</param>
         /// <param name="thickness">The desired BorderThickness of the outline</param>
-        public void ShowOutline(Windows.UI.Color colour)
+        public void ShowBorder(Windows.UI.Color colour)
         {
-            BorderColour.Opacity = 1;
+            BorderOpacity = 1;
             BorderColour.Color = colour;
             NotifyPropertyChanged();
         }
@@ -112,9 +116,9 @@ namespace ITstudy.RedProjects
         /// <summary>
         /// Hide the outline at this position
         /// </summary>
-        public void HideOutline()
+        public void HideBorder()
         {
-            BorderColour.Opacity = 0;
+            BorderOpacity = 0;
             NotifyPropertyChanged();
         }
 
