@@ -20,16 +20,15 @@ namespace ITstudy.RedProjects
     {
         // Base variables, generally should not change
         public string BlockName;
-        public int BlockNumber;
         public double Height;
         public double WidthBase;
 
-        // Block state, representation of the enum BlockState in TowerOfHanoi
+        // Block state, representation of the enum BlockState in TowerOfHanoi, can be used to check if you're trying to change to a state this block is already in
         public int BlockState;
 
         // Block values
+        public int BlockNumber;
         public double BlockWidth;
-        public double BorderWidth;
         public double BlockOpacity;
         public double BorderSelectedOpacity;
         public double BorderAvailableOpacity;
@@ -39,7 +38,7 @@ namespace ITstudy.RedProjects
         /// </summary>
         public bool IsClickable = false;
 
-        // Colour values
+        // Color values
         public SolidColorBrush BlockColor = new SolidColorBrush();
 
 
@@ -56,17 +55,17 @@ namespace ITstudy.RedProjects
         /// <param name="name">Name, used to identify the block when it is clicked</param>
         /// <param name="height">The height of the block, same for all blocks</param>
         /// <param name="widthBase">The width of the UI element, the maximum width the block will ever be</param>
-        public TowerOfHanoiBlock(string name, int blockNumber, double height, double widthBase, int blockState = 0)
+        /// <param name="blockNumber">Whole number of this block, ie its 1-based index on the tower</param>
+        public TowerOfHanoiBlock(string name, double height, double widthBase, int blockNumber)
         {
             this.BlockName = name;
             this.BlockNumber = blockNumber;
             this.Height = height;
             this.WidthBase = widthBase;
 
-            this.BlockState = blockState;
+            this.BlockState = 0;
 
             this.BlockWidth = 0;
-            this.BorderWidth = 0;
             this.BlockOpacity = 0;
             this.BorderSelectedOpacity = 0;
             this.BorderAvailableOpacity = 0;
@@ -106,22 +105,25 @@ namespace ITstudy.RedProjects
         /// </summary>
         /// <param name="width">The desired width of this block</param>
         /// <param name="color">The desired color of this block</param>
-        public void ShowBlock(double width, Windows.UI.Color color)
+        private void ShowBlock(double width, Windows.UI.Color color)
         {
             BlockWidth = Math.Clamp(width, 0, WidthBase);
             BlockOpacity = 1;
             BlockColor.Color = color;
+            BorderSelectedOpacity = 0;
+            BorderAvailableOpacity = 0;
             // NotifyPropertyChanged();
         }
 
         /// <summary>
-        /// Set all widths of 0, making elements no longer visible
+        /// Set all opacities to 0, making elements no longer visible, and set IsClickable to false
         /// </summary>
-        public void HideBlock()
+        private void HideBlock()
         {
             BlockOpacity = 0;
             BorderSelectedOpacity = 0;
             BorderAvailableOpacity = 0;
+            IsClickable = false;
             // NotifyPropertyChanged();
         }
 
@@ -130,12 +132,12 @@ namespace ITstudy.RedProjects
         /// Display an outline of the block, showing that the block is currently selected
         /// </summary>
         /// <param name="width">The desired width of the border, will default to BlockWidth if empty</param>
-        public void ShowSelected(double width = -1)
+        private void ShowSelected(double width = -1)
         {
             if (width >= 0)
             {
                 BlockWidth = Math.Clamp(width, 0, WidthBase);
-            }            
+            }
             BorderSelectedOpacity = 1;
             // NotifyPropertyChanged();
         }
@@ -145,15 +147,16 @@ namespace ITstudy.RedProjects
         /// Display an outline of the block, showing that this position is a valid move for the block the player has currently selected
         /// </summary>
         /// <param name="width"></param>
-        public void ShowAvailable(double width)
+        private void ShowAvailable(double width)
         {
-            BorderWidth = Math.Clamp(width, 0, WidthBase);
+            BlockWidth = Math.Clamp(width, 0, WidthBase);
             BorderAvailableOpacity = 1;
+            IsClickable = true;
             // NotifyPropertyChanged();
         }
 
         /// <summary>
-        /// Hide the outline at this position
+        /// Hide any outlines at this position
         /// </summary>
         public void HideBorder()
         {
@@ -163,42 +166,26 @@ namespace ITstudy.RedProjects
         }
 
 
-        // Change the state of this block based on a given value, which represents the enum BlockState in TowerOfHanoi
-        public void SetBlockState(int blockState)
+        // Change the state of this block based on a given value, which represents the enum BlockState in TowerOfHanoi, alignment is manual!
+        public void SetStateEmpty()
         {
-            if (BlockState == blockState) { return; }
-
-            BlockState = blockState;
-
-            // Change the state of the block, this is lined-up by hand to the values of enum BlockState, so any changes there will have to be applied here, manually, as well
-            switch (blockState)
-            {
-                // Empty
-                case 0:
-                    {
-                        HideBlock();
-                        break;
-                    }
-                // Available
-                case 1:
-                    {
-                        // Requires arguments
-                        break;
-                    }
-                // Block
-                case 2:
-                    {
-                        // Requires arguments
-                        break;
-                    }
-                // Selected
-                case 3:
-                    {
-                        ShowSelected();
-                        break;
-                    }
-
-            }
+            HideBlock();
+            BlockState = 0;
+        }
+        public void SetStateAvailable(double width)
+        {
+            ShowAvailable(width);
+            BlockState = 1;
+        }
+        public void SetStateBlock(double width, Windows.UI.Color color)
+        {
+            ShowBlock(width, color);
+            BlockState = 2;
+        }
+        public void SetStateSelected()
+        {
+            ShowSelected();
+            BlockState = 3;
         }
 
 

@@ -23,7 +23,7 @@
                 <!-- Border selected -->
                 <Border Width="{x:Bind BlockWidth}" Height="{x:Bind Height}" BorderBrush="{ThemeResource SystemBaseMediumHighColor}" Opacity="{x:Bind BorderSelectedOpacity}" BorderThickness="2" CornerRadius="0" IsHitTestVisible="False"/>
                 <!-- Border available -->
-                <Border Width="{x:Bind BorderWidth}" Height="{x:Bind Height}" BorderBrush="DarkGreen" Opacity="{x:Bind BorderAvailableOpacity}" BorderThickness="4" CornerRadius="1" IsHitTestVisible="False"/>
+                <Border Width="{x:Bind BlockWidth}" Height="{x:Bind Height}" BorderBrush="DarkGreen" Opacity="{x:Bind BorderAvailableOpacity}" BorderThickness="4" CornerRadius="1" IsHitTestVisible="False"/>
 
                 <!-- button used, instead of GridView item selection, because couldn't figure out how to easily change clicking (IsHitTestVisible, not IsEnabled) and size (width) of GridView item selection hitboxes individually -->
                 <Button Name="{x:Bind BlockName}" Width="{x:Bind BlockWidth}" Height="{x:Bind Height}" IsHitTestVisible="{x:Bind IsClickable}" HorizontalAlignment="Center" Click="TowerBlockButton_Click">
@@ -184,6 +184,8 @@
                         <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Margin="20" Width="16" Fill="DimGray"/>
                         <Rectangle Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Margin="20" Width="16" Height="500" Fill="DimGray"/>
                         <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="20" Width="16" Height="500" Fill="DimGray"/>
+                        
+                        
 
 
                         <!-- Tower 0 -->
