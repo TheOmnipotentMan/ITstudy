@@ -122,6 +122,9 @@ namespace ITstudy.RedProjects
         // Start a new game
         private void NewGame(int towerHeight = -1)
         {
+            // Hide the win message
+            WinTextBlock.Opacity = 0;
+
             // Ensure a reasonable tower height
             if (towerHeight < TowerHeightMinimum || towerHeight > TowerHeightMaximum)
             {
@@ -268,6 +271,7 @@ namespace ITstudy.RedProjects
 
             // Set the on-screen towers to the generated collections
             ReloadTower();
+
         }
 
 
@@ -312,7 +316,7 @@ namespace ITstudy.RedProjects
                 // If the block was already selected, unselect the block
                 case BlockState.Selected:
                     {
-                        NewBlockSelected(-tower, level);
+                        NewBlockSelected(-(tower + 1), level);
                         break;
                     }
             }
@@ -321,23 +325,38 @@ namespace ITstudy.RedProjects
 
 
         // Mark the newly selected block on screen, and un-mark any blocks previously selected, and find the positions of all possible moves
-        // can clear all selected by giving a out-of-bounds value for tower, ie smaller than 0 or larger than 2
+        // Can also clear a selected block by giving a negative, 1-based, value for tower
         private void NewBlockSelected(int tower, int level)
         {
             // Make sure level in within bounds
-            if (tower > 2 || level < 0 || level > (TowerHeight - 1))
+            if (tower < -3 || tower > 2 || level < 0 || level > (TowerHeight - 1))
             {
                 Debug.WriteLine(string.Format("TowerOfHanoi: NewBlockSelected() recieved invalid value. tower = {0}, level = {1}", tower, level));
                 return;
             }
 
-            // Unset any selected blocks and return, or set SelectedBlock to the currently selected block and continue
+            // If tower was negative, unselect the block and return
             if (tower < 0)
             {
-                Gameboard[(tower * -1), level].State = BlockState.Block;
-                UpdateBlock(Math.Abs(tower), level);
+                // Unselect the block
+                Gameboard[(tower + 1) * -1, level].State = BlockState.Block;
+                UpdateBlock((tower + 1) * -1, level);
+                // Hide any borders from previous possible moves
+                if (tower != -1)
+                {
+                    HideBorder(0, GetLowestEmptyBlock(0));
+                }
+                if (tower != -2)
+                {
+                    HideBorder(1, GetLowestEmptyBlock(1));
+                }
+                if (tower != -3)
+                {
+                    HideBorder(2, GetLowestEmptyBlock(2));
+                }
                 return;
             }
+            // Else set SelectedBlock to the currently selected block and continue
             else
             {
                 SelectedBlock[0] = tower; SelectedBlock[1] = level;
@@ -434,7 +453,28 @@ namespace ITstudy.RedProjects
             }
 
             // Set the new top block of startTower to clickable
-            SetTopBlockClickable(startTower);            
+            SetBlockIsClickable(startTower, startLevel + 1, true);
+
+            // Set the block beneath the newly placed block to not clickable
+            SetBlockIsClickable(endTower, endLevel + 1, false);
+
+            // Check if the game has been won
+            CheckForWinState();
+        }
+
+
+        private void CheckForWinState()
+        {
+            // If the highest possible position in the tower on the right contains a block, the game is won
+            if (Gameboard[2, 0].State == BlockState.Block)
+            {
+                // Make this block not-clickable
+                Tower2.Last().IsClickable = false;
+                ReloadTower(2);
+
+                // Display the win message
+                WinTextBlock.Opacity = 1;
+            }
         }
 
 
@@ -490,7 +530,7 @@ namespace ITstudy.RedProjects
 
 
         /// <summary>
-        /// Get whether or not a move is allowed. Checks the position below the desired one to see if there is a block there, and if is larger than the one we want to place on it.
+        /// Get whether or not a move is allowed. Checks the position below the desired one to see if there is a block there, and if it is larger than the one we want to place on it.
         /// </summary>
         /// <param name="blockWidth">The width of the block we want to move</param>
         /// <param name="tower">The tower we want to move to</param>
@@ -499,7 +539,7 @@ namespace ITstudy.RedProjects
         private bool IsMoveAllowed(int blockWidth, int tower, int level)
         {
             // If the desired position is at the bottom, always allowed
-            if (level + 1 >= Gameboard.GetLength(1)) { return true; }
+            if (level == Gameboard.GetLength(1) - 1) { return true; }
             // Else find out if the block underneath is larger
             else
             {
@@ -507,7 +547,71 @@ namespace ITstudy.RedProjects
             }
         }
 
-        
+
+        /// <summary>
+        /// Set whether a specific block is clickable or not
+        /// </summary>
+        /// <param name="tower">The tower of the block</param>
+        /// <param name="level">THe level of the block</param>
+        /// <param name="isClickable">What to set Clickable to</param>
+        private void SetBlockIsClickable(int tower, int level, bool isClickable)
+        {
+            if (level > -1 && level < TowerHeight)
+            {
+                switch (tower)
+                {
+                    case 0:
+                        {
+                            Tower0.ElementAt((TowerHeight - 1) - level).IsClickable = isClickable;
+                            break;
+                        }
+                    case 1:
+                        {
+                            Tower1.ElementAt((TowerHeight - 1) - level).IsClickable = isClickable;
+                            break;
+                        }
+                    case 2:
+                        {
+                            Tower2.ElementAt((TowerHeight - 1) - level).IsClickable = isClickable;
+                            break;
+                        }
+                }
+                ReloadTower(tower);
+            }
+        }
+
+
+        /// <summary>
+        /// Hide any border at the given position
+        /// </summary>
+        /// <param name="tower"></param>
+        /// <param name="level"></param>
+        private void HideBorder(int tower, int level)
+        {
+            if (level > -1 && level < TowerHeight)
+            {
+                switch (tower)
+                {
+                    case 0:
+                        {
+                            Tower0.ElementAt((TowerHeight - 1) - level).HideBorder();
+                            break;
+                        }
+                    case 1:
+                        {
+                            Tower1.ElementAt((TowerHeight - 1) - level).HideBorder();
+                            break;
+                        }
+                    case 2:
+                        {
+                            Tower2.ElementAt((TowerHeight - 1) - level).HideBorder();
+                            break;
+                        }
+                }
+                ReloadTower(tower);
+            }
+        }
+
 
         /// <summary>
         /// Update a single block in the tower collections on-screen, to its state in Gameboard
@@ -516,10 +620,13 @@ namespace ITstudy.RedProjects
         /// <param name="level">The level where the block is located at</param>
         private void UpdateBlock(int tower, int level)
         {
-            TowerBlock newBlock = Gameboard[tower, level];
+            if (tower < 0 || tower > 2 || level < 0 || level > TowerHeight - 1)
+            {
+                Debug.WriteLine(string.Format("TowerOfHanoi: UpdateBlock() revieced invalid input. tower={0}, level={1}", tower, level));
+                return;
+            }
 
-            // You could reduce the number of times ReloadTower() is typed out, by switching the nesting-order in the following switch statements, ie tower first then state, and placing it at the end of each case of switch(tower)
-            // But you might lose the out-of-bounds protection that the current structure provides, since it no longer has to have a case in both switches before it is called, as well as the overview of grouping the behaviour by state
+            TowerBlock newBlock = Gameboard[tower, level];
 
             switch (newBlock.State)
             {
@@ -530,19 +637,16 @@ namespace ITstudy.RedProjects
                             case 0:
                                 {
                                     Tower0.ElementAt((TowerHeight - 1) - level).SetStateEmpty();
-                                    ReloadTower(0);
                                     break;
                                 }
                             case 1:
                                 {
                                     Tower1.ElementAt((TowerHeight - 1) - level).SetStateEmpty();
-                                    ReloadTower(1);
                                     break;
                                 }
                             case 2:
                                 {
                                     Tower2.ElementAt((TowerHeight - 1) - level).SetStateEmpty();
-                                    ReloadTower(2);
                                     break;
                                 }
                         }
@@ -556,19 +660,16 @@ namespace ITstudy.RedProjects
                             case 0:
                                 {
                                     Tower0.ElementAt((TowerHeight - 1) - level).SetStateAvailable(BlockWidths[Gameboard[SelectedBlock[0], SelectedBlock[1]].Width - 1]);
-                                    ReloadTower(0);
                                     break;
                                 }
                             case 1:
                                 {
                                     Tower1.ElementAt((TowerHeight - 1) - level).SetStateAvailable(BlockWidths[Gameboard[SelectedBlock[0], SelectedBlock[1]].Width - 1]);
-                                    ReloadTower(1);
                                     break;
                                 }
                             case 2:
                                 {
                                     Tower2.ElementAt((TowerHeight - 1) - level).SetStateAvailable(BlockWidths[Gameboard[SelectedBlock[0], SelectedBlock[1]].Width - 1]);
-                                    ReloadTower(2);
                                     break;
                                 }
                         }
@@ -586,7 +687,6 @@ namespace ITstudy.RedProjects
                                     {
                                         Tower0.ElementAt((TowerHeight - 1) - level).IsClickable = true;
                                     }
-                                    ReloadTower(0);
                                     break;
                                 }
                             case 1:
@@ -596,7 +696,6 @@ namespace ITstudy.RedProjects
                                     {
                                         Tower0.ElementAt((TowerHeight - 1) - level).IsClickable = true;
                                     }
-                                    ReloadTower(1);
                                     break;
                                 }
                             case 2:
@@ -606,7 +705,6 @@ namespace ITstudy.RedProjects
                                     {
                                         Tower0.ElementAt((TowerHeight - 1) - level).IsClickable = true;
                                     }
-                                    ReloadTower(2);
                                     break;
                                 }
                         }
@@ -615,24 +713,29 @@ namespace ITstudy.RedProjects
 
                 case BlockState.Selected:
                     {
+                        // unset any previously possible moves
+                        int x = GetLowestEmptyBlock(0);
+                        if (x > -1) { Tower0.ElementAt((TowerHeight - 1) - x).SetStateEmpty(); }
+                        x = GetLowestEmptyBlock(1);
+                        if (x > -1) { Tower1.ElementAt((TowerHeight - 1) - x).SetStateEmpty(); }
+                        x = GetLowestEmptyBlock(2);
+                        if (x > -1) { Tower2.ElementAt((TowerHeight - 1) - x).SetStateEmpty(); }
+
                         switch (tower)
                         {
                             case 0:
                                 {
                                     Tower0.ElementAt((TowerHeight - 1) - level).SetStateSelected();
-                                    ReloadTower(0);
                                     break;
                                 }
                             case 1:
                                 {
                                     Tower1.ElementAt((TowerHeight - 1) - level).SetStateSelected();
-                                    ReloadTower(1);
                                     break;
                                 }
                             case 2:
                                 {
                                     Tower2.ElementAt((TowerHeight - 1) - level).SetStateSelected();
-                                    ReloadTower(2);
                                     break;
                                 }
                         }
@@ -646,6 +749,8 @@ namespace ITstudy.RedProjects
                     }
 
             }
+
+            ReloadTower(tower);
 
         }
 
@@ -688,54 +793,7 @@ namespace ITstudy.RedProjects
         }
 
 
-        // Ensure that the top most block of a tower is clickable
-        private void SetTopBlockClickable(int tower)
-        {
-            int x = GetHighestBlock(tower);
-            if (x > -1)
-            {
-                switch (tower)
-                {
-                    case 0:
-                        {
-                            Tower0.ElementAt((TowerHeight - 1) - x).IsClickable = true;
-                            break;
-                        }
-                    case 1:
-                        {
-                            Tower1.ElementAt((TowerHeight - 1) - x).IsClickable = true;
-                            break;
-                        }
-                    case 2:
-                        {
-                            Tower2.ElementAt((TowerHeight - 1) - x).IsClickable = true;
-                            break;
-                        }
-                }                
-            }
-        }
 
-
-        private void PrintCurrentGameboardWidths()
-        {
-            Debug.WriteLine(string.Format("TowerOfHanoi: Current Gameboard values are;"));
-
-            for (int i = 0; i < Gameboard.GetLength(1); i++)
-            {
-                Debug.WriteLine(string.Format("TowerOfHanoi: {0} {1} {2}", Gameboard[0, i].Width, Gameboard[1, i].Width, Gameboard[2, i].Width));
-            }
-        }
-
-
-        private void PrintCurrentGameboardStates()
-        {
-            Debug.WriteLine(string.Format("TowerOfHanoi: Current Gameboard states are;"));
-
-            for (int i = 0; i < Gameboard.GetLength(1); i++)
-            {
-                Debug.WriteLine(string.Format("TowerOfHanoi: {0} {1} {2}", Gameboard[0, i].State, Gameboard[1, i].State, Gameboard[2, i].State));
-            }
-        }
 
 
 
@@ -810,6 +868,30 @@ namespace ITstudy.RedProjects
                 AnalyseInput((int)char.GetNumericValue(b[0]), (int)char.GetNumericValue(b[1]));
             }
 
+        }
+
+
+
+        // Helper method, print the current widths of the elements in gameboard to Output
+        private void PrintGameboardWidths()
+        {
+            Debug.WriteLine(string.Format("TowerOfHanoi: Current Gameboard values are;"));
+
+            for (int i = 0; i < Gameboard.GetLength(1); i++)
+            {
+                Debug.WriteLine(string.Format("TowerOfHanoi: {0} {1} {2}", Gameboard[0, i].Width, Gameboard[1, i].Width, Gameboard[2, i].Width));
+            }
+        }
+
+        // Helper method, print the current states of the elements in gameboard to Output
+        private void PrintGameboardStates()
+        {
+            Debug.WriteLine(string.Format("TowerOfHanoi: Current Gameboard states are;"));
+
+            for (int i = 0; i < Gameboard.GetLength(1); i++)
+            {
+                Debug.WriteLine(string.Format("TowerOfHanoi: {0} {1} {2}", Gameboard[0, i].State, Gameboard[1, i].State, Gameboard[2, i].State));
+            }
         }
 
 

@@ -85,7 +85,7 @@
                     <Button Content="Game Rules" FontSize="24" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" Margin="20 10">
                         <Button.Flyout>
                             <Flyout>
-                                <RichTextBlock TextWrapping="WrapWholeWords">
+                                <RichTextBlock TextWrapping="WrapWholeWords" Width="400">
                                     <Paragraph>
                                         <Run>
                                             1. You may only move one block at a time.
@@ -97,6 +97,11 @@
                                         <LineBreak/>
                                         <Run>
                                             3. The block below must always be larger than the one above.
+                                        </Run>
+                                        <LineBreak/>
+                                        <LineBreak/>
+                                        <Run>
+                                            The game is won when the entire tower has been moved, from the pole on the left, to the pole on the right.
                                         </Run>
                                         <LineBreak/>
                                     </Paragraph>
@@ -134,7 +139,7 @@
                     </ContentDialog>
 
 
-                    <Button x:Name="SolveButton" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Width="500" Height="100" Content="Let Computer Solve" FontSize="48"
+                    <Button x:Name="SolveButton" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Width="500" Height="100" Content="Do Computer Solve" FontSize="48"
                             CornerRadius="8" ToolTipService.ToolTip="Let the computer solve the tower." Click="SolveButton_Click"/>
 
                     <Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Width="300" Margin="0 0 40 0">
@@ -184,8 +189,7 @@
                         <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Margin="20" Width="16" Fill="DimGray"/>
                         <Rectangle Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Margin="20" Width="16" Height="500" Fill="DimGray"/>
                         <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="20" Width="16" Height="500" Fill="DimGray"/>
-                        
-                        
+
 
 
                         <!-- Tower 0 -->
@@ -235,6 +239,9 @@
                     </Grid>
 
 
+
+                    <TextBlock x:Name="WinTextBlock" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20"
+                               Text="Well Done!" FontSize="48" Foreground="Green" Opacity="0"/>
 
 
                 </Grid>

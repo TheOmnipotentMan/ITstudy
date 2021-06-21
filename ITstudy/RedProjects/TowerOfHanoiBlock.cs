@@ -79,6 +79,7 @@ namespace ITstudy.RedProjects
 
         // https://docs.microsoft.com/en-us/dotnet/api/system.componentmodel.inotifypropertychanged?view=net-5.0
         // I can not get this to work, so I have resorted to reloading the entire collection each time something is changed, and left this in if I want to give it another try
+        // However, changing IsClickable does have direct effect on its bound element, just like NotifyPropertyChanged() should do for the other variables
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             if (PropertyChanged != null)
