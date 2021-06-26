@@ -279,6 +279,13 @@
                                     <Button x:Name="TowerOfHanoi" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
                                 </Canvas>
 
+                                <!-- Yahtzee -->
+                                <Canvas Width="350" Height="36">
+                                    <TextBlock Text="10. Yahtzee" FontSize="18" Canvas.Left="30" Canvas.Top="5" Canvas.ZIndex="0"/>
+                                    <Image Source="Assets\StatusBlocked_16x.png" Width="20" Canvas.Left="4" Canvas.Top="8" Canvas.ZIndex="0"/>
+                                    <Button x:Name="Yahtzee" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
+                                </Canvas>
+
 
 
 

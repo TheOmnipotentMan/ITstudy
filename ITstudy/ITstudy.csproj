@@ -169,6 +169,9 @@
       <DependentUpon>TowerOfHanoi.xaml</DependentUpon>
     </Compile>
     <Compile Include="RedProjects\TowerOfHanoiBlock.cs" />
+    <Compile Include="RedProjects\Yahtzee.xaml.cs">
+      <DependentUpon>Yahtzee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="TestPage1.xaml.cs">
       <DependentUpon>TestPage1.xaml</DependentUpon>
     </Compile>
@@ -464,6 +467,14 @@
     <Content Include="Assets\TicTacToe\TicTacToeSymbolO.png" />
     <Content Include="Assets\TicTacToe\TicTacToeSymbolX.png" />
     <Content Include="Assets\VeryNiceBorat.png" />
+    <Content Include="Assets\Yahtzee\DiceFace1.png" />
+    <Content Include="Assets\Yahtzee\DiceFace2.png" />
+    <Content Include="Assets\Yahtzee\DiceFace3.png" />
+    <Content Include="Assets\Yahtzee\DiceFace4.png" />
+    <Content Include="Assets\Yahtzee\DiceFace5.png" />
+    <Content Include="Assets\Yahtzee\DiceFace6.png" />
+    <Content Include="Assets\Yahtzee\DiceFaceError.png" />
+    <Content Include="Assets\Yahtzee\DiceFaceNone.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -539,6 +550,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RedProjects\TowerOfHanoi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RedProjects\Yahtzee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

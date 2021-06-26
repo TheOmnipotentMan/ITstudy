@@ -143,6 +143,7 @@ namespace ITstudy
                 case "TicTacToe": { ContentFrame.Content = new RedProjects.TicTacToe(); return true; }
                 case "MorseCode": { ContentFrame.Content = new RedProjects.MorseCode(); return true; }
                 case "TowerOfHanoi": { ContentFrame.Content = new RedProjects.TowerOfHanoi(); return true; }
+                case "Yahtzee": { ContentFrame.Content = new RedProjects.Yahtzee(); return true; }
 
                 // GREEN
                 case "TaxiService": { ContentFrame.Content = new GreenProjects.TaxiService(); return true; }
