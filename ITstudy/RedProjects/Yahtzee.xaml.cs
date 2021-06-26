@@ -31,7 +31,7 @@ namespace ITstudy.RedProjects
     /// </summary>
     public sealed partial class Yahtzee : Page
     {
-
+        /*
         // Score sheet
         private class ScoreBoard
         {
@@ -62,6 +62,8 @@ namespace ITstudy.RedProjects
                 IsComputer = isComputer;
             }
         }
+        */
+
 
         // General Project info, to be displayed under PivotItem "Project Details"
         // Total time spent on this project
@@ -98,22 +100,22 @@ namespace ITstudy.RedProjects
 
         // Category names
         #region CategoryNames
-        public const string CatergoryAces = "Aces";
-        public const string CatergoryTwos = "Twos";
-        public const string CatergoryThrees = "Threes";
-        public const string CatergoryFours = "Fours";
-        public const string CatergoryFives = "Fives";
-        public const string CatergorySixes = "Sixes";
-        public const string CatergoryUpperBonus = "Bonus";
+        public string CatergoryAces = "Aces";
+        public string CatergoryTwos = "Twos";
+        public string CatergoryThrees = "Threes";
+        public string CatergoryFours = "Fours";
+        public string CatergoryFives = "Fives";
+        public string CatergorySixes = "Sixes";
+        public string CatergoryUpperBonus = "Bonus";
 
-        public const string CatergoryThreeKind = "Three of a Kind";
-        public const string CatergoryFourKind = "Four of a Kind";
-        public const string CatergoryFullHouse = "Full House";
-        public const string CatergorySmallStraight = "Small Straight";
-        public const string CatergoryLargeStraight = "Large Straight";
-        public const string CatergoryYahtzee = "Yahtzee";
-        public const string CatergoryChance = "Chance";
-        public const string CatergoryYahtzeeBonus = "Yahtzee Bonus";
+        public string CatergoryThreeKind = "Three of a Kind";
+        public string CatergoryFourKind = "Four of a Kind";
+        public string CatergoryFullHouse = "Full House";
+        public string CatergorySmallStraight = "Small Straight";
+        public string CatergoryLargeStraight = "Large Straight";
+        public string CatergoryYahtzee = "Yahtzee";
+        public string CatergoryChance = "Chance";
+        public string CatergoryYahtzeeBonus = "Yahtzee Bonus";
         #endregion CategoryNames
 
 
