@@ -578,6 +578,7 @@ namespace ITstudy.RedProjects
                 }
                 ReloadTower(tower);
             }
+            
         }
 
 
@@ -654,7 +655,7 @@ namespace ITstudy.RedProjects
                     }
 
                 case BlockState.Available:
-                    {                        
+                    {
                         switch (tower)
                         {
                             case 0:
@@ -683,28 +684,16 @@ namespace ITstudy.RedProjects
                             case 0:
                                 {
                                     Tower0.ElementAt((TowerHeight - 1) - level).SetStateBlock(BlockWidths[newBlock.Width - 1], BlockColours.ElementAt((newBlock.Width - 1 + BlockColours.Length) % BlockColours.Length));
-                                    if (level == GetHighestBlock(0))
-                                    {
-                                        Tower0.ElementAt((TowerHeight - 1) - level).IsClickable = true;
-                                    }
                                     break;
                                 }
                             case 1:
                                 {
                                     Tower1.ElementAt((TowerHeight - 1) - level).SetStateBlock(BlockWidths[newBlock.Width - 1], BlockColours.ElementAt((newBlock.Width - 1 + BlockColours.Length) % BlockColours.Length));
-                                    if (level == GetHighestBlock(1))
-                                    {
-                                        Tower0.ElementAt((TowerHeight - 1) - level).IsClickable = true;
-                                    }
                                     break;
                                 }
                             case 2:
                                 {
                                     Tower2.ElementAt((TowerHeight - 1) - level).SetStateBlock(BlockWidths[newBlock.Width - 1], BlockColours.ElementAt((newBlock.Width - 1 + BlockColours.Length) % BlockColours.Length));
-                                    if (level == GetHighestBlock(2))
-                                    {
-                                        Tower0.ElementAt((TowerHeight - 1) - level).IsClickable = true;
-                                    }
                                     break;
                                 }
                         }

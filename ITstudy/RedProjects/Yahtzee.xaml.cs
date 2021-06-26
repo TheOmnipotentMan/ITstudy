@@ -31,7 +31,6 @@ namespace ITstudy.RedProjects
     /// </summary>
     public sealed partial class Yahtzee : Page
     {
-        /*
         // Score sheet
         private class ScoreBoard
         {
@@ -62,7 +61,6 @@ namespace ITstudy.RedProjects
                 IsComputer = isComputer;
             }
         }
-        */
 
 
         // General Project info, to be displayed under PivotItem "Project Details"
