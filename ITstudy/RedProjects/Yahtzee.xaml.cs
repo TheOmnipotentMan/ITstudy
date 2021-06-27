@@ -132,6 +132,7 @@ namespace ITstudy.RedProjects
             GameRulesContentDialog.Opacity = 1;
 
             // Set the file-path for the dice face image files, log a message if no file exists at specified location
+            // Count the image files found, if all files were found set DiceImageFilesPresent to true
             int filesFound = 0;
             string pathBase = "ms-appx:///";
             string face1Path = "Assets\\Yahtzee\\DiceFace1.png";
@@ -156,12 +157,18 @@ namespace ITstudy.RedProjects
             if (File.Exists(face6Path)) { DiceFace6 = new Uri(pathBase + face6Path); filesFound++; }
             else { Debug.WriteLine(string.Format(fileNotFoundStatement, "6", face6Path)); }
             if (File.Exists(faceNonePath)) { DiceFaceNone = new Uri(pathBase + faceNonePath); filesFound++; }
-            else { Debug.WriteLine(string.Format(fileNotFoundStatement, "6", faceErrorPath)); }
+            else { Debug.WriteLine(string.Format(fileNotFoundStatement, "6", faceNonePath)); }
             if (File.Exists(faceErrorPath)) { DiceFaceError = new Uri(pathBase + faceErrorPath); filesFound++; }
             else { Debug.WriteLine(string.Format(fileNotFoundStatement, "6", faceErrorPath)); }
             if (filesFound == 8) { DiceImageFilesPresent = true; }
 
         }
+
+
+
+
+
+
 
 
         private void NewGame(int playerCount, int computerCount)
@@ -172,40 +179,91 @@ namespace ITstudy.RedProjects
             // Set the current dice values to 0
             CurrentDiceValues = new int[5] { 0, 0, 0, 0, 0 };
 
-            // Set the current round and roll counters to 0
-            CurrentRound = 0;
+            // Set the current roll and round counters to 0
             CurrentRoll = 0;
+            UpdateRollCounter();
+            CurrentRound = 0;
+            UpdateRoundCounter();
 
             // Set the ToggleButtons, used to allow the holding of a die, to unchecked and not-clickable,
             // since there will be no values to hold until the first roll of the dice
             SetDiceToggleButtonsAvailable(false);
+
+            // Set the RollDiceButton IsEnabled to true, to allow for the starting player to roll the dice
+            RollDiceButton.IsEnabled = true;
 
 
 
         }
 
 
-        // Roll the dice, excluding the dice that have been set to hold
+
+
+
+
+
+
+        /// <summary>
+        /// Progresses the game to the next roll, or moves the game on to the NextPlayer() if max allowed rolls (3) has been reached
+        /// </summary>
+        private void NextRoll()
+        {
+            // Number of allowed dice-rolls, yahtzee rules specify 3
+            int rollsAllowed = 3;
+
+            // If the current roll is the first, enable the ToggleButtons on the dice to allow holding chosen dice
+            if (CurrentRoll == 0)
+            {
+                SetDiceToggleButtonsAvailable(true);
+            }
+            // If the current roll is the last one, display a representation of this on screen, notifying the player that the next turn will be for the next player
+            else if (CurrentRoll == rollsAllowed - 1)
+            {
+                // Disable the button to roll dice, this leave the player only able to commit its score to a category on the scorecard, thereby advancing the game
+                // TODO reinstate: RollDiceButton.IsEnabled = false;
+            }
+
+            // Increment the CurrentRoll counter, then call RollDice() to do the new roll
+            CurrentRoll++;
+            RollDice();
+
+        }
+
+
+        /// <summary>
+        /// Move the game on to the next player, clearing the previous dice-values and updating the scorecard to that of the current player
+        /// </summary>
+        private void NextPlayer()
+        {
+            ClearDiceValues();
+            CurrentRoll = 0;
+            RollDiceButton.IsEnabled = true;
+            
+        }
+
+
+        /// <summary>
+        /// Roll the dice, excluding the dice that have been set to hold
+        /// This only rolls the dice, if you want the game to also progress to the next turn/roll, use NextRoll() instead
+        /// </summary>
         private void RollDice()
         {
             // Get which dice to hold and which to roll
             bool[] holdDice = new bool[5]
             {
-                (CurrentDiceValues[0] == 0 ? true : Die1ToggleButton.IsChecked == true),
-                (CurrentDiceValues[1] == 0 ? true : Die2ToggleButton.IsChecked == true),
-                (CurrentDiceValues[2] == 0 ? true : Die3ToggleButton.IsChecked == true),
-                (CurrentDiceValues[3] == 0 ? true : Die4ToggleButton.IsChecked == true),
-                (CurrentDiceValues[4] == 0 ? true : Die5ToggleButton.IsChecked == true),
+                (CurrentDiceValues[0] == 0 ? false : (Die1ToggleButton.IsChecked == true)),
+                (CurrentDiceValues[1] == 0 ? false : (Die2ToggleButton.IsChecked == true)),
+                (CurrentDiceValues[2] == 0 ? false : (Die3ToggleButton.IsChecked == true)),
+                (CurrentDiceValues[3] == 0 ? false : (Die4ToggleButton.IsChecked == true)),
+                (CurrentDiceValues[4] == 0 ? false : (Die5ToggleButton.IsChecked == true)),
             };
             
-            
-            // { (Die1ToggleButton.IsChecked == true), (Die2ToggleButton.IsChecked == true), (Die3ToggleButton.IsChecked == true), (Die4ToggleButton.IsChecked == true), (Die5ToggleButton.IsChecked == true) };
-
             // Roll new values
             int[] dice = new int[5];
             for (int i = 0; i < dice.Length; i++)
             {
                 dice[i] = (holdDice[i]) ? CurrentDiceValues[i] : NewDie();
+                Debug.WriteLine($"Yahtzee: RollDice() roll={CurrentRoll} i={i}, holdDice={holdDice[i]}, dice={dice[i]}");
             }
 
             // Set the new values to the CurrentDiceValues
@@ -214,10 +272,24 @@ namespace ITstudy.RedProjects
             // Show the dice on screen
             ShowDice(CurrentDiceValues, holdDice);
         }
+        /// <summary>
+        /// Get a new roll of a die
+        /// </summary>
+        /// <returns>A number between 0 and 6</returns>
+        private int NewDie()
+        {
+            return Random.Next(1, 7);
+        }
+
+
+
+
+
+
 
 
         /// <summary>
-        /// Set the UI representation of the dice to the specified values
+        /// Set the UI representation of the dice to the specified values, also updates roll-counter
         /// </summary>
         /// <param name="dice">int array of the 5 die values</param>
         /// <param name="holdDice">Which dice to </param>
@@ -274,6 +346,9 @@ namespace ITstudy.RedProjects
                     Die5TextBlock.Text = dice[4].ToString();
                 }
             }
+
+            // Update the roll-counter (turn counter)
+            UpdateRollCounter();
         }
         // Returns the Uri filepath to the relevant image source, for the specified number. Returns an error image source if no file is available for the given number, or null if no file was found.
         private Uri GetDiceFaceImageSource(int x)
@@ -295,6 +370,16 @@ namespace ITstudy.RedProjects
 
 
         /// <summary>
+        /// Update the RollCounterTextBlock to the value of CurrentRoll
+        /// </summary>
+        private void UpdateRollCounter() { RollCounterTextBlock.Text = "Roll " + CurrentRoll.ToString(); }
+        /// <summary>
+        /// Update the GameRoundTextBlock to the value of CurrentRound
+        /// </summary>
+        private void UpdateRoundCounter() { GameRoundTextBlock.Text = "Round " + ((CurrentRound < 10) ? "0" : "") + CurrentRound.ToString(); }
+
+
+        /// <summary>
         /// Clear all dice values on screen
         /// </summary>
         private void ClearDiceValues()
@@ -313,6 +398,12 @@ namespace ITstudy.RedProjects
             Die4TextBlock.Text = "";
             Die5TextBlock.Text = "";
         }
+
+
+
+
+
+
 
 
         /// <summary>
@@ -340,15 +431,7 @@ namespace ITstudy.RedProjects
         }
 
 
-        /// <summary>
-        /// Get a new roll of a die
-        /// </summary>
-        /// <returns>A number between 0 and 6</returns>
-        private int NewDie()
-        {
-            return Random.Next(1, 7);
-        }
-
+        
 
 
 
@@ -360,7 +443,7 @@ namespace ITstudy.RedProjects
             // If the selected button, result, was the one for a new game
             if (result == ContentDialogResult.Primary)
             {
-
+                NewGame((int)TotalPlayerCountNumberBox.Value, (int)ComputerPlayerCountNumberBox.Value);
             }
             // Else the button was "cancel"
         }
@@ -373,7 +456,7 @@ namespace ITstudy.RedProjects
 
         private void RollDiceButton_Click(object sender, RoutedEventArgs e)
         {
-
+            NextRoll();
         }
 
         private void ScorecardButton_Click(object sender, RoutedEventArgs e)
