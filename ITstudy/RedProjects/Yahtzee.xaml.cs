@@ -77,10 +77,11 @@ namespace ITstudy.RedProjects
 
         // The current dice on the table, their values
         int[] CurrentDiceValues = new int[5];
+        // Which dice to hold and which to roll
+        bool[] HoldDice = new bool[5] { false, false, false, false, false };
 
         // The current round of the game
         int CurrentRound = 0;
-
         // The current roll of the player, starting at zero and ending at 3
         int CurrentRoll = 0;
 
@@ -173,11 +174,8 @@ namespace ITstudy.RedProjects
 
         private void NewGame(int playerCount, int computerCount)
         {
-            // Clear any dice values on screen
+            // Clear any and all dice values
             ClearDiceValues();
-
-            // Set the current dice values to 0
-            CurrentDiceValues = new int[5] { 0, 0, 0, 0, 0 };
 
             // Set the current roll and round counters to 0
             CurrentRoll = 0;
@@ -187,7 +185,7 @@ namespace ITstudy.RedProjects
 
             // Set the ToggleButtons, used to allow the holding of a die, to unchecked and not-clickable,
             // since there will be no values to hold until the first roll of the dice
-            SetDiceToggleButtonsAvailable(false);
+            SetDiceHoldingAllowed(false);
 
             // Set the RollDiceButton IsEnabled to true, to allow for the starting player to roll the dice
             RollDiceButton.IsEnabled = true;
@@ -214,7 +212,7 @@ namespace ITstudy.RedProjects
             // If the current roll is the first, enable the ToggleButtons on the dice to allow holding chosen dice
             if (CurrentRoll == 0)
             {
-                SetDiceToggleButtonsAvailable(true);
+                SetDiceHoldingAllowed(true);
             }
             // If the current roll is the last one, display a representation of this on screen, notifying the player that the next turn will be for the next player
             else if (CurrentRoll == rollsAllowed - 1)
@@ -247,30 +245,19 @@ namespace ITstudy.RedProjects
         /// This only rolls the dice, if you want the game to also progress to the next turn/roll, use NextRoll() instead
         /// </summary>
         private void RollDice()
-        {
-            // Get which dice to hold and which to roll
-            bool[] holdDice = new bool[5]
-            {
-                (CurrentDiceValues[0] == 0 ? false : (Die1ToggleButton.IsChecked == true)),
-                (CurrentDiceValues[1] == 0 ? false : (Die2ToggleButton.IsChecked == true)),
-                (CurrentDiceValues[2] == 0 ? false : (Die3ToggleButton.IsChecked == true)),
-                (CurrentDiceValues[3] == 0 ? false : (Die4ToggleButton.IsChecked == true)),
-                (CurrentDiceValues[4] == 0 ? false : (Die5ToggleButton.IsChecked == true)),
-            };
-            
+        {            
             // Roll new values
-            int[] dice = new int[5];
-            for (int i = 0; i < dice.Length; i++)
+            for (int i = 0; i < CurrentDiceValues.Length; i++)
             {
-                dice[i] = (holdDice[i]) ? CurrentDiceValues[i] : NewDie();
-                Debug.WriteLine($"Yahtzee: RollDice() roll={CurrentRoll} i={i}, holdDice={holdDice[i]}, dice={dice[i]}");
+                if (CurrentDiceValues[i] == 0 || HoldDice[i] == false)
+                {
+                    CurrentDiceValues[i] = NewDie();
+                }
+                Debug.WriteLine($"Yahtzee: RollDice() roll={CurrentRoll} i={i}, HoldDice={HoldDice[i]}, dice={CurrentDiceValues[i]}");
             }
 
-            // Set the new values to the CurrentDiceValues
-            CurrentDiceValues = dice;
-
             // Show the dice on screen
-            ShowDice(CurrentDiceValues, holdDice);
+            ShowDice(CurrentDiceValues);
         }
         /// <summary>
         /// Get a new roll of a die
@@ -289,11 +276,35 @@ namespace ITstudy.RedProjects
 
 
         /// <summary>
+        /// Toggle hold on a specified die, and set the representation on-screen
+        /// </summary>
+        /// <param name="die">Which die to toggle hold on, 0-index</param>
+        private void HoldDie(int die)
+        {
+            HoldDice[die] = !HoldDice[die];
+
+            switch (die)
+            {
+                case 0: { Die1HoldBorder.Opacity = Convert.ToInt32(HoldDice[die]); break; }
+                case 1: { Die2HoldBorder.Opacity = Convert.ToInt32(HoldDice[die]); break; }
+                case 2: { Die3HoldBorder.Opacity = Convert.ToInt32(HoldDice[die]); break; }
+                case 3: { Die4HoldBorder.Opacity = Convert.ToInt32(HoldDice[die]); break; }
+                case 4: { Die5HoldBorder.Opacity = Convert.ToInt32(HoldDice[die]); break; }
+            }
+        }
+
+
+
+
+
+
+
+
+        /// <summary>
         /// Set the UI representation of the dice to the specified values, also updates roll-counter
         /// </summary>
         /// <param name="dice">int array of the 5 die values</param>
-        /// <param name="holdDice">Which dice to </param>
-        private void ShowDice(int[] dice, bool[] holdDice)
+        private void ShowDice(int[] dice)
         {
             if (dice.Length < 5) { Debug.WriteLine(string.Format("Yahtzee: ShowDice() input int[] was too short; length={0}", dice.Length)); return; }
 
@@ -301,23 +312,23 @@ namespace ITstudy.RedProjects
             if (DiceImageFilesPresent)
             {
                 // If holdDice is false, ie the toggle button of the die is not checked, change the image
-                if (!holdDice[0])
+                if (!HoldDice[0])
                 {
                     Die1Image.Source = new BitmapImage(GetDiceFaceImageSource(dice[0]));
                 }
-                if (!holdDice[0])
+                if (!HoldDice[0])
                 {
                     Die2Image.Source = new BitmapImage(GetDiceFaceImageSource(dice[1]));
                 }
-                if (!holdDice[0])
+                if (!HoldDice[0])
                 {
                     Die3Image.Source = new BitmapImage(GetDiceFaceImageSource(dice[2]));
                 }
-                if (!holdDice[0])
+                if (!HoldDice[0])
                 {
                     Die4Image.Source = new BitmapImage(GetDiceFaceImageSource(dice[3]));
                 }
-                if (!holdDice[0])
+                if (!HoldDice[0])
                 {
                     Die5Image.Source = new BitmapImage(GetDiceFaceImageSource(dice[4]));
                 }
@@ -325,23 +336,23 @@ namespace ITstudy.RedProjects
             else
             {
                 // If holdDice is false, ie the toggle button of the die is not checked, change the text
-                if (!holdDice[0])
+                if (!HoldDice[0])
                 {
                     Die1TextBlock.Text = dice[0].ToString();
                 }
-                if (!holdDice[1])
+                if (!HoldDice[1])
                 {
                     Die2TextBlock.Text = dice[1].ToString();
                 }
-                if (!holdDice[2])
+                if (!HoldDice[2])
                 {
                     Die3TextBlock.Text = dice[2].ToString();
                 }
-                if (!holdDice[3])
+                if (!HoldDice[3])
                 {
                     Die4TextBlock.Text = dice[3].ToString();
                 }
-                if (!holdDice[4])
+                if (!HoldDice[4])
                 {
                     Die5TextBlock.Text = dice[4].ToString();
                 }
@@ -380,10 +391,14 @@ namespace ITstudy.RedProjects
 
 
         /// <summary>
-        /// Clear all dice values on screen
+        /// Clear all dice values, by setting them to 0
         /// </summary>
         private void ClearDiceValues()
         {
+            Array.Fill(CurrentDiceValues, 0);
+            ShowDice(CurrentDiceValues);
+
+            /*
             // Clear any images
             Die1Image.Source = null;
             Die2Image.Source = null;
@@ -397,6 +412,7 @@ namespace ITstudy.RedProjects
             Die3TextBlock.Text = "";
             Die4TextBlock.Text = "";
             Die5TextBlock.Text = "";
+            */
         }
 
 
@@ -407,27 +423,20 @@ namespace ITstudy.RedProjects
 
 
         /// <summary>
-        /// Set if the ToggleButtons for die-holding should be available or not, relevant on the start of a turn where they should not be available
+        /// Set if the Buttons for die-holding should be available or not, relevant on the start of a turn where they should not be available
         /// </summary>
-        /// <param name="state">The state of availablility to set the ToggleButtons too</param>
-        private void SetDiceToggleButtonsAvailable(bool? state = null)
+        /// <param name="state">The state of availablility to set the Buttons too</param>
+        private void SetDiceHoldingAllowed(bool state)
         {
-            // Uncheck all ToggleButtons
-            Die1ToggleButton.IsChecked = false;
-            Die2ToggleButton.IsChecked = false;
-            Die3ToggleButton.IsChecked = false;
-            Die4ToggleButton.IsChecked = false;
-            Die5ToggleButton.IsChecked = false;
-
-            // Cast the bool? state to the bool newState, with null = false. https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator
-            bool newState = state ?? false;
+            // Set all holding of dice to false
+            Array.Fill(HoldDice, false);
 
             // Set whether the buttons can are clickable or not, depending on newState
-            Die1ToggleButton.IsHitTestVisible = newState;
-            Die2ToggleButton.IsHitTestVisible = newState;
-            Die3ToggleButton.IsHitTestVisible = newState;
-            Die4ToggleButton.IsHitTestVisible = newState;
-            Die5ToggleButton.IsHitTestVisible = newState;
+            Die1HoldButton.IsHitTestVisible = state;
+            Die2HoldButton.IsHitTestVisible = state;
+            Die3HoldButton.IsHitTestVisible = state;
+            Die4HoldButton.IsHitTestVisible = state;
+            Die5HoldButton.IsHitTestVisible = state;
         }
 
 
@@ -462,6 +471,20 @@ namespace ITstudy.RedProjects
         private void ScorecardButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void DieHoldButton_Click(object sender, RoutedEventArgs e)
+        {
+            int die = 0;
+            int.TryParse(((Button)sender).Tag.ToString(), out die);
+            if (die > 0 && die < 6)
+            {
+                HoldDie(die - 1);
+            }
+            else
+            {
+                Debug.WriteLine($"Yahtzee: DieHoldingButton_Click() failed to determine die, tag={((Button)sender).Tag.ToString()}, die={die}");
+            }
         }
     }
 }

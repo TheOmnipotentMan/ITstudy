@@ -29,29 +29,32 @@
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
         </Style>
-        <Style x:Key="DiceArm" TargetType="Grid">
+        <Style x:Key="DiceBase" TargetType="Grid">
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="160"/>
+            <Setter Property="Height" Value="160"/>
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
             <Setter Property="Margin" Value="0 0 0 500"/>
+        </Style>
+        <Style x:Key="DiceButtonStyle" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
             <Setter Property="BorderBrush" Value="{ThemeResource SystemChromeAltLowColor}"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="CornerRadius" Value="16"/>
+            <Setter Property="IsHitTestVisible" Value="False"/>
         </Style>
-        <Style x:Key="DiceBase" TargetType="ToggleButton">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Width" Value="160"/>
-            <Setter Property="Height" Value="160"/>
+        <Style x:Key="DiceHoldingBorder" TargetType="Border">
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="BorderBrush" Value="Olive"/>
+            <Setter Property="BorderThickness" Value="6"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="Opacity" Value="0"/>
         </Style>
-        <Style x:Key="DiceBase1" TargetType="ToggleButton">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="Width" Value="160"/>
-            <Setter Property="Height" Value="160"/>
-            <Setter Property="BorderThickness" Value="8"/>
-            <Setter Property="CornerRadius" Value="16"/>
-        </Style>
+        
         <Style x:Key="DiceFace" TargetType="Image">
             <Setter Property="Width" Value="140"/>
             <Setter Property="Height" Value="140"/>
@@ -148,346 +151,7 @@
             <Setter Property="BorderThickness" Value="4"/>
         </Style>
 
-        <ResourceDictionary x:Key="DiceToggleButton">
-            <SolidColorBrush x:Key="ToggleButton"/>
-
-        </ResourceDictionary>
         
-        <!-- Dice ToggleButtons, auto-generated and massive since all values are here -->
-        <ControlTemplate x:Key="ToggleButtonTemplate1" TargetType="ToggleButton">
-            <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BackgroundSizing="{TemplateBinding BackgroundSizing}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" CornerRadius="{TemplateBinding CornerRadius}" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal">
-                            <Storyboard>
-                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="PointerOver">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="Pressed">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SystemControlTransparentBrush}"/>
-                                    <!-- Value="{ThemeResource ToggleButtonBackgroundPressed}" -->
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushPressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundPressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="Disabled">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="Checked">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SystemControlTransparentBrush}"/>
-                                    <!-- Value="{ThemeResource ToggleButtonBackgroundChecked}" -->
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SystemControlTransparentBrush}"/>
-                                    <!-- Value="{ThemeResource ToggleButtonForegroundChecked}" -->
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundChecked}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="CheckedPointerOver">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundCheckedPointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushCheckedPointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundCheckedPointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="CheckedPressed">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundCheckedPressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundCheckedPressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushCheckedPressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="CheckedDisabled">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundCheckedDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundCheckedDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushCheckedDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="Indeterminate">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminate}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminate}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminate}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="IndeterminatePointerOver">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminatePointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminatePointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminatePointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="IndeterminatePressed">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminatePressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminatePressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminatePressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="IndeterminateDisabled">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminateDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminateDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminateDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
-            </ContentPresenter>
-        </ControlTemplate>
-        
-        
-        
-        <ControlTemplate x:Key="ToggleButtonTemplate2" TargetType="ToggleButton">
-            <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" BackgroundSizing="{TemplateBinding BackgroundSizing}" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" CornerRadius="{TemplateBinding CornerRadius}" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup x:Name="CommonStates">
-                        <VisualState x:Name="Normal">
-                            <Storyboard>
-                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="PointerOver">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundPointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushPointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundPointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="Pressed">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundPressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushPressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundPressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="Disabled">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="Checked">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundChecked}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundChecked}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushChecked}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="CheckedPointerOver">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundCheckedPointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushCheckedPointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundCheckedPointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="CheckedPressed">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundCheckedPressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundCheckedPressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushCheckedPressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="CheckedDisabled">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundCheckedDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundCheckedDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushCheckedDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="Indeterminate">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminate}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminate}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminate}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="IndeterminatePointerOver">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminatePointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminatePointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminatePointerOver}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="IndeterminatePressed">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminatePressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminatePressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminatePressed}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter"/>
-                            </Storyboard>
-                        </VisualState>
-                        <VisualState x:Name="IndeterminateDisabled">
-                            <Storyboard>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBackgroundIndeterminateDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonForegroundIndeterminateDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
-                                    <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ToggleButtonBorderBrushIndeterminateDisabled}"/>
-                                </ObjectAnimationUsingKeyFrames>
-                            </Storyboard>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>
-            </ContentPresenter>
-        </ControlTemplate>
 
 
     </Page.Resources>
@@ -686,10 +350,11 @@
 
                     <!-- Die 1 -->
                     <Grid Style="{StaticResource DiceOrigin}">
-                        <Grid Style="{StaticResource DiceArm}">
+                        <Grid Style="{StaticResource DiceBase}">
                             <Image x:Name="Die1Image" Style="{StaticResource DiceFace}" Source="/Assets/Yahtzee/DiceFace1.png"/>
                             <TextBlock x:Name="Die1TextBlock" Style="{StaticResource DiceText}"/>
-                            <ToggleButton x:Name="Die1ToggleButton" Style="{StaticResource DiceBase}"/>
+                            <Border x:Name="Die1HoldBorder" Style="{StaticResource DiceHoldingBorder}"/>
+                            <Button x:Name="Die1HoldButton" Style="{StaticResource DiceButtonStyle}" Tag="1" Click="DieHoldButton_Click"/>
                         </Grid>                        
                     </Grid>
 
@@ -698,13 +363,14 @@
                         <Grid.RenderTransform>
                             <CompositeTransform Rotation="72"/>
                         </Grid.RenderTransform>
-                        <Grid Style="{StaticResource DiceArm}">
+                        <Grid Style="{StaticResource DiceBase}">
                             <Grid.RenderTransform>
                                 <CompositeTransform Rotation="-72"/>
                             </Grid.RenderTransform>
                             <Image x:Name="Die2Image" Style="{StaticResource DiceFace}" Source="/Assets/Yahtzee/DiceFace2.png"/>
                             <TextBlock x:Name="Die2TextBlock" Style="{StaticResource DiceText}"/>
-                            <ToggleButton x:Name="Die2ToggleButton" Style="{StaticResource DiceBase}"/>
+                            <Border x:Name="Die2HoldBorder" Style="{StaticResource DiceHoldingBorder}"/>
+                            <Button x:Name="Die2HoldButton" Style="{StaticResource DiceButtonStyle}" Tag="2" Click="DieHoldButton_Click"/>
                         </Grid>                        
                     </Grid>
 
@@ -713,13 +379,14 @@
                         <Grid.RenderTransform>
                             <CompositeTransform Rotation="144"/>
                         </Grid.RenderTransform>
-                        <Grid Style="{StaticResource DiceArm}">
+                        <Grid Style="{StaticResource DiceBase}">
                             <Grid.RenderTransform>
                                 <CompositeTransform Rotation="-144"/>
                             </Grid.RenderTransform>
                             <Image x:Name="Die3Image" Style="{StaticResource DiceFace}" Source="/Assets/Yahtzee/DiceFace3.png"/>
                             <TextBlock x:Name="Die3TextBlock" Style="{StaticResource DiceText}"/>
-                            <ToggleButton x:Name="Die3ToggleButton" Style="{StaticResource DiceBase}"/>
+                            <Border x:Name="Die3HoldBorder" Style="{StaticResource DiceHoldingBorder}"/>
+                            <Button x:Name="Die3HoldButton" Style="{StaticResource DiceButtonStyle}" Tag="3" Click="DieHoldButton_Click"/>
                         </Grid>
                     </Grid>
 
@@ -728,13 +395,14 @@
                         <Grid.RenderTransform>
                             <CompositeTransform Rotation="216"/>
                         </Grid.RenderTransform>
-                        <Grid Style="{StaticResource DiceArm}">
+                        <Grid Style="{StaticResource DiceBase}">
                             <Grid.RenderTransform>
                                 <CompositeTransform Rotation="-216"/>
                             </Grid.RenderTransform>
                             <Image x:Name="Die4Image" Style="{StaticResource DiceFace}" Source="/Assets/Yahtzee/DiceFace4.png"/>
                             <TextBlock x:Name="Die4TextBlock" Style="{StaticResource DiceText}"/>
-                            <ToggleButton Template="{StaticResource ToggleButtonTemplate2}" x:Name="Die4ToggleButton" Style="{StaticResource DiceBase}"/>
+                            <Border x:Name="Die4HoldBorder" Style="{StaticResource DiceHoldingBorder}"/>
+                            <Button x:Name="Die4HoldButton" Style="{StaticResource DiceButtonStyle}" Tag="4" Click="DieHoldButton_Click"/>
                         </Grid>
                     </Grid>
 
@@ -743,13 +411,14 @@
                         <Grid.RenderTransform>
                             <CompositeTransform Rotation="288"/>
                         </Grid.RenderTransform>
-                        <Grid Style="{StaticResource DiceArm}">
+                        <Grid Style="{StaticResource DiceBase}">
                             <Grid.RenderTransform>
                                 <CompositeTransform Rotation="-288"/>
                             </Grid.RenderTransform>
                             <Image x:Name="Die5Image" Style="{StaticResource DiceFace}" Source="/Assets/Yahtzee/DiceFace5.png"/>
                             <TextBlock x:Name="Die5TextBlock" Style="{StaticResource DiceText}"/>
-                            <ToggleButton Template="{StaticResource ToggleButtonTemplate1}" BorderThickness="8" CornerRadius="16" x:Name="Die5ToggleButton" Style="{StaticResource DiceBase}"/>
+                            <Border x:Name="Die5HoldBorder" Style="{StaticResource DiceHoldingBorder}"/>
+                            <Button x:Name="Die5HoldButton" Style="{StaticResource DiceButtonStyle}" Tag="5" Click="DieHoldButton_Click"/>
                         </Grid>
                     </Grid>
 

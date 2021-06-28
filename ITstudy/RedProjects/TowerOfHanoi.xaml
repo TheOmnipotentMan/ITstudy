@@ -140,7 +140,7 @@
 
 
                     <Button x:Name="SolveButton" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Width="500" Height="100" Content="Do Computer Solve" FontSize="48"
-                            CornerRadius="8" ToolTipService.ToolTip="Let the computer solve the tower." Click="SolveButton_Click"/>
+                            CornerRadius="8" ToolTipService.ToolTip="Let the computer solve the tower." Click="SolveButton_Click" IsEnabled="False"/>
 
                     <Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Width="300" Margin="0 0 40 0">
                         <Grid.ColumnDefinitions>
@@ -159,17 +159,17 @@
 
                         <Button x:Name="SolutionStepFirstButton" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"
                                 Content="«" FontWeight="Bold" FontSize="36" Width="60" Height="70" BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="2"
-                                ToolTipService.ToolTip="Step to start of solution" Click="SolutionStepFirstButton_Click"/>
+                                ToolTipService.ToolTip="Step to start of solution" Click="SolutionStepFirstButton_Click" IsEnabled="False"/>
                         <Button x:Name="SolutionStepBackButton" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="4 0"
                                 Content="-" FontWeight="Bold" FontSize="36" Width="60" Height="70" BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1"
-                                ToolTipService.ToolTip="Step back" Click="SolutionStepBackButton_Click"/>
+                                ToolTipService.ToolTip="Step back" Click="SolutionStepBackButton_Click" IsEnabled="False"/>
 
                         <Button x:Name="SolutionStepForwardButton" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="4 0"
                                 Content="+" FontWeight="Bold" FontSize="36" Width="60" Height="70" BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1"
-                                ToolTipService.ToolTip="Step forward" Click="SolutionStepForwardButton_Click"/>
+                                ToolTipService.ToolTip="Step forward" Click="SolutionStepForwardButton_Click" IsEnabled="False"/>
                         <Button x:Name="SolutionStepLastButton" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center"
                                 Content="»" FontWeight="Bold" FontSize="32" Width="60" Height="70" BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="2"
-                                ToolTipService.ToolTip="Step to end of solution" Click="SolutionStepLastButton_Click"/>
+                                ToolTipService.ToolTip="Step to end of solution" Click="SolutionStepLastButton_Click" IsEnabled="False"/>
 
                     </Grid>
 
