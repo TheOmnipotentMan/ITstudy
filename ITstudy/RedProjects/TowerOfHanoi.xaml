@@ -44,6 +44,14 @@
             <Setter Property="Margin" Value="0, 2"/>
         </Style>
 
+        <Style x:Key="SolutionStepsStyle" TargetType="TextBlock">
+            <Setter Property="Grid.Row" Value="0"/>
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="Grid.ColumnSpan" Value="4"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+
     </Page.Resources>
 
 
@@ -154,22 +162,26 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
 
-                        <TextBlock x:Name="SolutionStepsTextBlock" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" VerticalAlignment="Bottom"
-                                   Text="Steps: 0000 / 0000" FontSize="24" ToolTipService.ToolTip="The current step and total number of steps of the solution"/>
+                        <TextBlock Text="Steps:" Style="{StaticResource SolutionStepsStyle}" HorizontalAlignment="Center" Margin="0 0 220 0"/>
+                        <TextBlock Text="/" Style="{StaticResource SolutionStepsStyle}" HorizontalAlignment="Center" Margin="0"/>
+                        <TextBlock x:Name="SolutionCurrentStepTextBlock" Style="{StaticResource SolutionStepsStyle}" HorizontalAlignment="Right" Margin="0 0 165 0" Text="0"/>
+                        <TextBlock x:Name="SolutionTotalStepsTextBlock" Style="{StaticResource SolutionStepsStyle}" HorizontalAlignment="Left" Margin="165 0 0 0" Text="0"/>
+                        
+                        
 
                         <Button x:Name="SolutionStepFirstButton" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center"
                                 Content="«" FontWeight="Bold" FontSize="36" Width="60" Height="70" BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="2"
-                                ToolTipService.ToolTip="Step to start of solution" Click="SolutionStepFirstButton_Click" IsEnabled="False"/>
+                                ToolTipService.ToolTip="Step to start of solution" Click="SolutionStepButtons_Click" Tag="--" IsEnabled="False"/>
                         <Button x:Name="SolutionStepBackButton" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" Margin="4 0"
                                 Content="-" FontWeight="Bold" FontSize="36" Width="60" Height="70" BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1"
-                                ToolTipService.ToolTip="Step back" Click="SolutionStepBackButton_Click" IsEnabled="False"/>
+                                ToolTipService.ToolTip="Step back" Click="SolutionStepButtons_Click" Tag="-" IsEnabled="False"/>
 
                         <Button x:Name="SolutionStepForwardButton" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="4 0"
                                 Content="+" FontWeight="Bold" FontSize="36" Width="60" Height="70" BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="1"
-                                ToolTipService.ToolTip="Step forward" Click="SolutionStepForwardButton_Click" IsEnabled="False"/>
+                                ToolTipService.ToolTip="Step forward" Click="SolutionStepButtons_Click" Tag="+" IsEnabled="False"/>
                         <Button x:Name="SolutionStepLastButton" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center"
                                 Content="»" FontWeight="Bold" FontSize="32" Width="60" Height="70" BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="2"
-                                ToolTipService.ToolTip="Step to end of solution" Click="SolutionStepLastButton_Click" IsEnabled="False"/>
+                                ToolTipService.ToolTip="Step to end of solution" Click="SolutionStepButtons_Click" Tag="++" IsEnabled="False"/>
 
                     </Grid>
 
@@ -248,60 +260,6 @@
 
             </PivotItem>
 
-            <PivotItem Header="DUMP" Margin="10 0 10 8">
-
-                <Grid>
-
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="2*"/>
-                        <RowDefinition Height="9*"/>
-                    </Grid.RowDefinitions>
-
-
-                    <!-- Gameboard -->
-                    <Grid Grid.Row="2" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="1" Margin="20 120 20 40">
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-
-                        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="40" Background="{ThemeResource SystemBaseMediumHighColor}" CornerRadius="4"
-                                BorderBrush="{ThemeResource SystemChromeAltLowColor}" BorderThickness="2"/>
-                        <Rectangle Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Margin="20" Width="16" Fill="DimGray"/>
-                        <Rectangle Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Margin="20" Width="16" Height="500" Fill="DimGray"/>
-                        <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="20" Width="16" Height="500" Fill="DimGray"/>
-
-                        <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="0 0 0 20" Width="440" Height="40" Fill="CadetBlue"/>
-                        <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="0 0 0 68" Width="400" Height="40" Fill="Chocolate"/>
-                        <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="0 0 0 116" Width="360" Height="40" Fill="DarkKhaki"/>
-                        <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="0 0 0 164" Width="320" Height="40" Fill="OliveDrab"/>
-                        <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="0 0 0 212" Width="280" Height="40" Fill="CadetBlue"/>
-                        <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="0 0 0 260" Width="240" Height="40" Fill="Chocolate"/>
-                        <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="0 0 0 308" Width="200" Height="40" Fill="DarkKhaki"/>
-                        <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="0 0 0 356" Width="160" Height="40" Fill="OliveDrab"/>
-                        <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="0 0 0 404" Width="120" Height="40" Fill="CadetBlue"/>
-                        <Rectangle Grid.Row="0" Grid.Column="2" VerticalAlignment="Bottom" Margin="0 0 0 452" Width="80" Height="40" Fill="Chocolate"/>
-
-
-                        <Border Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Margin="0 0 0 20" Width="440" Height="40"
-                                   BorderBrush="DarkGreen" BorderThickness="6" CornerRadius="2"/>
-
-                    </Grid>
-
-
-
-                </Grid>
-
-            </PivotItem>
-
 
             <PivotItem Header="Project Details" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
 
@@ -335,32 +293,47 @@
                     </RichTextBlock>
 
                     <TextBlock Text="Goal of Project:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="10" Canvas.Top="160"/>
-                    <RichTextBlock Name="GoalOfProject" Canvas.Left="10" Canvas.Top="190" FontSize="24" Width="600">
+                    <RichTextBlock Name="GoalOfProject" Canvas.Left="10" Canvas.Top="190" FontSize="24" Width="600" TextIndent="0">
                         <Paragraph>
                             <Run>
-                                Create a program that can solve the 'Tower of Hanoi' game.
+                                Create the game Tower of Hanoi.
                             </Run>
                             <LineBreak/>
                             <LineBreak/>
-                            <Run>
+                            <Run FontSize="16">
                                 The minimal number of moves required is (2^n - 1), with n being the number of disks.</Run>
                         </Paragraph>
                     </RichTextBlock>
 
                     <TextBlock Text="General comments:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="710" Canvas.Top="160"/>
-                    <RichTextBlock Name="GeneralComment" Canvas.Left="710" Canvas.Top="190" FontSize="20" Width="600">
+                    <RichTextBlock Name="GeneralComment" Canvas.Left="710" Canvas.Top="190" FontSize="20" Width="600" TextIndent="0">
                         <Paragraph>
                             <Run>
-                                I started out by creating a rough UI, to determine where things would go and to make sure that all the elements I wanted where present.
-                                Next I began to figure out how I would construct the tower itself. I landed on the GridView being a nice option. It can display items in a line,
-                                it can detect a click-event and it can take a item-source and template. However there were some problems. The size of the items needs to be uniform,
-                                so I added a parent grid to each item. I could not get the click-detection to only work on the upper most block, so I replaced it with a button.
-                                And the style of GridView has a reveal-border on mouse-over, which I have not yet been able to delete.
+                                I started out by creating a rough UI, to determine where things would go and to make sure that all the elements I wanted were present.
+                                Next I began to figure out how I would construct the tower itself. I found GridView to be a nice option. It can display items in a line,
+                                it can detect a click-event and it can take a item-source and template. However there were some problems. The size of the items needs to be uniform
+                                in order to line them up at the center, so I added a parent grid to each item.
+                                I could not get the click-detection to only work on the upper most block, so I replaced it with a button, though it might be done with a custom template.                                
                             </Run>
                             <LineBreak/>
                             <Run>
                                 All of this made me rethink my approach. I tried using a StackPanel, but this provided other problems.
                                 A major one for example was not being able to directly use an ItemTemplate.
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                An other way is to place the blocks directly in xaml, which, although crude, might have been the simplest solution.
+                            </Run>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run>
+                                The generation of the solution by the computer was comparatively easy, as there are plenty of examples online.
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                At this point, this project is funtionally done. It still has some rough edges and one or two bugs but nothing that causes major problems.
+                                I have already spend enough time on this project, so I will leave it in this state and call it done for now.
+                                I might come back to it later, but I'm not planning on it.
                             </Run>
                         </Paragraph>
                     </RichTextBlock>
