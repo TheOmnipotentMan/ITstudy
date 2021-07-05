@@ -307,12 +307,13 @@ namespace ITstudy.RedProjects
 
             // Copy the starting and end state of the Gameboard for future reference
             StartBoard = new TowerBlock[Gameboard.GetLength(0), Gameboard.GetLength(1)];
-            StartBoard = Gameboard;
-
-            // Generate the end state of the Gameboard for future reference
             EndBoard = new TowerBlock[Gameboard.GetLength(0), Gameboard.GetLength(1)];
             for (int bl = 0; bl < EndBoard.GetLength(1); bl++)
             {
+                StartBoard[0, bl] = Gameboard[0, bl];
+                StartBoard[1, bl] = new TowerBlock();
+                StartBoard[2, bl] = new TowerBlock();
+
                 EndBoard[0, bl] = new TowerBlock();
                 EndBoard[1, bl] = new TowerBlock();
                 EndBoard[2, bl] = Gameboard[0, bl];

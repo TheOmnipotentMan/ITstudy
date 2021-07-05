@@ -65,7 +65,7 @@
             <Setter Property="FontSize" Value="120"/>
         </Style>
         
-        <!-- Scorecard Grid Line Styles -->
+        <!-- Scorecard Grid Lines -->
         <Style x:Key="ScorecardGridLineVert" TargetType="Rectangle">
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="Width" Value="2"/>
@@ -77,7 +77,7 @@
             <Setter Property="Fill" Value="DarkRed"/>
         </Style>
 
-        <!-- Scorecard Text Styles -->
+        <!-- Scorecard Fields -->
         <Style x:Key="ScorecardTextCatDesc" TargetType="TextBlock" BasedOn="{StaticResource TitleTextBlockStyle}">
             <Setter Property="Grid.Row" Value="1"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -143,12 +143,12 @@
         </Style>
         <Style x:Key="ScorecardButton" TargetType="Button">
             <Setter Property="Grid.Column" Value="4"/>
-            <Setter Property="Grid.RowSpan" Value="1"/>
-            <Setter Property="Grid.ColumnSpan" Value="1"/>
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="VerticalAlignment" Value="Stretch"/>
+            <Setter Property="Margin" Value="2 2 2 5"/>
             <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="BorderThickness" Value="4"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
         </Style>
 
         
@@ -199,7 +199,7 @@
                     
                     
                     <!-- Player Scores & Game-round counter -->
-                    <Grid Grid.Row="0" Grid.Column="0">
+                    <Grid Grid.Row="0" Grid.Column="0" BorderBrush="{ThemeResource SystemBaseMediumColor}" BorderThickness="2">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
@@ -210,18 +210,18 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-
-                        <TextBlock x:Name="Player1" Grid.Row="0" Grid.Column="0" Style="{StaticResource PlayerScoreText}" Text="Player 1 (P): 999"/>
-                        <TextBlock x:Name="Player2" Grid.Row="0" Grid.Column="1" Style="{StaticResource PlayerScoreText}" Text="Player 2 (P): 999"/>
-                        <TextBlock x:Name="Player3" Grid.Row="0" Grid.Column="2" Style="{StaticResource PlayerScoreText}" Text="Player 3 (P): 999"/>
-                        <TextBlock x:Name="Player4" Grid.Row="1" Grid.Column="0" Style="{StaticResource PlayerScoreText}" Text="Player 4 (P): 999"/>
-                        <TextBlock x:Name="Player5" Grid.Row="1" Grid.Column="1" Style="{StaticResource PlayerScoreText}" Text="Player 5 (C): 999"/>
-                        <TextBlock x:Name="Player6" Grid.Row="1" Grid.Column="2" Style="{StaticResource PlayerScoreText}" Text="Player 6 (C): 999"/>
-                        <TextBlock x:Name="Player7" Grid.Row="2" Grid.Column="0" Style="{StaticResource PlayerScoreText}" Text="Player 7 (C): 999"/>
-                        <TextBlock x:Name="Player8" Grid.Row="2" Grid.Column="1" Style="{StaticResource PlayerScoreText}" Text="Player 8 (C): 999"/>
+                        
+                        <TextBlock x:Name="Player1ScoreTextBlock" Grid.Row="0" Grid.Column="0" Style="{StaticResource PlayerScoreText}"/>
+                        <TextBlock x:Name="Player2ScoreTextBlock" Grid.Row="0" Grid.Column="1" Style="{StaticResource PlayerScoreText}"/>
+                        <TextBlock x:Name="Player3ScoreTextBlock" Grid.Row="0" Grid.Column="2" Style="{StaticResource PlayerScoreText}"/>
+                        <TextBlock x:Name="Player4ScoreTextBlock" Grid.Row="1" Grid.Column="0" Style="{StaticResource PlayerScoreText}"/>
+                        <TextBlock x:Name="Player5ScoreTextBlock" Grid.Row="1" Grid.Column="1" Style="{StaticResource PlayerScoreText}"/>
+                        <TextBlock x:Name="Player6ScoreTextBlock" Grid.Row="1" Grid.Column="2" Style="{StaticResource PlayerScoreText}"/>
+                        <TextBlock x:Name="Player7ScoreTextBlock" Grid.Row="2" Grid.Column="0" Style="{StaticResource PlayerScoreText}"/>
+                        <TextBlock x:Name="Player8ScoreTextBlock" Grid.Row="2" Grid.Column="1" Style="{StaticResource PlayerScoreText}"/>
 
                         <TextBlock x:Name="GameRoundTextBlock" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
-                                   FontSize="30" Text="Round 01"/>
+                                   FontSize="30" FontWeight="Medium" Text="Round 00"/>
 
 
                     </Grid>
@@ -240,9 +240,8 @@
                                    CloseButtonText="Cancel"
                                    DefaultButton="Primary">
 
-                        <Grid Width="400" Height="120">
+                        <Grid Width="400" Height="60">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
@@ -254,11 +253,6 @@
                             <muxc:NumberBox x:Name="TotalPlayerCountNumberBox" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0" Width="100"
                                             SpinButtonPlacementMode="Inline" HorizontalContentAlignment="Center"
                                             Value="2" Minimum="2" Maximum="8"/>
-                            <TextBlock Text="Computer opponents;" FontSize="18" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 0"/>
-                            <muxc:NumberBox x:Name="ComputerPlayerCountNumberBox" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0" Width="100"
-                                            SpinButtonPlacementMode="Inline" HorizontalContentAlignment="Center"
-                                            Value="1" Minimum="0" Maximum="8"/>
-
                         </Grid>
                     </ContentDialog>
 
@@ -422,6 +416,21 @@
                         </Grid>
                     </Grid>
 
+                    <!-- Next player content dialog -->
+                    <ContentDialog x:Name="NextPlayerContentDialog" Grid.Row="1" Grid.Column="0" Title="Next player;" CloseButtonText="Proceed">
+                        <Grid Width="300">
+                            <TextBlock x:Name="NextPlayerTextBlock" HorizontalAlignment="Center"
+                                       FontSize="56" Style="{StaticResource HeaderTextBlockStyle}" Text="Player: X"/>
+                        </Grid>
+                    </ContentDialog>
+
+                    <!-- End game message, winner -->
+                    <ContentDialog x:Name="EndGameContentDialog" Grid.Row="1" Grid.Column="0" Title="Final Scores;" CloseButtonText="Proceed">
+                        <Grid Width="300">
+                            <ListView x:Name="EndGameFinalScoresListView"/>
+                        </Grid>
+                    </ContentDialog>
+
 
 
 
@@ -507,49 +516,47 @@
                         <TextBlock Text="Sum of 1's" Grid.Row="2" Style="{StaticResource ScorecardTextValueSmall}"/>
                         <TextBlock x:Name="ScorecardResultAcesHandTextBlock" Grid.Row="2" Style="{StaticResource ScorecardTextResultHand}" Text="(1, 1, 2, 4, 5)"/>
                         <TextBlock x:Name="ScorecardResultAcesScoreTextBlock" Grid.Row="2" Style="{StaticResource ScorecardTextResultScore}" Text="2"/>
-                        <Button x:Name="AcesButton" Tag="{x:Bind CatergoryAces}" Grid.Row="2" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
+                        <Button x:Name="ScorecardAcesButton" Grid.Row="2" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
                         <TextBlock Text="Twos" Grid.Row="3" Style="{StaticResource ScorecardTextCategoryLarge}"/>
                         <TextBlock Text="Any number of 2's" Grid.Row="3" Style="{StaticResource ScorecardTextHowToLarge}"/>
                         <TextBlock Text="Sum of 2's" Grid.Row="3" Style="{StaticResource ScorecardTextValueSmall}"/>
                         <TextBlock x:Name="ScorecardResultTwosHandTextBlock" Grid.Row="3" Style="{StaticResource ScorecardTextResultHand}"/>
                         <TextBlock x:Name="ScorecardResultTwosScoreTextBlock" Grid.Row="3" Style="{StaticResource ScorecardTextResultScore}"/>
-                        <Button x:Name="TwosButton" Tag="{x:Bind CatergoryTwos}" Grid.Row="3" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
+                        <Button x:Name="ScorecardTwosButton" Grid.Row="3" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
                         <TextBlock Text="Threes" Grid.Row="4" Style="{StaticResource ScorecardTextCategoryLarge}"/>
                         <TextBlock Text="Any number of 3's" Grid.Row="4" Style="{StaticResource ScorecardTextHowToLarge}"/>
                         <TextBlock Text="Sum of 3's" Grid.Row="4" Style="{StaticResource ScorecardTextValueSmall}"/>
                         <TextBlock x:Name="ScorecardResultThreesHandTextBlock" Grid.Row="4" Style="{StaticResource ScorecardTextResultHand}"/>
                         <TextBlock x:Name="ScorecardResultThreesScoreTextBlock" Grid.Row="4" Style="{StaticResource ScorecardTextResultScore}"/>
-                        <Button x:Name="ThreesButton" Tag="{x:Bind CatergoryThrees}" Grid.Row="4" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
+                        <Button x:Name="ScorecardThreesButton" Grid.Row="4" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
                         <TextBlock Text="Fours" Grid.Row="5" Style="{StaticResource ScorecardTextCategoryLarge}"/>
                         <TextBlock Text="Any number of 4's" Grid.Row="5" Style="{StaticResource ScorecardTextHowToLarge}"/>
                         <TextBlock Text="Sum of 4's" Grid.Row="5" Style="{StaticResource ScorecardTextValueSmall}"/>
                         <TextBlock x:Name="ScorecardResultFoursHandTextBlock" Grid.Row="5" Style="{StaticResource ScorecardTextResultHand}"/>
                         <TextBlock x:Name="ScorecardResultFoursScoreTextBlock" Grid.Row="5" Style="{StaticResource ScorecardTextResultScore}"/>
-                        <Button x:Name="FoursButton" Tag="{x:Bind CatergoryFours}" Grid.Row="5" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
+                        <Button x:Name="ScorecardFoursButton" Grid.Row="5" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
                         <TextBlock Text="Fives" Grid.Row="6" Style="{StaticResource ScorecardTextCategoryLarge}"/>
                         <TextBlock Text="Any number of 5's" Grid.Row="6" Style="{StaticResource ScorecardTextHowToLarge}"/>
                         <TextBlock Text="Sum of 5's" Grid.Row="6" Style="{StaticResource ScorecardTextValueSmall}"/>
                         <TextBlock x:Name="ScorecardResultFivesHandTextBlock" Grid.Row="6" Style="{StaticResource ScorecardTextResultHand}"/>
                         <TextBlock x:Name="ScorecardResultFivesScoreTextBlock" Grid.Row="6" Style="{StaticResource ScorecardTextResultScore}"/>
-                        <Button x:Name="FivesButton" Tag="{x:Bind CatergoryFives}" Grid.Row="6" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
+                        <Button x:Name="ScorecardFivesButton" Grid.Row="6" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
                         <TextBlock Text="Sixes" Grid.Row="7" Style="{StaticResource ScorecardTextCategoryLarge}"/>
                         <TextBlock Text="Any number of 6's" Grid.Row="7" Style="{StaticResource ScorecardTextHowToLarge}"/>
                         <TextBlock Text="Sum of 6's" Grid.Row="7" Style="{StaticResource ScorecardTextValueSmall}"/>
                         <TextBlock x:Name="ScorecardResultSixesHandTextBlock" Grid.Row="7" Style="{StaticResource ScorecardTextResultHand}"/>
                         <TextBlock x:Name="ScorecardResultSixesScoreTextBlock" Grid.Row="7" Style="{StaticResource ScorecardTextResultScore}"/>
-                        <Button x:Name="SixesButton" Tag="{x:Bind CatergorySixes}" Grid.Row="7" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
+                        <Button x:Name="ScorecardSixesButton" Grid.Row="7" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
                         <TextBlock Text="Bonus" Grid.Row="8" Style="{StaticResource ScorecardTextCategoryLarge}"/>
                         <TextBlock Text="Total score in this section must be 63 or higher" Grid.Row="8" Style="{StaticResource ScorecardTextHowToSmall}"/>
                         <TextBlock Text="35" Grid.Row="8" Style="{StaticResource ScorecardTextValueLarge}"/>
-                        <TextBlock x:Name="ScorecardResultBonusHandTextBlock" Grid.Row="8" Style="{StaticResource ScorecardTextResultHand}"/>
                         <TextBlock x:Name="ScorecardResultBonusScoreTextBlock" Grid.Row="8" Style="{StaticResource ScorecardTextResultScore}"/>
-                        <Button x:Name="UpperBonusButton" Tag="{x:Bind CatergoryUpperBonus}" Grid.Row="8" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
 
                         <!-- Lower Section -->
@@ -564,55 +571,55 @@
                         <TextBlock Text="Sum of all dice" Grid.Row="9" Style="{StaticResource ScorecardTextValueSmall}"/>
                         <TextBlock x:Name="ScorecardResultThreeKindHandTextBlock" Grid.Row="9" Style="{StaticResource ScorecardTextResultHand}" Text="(2, 3, 3, 3, 5)"/>
                         <TextBlock x:Name="ScorecardResultThreeKindScoreTextBlock" Grid.Row="9" Style="{StaticResource ScorecardTextResultScore}" Text="16"/>
-                        <Button x:Name="ThreeKindButton" Tag="{x:Bind CatergoryThreeKind}" Grid.Row="9" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
+                        <Button x:Name="ScorecardThreeKindButton" Grid.Row="9" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
                         <TextBlock Text="Four of a Kind" Grid.Row="10" Style="{StaticResource ScorecardTextCategorySmall}"/>
                         <TextBlock Text="Four matching dice" Grid.Row="10" Style="{StaticResource ScorecardTextHowToSmall}"/>
                         <TextBlock Text="Sum of all dice" Grid.Row="10" Style="{StaticResource ScorecardTextValueSmall}"/>
                         <TextBlock x:Name="ScorecardResultFourKindHandTextBlock" Grid.Row="10" Style="{StaticResource ScorecardTextResultHand}"/>
                         <TextBlock x:Name="ScorecardResultFourKindScoreTextBlock" Grid.Row="10" Style="{StaticResource ScorecardTextResultScore}"/>
-                        <Button x:Name="FourKindButton" Tag="{x:Bind CatergoryFourKind}" Grid.Row="10" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
+                        <Button x:Name="ScorecardFourKindButton" Grid.Row="10" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
                         <TextBlock Text="Full House" Grid.Row="11" Style="{StaticResource ScorecardTextCategoryLarge}"/>
                         <TextBlock Text="Three of one number and two of another" Grid.Row="11" Style="{StaticResource ScorecardTextHowToSmall}"/>
                         <TextBlock Text="25" Grid.Row="11" Style="{StaticResource ScorecardTextValueLarge}"/>
                         <TextBlock x:Name="ScorecardResultFullHouseHandTextBlock" Grid.Row="11" Style="{StaticResource ScorecardTextResultHand}"/>
                         <TextBlock x:Name="ScorecardResultFullHouseScoreTextBlock" Grid.Row="11" Style="{StaticResource ScorecardTextResultScore}"/>
-                        <Button x:Name="FullHouseButton" Tag="{x:Bind CatergoryFullHouse}" Grid.Row="11" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
+                        <Button x:Name="ScorecardFullHouseButton" Grid.Row="11" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
                         <TextBlock Text="Small Straight" Grid.Row="12" Style="{StaticResource ScorecardTextCategorySmall}"/>
                         <TextBlock Text="Sequence of 4, eg 1,2,3,4" Grid.Row="12" Style="{StaticResource ScorecardTextHowToSmall}"/>
                         <TextBlock Text="30" Grid.Row="12" Grid.Column="3" Style="{StaticResource ScorecardTextValueLarge}"/>
                         <TextBlock x:Name="ScorecardResultSmallStraightHandTextBlock" Grid.Row="12" Style="{StaticResource ScorecardTextResultHand}"/>
                         <TextBlock x:Name="ScorecardResultSmallStraightScoreTextBlock" Grid.Row="12" Style="{StaticResource ScorecardTextResultScore}"/>
-                        <Button x:Name="SmallStraightButton" Tag="{x:Bind CatergorySmallStraight}" Grid.Row="12" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
+                        <Button x:Name="ScorecardSmallStraightButton" Grid.Row="12" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
                         <TextBlock Text="Large Straight" Grid.Row="13" Style="{StaticResource ScorecardTextCategorySmall}"/>
                         <TextBlock Text="Sequence of 5, eg 2,3,4,5,6" Grid.Row="13" Style="{StaticResource ScorecardTextHowToSmall}"/>
                         <TextBlock Text="40" Grid.Row="13" Style="{StaticResource ScorecardTextValueLarge}"/>
                         <TextBlock x:Name="ScorecardResultLargeStraightHandTextBlock" Grid.Row="13" Style="{StaticResource ScorecardTextResultHand}"/>
                         <TextBlock x:Name="ScorecardResultLargeStraightScoreTextBlock" Grid.Row="13" Style="{StaticResource ScorecardTextResultScore}"/>
-                        <Button x:Name="LargeStraightButton" Tag="{x:Bind CatergoryLargeStraight}" Grid.Row="13" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
+                        <Button x:Name="ScorecardLargeStraightButton" Grid.Row="13" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
                         <TextBlock Text="Yahtzee" Grid.Row="14" Style="{StaticResource ScorecardTextCategoryLarge}"/>
                         <TextBlock Text="All 5 dice are the same number" Grid.Row="14" Style="{StaticResource ScorecardTextHowToSmall}"/>
                         <TextBlock Text="50" Grid.Row="14" Style="{StaticResource ScorecardTextValueLarge}"/>
                         <TextBlock x:Name="ScorecardResultYahtzeeHandTextBlock" Grid.Row="14" Style="{StaticResource ScorecardTextResultHand}"/>
                         <TextBlock x:Name="ScorecardResultYahtzeeScoreTextBlock" Grid.Row="14" Style="{StaticResource ScorecardTextResultScore}"/>
-                        <Button x:Name="YahtzeeButton" Tag="{x:Bind CatergoryYahtzee}" Grid.Row="14" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
+                        <Button x:Name="ScorecardYahtzeeButton" Grid.Row="14" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
                         <TextBlock Text="Chance" Grid.Row="15" Style="{StaticResource ScorecardTextCategoryLarge}"/>
                         <TextBlock Text="Any combination numbers" Grid.Row="15" Style="{StaticResource ScorecardTextHowToSmall}"/>
                         <TextBlock Text="Sum of all dice" Grid.Row="15" Style="{StaticResource ScorecardTextValueSmall}"/>
                         <TextBlock x:Name="ScorecardResultChanceHandTextBlock" Grid.Row="15" Style="{StaticResource ScorecardTextResultHand}"/>
                         <TextBlock x:Name="ScorecardResultChanceScoreTextBlock" Grid.Row="15" Style="{StaticResource ScorecardTextResultScore}"/>
-                        <Button x:Name="ChanceButton" Tag="{x:Bind CatergoryChance}" Grid.Row="15" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
+                        <Button x:Name="ScorecardChanceButton" Grid.Row="15" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
                         <TextBlock Text="Yahtzee Bonus" Grid.Row="16" Style="{StaticResource ScorecardTextCategorySmall}"/>
                         <TextBlock Text="Score Yahtzee for the second time, or more" Grid.Row="16" Style="{StaticResource ScorecardTextHowToSmall}"/>
                         <TextBlock Text="100" Grid.Row="16" Style="{StaticResource ScorecardTextValueLarge}"/>
                         <TextBlock x:Name="ScorecardResultYahtzeeBonusScoreTextBlock" Grid.Row="16" Style="{StaticResource ScorecardTextResultScore}"/>
-                        <Button x:Name="YahtzeeBonusButton" Tag="{x:Bind CatergoryYahtzeeBonus}" Grid.Row="16" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
+                        <Button x:Name="ScorecardYahtzeeBonusButton" Grid.Row="16" Style="{StaticResource ScorecardButton}" Click="ScorecardButton_Click"/>
 
 
                         <!-- Total Score -->
