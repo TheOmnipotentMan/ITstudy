@@ -492,7 +492,7 @@ namespace ITstudy.RedProjects
             else if (CurrentRoll == rollsAllowed - 1)
             {
                 // Disable the button to roll dice, this leave the player only able to commit its score to a category on the scorecard, thereby advancing the game (comment out for unlimited rolls)
-                // TODO re-instate; RollDiceButton.IsEnabled = false;
+                RollDiceButton.IsEnabled = false;
             }
 
             // Increment the CurrentRoll counter and update it on screen
