@@ -676,7 +676,7 @@
                     <RichTextBlock Name="GoalOfProject" Canvas.Left="10" Canvas.Top="190" FontSize="24" Width="600">
                         <Paragraph>
                             <Run>
-                                PLACEHOLDER
+                                Build the game Yahtzee.
                             </Run>
                         </Paragraph>
                     </RichTextBlock>
@@ -685,7 +685,7 @@
                     <RichTextBlock Name="GeneralComment" Canvas.Left="710" Canvas.Top="190" FontSize="20" Width="600">
                         <Paragraph>
                             <Run>
-                                PLACEHOLDER
+                                A fun project, not too difficult.
                             </Run>
                         </Paragraph>
                     </RichTextBlock>

@@ -142,7 +142,7 @@ namespace ITstudy.RedProjects
                     case Categories.LargeStraight: { LargeStraight = score; LargeStraightDice = dice; TotalScore += score; break; }
                     case Categories.Yahtzee: { Yahtzee = score; YahtzeeDice = dice; TotalScore += score; break; }
                     case Categories.Chance: { Chance = score; ChanceDice = dice; TotalScore += score; break; }
-                    case Categories.YahtzeeBonus: { YahtzeeBonus = score; TotalScore += score; break; }
+                    case Categories.YahtzeeBonus: { if (YahtzeeBonus < 0) { YahtzeeBonus = 0; } YahtzeeBonus += score; TotalScore += score; break; }
 
                     default: { Debug.WriteLine($"Yahtzee: Scorecard.SetScore() did not recognise the specified category, cat = {(int)cat} {cat}"); break; }
                 }
@@ -314,11 +314,11 @@ namespace ITstudy.RedProjects
 
         // General Project info, to be displayed under PivotItem "Project Details"
         // Total time spent on this project
-        string ProjectTimeSpent = "16:00";
+        string ProjectTimeSpent = "32:00";
         // Difficulty, general challenge when writing on a scale of 0 to 10, 0 being no effort and 10 being near impossible to completed with my current skill
-        string ProjectChallenge = "x";
+        string ProjectChallenge = "5";
         // Date when this project was finished
-        string ProjectDateFinished = "00/00/21";
+        string ProjectDateFinished = "06/07/21";
 
 
 
@@ -500,11 +500,14 @@ namespace ITstudy.RedProjects
             UpdateRollCounter();
             // Do the new roll
             RollDice();
+                       
 
-            
+            // Analyse the dice and unlock the available categories for the current dice-values
+            AnalyseDice(CurrentDiceValues);
 
-            // Unlock the available categories for the current dice-values
-            AnalyseDice();
+
+
+
         }
         
 
@@ -515,7 +518,7 @@ namespace ITstudy.RedProjects
         private void EndTurn(Categories cat)
         {
             // Enter the score on the scorecard of the current player
-            Players[CurrentPlayer].SetScore(cat, CalculateScore(cat, CurrentDiceValues), CurrentDiceValues);
+            Players[CurrentPlayer].SetScore(cat, CalculateScore(cat), CurrentDiceValues);
 
             // Figure out if the upper section bonus should be applied
             // !The following requires the categories 1 to 6, Aces to Sixes, to be the first six elements of the enum Categories!
@@ -524,7 +527,7 @@ namespace ITstudy.RedProjects
                 if (Players[CurrentPlayer].GetScore(Categories.Aces) + Players[CurrentPlayer].GetScore(Categories.Twos) + Players[CurrentPlayer].GetScore(Categories.Threes) +
                     Players[CurrentPlayer].GetScore(Categories.Fours) + Players[CurrentPlayer].GetScore(Categories.Fives) + Players[CurrentPlayer].GetScore(Categories.Sixes) > 62)
                 {
-                    Players[CurrentPlayer].SetScore(Categories.Bonus, CalculateScore(Categories.Bonus, CurrentDiceValues), CurrentDiceValues);
+                    Players[CurrentPlayer].SetScore(Categories.Bonus, GetScore(Categories.Bonus, CurrentDiceValues), CurrentDiceValues);
                 }
             }
 
@@ -532,14 +535,14 @@ namespace ITstudy.RedProjects
             UpdateTotalScores();
 
             // Check if the Scorecard is full, if so try to find the next player whose scorecard still has an empty field
-            if (Players[CurrentPlayer].IsScorecardFull())
+            if (Players[(CurrentPlayer + 1 + Players.Count()) % Players.Count()].IsScorecardFull())
             {
                 int nextPlayer = -1;
-                for (int p = CurrentPlayer + 1; p < (Players.Count() + (CurrentPlayer + 1)); p++)
+                for (int p = CurrentPlayer + 2; p < (Players.Count() + (CurrentPlayer + 3)); p++)
                 {
                     if (!Players[(p + Players.Count()) % Players.Count()].IsScorecardFull())
                     {
-                        nextPlayer = p;
+                        nextPlayer = (p + Players.Count()) % Players.Count();
                         break;
                     }
                 }
@@ -607,9 +610,12 @@ namespace ITstudy.RedProjects
         }
 
 
+        /// <summary>
+        /// End the game, display a message on screen with the player ranked by their final scores
+        /// </summary>
         private void EndGame()
         {
-            Debug.WriteLine($"Yahtzee: EndGame() called");
+            ShowScorecardOnScreen(Players[CurrentPlayer]);
             ShowEndGameDialog();
         }
 
@@ -621,12 +627,12 @@ namespace ITstudy.RedProjects
 
 
         /// <summary>
-        /// Calculate the score of the CurrentDiceValues for a specified category.
+        /// Get the score of the CurrentDiceValues for a specified category.
         /// Does not check if category is actually valid for current dice!
         /// </summary>
         /// <param name="cat"></param>
         /// <returns>The score for the given category</returns>
-        private int CalculateScore(Categories cat, int[] dice = null)
+        private int GetScore(Categories cat, int[] dice = null)
         {
             int score = 0;
             if (dice == null) { dice = CurrentDiceValues; }
@@ -703,6 +709,27 @@ namespace ITstudy.RedProjects
         }
 
 
+        /// <summary>
+        /// Calculate the score for a specific category
+        /// Checks if a category is actually valid given the current dice
+        /// </summary>
+        /// <param name="cat">The desired category</param>
+        /// <param name="dice">The dice values</param>
+        /// <returns>The score for that category</returns>
+        private int CalculateScore(Categories cat, int[] dice = null)
+        {
+            // Return value
+            int score = -1;
+
+            // Default to CurrenDiceValues for dice if it was left empty or if dice was of invalid size
+            if (dice == null || dice.Length != 5) { dice = CurrentDiceValues; }
+
+            // Get the score
+            score = (IsCategoryValid(cat, dice)) ? GetScore(cat) : 0;
+
+            return score;
+        }
+
 
 
 
@@ -759,8 +786,15 @@ namespace ITstudy.RedProjects
         /// <summary>
         /// Analyse the current dice, and find which categories to unlock on the scorecard
         /// </summary>
-        private void AnalyseDice()
+        private void AnalyseDice(int[] dice)
         {
+            // If invalide dice was recieved, return early with an empty list
+            if (dice.Length != 5)
+            {
+                Debug.WriteLine($"Yahtzee: AnalyseDice() recieved invalid number of dice, dice.Length = {dice.Length}");
+                return;
+            }
+
             // Array counting the number of occurances of each die-face, the times each number 1 to 6 occurs
             int[] faceCount = new int[6] { 0, 0, 0, 0, 0, 0 };
 
@@ -770,16 +804,68 @@ namespace ITstudy.RedProjects
             {
                 faceCount[x - 1]++;
             }
-            Debug.WriteLine($"Yahtzee: AnalyseDice() faceCount = {faceCount[0]} {faceCount[1]} {faceCount[2]} {faceCount[3]} {faceCount[4]} {faceCount[5]}");
-            UnlockCategory(Categories.Aces, (faceCount[0] > 0) ? CalculateScore(Categories.Aces) : 0);
-            UnlockCategory(Categories.Twos, (faceCount[1] > 0) ? CalculateScore(Categories.Twos) : 0);
-            UnlockCategory(Categories.Threes, (faceCount[2] > 0) ? CalculateScore(Categories.Threes) : 0);
-            UnlockCategory(Categories.Fours, (faceCount[3] > 0) ? CalculateScore(Categories.Fours) : 0);
-            UnlockCategory(Categories.Fives, (faceCount[4] > 0) ? CalculateScore(Categories.Fives) : 0);
-            UnlockCategory(Categories.Sixes, (faceCount[5] > 0) ? CalculateScore(Categories.Sixes) : 0);
+            UnlockCategory(Categories.Aces, (faceCount[0] > 0) ? GetScore(Categories.Aces) : 0);
+            UnlockCategory(Categories.Twos, (faceCount[1] > 0) ? GetScore(Categories.Twos) : 0);
+            UnlockCategory(Categories.Threes, (faceCount[2] > 0) ? GetScore(Categories.Threes) : 0);
+            UnlockCategory(Categories.Fours, (faceCount[3] > 0) ? GetScore(Categories.Fours) : 0);
+            UnlockCategory(Categories.Fives, (faceCount[4] > 0) ? GetScore(Categories.Fives) : 0);
+            UnlockCategory(Categories.Sixes, (faceCount[5] > 0) ? GetScore(Categories.Sixes) : 0);
 
             // Lower section
             // Determine how many times any number occurs
+            int sequence = 0;
+            int straight = 0;
+            bool twoCount = false;
+            bool threeCount = false;
+            bool fourCount = false;
+            bool fiveCount = false;
+            foreach (int count in faceCount)
+            {
+                sequence = (count > 0) ? sequence + 1 : 0;
+                if (sequence > straight) { straight = sequence; }
+                if (count == 2) { twoCount = true; }
+                else if (count == 3) { threeCount = true; }
+                else if (count == 4) { fourCount = true; }
+                else if (count == 5) { fiveCount = true; }
+            }
+            UnlockCategory(Categories.ThreeKind, (threeCount) ? GetScore(Categories.ThreeKind) : 0);
+            UnlockCategory(Categories.FourKind, (fourCount) ? GetScore(Categories.FourKind) : 0);
+            UnlockCategory(Categories.FullHouse, (twoCount && threeCount) ? GetScore(Categories.FullHouse) : 0);
+            UnlockCategory(Categories.SmallStraight, (straight >= 4) ? GetScore(Categories.SmallStraight) : 0);
+            UnlockCategory(Categories.LargeStraight, (straight >= 5) ? GetScore(Categories.LargeStraight) : 0);
+            UnlockCategory(Categories.Yahtzee, (fiveCount) ? GetScore(Categories.Yahtzee) : 0);
+            UnlockCategory(Categories.Chance, GetScore(Categories.Chance));
+
+        }
+        
+
+        /// <summary>
+        /// Get whether a Category is valid for the given dice
+        /// </summary>
+        /// <param name="cat">The category to validate</param>
+        /// <param name="dice">Teh dice values</param>
+        /// <returns></returns>
+        private bool IsCategoryValid(Categories cat, int[] dice)
+        {
+            // Return value
+            bool isValid = false;
+
+            // If invalide dice was recieved, return early with initial value
+            if (dice.Length != 5)
+            {
+                Debug.WriteLine($"Yahtzee: AnalyseDice() recieved invalid number of dice, dice.Length = {dice.Length}");
+                return isValid;
+            }
+
+            // Array counting the number of occurances of each die-face, the times each number 1 to 6 occurs
+            int[] faceCount = new int[6] { 0, 0, 0, 0, 0, 0 };
+
+            // Count the number of occurances of each number
+            foreach (int x in CurrentDiceValues)
+            {
+                faceCount[x - 1]++;
+            }
+
             int sequence = 0;
             int straight = 0;
             bool twoCount = false;
@@ -796,16 +882,37 @@ namespace ITstudy.RedProjects
                 else if (count == 4) { fourCount = true; }
                 else if (count == 5) { fiveCount = true; }
             }
-            UnlockCategory(Categories.ThreeKind, (threeCount) ? CalculateScore(Categories.ThreeKind) : 0);
-            UnlockCategory(Categories.FourKind, (fourCount) ? CalculateScore(Categories.FourKind) : 0);
-            UnlockCategory(Categories.FullHouse, (twoCount && threeCount) ? CalculateScore(Categories.FullHouse) : 0); 
-            UnlockCategory(Categories.SmallStraight, (straight >= 4) ? CalculateScore(Categories.SmallStraight) : 0);
-            UnlockCategory(Categories.LargeStraight, (straight >= 5) ? CalculateScore(Categories.LargeStraight) : 0);
-            UnlockCategory(Categories.Yahtzee, (fiveCount) ? CalculateScore(Categories.Yahtzee) : 0);
-            UnlockCategory(Categories.Chance, CalculateScore(Categories.Chance));
-            
+
+            // Set isValid depending on the Category specified
+            switch (cat)
+            {
+                // Upper Categories
+                case Categories.Aces:
+                case Categories.Twos:
+                case Categories.Threes:
+                case Categories.Fours:
+                case Categories.Fives:
+                case Categories.Sixes:
+                    {                        
+                        // If at least 1 die of the given number was present, isValid is true
+                        isValid = faceCount[(int)cat] > 0;
+                        break;
+                    }
+
+                // Lower Categories
+                case Categories.ThreeKind: { isValid = threeCount; break; }
+                case Categories.FourKind: { isValid = fourCount; break; }
+                case Categories.FullHouse: { isValid = (twoCount && threeCount); break; }
+                case Categories.SmallStraight: { isValid = (straight >= 4); break; }
+                case Categories.LargeStraight: { isValid = (straight == 5); break; }
+                case Categories.Yahtzee: 
+                case Categories.YahtzeeBonus: { isValid = fiveCount; break; }
+                case Categories.Chance: { isValid = true; break; }                
+            }
+
+            return isValid;
         }
-        
+
 
         /// <summary>
         /// Unlock the specified category on the scorecard
@@ -1502,7 +1609,7 @@ namespace ITstudy.RedProjects
             // Build the message displaying the final scores
             for (int i = 0; i < scores.GetLength(0); i++)
             {
-                FinalScores.Add(i.ToString() + ". " + scores[i, 0] + " -- " + scores[i, 1]);
+                FinalScores.Add(i.ToString() + ". Player " + scores[i, 0] + " -- " + scores[i, 1]);
             }
 
             // Refresh the displaying ui-element
@@ -1556,7 +1663,7 @@ namespace ITstudy.RedProjects
             // If a category was determined, enter the score
             if (cat != null)
             {
-                Debug.WriteLine($"Yahtzee: ScorecardButton_Click() found category {(int)cat} {cat}");
+                // Debug.WriteLine($"Yahtzee: ScorecardButton_Click() found category {(int)cat} {cat}");
                 EndTurn((Categories)cat);
             }
         }
