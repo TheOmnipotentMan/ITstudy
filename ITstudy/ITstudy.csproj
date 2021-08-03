@@ -134,8 +134,14 @@
     <Compile Include="GreenProjects\TaxiService.xaml.cs">
       <DependentUpon>TaxiService.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GreenProjects\TransportCompany.xaml.cs">
+      <DependentUpon>TransportCompany.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GreenProjects\Tuition.xaml.cs">
       <DependentUpon>Tuition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GreenProjects\WaterUsage.xaml.cs">
+      <DependentUpon>WaterUsage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -509,7 +515,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GreenProjects\TransportCompany.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GreenProjects\Tuition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GreenProjects\WaterUsage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
