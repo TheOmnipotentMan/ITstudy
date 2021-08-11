@@ -1,0 +1,659 @@
+﻿<Page
+    x:Class="ITstudy.GreenProjects.TaxBrackets"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ITstudy.GreenProjects"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    
+    Width="1440" Height="990">
+
+
+
+
+
+    <Page.Resources>
+
+        
+        
+        <!-- Styles -->
+
+        <Style x:Key="TaxBracketsBracketLine" TargetType="Rectangle">
+            <Setter Property="Grid.RowSpan" Value="2"/>
+            <Setter Property="Grid.ColumnSpan" Value="5"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Fill" Value="{ThemeResource SystemBaseMediumLowColor}"/>
+            <Setter Property="Height" Value="1"/>
+        </Style>
+        <Style x:Key="TaxBracketsGreaterThanTextBlock" TargetType="TextBlock">
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="Text" Value="&lt;"/>
+        </Style>
+        <Style x:Key="TaxBracketsIncomeTextBlock" TargetType="TextBlock">
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="TextWrapping" Value="WrapWholeWords"/>
+            <Setter Property="FontSize" Value="20"/>            
+            <Setter Property="Text" Value="Taxable Income"/>            
+        </Style>
+        <Style x:Key="TaxBracketsGreaterOrEqualTextBlock" TargetType="TextBlock">
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="Text" Value="≤"/>
+        </Style>
+        <Style x:Key="TaxBracketsValueLeftTextBlock" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+        <Style x:Key="TaxBracketsValueRightTextBlock" TargetType="TextBlock" BasedOn="{StaticResource TaxBracketsValueLeftTextBlock}">
+            <Setter Property="Grid.Column" Value="2"/>
+        </Style>
+        <Style x:Key="TaxBracketPrecentage" TargetType="TextBlock">
+            <Setter Property="Grid.Column" Value="4"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="28"/>
+        </Style>
+        <Style x:Key="TaxFreeSumTextBlock" TargetType="TextBlock">
+            <Setter Property="Grid.Column" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="32"/>
+        </Style>
+ 
+        <Style x:Key="TaxSectionGrid" TargetType="Grid">
+            <Setter Property="BorderBrush" Value="{ThemeResource SystemBaseMediumColor}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="CornerRadius" Value="4"/>
+        </Style>
+
+        <x:Double x:Key="SettingsMainFontSize">32</x:Double>
+        <x:Double x:Key="SettingsSymbolsFontSize">24</x:Double>
+        <Style x:Key="BracketValueNumberBox" TargetType="muxc:NumberBox">
+            <Setter Property="Grid.Column" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="30 0 0 0"/>
+            <Setter Property="FontSize" Value="{StaticResource SettingsMainFontSize}"/>
+        </Style>
+        <Style x:Key="BracketPercentageNumberBox" TargetType="muxc:NumberBox">
+            <Setter Property="Grid.Column" Value="4"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0 0 40 0"/>
+            <Setter Property="FontSize" Value="{StaticResource SettingsMainFontSize}"/>
+        </Style>
+        <Style x:Key="BracketSideTextBlock" TargetType="TextBlock">
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="{StaticResource SettingsSymbolsFontSize}"/>
+        </Style>
+        <Style x:Key="BracketCurrencyTextBlock" TargetType="TextBlock">
+            <Setter Property="Grid.Column" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10 0 0 0"/>
+            <Setter Property="FontSize" Value="{StaticResource SettingsSymbolsFontSize}"/>
+            <Setter Property="Text" Value="€"/>
+        </Style>
+        <Style x:Key="BracketEqualsTextBlock" TargetType="TextBlock">
+            <Setter Property="Grid.Column" Value="3"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="{StaticResource SettingsSymbolsFontSize}"/>
+            <Setter Property="Text" Value="="/>
+        </Style>
+        <Style x:Key="BracketPercentageTextBlock" TargetType="TextBlock">
+            <Setter Property="Grid.Column" Value="5"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0 0 10 0"/>
+            <Setter Property="FontSize" Value="{StaticResource SettingsSymbolsFontSize}"/>
+            <Setter Property="Text" Value="%"/>
+        </Style>
+        <Style x:Key="FreeSumGroupTextBlock" TargetType="TextBlock">
+            <Setter Property="Grid.Column" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="0 0 10 0"/>
+            <Setter Property="FontSize" Value="{StaticResource SettingsMainFontSize}"/>
+        </Style>
+        <Style x:Key="FreeSumColonTextBlock" TargetType="TextBlock">
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="{StaticResource SettingsMainFontSize}"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Text" Value=":"/>
+        </Style>
+        <Style x:Key="FreeSumCurrencyTextBlock" TargetType="TextBlock">
+            <Setter Property="Grid.Column" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="10 0 0 0"/>
+            <Setter Property="FontSize" Value="{StaticResource SettingsSymbolsFontSize}"/>
+            <Setter Property="Text" Value="€"/>
+        </Style>
+        <Style x:Key="FreeSumValueNumberBox" TargetType="muxc:NumberBox">
+            <Setter Property="Grid.Column" Value="2"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="35 0 0 0"/>
+            <Setter Property="Width" Value="240"/>
+            <Setter Property="FontSize" Value="{StaticResource SettingsMainFontSize}"/>            
+        </Style>
+        
+        
+    </Page.Resources>
+    
+    
+    
+    
+    
+    
+
+    <Grid Width="1440" Height="990">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle x:Name="GeneralWindowBackground" Grid.ColumnSpan="4" Grid.RowSpan="4" Fill="{ThemeResource ApplicationPageBackgroundThemeBrush}"/>
+        <Border Grid.RowSpan="1" Grid.ColumnSpan="1" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" BorderThickness="2"/>
+
+
+
+
+        <Pivot >
+
+            <!-- Main -->
+            <PivotItem Header="Tax Brackets" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="6*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="5*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Tax Free Sum -->
+                    <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Margin="40" Style="{StaticResource TaxSectionGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="8*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <TextBlock Text="Tax Free Sum       (Select One)" FontSize="36" Style="{StaticResource HeaderTextBlockStyle}" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40 0"/>
+
+                        <Viewbox Grid.Row="1" Margin="20 0 0 0">
+                            <RadioButton x:Name="TaxFreeSum01RadioButton" Tag="1" Checked="TaxFreeSum_Checked"/>
+                        </Viewbox>
+                        <Viewbox Grid.Row="2" Margin="20 0 0 0">
+                            <RadioButton x:Name="TaxFreeSum02RadioButton" Tag="2" Checked="TaxFreeSum_Checked"/>
+                        </Viewbox>
+                        <Viewbox Grid.Row="3" Margin="20 0 0 0">
+                            <RadioButton x:Name="TaxFreeSum03RadioButton" Tag="3" Checked="TaxFreeSum_Checked"/>
+                        </Viewbox>
+                        <Viewbox Grid.Row="4" Margin="20 0 0 0">
+                            <RadioButton x:Name="TaxFreeSum04RadioButton" Tag="4" Checked="TaxFreeSum_Checked"/>
+                        </Viewbox>
+                        <Viewbox Grid.Row="5" Margin="20 0 0 0">
+                            <RadioButton x:Name="TaxFreeSum05RadioButton" Tag="5" Checked="TaxFreeSum_Checked"/>
+                        </Viewbox>
+
+                        <TextBlock Grid.Row="1" Text="Group 1" Style="{StaticResource FreeSumGroupTextBlock}"/>
+                        <TextBlock Grid.Row="2" Text="Group 2" Style="{StaticResource FreeSumGroupTextBlock}"/>
+                        <TextBlock Grid.Row="3" Text="Group 3" Style="{StaticResource FreeSumGroupTextBlock}"/>
+                        <TextBlock Grid.Row="4" Text="Group 4" Style="{StaticResource FreeSumGroupTextBlock}"/>
+                        <TextBlock Grid.Row="5" Text="Group 5" Style="{StaticResource FreeSumGroupTextBlock}"/>
+
+                        <TextBlock Grid.Row="1" Style="{StaticResource FreeSumColonTextBlock}"/>
+                        <TextBlock Grid.Row="2" Style="{StaticResource FreeSumColonTextBlock}"/>
+                        <TextBlock Grid.Row="3" Style="{StaticResource FreeSumColonTextBlock}"/>
+                        <TextBlock Grid.Row="4" Style="{StaticResource FreeSumColonTextBlock}"/>
+                        <TextBlock Grid.Row="5" Style="{StaticResource FreeSumColonTextBlock}"/>
+
+                        <TextBlock x:Name="TaxFreeSum01TextBlock" Grid.Row="1" Style="{StaticResource TaxFreeSumTextBlock}"/>
+                        <TextBlock x:Name="TaxFreeSum02TextBlock" Grid.Row="2" Style="{StaticResource TaxFreeSumTextBlock}"/>
+                        <TextBlock x:Name="TaxFreeSum03TextBlock" Grid.Row="3" Style="{StaticResource TaxFreeSumTextBlock}"/>
+                        <TextBlock x:Name="TaxFreeSum04TextBlock" Grid.Row="4" Style="{StaticResource TaxFreeSumTextBlock}"/>
+                        <TextBlock x:Name="TaxFreeSum05TextBlock" Grid.Row="5" Style="{StaticResource TaxFreeSumTextBlock}"/>
+
+                        <TextBlock/>
+
+                    </Grid>
+                    
+                    <!-- Tax Brackets -->
+                    <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="0 40 40 40" Style="{StaticResource TaxSectionGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Tax Brackets" FontSize="36" Style="{StaticResource HeaderTextBlockStyle}" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40 0"/>
+
+                        <Rectangle Grid.Row="0" Style="{StaticResource TaxBracketsBracketLine}"/>
+                        <TextBlock Grid.Row="1" Style="{StaticResource TaxBracketsGreaterThanTextBlock}"/>
+                        <TextBlock Grid.Row="1" Style="{StaticResource TaxBracketsIncomeTextBlock}"/>
+                        <TextBlock Grid.Row="1" Style="{StaticResource TaxBracketsGreaterOrEqualTextBlock}"/>
+                        <TextBlock Grid.Row="1" Style="{StaticResource TaxBracketsValueLeftTextBlock}" Text="€ 0,-"/>
+                        <TextBlock x:Name="TaxBracketTextBlock01" Grid.Row="1" Style="{StaticResource TaxBracketsValueRightTextBlock}" Text="€ 8000,-"/>
+                        <TextBlock Grid.Row="1" Style="{StaticResource BracketEqualsTextBlock}"/>
+                        <TextBlock Name="TaxBracket00PercTextBlock" Grid.Row="1" Style="{StaticResource TaxBracketPrecentage}" Text="99.99 %"/>
+
+                        <Rectangle Grid.Row="1" Style="{StaticResource TaxBracketsBracketLine}"/>
+                        <TextBlock Grid.Row="2" Style="{StaticResource TaxBracketsGreaterThanTextBlock}"/>
+                        <TextBlock Grid.Row="2" Style="{StaticResource TaxBracketsIncomeTextBlock}"/>
+                        <TextBlock Grid.Row="2" Style="{StaticResource TaxBracketsGreaterOrEqualTextBlock}"/>
+                        <TextBlock x:Name="TaxBracketTextBlock10" Grid.Row="2" Style="{StaticResource TaxBracketsValueLeftTextBlock}" Text="€ 0,-"/>
+                        <TextBlock x:Name="TaxBracketTextBlock11" Grid.Row="2" Style="{StaticResource TaxBracketsValueRightTextBlock}" Text="€ 8000,-"/>
+                        <TextBlock Grid.Row="2" Style="{StaticResource BracketEqualsTextBlock}"/>
+                        <TextBlock Name="TaxBracket01PercTextBlock" Grid.Row="2" Style="{StaticResource TaxBracketPrecentage}" Text="99.99 %"/>
+
+                        <Rectangle Grid.Row="2" Style="{StaticResource TaxBracketsBracketLine}"/>
+                        <TextBlock Grid.Row="3" Style="{StaticResource TaxBracketsGreaterThanTextBlock}"/>
+                        <TextBlock Grid.Row="3" Style="{StaticResource TaxBracketsIncomeTextBlock}"/>
+                        <TextBlock Grid.Row="3" Style="{StaticResource TaxBracketsGreaterOrEqualTextBlock}"/>
+                        <TextBlock x:Name="TaxBracketTextBlock20" Grid.Row="3" Style="{StaticResource TaxBracketsValueLeftTextBlock}" Text="€ 0,-"/>
+                        <TextBlock x:Name="TaxBracketTextBlock21" Grid.Row="3" Style="{StaticResource TaxBracketsValueRightTextBlock}" Text="€ 8000,-"/>
+                        <TextBlock Grid.Row="3" Style="{StaticResource BracketEqualsTextBlock}"/>
+                        <TextBlock Name="TaxBracket02PercTextBlock" Grid.Row="3" Style="{StaticResource TaxBracketPrecentage}" Text="99.99 %"/>
+
+                        <Rectangle Grid.Row="3" Style="{StaticResource TaxBracketsBracketLine}"/>
+                        <TextBlock Grid.Row="4" Style="{StaticResource TaxBracketsGreaterThanTextBlock}"/>
+                        <TextBlock Grid.Row="4" Style="{StaticResource TaxBracketsIncomeTextBlock}"/>
+                        <TextBlock Grid.Row="4" Style="{StaticResource TaxBracketsGreaterOrEqualTextBlock}"/>
+                        <TextBlock x:Name="TaxBracketTextBlock30" Grid.Row="4" Style="{StaticResource TaxBracketsValueLeftTextBlock}" Text="€ 0,-"/>
+                        <TextBlock Grid.Row="4" Style="{StaticResource TaxBracketsValueRightTextBlock}" Text="€ ∞,-"/>
+                        <TextBlock Grid.Row="4" Style="{StaticResource BracketEqualsTextBlock}"/>
+                        <TextBlock Name="TaxBracket03PercTextBlock" Grid.Row="4" Style="{StaticResource TaxBracketPrecentage}" Text="99.99 %"/>                        
+                        
+                    </Grid>
+
+                    <!-- Tax Free Percentage -->
+                    <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0 0 40 40" Style="{StaticResource TaxSectionGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Tax Free Percentage" FontSize="36" Style="{StaticResource HeaderTextBlockStyle}" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40 0"/>
+
+                        <TextBlock x:Name="TaxFreePercentagePercTextBlock" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 40 0" TextAlignment="Right" FontSize="{StaticResource SettingsMainFontSize}" Text="99.99"/>
+
+                        <TextBlock Text="%" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 10 0" FontSize="{StaticResource SettingsSymbolsFontSize}"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" TextAlignment="Center" FontSize="{StaticResource SettingsSymbolsFontSize}" TextWrapping="WrapWholeWords"
+                                   Text="Of taxable income"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="120" TextAlignment="Center" FontSize="{StaticResource SettingsSymbolsFontSize}" TextWrapping="WrapWholeWords"
+                                   Text="Up to a max of:"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" FontSize="{StaticResource SettingsSymbolsFontSize}"
+                                   Text="€"/>
+
+                        <TextBlock x:Name="TaxFreePercentageMaxTextBlock" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40 0 0 0" FontSize="{StaticResource SettingsMainFontSize}" Text="6400"/>
+
+                    </Grid>
+                    
+                    <!-- Input -->
+                    <Grid Grid.Row="2" Grid.ColumnSpan="3" Margin="40" Style="{StaticResource TaxSectionGrid}" BorderThickness="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Calculate Tax:" FontSize="36" Style="{StaticResource HeaderTextBlockStyle}" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40 0"/>
+
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" FontSize="36" Text="€"/>
+                        <TextBlock Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50 0 0 120" FontSize="24" Text="Income"/>
+                        <muxc:NumberBox x:Name="IncomeNumberBox" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="40" FontSize="48"/>
+
+                        <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Width="240" Height="80" BorderBrush="{ThemeResource SystemBaseMediumLowColor}" BorderThickness="2" CornerRadius="4"
+                                Click="CalculateTaxButton_Click"
+                                Content="Calculate >" FontSize="32"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" FontSize="36" Text="€"/>
+                        <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="50 0 0 120" FontSize="24" Text="Tax to be paid"/>
+                        <TextBlock x:Name="TaxResultTextBlock" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="50" TextAlignment="Left" FontSize="48"
+                                   Text="999999.99"/>
+
+                    </Grid>
+                    
+                    
+                </Grid>
+
+            </PivotItem>
+
+
+            <!-- Settings -->
+            <PivotItem Header="Brackets &#38; Settings" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="5*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="5*"/>
+                    </Grid.ColumnDefinitions>
+
+                    
+
+                    <!-- Tax Free Sums -->
+                    <Grid Grid.Column="0" Margin="60" Style="{StaticResource TaxSectionGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="8*"/>
+                        </Grid.ColumnDefinitions>
+                        
+
+                        <TextBlock Text="Tax Free Sum" FontSize="36" Style="{StaticResource HeaderTextBlockStyle}" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40 0"/>
+
+                        <TextBlock Grid.Row="1" Text="Group 1" Style="{StaticResource FreeSumGroupTextBlock}"/>
+                        <TextBlock Grid.Row="2" Text="Group 2" Style="{StaticResource FreeSumGroupTextBlock}"/>
+                        <TextBlock Grid.Row="3" Text="Group 3" Style="{StaticResource FreeSumGroupTextBlock}"/>
+                        <TextBlock Grid.Row="4" Text="Group 4" Style="{StaticResource FreeSumGroupTextBlock}"/>
+                        <TextBlock Grid.Row="5" Text="Group 5" Style="{StaticResource FreeSumGroupTextBlock}"/>
+
+                        <TextBlock Grid.Row="1" Style="{StaticResource FreeSumColonTextBlock}"/>
+                        <TextBlock Grid.Row="2" Style="{StaticResource FreeSumColonTextBlock}"/>
+                        <TextBlock Grid.Row="3" Style="{StaticResource FreeSumColonTextBlock}"/>
+                        <TextBlock Grid.Row="4" Style="{StaticResource FreeSumColonTextBlock}"/>
+                        <TextBlock Grid.Row="5" Style="{StaticResource FreeSumColonTextBlock}"/>
+
+                        <TextBlock Grid.Row="1" Style="{StaticResource FreeSumCurrencyTextBlock}"/>
+                        <TextBlock Grid.Row="2" Style="{StaticResource FreeSumCurrencyTextBlock}"/>
+                        <TextBlock Grid.Row="3" Style="{StaticResource FreeSumCurrencyTextBlock}"/>
+                        <TextBlock Grid.Row="4" Style="{StaticResource FreeSumCurrencyTextBlock}"/>
+                        <TextBlock Grid.Row="5" Style="{StaticResource FreeSumCurrencyTextBlock}"/>
+
+                        <muxc:NumberBox Grid.Row="1" Style="{StaticResource FreeSumValueNumberBox}" Value="{x:Bind TaxFreeSum01, Mode=TwoWay}" ValueChanged="TaxFreeSum_ValueChanged" Tag="1"/>
+                        <muxc:NumberBox Grid.Row="2" Style="{StaticResource FreeSumValueNumberBox}" Value="{x:Bind TaxFreeSum02, Mode=TwoWay}" ValueChanged="TaxFreeSum_ValueChanged" Tag="2"/>
+                        <muxc:NumberBox Grid.Row="3" Style="{StaticResource FreeSumValueNumberBox}" Value="{x:Bind TaxFreeSum03, Mode=TwoWay}" ValueChanged="TaxFreeSum_ValueChanged" Tag="3"/>
+                        <muxc:NumberBox Grid.Row="4" Style="{StaticResource FreeSumValueNumberBox}" Value="{x:Bind TaxFreeSum04, Mode=TwoWay}" ValueChanged="TaxFreeSum_ValueChanged" Tag="4"/>
+                        <muxc:NumberBox Grid.Row="5" Style="{StaticResource FreeSumValueNumberBox}" Value="{x:Bind TaxFreeSum05, Mode=TwoWay}" ValueChanged="TaxFreeSum_ValueChanged" Tag="5"/>
+                        
+                    </Grid>
+
+
+                    <!-- Tax Brackets -->
+                    <Grid Grid.Column="1" Margin="60" Style="{StaticResource TaxSectionGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <TextBlock Text="Tax Brackets" FontSize="36" Style="{StaticResource HeaderTextBlockStyle}" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40 0"/>
+
+
+                        <Rectangle Grid.Row="0" Style="{StaticResource TaxBracketsBracketLine}" Grid.RowSpan="1" VerticalAlignment="Bottom"/>
+                        <Rectangle Grid.Row="1" Style="{StaticResource TaxBracketsBracketLine}"/>
+                        <Rectangle Grid.Row="2" Style="{StaticResource TaxBracketsBracketLine}"/>
+                        <Rectangle Grid.Row="3" Style="{StaticResource TaxBracketsBracketLine}"/>                        
+                        
+                        <TextBlock Grid.Row="1" Style="{StaticResource BracketCurrencyTextBlock}"/>
+                        <TextBlock Grid.Row="2" Style="{StaticResource BracketCurrencyTextBlock}"/>
+                        <TextBlock Grid.Row="3" Style="{StaticResource BracketCurrencyTextBlock}"/>
+                        <TextBlock Grid.Row="4" Style="{StaticResource BracketCurrencyTextBlock}"/>
+
+                        <muxc:NumberBox Grid.Row="1" Style="{StaticResource BracketValueNumberBox}" Value="{x:Bind TaxBracket01Value, Mode=TwoWay}" ValueChanged="TaxBracket01_ValueChanged"/>
+                        <muxc:NumberBox Grid.Row="2" Style="{StaticResource BracketValueNumberBox}" Value="{x:Bind TaxBracket02Value, Mode=TwoWay}" ValueChanged="TaxBracket02_ValueChanged"/>
+                        <muxc:NumberBox Grid.Row="3" Style="{StaticResource BracketValueNumberBox}" Value="{x:Bind TaxBracket03Value, Mode=TwoWay}" ValueChanged="TaxBracket03_ValueChanged"/>
+
+                        <TextBlock Grid.Row="1" Style="{StaticResource BracketEqualsTextBlock}"/>
+                        <TextBlock Grid.Row="2" Style="{StaticResource BracketEqualsTextBlock}"/>
+                        <TextBlock Grid.Row="3" Style="{StaticResource BracketEqualsTextBlock}"/>
+                        <TextBlock Grid.Row="4" Style="{StaticResource BracketEqualsTextBlock}"/>
+
+                        <muxc:NumberBox Grid.Row="1" Style="{StaticResource BracketPercentageNumberBox}" Value="{x:Bind TaxBracket00Perc, Mode=TwoWay}" ValueChanged="TaxBracket00_PercChanged"/>
+                        <muxc:NumberBox Grid.Row="2" Style="{StaticResource BracketPercentageNumberBox}" Value="{x:Bind TaxBracket01Perc, Mode=TwoWay}" ValueChanged="TaxBracket01_PercChanged"/>
+                        <muxc:NumberBox Grid.Row="3" Style="{StaticResource BracketPercentageNumberBox}" Value="{x:Bind TaxBracket02Perc, Mode=TwoWay}" ValueChanged="TaxBracket02_PercChanged"/>
+                        <muxc:NumberBox Grid.Row="4" Style="{StaticResource BracketPercentageNumberBox}" Value="{x:Bind TaxBracket03Perc, Mode=TwoWay}" ValueChanged="TaxBracket03_PercChanged"/>
+
+                        <TextBlock Grid.Row="1" Style="{StaticResource TaxBracketsGreaterThanTextBlock}"/>
+                        <TextBlock Grid.Row="1" Style="{StaticResource TaxBracketsIncomeTextBlock}"/>
+                        <TextBlock Grid.Row="1" Style="{StaticResource TaxBracketsGreaterOrEqualTextBlock}"/>
+                        <TextBlock Grid.Row="1" Style="{StaticResource TaxBracketsValueLeftTextBlock}" Text="€ 0,-"/>
+
+                        <TextBlock Grid.Row="2" Style="{StaticResource TaxBracketsGreaterThanTextBlock}"/>
+                        <TextBlock Grid.Row="2" Style="{StaticResource TaxBracketsIncomeTextBlock}"/>
+                        <TextBlock Grid.Row="2" Style="{StaticResource TaxBracketsGreaterOrEqualTextBlock}"/>
+                        <TextBlock x:Name="SettingsBracket1" Grid.Row="2" Style="{StaticResource TaxBracketsValueLeftTextBlock}" Text="€ 0,-"/>
+
+                        <TextBlock Grid.Row="3" Style="{StaticResource TaxBracketsGreaterThanTextBlock}"/>
+                        <TextBlock Grid.Row="3" Style="{StaticResource TaxBracketsIncomeTextBlock}"/>
+                        <TextBlock Grid.Row="3" Style="{StaticResource TaxBracketsGreaterOrEqualTextBlock}"/>
+                        <TextBlock x:Name="SettingsBracket2" Grid.Row="3" Style="{StaticResource TaxBracketsValueLeftTextBlock}" Text="€ 0,-"/>
+
+                        <TextBlock Grid.Row="4" Style="{StaticResource TaxBracketsGreaterThanTextBlock}"/>
+                        <TextBlock Grid.Row="4" Style="{StaticResource TaxBracketsIncomeTextBlock}"/>
+                        <TextBlock Grid.Row="4" Style="{StaticResource TaxBracketsGreaterOrEqualTextBlock}"/>
+                        <TextBlock x:Name="SettingsBracket3" Grid.Row="4" Style="{StaticResource TaxBracketsValueLeftTextBlock}" Text="€ 0,-"/>
+                        <TextBlock Grid.Row="4" Style="{StaticResource TaxBracketsValueRightTextBlock}" Text="∞.-"/>
+
+                        <TextBlock Grid.Row="1" Style="{StaticResource BracketPercentageTextBlock}"/>
+                        <TextBlock Grid.Row="2" Style="{StaticResource BracketPercentageTextBlock}"/>
+                        <TextBlock Grid.Row="3" Style="{StaticResource BracketPercentageTextBlock}"/>
+                        <TextBlock Grid.Row="4" Style="{StaticResource BracketPercentageTextBlock}"/>
+
+                    </Grid>
+                    
+                    
+                    <!-- Tax Free Percentage -->
+                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Width="800" Height="180" HorizontalAlignment="Left" Margin="60 0 0 0" Style="{StaticResource TaxSectionGrid}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Tax Free Percentage" FontSize="36" Style="{StaticResource HeaderTextBlockStyle}" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="40 0"/>
+
+                        <muxc:NumberBox Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 20 0" Width="120" FontSize="{StaticResource SettingsMainFontSize}"
+                                        Value="{x:Bind TaxFreePercentage, Mode=TwoWay}" ValueChanged="TaxFreePercentage_PercChanged"/>
+                        
+                        <TextBlock Text="%" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="140 0 0 0" FontSize="{StaticResource SettingsSymbolsFontSize}"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" TextAlignment="Center" FontSize="{StaticResource SettingsSymbolsFontSize}" TextWrapping="WrapWholeWords"
+                                   Text="Of taxable income"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Width="120" TextAlignment="Center" FontSize="{StaticResource SettingsSymbolsFontSize}" TextWrapping="WrapWholeWords"
+                                   Text="Up to a max of:"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" FontSize="{StaticResource SettingsSymbolsFontSize}"
+                                   Text="€"/>
+
+                        <muxc:NumberBox Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" FontSize="{StaticResource SettingsMainFontSize}"
+                                        Value="{x:Bind TaxFreePercMax, Mode=TwoWay}" ValueChanged="TaxFreePercentage_MaxChanged"/>
+
+
+                    </Grid>
+                    
+
+                </Grid>
+
+            </PivotItem>
+
+
+            <!-- Project Details -->
+            <PivotItem Header="Project Details" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+
+                <Canvas>
+
+                    <RichTextBlock x:Name="TimeSpent" Canvas.Left="40" Canvas.Top="40" HorizontalTextAlignment="Center" ToolTipService.ToolTip="Total time I spent on this project.">
+                        <Paragraph>
+                            <Run Text="Time Spent (~)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectTimeSpent}" FontSize="32"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock x:Name="Challenge" Canvas.Left="240" Canvas.Top="40" HorizontalTextAlignment="Center"
+                                   ToolTipService.ToolTip="How challenging this project was for me.&#x0a;
+                                                           Based on how many times I got stuck, or times I needed to look things up in order to continue,&#x0a;
+                                                           or just how much I needed to concentrate to understand what I was doing and not make mistakes.">
+                        <Paragraph>
+                            <Run Text="Challenge (0-10)" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectChallenge}" FontSize="32"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <RichTextBlock x:Name="DateCompleted" Canvas.Left="540" Canvas.Top="40" HorizontalTextAlignment="Center">
+                        <Paragraph>
+                            <Run Text="Date completed" FontSize="16"/>
+                            <LineBreak/>
+                            <Run Text="{x:Bind ProjectDateFinished}" FontSize="24"/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="Goal of Project:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="10" Canvas.Top="160"/>
+                    <RichTextBlock Name="GoalOfProject" Canvas.Left="10" Canvas.Top="190" FontSize="20" TextIndent="0" Width="600">
+                        <Paragraph>
+                            <Run>
+                                Create a program that can calculate the amount of yearly income tax owed, using a tax-bracket system.
+                            </Run>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run>
+                                The amount is calculated as follows;
+                            </Run>
+                            <LineBreak/>
+                        </Paragraph>
+                        <Paragraph FontSize="18">
+                            <Run>
+                                First, a tax-free sum is deducted from the total income, consisting of a percentage of the total taxable income and a fixed amount.
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                • The percentage is 12% of the total income up to a max of €6,704.-.
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                The fixed value depends on which one of the five rate-segments is applicable:
+                            </Run>
+                            <LineBreak/>
+                            <Run Text="• Rate 1:  € 419.-"/>
+                            <LineBreak/>
+                            <Run Text="• Rate 2:  € 8,799.-"/>
+                            <LineBreak/>
+                            <Run Text="• Rate 3:  € 17,179.-"/>
+                            <LineBreak/>
+                            <Run Text="• Rate 4:  € 15,503.-"/>
+                            <LineBreak/>
+                            <Run Text="• Rate 5:  € 15,503.-"/>
+                            <LineBreak/>
+                        </Paragraph>
+                        <Paragraph FontSize="18">
+                            <Run>
+                                Then, the amount of tax owed is calculated over the remaining amount of income. This is done using brackets, with each bracket applying to part of the income.                                
+                            </Run>
+                            <LineBreak/>
+                            <Run Text="• Below € 8,000.- :  35.75%"/>
+                            <LineBreak/>
+                            <Run Text="• Between € 8,000.- &#38; € 25,000.- :  37.05%"/>
+                            <LineBreak/>
+                            <Run Text="• Between € 25,000.- &#38; € 54,000.- :  50%"/>
+                            <LineBreak/>
+                            <Run Text="• Above € 54,000.- :  60%"/>
+                            <LineBreak/>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                    <TextBlock Text="General comments:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="710" Canvas.Top="160"/>
+                    <RichTextBlock Name="GeneralComment" Canvas.Left="710" Canvas.Top="190" FontSize="20" Width="600">
+                        <Paragraph>
+                            <Run>
+                                PLACEHOLDER
+                            </Run>
+                        </Paragraph>
+                    </RichTextBlock>
+
+                </Canvas>
+
+            </PivotItem>
+
+        </Pivot>
+
+    </Grid>
+</Page>

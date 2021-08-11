@@ -153,6 +153,7 @@ namespace ITstudy
                 case "DumpContainerRenting": { ContentFrame.Content = new GreenProjects.DumpContainerRenting(); return true; }
                 case "TransportCompany": { ContentFrame.Content = new GreenProjects.TransportCompany(); return true; }
                 case "WaterUsage": { ContentFrame.Content = new GreenProjects.WaterUsage(); return true; }
+                case "TaxBrackets": { ContentFrame.Content = new GreenProjects.TaxBrackets(); return true; }
 
                 // EXTRA
                 case "TestPage1": { ContentFrame.Content = new TestPage1(); return true; }
