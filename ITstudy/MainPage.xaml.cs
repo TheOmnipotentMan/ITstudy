@@ -154,6 +154,7 @@ namespace ITstudy
                 case "TransportCompany": { ContentFrame.Content = new GreenProjects.TransportCompany(); return true; }
                 case "WaterUsage": { ContentFrame.Content = new GreenProjects.WaterUsage(); return true; }
                 case "TaxBrackets": { ContentFrame.Content = new GreenProjects.TaxBrackets(); return true; }
+                case "PlaceAnOrder": { ContentFrame.Content = new GreenProjects.PlaceAnOrder(); return true; }
 
                 // EXTRA
                 case "TestPage1": { ContentFrame.Content = new TestPage1(); return true; }
