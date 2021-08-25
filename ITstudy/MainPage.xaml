@@ -363,6 +363,13 @@
                                     <Image Source="Assets\StatusOK_16x.png" Width="20" Canvas.Left="4" Canvas.Top="8" Canvas.ZIndex="0"/>
                                     <Button x:Name="PlaceAnOrder" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
                                 </Canvas>
+
+                                <!-- Library -->
+                                <Canvas Width="350" Height="36">
+                                    <TextBlock Text="10. Library" FontSize="18" Canvas.Left="30" Canvas.Top="5" Canvas.ZIndex="0"/>
+                                    <Image Source="Assets\StatusOK_16x.png" Width="20" Canvas.Left="4" Canvas.Top="8" Canvas.ZIndex="0"/>
+                                    <Button x:Name="Library" Width="350" Height="36" Opacity="0" Canvas.ZIndex="1" Click="NewProjectSelected_Click"/>
+                                </Canvas>
                                 
                             </ListView>
 
@@ -425,7 +432,7 @@
                            Text="General Projects = 9"/>
                     <TextBlock x:Name="GreenProjectsProgress" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
-                           Text="Calc. Projects = 8"/>
+                           Text="Calc. Projects = 9"/>
                     <TextBlock x:Name="ExtraProjectsProgress" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
                            Text="Extra Projects = 2"/>
