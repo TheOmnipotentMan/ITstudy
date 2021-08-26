@@ -28,60 +28,140 @@ namespace ITstudy.GreenProjects
     /// </summary>
     public sealed partial class Library : Page
     {
-
         /// <summary>
-        /// Alternative for the Categories list, use this instead of the string
+        /// A dictionary with some control meaasures and functions, only accepts both each category and key once
         /// </summary>
-        private class Category
+        private class CategoryDictionary
         {
-            public class CategoryCode : IComparable
+            private Dictionary<ushort, string> _Categories;
+            private Dictionary<string, ushort> _CategoriesInverse;
+
+            private Stack<ushort> _RemovedKeys;
+
+            public CategoryDictionary()
             {
-                private ushort _Code;
+                _Categories = new Dictionary<ushort, string>();
+                _CategoriesInverse = new Dictionary<string, ushort>();
+                _RemovedKeys = new Stack<ushort>();
+            }
 
-                public CategoryCode(ushort code)
+            /// <summary>
+            /// Add a new category to the collection
+            /// </summary>
+            /// <param name="category">Category to add</param>
+            /// <returns>True if succesfull. False if not, likely because category is already present</returns>
+            public bool Add(string category)
+            {
+                if (_Categories.Count >= ushort.MaxValue) { Debug.WriteLine($"Library: CategoryDictionary.Add(string category) Dictionary has reached max size"); return false; }
+                else if (_CategoriesInverse.ContainsKey(category)) { Debug.WriteLine($"Library: CategoryDictionary.Add(string category) category {category} is duplicate"); return false; }
+                else
                 {
-                    _Code = Math.Clamp(code, ushort.MinValue, (ushort)9999);
-                }
-
-                public int CompareTo(object obj)
-                {
-                    if (obj == null) { return 1; }
-                    if (obj != null)
-                    {
-                        CategoryCode otherCatCode = obj as CategoryCode;
-                        return this._Code.CompareTo(otherCatCode._Code);
-                    }
-                    else
-                    {
-                        throw new ArgumentException("PlaceAnOrder_Item: Object is not a Year!");
-                    }
-                }
-
-                public ushort Code
-                {
-                    get { return _Code; }
+                    ushort key = GetNextKey();
+                    _Categories.Add(key, category);
+                    _CategoriesInverse.Add(category, key);
+                    return true;
                 }
             }
 
-            private string _Name;
-            private CategoryCode _Code;
-
-            public Category(string name, ushort code)
+            /// <summary>
+            /// Remove a category from the collection
+            /// </summary>
+            /// <param name="category">Category to remove</param>
+            /// <returns>True if succesfull. False if not, likely because category could not be found</returns>
+            public bool Remove(string category)
             {
-                _Name = name;
-                _Code = new CategoryCode(code);
+                ushort key;
+                if (!_CategoriesInverse.TryGetValue(category, out key)) { Debug.WriteLine($"Library: CategoryDictionary.Remove(string category) category {category} not found"); return false; }
+                else
+                {
+                    _RemovedKeys.Push(key);
+                    _Categories.Remove(key);
+                    _CategoriesInverse.Remove(category);
+                    return true;
+                }
             }
 
-            public string Name
+            /// <summary>
+            /// Remove a category from the collection by key
+            /// </summary>
+            /// <param name="key">Key to remove</param>
+            /// <returns>True if succesfull. False if not, likely because key could not be found</returns>
+            public bool Remove(ushort key)
             {
-                get { return _Name; }
+                string category;
+                if (!_Categories.TryGetValue(key, out category)) { Debug.WriteLine($"Library: CategoryDictionary.Remove(ushort key) key {key} not found"); return false; }
+                else
+                {
+                    _RemovedKeys.Push(key);
+                    _Categories.Remove(key);
+                    _CategoriesInverse.Remove(category);
+                    return true;
+                }
             }
 
-            public ushort Code
+            /// <summary>
+            /// Get the next free key for the dictionaries
+            /// </summary>
+            /// <returns></returns>
+            private ushort GetNextKey()
             {
-                get { return _Code.Code; }
+                if (_RemovedKeys.Count > 0)
+                {
+                    return _RemovedKeys.Pop();
+                }
+                else
+                {
+                    return (ushort)_Categories.Count();
+                }
+            }
+
+
+
+
+            /// <summary>
+            /// Determines whether the collection contains the speficied key
+            /// </summary>
+            /// <param name="key"></param>
+            /// <returns>True if the collection contains the specified key, else false.</returns>
+            public bool ContainsKey(ushort key)
+            {
+                return _Categories.ContainsKey(key);
+            }
+
+            /// <summary>
+            /// Detemines whether the collection contains the specified category
+            /// </summary>
+            /// <param name="category"></param>
+            /// <returns>True if the collection contains the specified category, else false.</returns>
+            public bool ContainsCategory(string category)
+            {
+                return _CategoriesInverse.ContainsKey(category);
+            }
+
+            /// <summary>
+            /// Get the value assosiated with the specified key
+            /// </summary>
+            /// <param name="category"></param>
+            /// <param name="key"></param>
+            /// <returns>True if the collection contains an element with the specified key, else false.</returns>
+            public bool GetKey(string category, out ushort key)
+            {
+                return _CategoriesInverse.TryGetValue(category, out key);
+            }
+
+            /// <summary>
+            /// Get the key associated with the specified value
+            /// </summary>
+            /// <param name="key"></param>
+            /// <param name="category"></param>
+            /// <returns>True if the collection contains an element with the specified value, else false.</returns>
+            public bool GetCategory(ushort key, out string category)
+            {
+                return _Categories.TryGetValue(key, out category);
             }
         }
+
+
 
 
 
@@ -112,9 +192,9 @@ namespace ITstudy.GreenProjects
 
 
         /// <summary>
-        /// All possible categories of books in the inventory. as soon as any item has been added to inventory, DO NOT SORT!
+        /// All the possible categories for books in the inventory
         /// </summary>
-        private List<string> Categories; // TODO replace with dictionary
+        private CategoryDictionary Categories;
 
 
 
@@ -123,33 +203,117 @@ namespace ITstudy.GreenProjects
         {
             this.InitializeComponent();
 
+            // Generate some content
             GenerateCategories();
-
             GenerateInventory();
+
+            InventoryListView.ItemsSource = Inventory;
         }
 
 
+        /// <summary>
+        /// Populate the dictonary Categories with some categories
+        /// </summary>
         private void GenerateCategories()
         {
-            Categories = new List<string>();
+            // Categories to generate, ordered alphabetically. Excerpt of, based on, https://en.wikipedia.org/wiki/List_of_writing_genres
+            string[] categories = new string[]
+            {
+                "Academic", "Action", "Adventure",
+                "Biography",
+                "Children", "Classic", "Comedy", "Comic", "Crime",
 
-            Categories.Add("Academic");
-            Categories.Add("Children");
-            Categories.Add("Crime");
-            Categories.Add("Epic");
-            Categories.Add("Fantasy");
-            Categories.Add("History");
-            Categories.Add("Romance");
-            Categories.Add("Science Fiction");
-            Categories.Add("Thriller");
+                "Epic", "Essay",
+                "Fantasy", "Folklore",
+
+                "History", "Horror",
+
+
+
+                
+                "Manual", "Mystery",
+                "Non Fiction", "Novel", "Novella",
+
+                "Philosophy",
+
+                "Religion", "Romance",
+                "Satire", "Science Fiction", "Self Help", "Superhero", "Survival",
+                "Thriller", "Travel",
+
+
+                "Western",
+
+                "Young Adult",
+
+            };
+
+            Categories = new CategoryDictionary();
+
+            for (int i = 0; i < categories.Length; i++)
+            {
+                AddCategory(categories[i]);
+            }            
         }
 
 
+        /// <summary>
+        /// Populate the list Inventory with some books, https://en.wikipedia.org/wiki/List_of_best-selling_books
+        /// </summary>
         private void GenerateInventory()
         {
             Inventory = new List<Library_Book>();
 
-            Inventory.Add(new Library_Book("The Very Hungry Catepillar", "Eric Carle", "World Publishing Company", 1969, 2020, 99, 0399226907, 1));
+            AddBook("The Hobbit", "J.R.R. Tolkien", "Geroge Allen & Unwin Ltd.", 1957, 2002, 3, 9022532003, "Fantasy");
+            AddBook("Harry Potter and the Philosopher's Stone", "J.K. Rowling", "Bloomsbury", 1997, 1997, 1, 0747532699, "Fantasy");
+            AddBook("The Little Prince", "Antoine de Saint-Exupéry", "Reynal & Hitchcock", 1943, 2020, 9, 0, "Novella");
+            AddBook("Dream of the Red Chamber", "Cao Xueqin", "N/A", 1750, 2020, 255, 0, "Novel");
+            AddBook("And Then There Were None", "Agatha Christie", "Collins Crime Club", 1939, 2020, 0, 0, "Mystery");
+
+            AddBook("The Very Hungry Catepillar", "Eric Carle", "World Publishing Company", 1969, 2020, 99, 399226907, "Children");
+        }
+
+
+        /// <summary>
+        /// Add a category to Categeries
+        /// </summary>
+        /// <param name="category"></param>
+        private void AddCategory(string category)
+        {
+            try
+            {
+                Categories.Add(category);
+            }
+            catch (ArgumentException)
+            {
+                Debug.WriteLine($"Library: GenerateCategories() encountered a duplicate. {category}");
+            }
+        }
+
+
+
+
+        /// <summary>
+        /// Add a book to Inventory. Handles category automatically given the desired category as a string
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="author"></param>
+        /// <param name="publisher"></param>
+        /// <param name="firstPrintYear"></param>
+        /// <param name="printYear"></param>
+        /// <param name="printNumber"></param>
+        /// <param name="isbn"></param>
+        /// <param name="category"></param>
+        private void AddBook(string title, string author, string publisher, ushort firstPrintYear, ushort printYear, byte printNumber, ulong isbn, string category)
+        {
+            ushort key;
+            if (Categories.GetKey(category, out key))
+            {
+                Inventory.Add(new Library_Book(title, author, publisher, firstPrintYear, printYear, printNumber, isbn, key, category));
+            }
+            else
+            {
+                Inventory.Add(new Library_Book(title, author, publisher, firstPrintYear, printYear, printNumber, isbn, ushort.MaxValue, "NotFound"));
+            }
         }
 
     }

@@ -76,7 +76,7 @@ namespace ITstudy.GreenProjects
             _PrintYear = printYear;
             _PrintNumber = printNumber;
 
-            _ISBN = (isbn >= 1e14) ? (ulong)(isbn % 1e14) : isbn;
+            _ISBN = (isbn >= 1e14) ? 0 : isbn;
 
             _IsOnLoan = false;
             _LoanOutDate = DateTime.MaxValue;
@@ -154,6 +154,10 @@ namespace ITstudy.GreenProjects
             PublicLoanDate = (_LoanOutDate == DateTime.MaxValue) ? "xx-xx-xxxx" : _LoanOutDate.Day.ToString("D2") + "-" + _LoanOutDate.Month.ToString("D2") + "-" + _LoanOutDate.Year.ToString("D4");
         }
 
+        /// <summary>
+        /// Set the public 
+        /// </summary>
+        /// <param name="category"></param>
         public void SetPublicCategory(string category)
         {
             PublicCategory = category;
@@ -187,7 +191,7 @@ namespace ITstudy.GreenProjects
         /// <summary>
         /// Genre or Category number
         /// </summary>
-        public ushort GenreCategory
+        public ushort Category
         {
             get { return _CategoryCode; }
         }

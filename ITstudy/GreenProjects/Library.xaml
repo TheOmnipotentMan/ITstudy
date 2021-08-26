@@ -15,14 +15,14 @@
 
         <DataTemplate x:Key="InventoryListItem" x:DataType="local:Library_Book">
             <ListViewItem>
-                <Grid Width="{Binding ActualWidth, ElementName=InventoryHorizontalLine}">
+                <Grid Width="1400">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="93*"/>
+                        <ColumnDefinition Width="290*"/>
+                        <ColumnDefinition Width="198*"/>
                         <ColumnDefinition Width="100*"/>
                         <ColumnDefinition Width="100*"/>
                         <ColumnDefinition Width="100*"/>
-                        <ColumnDefinition Width="100*"/>
-                        <ColumnDefinition Width="96*"/>
+                        <ColumnDefinition Width="94*"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Grid.ColumnSpan="1" Margin="10 0" Text="{x:Bind Title}"/>
                     <TextBlock Grid.Column="1" Grid.ColumnSpan="1" Margin="10 0" Text="{x:Bind Author}"/>
@@ -33,7 +33,6 @@
                 </Grid>
             </ListViewItem>
         </DataTemplate>
-
 
         <Style x:Key="InventoryColumnHeader" TargetType="TextBlock">
             <Setter Property="Grid.Row" Value="1"/>
@@ -80,75 +79,86 @@
 
             <PivotItem Header="Inventory" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
 
-                <Grid>
+                <!-- Inventory -->
+                <Grid x:Name="InventoryDisplayGrid" Grid.Row="0" Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="40*"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="2"/>
                         <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="2"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    
-                    
-                    
-                    <!-- Inventory -->
-                    <Grid x:Name="InventoryDisplayGrid" Grid.Row="0" Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="3*"/>
-                            <RowDefinition Height="2*"/>
-                            <RowDefinition Height="40*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
 
-                        <Rectangle x:Name="InventoryHorizontalLine" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6" VerticalAlignment="Bottom" Height="2" Margin="10 0 10 0" Fill="{ThemeResource SystemBaseMediumLowColor}"/>
-                        <Rectangle Grid.Row="1" Grid.Column="0" Grid.RowSpan="1" Grid.ColumnSpan="2" Width="2" Margin="0 10 0 2" Fill="{ThemeResource SystemBaseMediumLowColor}"/>
-                        <Rectangle Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Grid.ColumnSpan="2" Width="2" Margin="0 10 0 2" Fill="{ThemeResource SystemBaseMediumLowColor}"/>
-                        <Rectangle Grid.Row="1" Grid.Column="2" Grid.RowSpan="1" Grid.ColumnSpan="2" Width="2" Margin="0 10 0 2" Fill="{ThemeResource SystemBaseMediumLowColor}"/>
-                        <Rectangle Grid.Row="1" Grid.Column="3" Grid.RowSpan="1" Grid.ColumnSpan="2" Width="2" Margin="0 10 0 2" Fill="{ThemeResource SystemBaseMediumLowColor}"/>
-                        <Rectangle Grid.Row="1" Grid.Column="4" Grid.RowSpan="1" Grid.ColumnSpan="2" Width="2" Margin="0 10 0 2" Fill="{ThemeResource SystemBaseMediumLowColor}"/>
+                    <Rectangle x:Name="InventoryHorizontalLine" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="11" VerticalAlignment="Bottom" Height="2" Margin="10 0 10 0" Fill="{ThemeResource SystemBaseMediumLowColor}"/>
+                    <Rectangle Grid.Row="1" Grid.Column="1" Grid.RowSpan="1" Width="2" Margin="0 10 0 2" Fill="{ThemeResource SystemBaseMediumLowColor}"/>
+                    <Rectangle Grid.Row="1" Grid.Column="3" Grid.RowSpan="1" Width="2" Margin="0 10 0 2" Fill="{ThemeResource SystemBaseMediumLowColor}"/>
+                    <Rectangle Grid.Row="1" Grid.Column="5" Grid.RowSpan="1" Width="2" Margin="0 10 0 2" Fill="{ThemeResource SystemBaseMediumLowColor}"/>
+                    <Rectangle Grid.Row="1" Grid.Column="7" Grid.RowSpan="1" Width="2" Margin="0 10 0 2" Fill="{ThemeResource SystemBaseMediumLowColor}"/>
+                    <Rectangle Grid.Row="1" Grid.Column="9" Grid.RowSpan="1" Width="2" Margin="0 10 0 2" Fill="{ThemeResource SystemBaseMediumLowColor}"/>
 
 
-                        <TextBlock Grid.ColumnSpan="3" Text="Inventory" Style="{StaticResource HeaderTextBlockStyle}" Margin="20 0"/>
-                        <TextBlock Grid.Column="0" Style="{StaticResource InventoryColumnHeader}" Text="Title"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource InventoryColumnHeader}" Text="Author"/>
-                        <TextBlock Grid.Column="2" Style="{StaticResource InventoryColumnHeader}" Text="ISBN"/>
-                        <TextBlock Grid.Column="3" Style="{StaticResource InventoryColumnHeader}" Text="Category"/>
-                        <TextBlock Grid.Column="4" Style="{StaticResource InventoryColumnHeader}" Text="Status"/>
-                        <TextBlock Grid.Column="5" Style="{StaticResource InventoryColumnHeader}" Text="Date"/>
+                    <TextBlock Grid.ColumnSpan="3" Text="Inventory" Style="{StaticResource HeaderTextBlockStyle}" Margin="20 0"/>
+                    <TextBlock Grid.Column="0" Style="{StaticResource InventoryColumnHeader}" Text="Title"/>
+                    <TextBlock Grid.Column="2" Style="{StaticResource InventoryColumnHeader}" Text="Author"/>
+                    <TextBlock Grid.Column="4" Style="{StaticResource InventoryColumnHeader}" Text="ISBN"/>
+                    <TextBlock Grid.Column="6" Style="{StaticResource InventoryColumnHeader}" Text="Category"/>
+                    <TextBlock Grid.Column="8" Style="{StaticResource InventoryColumnHeader}" Text="Status"/>
+                    <TextBlock Grid.Column="10" Style="{StaticResource InventoryColumnHeader}" Text="Date"/>
 
-                        
 
-                        <!-- Inventory List, source set in code -->
-                        <ListView x:Name="InventoryListView" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6" ItemTemplate="{StaticResource InventoryListItem}">
-                            <ListViewItem>
-                                <Grid Width="{Binding ActualWidth, ElementName=InventoryHorizontalLine}">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="93*"/>
-                                        <ColumnDefinition Width="100*"/>
-                                        <ColumnDefinition Width="100*"/>
-                                        <ColumnDefinition Width="100*"/>
-                                        <ColumnDefinition Width="100*"/>
-                                        <ColumnDefinition Width="96*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0" Grid.ColumnSpan="1" Margin="10 0" Text="TITLE"/>
-                                    <TextBlock Grid.Column="1" Grid.ColumnSpan="1" Margin="10 0" Text="AUTHOR"/>
-                                    <TextBlock Grid.Column="2" Grid.ColumnSpan="1" Margin="10 0" Text="ISBN"/>
-                                    <TextBlock Grid.Column="3" Grid.ColumnSpan="1" Margin="10 0" Text="CATEGORY"/>
-                                    <TextBlock Grid.Column="4" Grid.ColumnSpan="1" Margin="10 0" Text="STATUS"/>
-                                    <TextBlock Grid.Column="5" Grid.ColumnSpan="1" Margin="10 0" Text="DATE"/>
-                                </Grid>
-                            </ListViewItem>
-                        </ListView>
 
-                    </Grid>
-                    
+                    <!-- Inventory List, source set in code -->
+                    <ListView x:Name="InventoryListView" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="11" ItemTemplate="{StaticResource InventoryListItem}">
+                        <!-- ListViewItem testing example, will be overwritten from code -->
+                        <ListViewItem>
+                            <Grid Width="{Binding ActualWidth, ElementName=InventoryHorizontalLine}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="290*"/>
+                                    <ColumnDefinition Width="198*"/>
+                                    <ColumnDefinition Width="100*"/>
+                                    <ColumnDefinition Width="100*"/>
+                                    <ColumnDefinition Width="100*"/>
+                                    <ColumnDefinition Width="94*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Grid.ColumnSpan="1" Margin="10 0" Text="TITLE"/>
+                                <TextBlock Grid.Column="1" Grid.ColumnSpan="1" Margin="10 0" Text="AUTHOR"/>
+                                <TextBlock Grid.Column="2" Grid.ColumnSpan="1" Margin="10 0" Text="ISBN"/>
+                                <TextBlock Grid.Column="3" Grid.ColumnSpan="1" Margin="10 0" Text="CATEGORY"/>
+                                <TextBlock Grid.Column="4" Grid.ColumnSpan="1" Margin="10 0" Text="STATUS"/>
+                                <TextBlock Grid.Column="5" Grid.ColumnSpan="1" Margin="10 0" Text="DATE"/>
+                            </Grid>
+                        </ListViewItem>
+                        <ListViewItem>
+                            <Grid Width="1400">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="290*"/>
+                                    <ColumnDefinition Width="198*"/>
+                                    <ColumnDefinition Width="100*"/>
+                                    <ColumnDefinition Width="100*"/>
+                                    <ColumnDefinition Width="100*"/>
+                                    <ColumnDefinition Width="94*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Grid.ColumnSpan="1" Margin="10 0" Text="TITLE"/>
+                                <TextBlock Grid.Column="1" Grid.ColumnSpan="1" Margin="10 0" Text="AUTHOR"/>
+                                <TextBlock Grid.Column="2" Grid.ColumnSpan="1" Margin="10 0" Text="ISBN"/>
+                                <TextBlock Grid.Column="3" Grid.ColumnSpan="1" Margin="10 0" Text="CATEGORY"/>
+                                <TextBlock Grid.Column="4" Grid.ColumnSpan="1" Margin="10 0" Text="STATUS"/>
+                                <TextBlock Grid.Column="5" Grid.ColumnSpan="1" Margin="10 0" Text="DATE"/>
+                            </Grid>
+                        </ListViewItem>
+                    </ListView>
+
                 </Grid>
 
             </PivotItem>
