@@ -17,7 +17,7 @@ namespace ITstudy.GreenProjects
     /// <summary>
     /// Library book
     /// </summary>
-    struct Library_Book
+    public class Library_Book
     {
 
         // Public values for UI list element, display purposes
@@ -25,6 +25,7 @@ namespace ITstudy.GreenProjects
         public string PublicAuthor;
         public string PublicPublisher;
         public string PublicISBN;
+        public string PublicCode;
         public string PublicCategory;
         public string PublicIsAvailable;
         public string PublicLoanDate;
@@ -37,6 +38,8 @@ namespace ITstudy.GreenProjects
         private string _Publisher;
 
         private ushort _CategoryCode;
+
+        private ushort _BookCode;
 
         private ushort _FirstPrintYear;
         private ushort _PrintYear;
@@ -64,13 +67,15 @@ namespace ITstudy.GreenProjects
         /// <param name="printNumber">This books printing run, eg 4th print</param>
         /// <param name="printYear">The year this version or print was made</param>
         /// <param name="isbn">International Standard Book Number</param>
-        public Library_Book(string title, string author, string publisher, ushort firstPrintYear, ushort printYear, byte printNumber, ulong isbn, ushort genreCategory, string publicGenreCategory = "")
+        public Library_Book(string title, string author, string publisher, ushort genreCategory, ushort bookCode, ushort firstPrintYear, ushort printYear, byte printNumber, ulong isbn, string publicGenreCategory = "")
         {
             _Title = title;
             _Author = author;
             _Publisher = publisher;
 
             _CategoryCode = genreCategory;
+
+            _BookCode = bookCode;
 
             _FirstPrintYear = firstPrintYear;
             _PrintYear = printYear;
@@ -87,9 +92,10 @@ namespace ITstudy.GreenProjects
             PublicAuthor = _Author;
             PublicPublisher = _Publisher;
             PublicISBN = _ISBN.ToString("D13");
+            PublicCode = _BookCode.ToString();
             PublicCategory = (publicGenreCategory == "") ? _CategoryCode.ToString() : publicGenreCategory;
-            PublicIsAvailable = (_IsOnLoan) ? "On Loan" : "Available";
-            PublicLoanDate = (_LoanOutDate == DateTime.MaxValue) ? "xx-xx-xxxx" : _LoanOutDate.Day.ToString("D2") + "-" + _LoanOutDate.Month.ToString("D2") + "-" + _LoanOutDate.Year.ToString("D4");
+            PublicIsAvailable = _IsOnLoan ? "On Loan" : "Available";
+            PublicLoanDate = (_LoanOutDate == DateTime.MaxValue) ? "N/A" : _LoanOutDate.Day.ToString("D2") + "-" + _LoanOutDate.Month.ToString("D2") + "-" + _LoanOutDate.Year.ToString("D4");
         }
 
         
@@ -111,7 +117,7 @@ namespace ITstudy.GreenProjects
             {
                 _IsOnLoan = true;
                 _LoanOutDate = loanStartDate;
-                UpdatePublicLoanDate();
+                UpdatePublicLoanInfo();
                 return true;
             }
             else
@@ -130,7 +136,7 @@ namespace ITstudy.GreenProjects
             {
                 _IsOnLoan = false;
                 _LoanOutDate = DateTime.MaxValue;
-                UpdatePublicLoanDate();
+                UpdatePublicLoanInfo();
                 return true;
             }
             else
@@ -149,8 +155,9 @@ namespace ITstudy.GreenProjects
         /// <summary>
         /// Update the PublicLoadDate to represent the actual _LoanOutDate
         /// </summary>
-        private void UpdatePublicLoanDate()
+        private void UpdatePublicLoanInfo()
         {
+            PublicIsAvailable = _IsOnLoan ? "On Loan" : "Available";
             PublicLoanDate = (_LoanOutDate == DateTime.MaxValue) ? "xx-xx-xxxx" : _LoanOutDate.Day.ToString("D2") + "-" + _LoanOutDate.Month.ToString("D2") + "-" + _LoanOutDate.Year.ToString("D4");
         }
 
@@ -194,6 +201,14 @@ namespace ITstudy.GreenProjects
         public ushort Category
         {
             get { return _CategoryCode; }
+        }
+
+        /// <summary>
+        /// Unique code of this book
+        /// </summary>
+        public ushort Code
+        {
+            get { return _BookCode; }
         }
 
         /// <summary>

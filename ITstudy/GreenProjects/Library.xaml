@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+        
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     
     Width="1440" Height="990">
 
@@ -26,8 +28,8 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Grid.ColumnSpan="1" Margin="10 0" Text="{x:Bind Title}"/>
                     <TextBlock Grid.Column="1" Grid.ColumnSpan="1" Margin="10 0" Text="{x:Bind Author}"/>
-                    <TextBlock Grid.Column="2" Grid.ColumnSpan="1" Margin="10 0" Text="{x:Bind ISBN}"/>
-                    <TextBlock Grid.Column="3" Grid.ColumnSpan="1" Margin="10 0" Text="{x:Bind PublicCategory}"/>
+                    <TextBlock Grid.Column="2" Grid.ColumnSpan="1" Margin="10 0" Text="{x:Bind PublicCategory}"/>
+                    <TextBlock Grid.Column="3" Grid.ColumnSpan="1" Margin="10 0" Text="{x:Bind PublicCode}"/>
                     <TextBlock Grid.Column="4" Grid.ColumnSpan="1" Margin="10 0" Text="{x:Bind PublicIsAvailable}"/>
                     <TextBlock Grid.Column="5" Grid.ColumnSpan="1" Margin="10 0" Text="{x:Bind PublicLoanDate}"/>
                 </Grid>
@@ -64,20 +66,65 @@
 
 
 
-        <Pivot >
+        <Pivot x:Name="MainPivot" SelectionChanged="MainPivot_SelectionChanged">
 
             <PivotItem Header="Library" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
 
-                <Canvas>
+                <Border Margin="60" BorderBrush="{ThemeResource SystemBaseMediumLowColor}" BorderThickness="2" CornerRadius="8">
+                    
+                    <Grid Margin="40">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="4*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Something" FontSize="32" Canvas.Left="100" Canvas.Top="100"/>
+                        <TextBox x:Name="SelectedBookTextBox" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" Height="90" Margin="0 0 20 0" FontSize="32" PlaceholderText="Enter a book">
+                            <TextBox.Header>
+                                <TextBlock Text="Book:" FontSize="20"/>
+                            </TextBox.Header>
+                        </TextBox>
+                        <ComboBox x:Name="SelectByComboBox" Grid.Column="2" VerticalAlignment="Center" Width="180" FontSize="32">
+                            <ComboBox.Header>
+                                <TextBlock Text="Select by;" FontSize="20"/>
+                            </ComboBox.Header>
+                        </ComboBox>
 
-                </Canvas>
+                        <DatePicker x:Name="BookDatePicker" Grid.Row="1" FontSize="32" Width="400" VerticalAlignment="Bottom">
+                            <DatePicker.Header>
+                                <TextBlock Text="Date:" FontSize="20"/>
+                            </DatePicker.Header>
+                        </DatePicker>
+
+                        <Button x:Name="LoanOutButton" Content="Loan Out" Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Width="180" Height="60" FontSize="32"
+                                        BorderBrush="{ThemeResource SystemBaseLowColor}" BorderThickness="1" Click="LoanOutButton_Click"/>
+                        <Button x:Name="ReturnButton" Content="Return" Grid.Row="1" Grid.Column="2" VerticalAlignment="Bottom" Width="180" Height="60" FontSize="32"
+                                        BorderBrush="{ThemeResource SystemBaseLowColor}" BorderThickness="1" Click="ReturnButton_Click"/>
+
+                        <Rectangle Grid.Row="2" Grid.ColumnSpan="3" Margin="0" Height="1" Fill="{ThemeResource SystemBaseMediumColor}"/>
+                        <Rectangle Grid.Row="2" Grid.ColumnSpan="3" Margin="0 8 0 0" Height="1" Fill="{ThemeResource SystemBaseMediumColor}"/>
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Message:" ToolTipService.ToolTip="Displays a message on the status of the information entered."/>
+                        <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 20 0 0" BorderBrush="{ThemeResource SystemBaseMediumLowColor}" BorderThickness="1" CornerRadius="4">
+                            <TextBlock x:Name="LoanOutReturnMessageTextBlock" Margin="6 0" TextWrapping="WrapWholeWords" FontSize="26"/>
+                        </Border>
+                                                
+                    </Grid>
+                    
+                </Border>
+                
+
 
             </PivotItem>
 
 
-            <PivotItem Header="Inventory" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
+            <PivotItem x:Name="InventoryPivot" Header="Inventory" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
 
                 <!-- Inventory -->
                 <Grid x:Name="InventoryDisplayGrid" Grid.Row="0" Grid.Column="1">
@@ -111,8 +158,8 @@
                     <TextBlock Grid.ColumnSpan="3" Text="Inventory" Style="{StaticResource HeaderTextBlockStyle}" Margin="20 0"/>
                     <TextBlock Grid.Column="0" Style="{StaticResource InventoryColumnHeader}" Text="Title"/>
                     <TextBlock Grid.Column="2" Style="{StaticResource InventoryColumnHeader}" Text="Author"/>
-                    <TextBlock Grid.Column="4" Style="{StaticResource InventoryColumnHeader}" Text="ISBN"/>
-                    <TextBlock Grid.Column="6" Style="{StaticResource InventoryColumnHeader}" Text="Category"/>
+                    <TextBlock Grid.Column="4" Style="{StaticResource InventoryColumnHeader}" Text="Category"/>
+                    <TextBlock Grid.Column="6" Style="{StaticResource InventoryColumnHeader}" Text="Code"/>
                     <TextBlock Grid.Column="8" Style="{StaticResource InventoryColumnHeader}" Text="Status"/>
                     <TextBlock Grid.Column="10" Style="{StaticResource InventoryColumnHeader}" Text="Date"/>
 
@@ -133,8 +180,8 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Grid.ColumnSpan="1" Margin="10 0" Text="TITLE"/>
                                 <TextBlock Grid.Column="1" Grid.ColumnSpan="1" Margin="10 0" Text="AUTHOR"/>
-                                <TextBlock Grid.Column="2" Grid.ColumnSpan="1" Margin="10 0" Text="ISBN"/>
-                                <TextBlock Grid.Column="3" Grid.ColumnSpan="1" Margin="10 0" Text="CATEGORY"/>
+                                <TextBlock Grid.Column="2" Grid.ColumnSpan="1" Margin="10 0" Text="CATEGORY"/>
+                                <TextBlock Grid.Column="3" Grid.ColumnSpan="1" Margin="10 0" Text="CODE"/>
                                 <TextBlock Grid.Column="4" Grid.ColumnSpan="1" Margin="10 0" Text="STATUS"/>
                                 <TextBlock Grid.Column="5" Grid.ColumnSpan="1" Margin="10 0" Text="DATE"/>
                             </Grid>
@@ -151,8 +198,8 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" Grid.ColumnSpan="1" Margin="10 0" Text="TITLE"/>
                                 <TextBlock Grid.Column="1" Grid.ColumnSpan="1" Margin="10 0" Text="AUTHOR"/>
-                                <TextBlock Grid.Column="2" Grid.ColumnSpan="1" Margin="10 0" Text="ISBN"/>
-                                <TextBlock Grid.Column="3" Grid.ColumnSpan="1" Margin="10 0" Text="CATEGORY"/>
+                                <TextBlock Grid.Column="2" Grid.ColumnSpan="1" Margin="10 0" Text="CATEGORY"/>
+                                <TextBlock Grid.Column="3" Grid.ColumnSpan="1" Margin="10 0" Text="CODE"/>
                                 <TextBlock Grid.Column="4" Grid.ColumnSpan="1" Margin="10 0" Text="STATUS"/>
                                 <TextBlock Grid.Column="5" Grid.ColumnSpan="1" Margin="10 0" Text="DATE"/>
                             </Grid>
