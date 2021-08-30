@@ -524,9 +524,9 @@ namespace ITstudy.GreenProjects
         // Total time spent on this project
         string ProjectTimeSpent = "20:00";
         // Difficulty, general challenge when writing on a scale of 0 to 10, 0 being no effort and 10 being near impossible to completed with my current skill
-        string ProjectChallenge = "x";
+        string ProjectChallenge = "5";
         // Date when this project was finished
-        string ProjectDateFinished = "00/00/21";
+        string ProjectDateFinished = "30/08/21";
 
 
 

@@ -282,10 +282,24 @@
                     </RichTextBlock>
 
                     <TextBlock Text="General comments:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="710" Canvas.Top="160"/>
-                    <RichTextBlock Name="GeneralComment" Canvas.Left="710" Canvas.Top="190" FontSize="20" Width="600">
+                    <RichTextBlock Name="GeneralComment" Canvas.Left="710" Canvas.Top="190" FontSize="20" Width="600" TextIndent="0">
                         <Paragraph>
                             <Run>
-                                PLACEHOLDER
+                                I created an inventory system that is capable of adding, storing and removing books.
+                                Books can be loaned out and returned through it, and it is capable of calculating any potential late fee
+                                based on the category/genre that was assigned to the book.
+                            </Run>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run>
+                                I did deviate a little from the original goal of the project. It states that if the first number of a book-code
+                                is 9, the book is a novel, and if its not than its a study book. This is not the case in the current system.
+                                The codes are generated automatically, and linking them to specific categories would only be beneficial as long as the categories dont change in any way.
+                                Adding or removing a category could invalidate everything, so I decided against it.
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                The late fees however do match those specified.
                             </Run>
                         </Paragraph>
                     </RichTextBlock>
