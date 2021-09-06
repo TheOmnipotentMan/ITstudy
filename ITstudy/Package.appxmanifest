@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="8beb5926-6798-47a3-8082-ef1a66a9f04a" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>ITstudii</DisplayName>
+    <DisplayName>ITstudy</DisplayName>
     <PublisherDisplayName>ammer</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>

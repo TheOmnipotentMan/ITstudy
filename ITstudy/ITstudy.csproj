@@ -631,4 +631,8 @@
   <PropertyGroup>
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>if not exist $(TargetDir)\AppX\Assets\TextEncryption\Encrypted mkdir $(TargetDir)\AppX\Assets\TextEncryption\Encrypted
+if not exist $(TargetDir)\AppX\Assets\TextEncryption\Decrypted mkdir $(TargetDir)\AppX\Assets\TextEncryption\Decrypted</PostBuildEvent>
+  </PropertyGroup>
 </Project>

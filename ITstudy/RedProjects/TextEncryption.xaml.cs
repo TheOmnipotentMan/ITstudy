@@ -37,7 +37,7 @@ namespace ITstudy.RedProjects
 
         // General Project info, to be displayed under PivotItem "Project Details"
         // Total time spent on this project
-        string ProjectTimeSpent = "00:00";
+        string ProjectTimeSpent = "16:00";
         // Difficulty, general challenge when writing on a scale of 0 to 10, 0 being no effort and 10 being near impossible to completed with my current skill
         string ProjectChallenge = "0";
         // Date when this project was finished
@@ -58,21 +58,31 @@ namespace ITstudy.RedProjects
 
 
 
-        CspParameters CspP = new CspParameters();
-        RSACryptoServiceProvider Rsa;
+        private CspParameters CspP = new CspParameters();
+        private RSACryptoServiceProvider Rsa;
 
-        const string SourceFolder = "ms - appx:///Assets\\TextEncryption\\Source\\";
-        const string EncryptedFolder = "ms-appx:///Assets\\TextEncryption\\Encrypted\\";
-        const string DecryptedFolder = "ms-appx:///Assets\\TextEncryption\\Decrypted\\";
-        const string PublicKeyFile = "ms-appx:///Assets\\TextEncryption\\PublicKey.txt";
+        // Provided, optional, locations for files
+        private const string SourcePath = "Assets\\TextEncryption\\Source\\";
+        private const string EncryptedPath = "Assets\\TextEncryption\\Encrypted\\";
+        private const string DecryptedPath = "Assets\\TextEncryption\\Decrypted\\";
+        private const string PublicKeyPath = "Assets\\TextEncryption\\PublicKey.txt";
+        private Uri SourceDir = new Uri("ms-appx:///" + "Assets\\TextEncryption\\Source\\");
+        private Uri EncryptedDir = new Uri("ms-appx:///" + "Assets\\TextEncryption\\Encrypted\\");
+        private Uri DecryptedDir = new Uri("ms-appx:///" + "Assets\\TextEncryption\\Decrypted\\");
+        private Uri PublicKeyFile = new Uri("ms-appx:///" + "Assets\\TextEncryption\\PublicKey.txt");
 
-        string KeyName = "Key01";
+        private string KeyName = "Key01";
+                
+        private Windows.Storage.Pickers.FileOpenPicker FilePicker;
+        private Windows.Storage.Pickers.FileSavePicker FileSaverTxt;
+        private Windows.Storage.Pickers.FileSavePicker FileSaverEnc;
 
-        Windows.Storage.Pickers.FileOpenPicker FilePicker;
-
-
-        string CurrentFilePath = null;
-
+        private StorageFile CurrentFile = null;
+        
+        /// <summary>
+        /// File types supported, available
+        /// </summary>
+        private enum FileType { txt, enc }
 
 
         /// <summary>
@@ -90,7 +100,7 @@ namespace ITstudy.RedProjects
         {
             this.InitializeComponent();
 
-            SetFilePicker();
+            FinishSetup();
             
         }
 
@@ -104,13 +114,31 @@ namespace ITstudy.RedProjects
         /// <summary>
         /// Set the paths to the folders and files relevant to TextEnryption
         /// </summary>
-        private void SetFilePicker()
+        private void FinishSetup()
         {
             FilePicker = new Windows.Storage.Pickers.FileOpenPicker();
             FilePicker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
             FilePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
             FilePicker.FileTypeFilter.Add(".txt");
             FilePicker.FileTypeFilter.Add(".enc");
+
+            FileSaverTxt = new Windows.Storage.Pickers.FileSavePicker();
+            FileSaverTxt.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+            FileSaverTxt.FileTypeChoices.Add("Text", new List<string>() { ".txt" });
+
+            FileSaverEnc = new Windows.Storage.Pickers.FileSavePicker();
+            FileSaverEnc.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+            FileSaverEnc.FileTypeChoices.Add("Encrypted", new List<string>() { ".enc" });
+
+            Debug.WriteLine($"TextEncryption: FinishSetup() SourceFolder.LocalPath = {SourceDir.LocalPath}");
+            string missingItems = "";
+            if (!Directory.Exists(SourcePath)) { missingItems += ", Source"; }
+            if (!Directory.Exists(EncryptedPath)) { missingItems += ", Encrypted"; }
+            if (!Directory.Exists(DecryptedPath)) { missingItems += ", Decrypted"; }
+            if (!File.Exists(PublicKeyPath)) { missingItems += ", PublicKey"; }
+            Debug.WriteLine($"TextEncryption: FinishSetup() missingItems{missingItems}");
+
+            Directory.CreateDirectory(EncryptedPath);
         }
 
 
@@ -144,7 +172,7 @@ namespace ITstudy.RedProjects
                     Debug.WriteLine($"TextEncryption: LocateFileToEncrypt() located {file.Name} at {file.Path}");
                     // Load the contents of the selected file to the input field
                     EncryptionInputTextBox.Text = await FileIO.ReadTextAsync(file);
-                    CurrentFilePath = file.Path;
+                    CurrentFile = file;
                     EnableEncryption(true);
                     DisplayInfo(file.Name + " opened");
                 }
@@ -152,7 +180,7 @@ namespace ITstudy.RedProjects
                 {
                     Debug.WriteLine($"TextEncryption: LocateFileToEncrypt() located {file.Name} at {file.Path}");
                     EncryptionInputTextBox.Text = await FileIO.ReadTextAsync(file);
-                    CurrentFilePath = file.Path;
+                    CurrentFile = file;
                     EnableEncryption(false);
                     DisplayInfo(file.Name + " opened");
                 }
@@ -161,11 +189,6 @@ namespace ITstudy.RedProjects
                 {
                     DisplayInfo($"Failed to read the selected file {file.Name}, file must be a .txt or .enc file", InfoType.Error);
                 }
-
-                // TEST, TODO remove
-                string testPath = "not ";
-                if (File.Exists(file.Path)) { testPath = ""; }
-                Debug.WriteLine($"TextEncryption: LocateFile() File does {testPath}exist");
             }
         }
 
@@ -200,33 +223,37 @@ namespace ITstudy.RedProjects
         /// Largely copied from https://docs.microsoft.com/en-us/dotnet/standard/security/walkthrough-creating-a-cryptographic-application
         /// </summary>
         /// <param name="inFile"></param>
-        private void EncryptAes(string inFile)
+        private async void EncryptAes(StorageFile inFile)
         {
             // Ensure the input is valid
-            if (string.IsNullOrEmpty(inFile))
+            if (inFile == null)
             {
                 DisplayInfo("Please provide some text", InfoType.Warning);
                 return;
             }
+            /* TODO remove, upon completion
             else if (!File.Exists(inFile))
             {
                 DisplayInfo("File could not be found", InfoType.Error);
                 Debug.WriteLine($"TextEncryption: EncryptAes() file not found, {inFile}");
                 return;
             }
-            else if (inFile.Substring(inFile.Length - 4, 4) != ".txt")
+            */
+            else if (inFile.FileType != ".txt")
             {
                 DisplayInfo("File type not supported for encryption", InfoType.Error);
                 return;
             }
-
-            // TEST return, TODO remove
-            else
+            
+            // Determine how and where to save the output file
+            Windows.Storage.StorageFile outFile = null;
+            FileSaverEnc.SuggestedFileName = inFile.DisplayName;
+            outFile = await FileSaverEnc.PickSaveFileAsync();
+            if (outFile == null)
             {
-                Debug.WriteLine($"TextEncryption: EncryptAes() succes");
+                DisplayInfo("Output location must be chosen before file can be encrypted.", InfoType.Warning);
                 return;
             }
-
 
             // Create an instance of Aes for symmetric encryption of the data
             Aes aes = Aes.Create();
@@ -240,17 +267,18 @@ namespace ITstudy.RedProjects
             byte[] lengthIV = new byte[4];
             lengthKey = BitConverter.GetBytes(keyEncrypted.Length);
             lengthIV = BitConverter.GetBytes(aes.IV.Length);
-                        
-            // Set up the out file with the extension ".enc"
-            string outFile = EncryptedFolder + inFile.Substring(0, inFile.LastIndexOf(".")) + ".enc";
+
+            // Convert the StorageFile outFile to a writable stream https://blog.mzikmund.com/2020/01/how-to-stream-ify-a-uwp-storagefile/
+            var outHandle = outFile.CreateSafeFileHandle(options: FileOptions.RandomAccess);
+            var inHandle = inFile.CreateSafeFileHandle(options: FileOptions.RandomAccess);
 
             // Write the following to the FileStream for the encrypted file (outFS)
             // - length of the key
             // - length of the IV
-            // - enrypted key
+            // - encrypted key
             // - the IV
             // - the encrypted cypher content
-            using (FileStream outFS = new FileStream(outFile, FileMode.Create))
+            using (FileStream outFS = new FileStream(outHandle, FileAccess.Write))
             {
                 outFS.Write(lengthKey, 0, 4);
                 outFS.Write(lengthIV, 0, 4);
@@ -264,14 +292,15 @@ namespace ITstudy.RedProjects
                     // By encrypting a chunk at a time, you can save memory and accommodate large files
 
                     int count = 0;
-                    int offset = 0;                    
+                    int offset = 0;
                     // blockSizeBytes can be any arbitrary size
                     int blockSizeBytes = aes.BlockSize / 8;
                     byte[] data = new byte[blockSizeBytes];
                     int bytesRead = 0;
 
-                    using (FileStream  inFS = new FileStream(inFile, FileMode.Open))
+                    using (FileStream inFS = new FileStream(inHandle, FileAccess.Read))
                     {
+                        Debug.WriteLine($"TextEncryption: EncryptAes() FileStream inFS started");
                         do
                         {
                             count = inFS.Read(data, 0, blockSizeBytes);
@@ -327,7 +356,7 @@ namespace ITstudy.RedProjects
             byte[] lengthIV = new byte[4];
 
             // Construct the file name for the decrypted file
-            string outFile = DecryptedFolder + inFile.Substring(0, inFile.LastIndexOf(".")) + ".txt";
+            string outFile = DecryptedDir + inFile.Substring(0, inFile.LastIndexOf(".")) + ".txt";
 
             // Use FileStream objects to read the encrypted file (inFS) and save to the decrypted file (outFS)
             // Warning, FileStream input fields do not match those used in https://docs.microsoft.com/en-us/dotnet/standard/security/walkthrough-creating-a-cryptographic-application
@@ -358,7 +387,7 @@ namespace ITstudy.RedProjects
                 inFS.Read(iV, 0, lenIV);
 
                 // Create a folder for decrypted files, if it does not already exist
-                Directory.CreateDirectory(DecryptedFolder);
+                Directory.CreateDirectory(DecryptedDir.LocalPath);
 
                 // Use RSACryptoServiceProvider to drcrypt the AES key
                 byte[] keyDecrypted = Rsa.Decrypt(keyEncrypted, false);
@@ -405,8 +434,8 @@ namespace ITstudy.RedProjects
         /// </summary>
         private void ExportPublicKey()
         {
-            Directory.CreateDirectory(EncryptedFolder);
-            StreamWriter sw = new StreamWriter(PublicKeyFile, false);
+            Directory.CreateDirectory(EncryptedDir.LocalPath);
+            StreamWriter sw = new StreamWriter(PublicKeyFile.LocalPath, false);
             sw.Write(Rsa.ToXmlString(false));
             sw.Close();
         }
@@ -418,7 +447,7 @@ namespace ITstudy.RedProjects
         /// </summary>
         private void ImportPublicKey()
         {
-            StreamReader sr = new StreamReader(PublicKeyFile);
+            StreamReader sr = new StreamReader(PublicKeyFile.LocalPath);
             CspP.KeyContainerName = KeyName;
             Rsa = new RSACryptoServiceProvider(CspP);
             string keytxt = sr.ReadToEnd();
@@ -534,12 +563,12 @@ namespace ITstudy.RedProjects
 
         private void EncryptFileButton_Click(object sender, RoutedEventArgs e)
         {
-            EncryptAes(CurrentFilePath);
+            EncryptAes(CurrentFile);
         }
 
         private void DecryptFileButton_Click(object sender, RoutedEventArgs e)
         {
-            DecryptAes(CurrentFilePath);
+            DecryptAes(CurrentFile.Path);
         }
 
         private void ExportPublicKeyButton_Click(object sender, RoutedEventArgs e)
@@ -561,7 +590,7 @@ namespace ITstudy.RedProjects
         {
             EnableEncryption(null);
             EncryptionInputTextBox.Text = string.Empty;
-            CurrentFilePath = null;
+            CurrentFile = null;
             DisplayInfo("Input cleared");
         }
     }
