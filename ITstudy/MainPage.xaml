@@ -432,7 +432,7 @@
                            Text="General Projects = 9"/>
                     <TextBlock x:Name="GreenProjectsProgress" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
-                           Text="Calc. Projects = 9"/>
+                           Text="Calc. Projects = 10"/>
                     <TextBlock x:Name="ExtraProjectsProgress" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontSize="32" HorizontalTextAlignment="Left" FontFamily="Arial" Foreground="{ThemeResource SystemChromeDisabledLowColor}"
                            Text="Extra Projects = 2"/>

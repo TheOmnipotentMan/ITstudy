@@ -11,6 +11,22 @@
 
 
 
+    <Page.Resources>
+
+        <Style x:Key="Button01" TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Width" Value="240"/>
+            <Setter Property="Height" Value="60"/>
+            <Setter Property="CornerRadius" Value="2"/>
+            <Setter Property="FontSize" Value="24"/>
+        </Style>
+        
+        
+    </Page.Resources>
+    
+    
+    
+
     <Grid Width="1440" Height="990">
 
         <Grid.RowDefinitions>
@@ -32,13 +48,53 @@
 
             <PivotItem Header="Text Encryption" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
 
-                <Canvas>
-                    
-                    <TextBlock Text="Something" FontSize="32" Canvas.Left="100" Canvas.Top="100"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="6*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                </Canvas>
+                    <TextBlock x:Name="EncryptionInfoTextBlock" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="20" FontSize="24" Foreground="{x:Bind InfoBrush, Mode=OneWay}" Text="Please create a key pair, then choose a file to encrypt"/>
+
+                    <TextBox x:Name="EncryptionInputTextBox" Grid.Row="1" Grid.Column="0" Margin="20" TextWrapping="Wrap" IsReadOnly="True">
+                        <TextBox.Header>
+                            <TextBlock Text="Input:" FontSize="24" Style="{StaticResource HeaderTextBlockStyle}"/>
+                        </TextBox.Header>
+                    </TextBox>
+                    <TextBlock x:Name="KeyStatusTextBlock" Grid.Row="0" Grid.Column="1" Margin="20" VerticalAlignment="Center" FontSize="20" TextWrapping="WrapWholeWords"/>
+
+
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="CreateAsymKeysButton" Grid.Row="0" Content="Create Asym. Keys" Style="{StaticResource Button01}" Click="CreateAsymKeysButton_Click"/>
+                        <Button x:Name="LoadFileButton" Grid.Row="1" Content="Load File" Style="{StaticResource Button01}" Click="LoadFileButton_Click"/>
+                        <Button x:Name="EncryptFileButton" Grid.Row="2" Content="Encrypt File" Style="{StaticResource Button01}" Click="EncryptFileButton_Click" IsEnabled="False"/>
+                        <Button x:Name="DecryptFileButton" Grid.Row="3" Content="Decrypt File" Style="{StaticResource Button01}" Click="DecryptFileButton_Click" IsEnabled="False"/>
+                        <Button x:Name="ExportPublicKeyButton" Grid.Row="4" Content="Export Public Key" Style="{StaticResource Button01}" Click="ExportPublicKeyButton_Click"/>
+                        <Button x:Name="ImportPublicKeyButton" Grid.Row="5" Content="Import Public Key" Style="{StaticResource Button01}" Click="ImportPublicKeyButton_Click"/>
+                        <Button x:Name="GetPrivateKeyButton" Grid.Row="6" Content="Get Private Key" Style="{StaticResource Button01}" Click="GetPrivateKeyButton_Click"/>
+                        <Button x:Name="ClearInputButton" Grid.Row="7" Content="Clear Input" Style="{StaticResource Button01}" Click="ClearInputButton_Click"/>
+
+                    </Grid>
+                    
+                </Grid>
 
             </PivotItem>
+
 
 
             <PivotItem Header="Project Details" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">

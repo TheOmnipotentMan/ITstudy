@@ -482,6 +482,7 @@
     <Content Include="Assets\StatusOK_16x.png" />
     <Content Include="Assets\TestProject_16x.png" />
     <Content Include="Assets\Test_16x.png" />
+    <Content Include="Assets\TextEncryption\Source\Lorem Ipsum.txt" />
     <Content Include="Assets\TicTacToe\TicTacToeSymbolO.png" />
     <Content Include="Assets\TicTacToe\TicTacToeSymbolX.png" />
     <Content Include="Assets\VeryNiceBorat.png" />
@@ -611,7 +612,10 @@
       <Version>1.25.0</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Assets\TextEncryption\Decrypted\" />
+    <Folder Include="Assets\TextEncryption\Encrypted\" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

@@ -71,7 +71,7 @@
             <PivotItem Header="Library" Margin="10 0 10 8" BorderBrush="{ThemeResource SystemControlForegroundBaseMediumLowBrush}" BorderThickness="1">
 
                 <Border Margin="60" BorderBrush="{ThemeResource SystemBaseMediumLowColor}" BorderThickness="2" CornerRadius="8">
-                    
+
                     <Grid Margin="40">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="2*"/>
@@ -114,12 +114,10 @@
                         <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="0 20 0 0" BorderBrush="{ThemeResource SystemBaseMediumLowColor}" BorderThickness="1" CornerRadius="4">
                             <TextBlock x:Name="LoanOutReturnMessageTextBlock" Margin="6 0" TextWrapping="WrapWholeWords" FontSize="26"/>
                         </Border>
-                                                
-                    </Grid>
-                    
-                </Border>
-                
 
+                    </Grid>
+
+                </Border>
 
             </PivotItem>
 

@@ -969,32 +969,5 @@ namespace ITstudy.GreenProjects
             InventoryListView.ItemsSource = null;
             InventoryListView.ItemsSource = Inventory;
         }
-
-        private void TestButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Test to see if index remains continuous after removing an element
-
-            Dictionary<int, string> testDic = new Dictionary<int, string>();
-
-            for (int i1 = 0; i1 < 10; i1++)
-            {
-                testDic.Add(i1, "Item" + i1.ToString("D2"));
-            }
-
-            string debugMess = "Library: TestButtonClick() --> ";
-            for (int i2 = 0; i2 < testDic.Count; i2++)
-            {
-                debugMess += testDic.ElementAt(i2).Key.ToString("D2") + " "; 
-            }
-            Debug.WriteLine(debugMess);
-
-            testDic.Remove(3);
-
-            for (int i3 = 0; i3 < testDic.Count; i3++)
-            {
-                debugMess += testDic.ElementAt(i3).Key.ToString("D2") + " ";
-            }
-            Debug.WriteLine(debugMess);
-        }
     }
 }
