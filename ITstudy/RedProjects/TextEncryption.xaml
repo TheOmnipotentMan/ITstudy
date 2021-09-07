@@ -58,7 +58,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock x:Name="EncryptionInfoTextBlock" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="20" FontSize="24" Foreground="{x:Bind InfoBrush, Mode=OneWay}" Text="Please create a key pair, then choose a file to encrypt"/>
+                    <TextBlock x:Name="EncryptionInfoTextBlock" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="20" FontSize="24" Foreground="{x:Bind InfoBrush}" Text="Please create a key pair, then choose a file to encrypt"/>
 
                     <TextBox x:Name="EncryptionInputTextBox" Grid.Row="1" Grid.Column="0" Margin="20" TextWrapping="Wrap" IsReadOnly="True">
                         <TextBox.Header>
@@ -80,16 +80,32 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <Button x:Name="CreateAsymKeysButton" Grid.Row="0" Content="Create Asym. Keys" Style="{StaticResource Button01}" Click="CreateAsymKeysButton_Click"/>
-                        <Button x:Name="LoadFileButton" Grid.Row="1" Content="Load File" Style="{StaticResource Button01}" Click="LoadFileButton_Click"/>
-                        <Button x:Name="EncryptFileButton" Grid.Row="2" Content="Encrypt File" Style="{StaticResource Button01}" Click="EncryptFileButton_Click" IsEnabled="False"/>
+                        <Button x:Name="CreateAsymKeysButton" Grid.Row="0" Content="Create Asym. Keys" Style="{StaticResource Button01}" Click="CreateAsymKeysButton_Click"
+                                ToolTipService.ToolTip="Create default keys"/>
+                        <Button x:Name="LoadFileButton" Grid.Row="1" Content="Load File" Style="{StaticResource Button01}" Click="LoadFileButton_Click"
+                                ToolTipService.ToolTip="Load a file"/>
+                        <Button x:Name="EncryptFileButton" Grid.Row="2" Content="Encrypt File" Style="{StaticResource Button01}" Click="EncryptFileButton_Click" IsEnabled="False"
+                                ToolTipService.ToolTip="Encrypt the file that is currently loaded"/>
                         <Button x:Name="DecryptFileButton" Grid.Row="3" Content="Decrypt File" Style="{StaticResource Button01}" Click="DecryptFileButton_Click" IsEnabled="False"/>
                         <Button x:Name="ExportPublicKeyButton" Grid.Row="4" Content="Export Public Key" Style="{StaticResource Button01}" Click="ExportPublicKeyButton_Click"/>
                         <Button x:Name="ImportPublicKeyButton" Grid.Row="5" Content="Import Public Key" Style="{StaticResource Button01}" Click="ImportPublicKeyButton_Click"/>
-                        <Button x:Name="GetPrivateKeyButton" Grid.Row="6" Content="Get Private Key" Style="{StaticResource Button01}" Click="GetPrivateKeyButton_Click"/>
+                        <Button x:Name="CustomKeysButton" Grid.Row="6" Content="Custom Keys" Style="{StaticResource Button01}" Click="GetPrivateKeyButton_Click"/>
                         <Button x:Name="ClearInputButton" Grid.Row="7" Content="Clear Input" Style="{StaticResource Button01}" Click="ClearInputButton_Click"/>
 
                     </Grid>
+
+                    <ContentDialog x:Name="CustomKeysContentDialog" Grid.Row="1"
+                                   Title="Set custom keys"
+                                   PrimaryButtonText="Confirm"
+                                   CloseButtonText="Cancel"
+                                   DefaultButton="Close">
+                        <TextBox x:Name="CustomPasswordTextBox" Height="80" FontSize="24" PlaceholderText="password..."
+                                 ToolTipService.ToolTip="Enter a password. This will be used to generate new keys for the encryption.">
+                            <TextBox.Header>
+                                <TextBlock FontSize="16" Text="Enter a (new) password"/>
+                            </TextBox.Header>
+                        </TextBox>
+                    </ContentDialog>
                     
                 </Grid>
 
@@ -139,9 +155,33 @@
                     </RichTextBlock>
 
                     <TextBlock Text="General comments:" FontSize="16" Style="{StaticResource TitleTextBlockStyle}" Canvas.Left="710" Canvas.Top="160"/>
-                    <RichTextBlock Name="GeneralComment" Canvas.Left="710" Canvas.Top="190" FontSize="20" Width="600">
+                    <RichTextBlock Name="GeneralComment" Canvas.Left="710" Canvas.Top="190" FontSize="20" Width="600" TextIndent="0">
                         <Paragraph>
                             <Run>
+                                For the encryption I have used the provided algorithms, and followed the walkthrough at                                
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                https://docs.microsoft.com/en-us/dotnet/standard/security/walkthrough-creating-a-cryptographic-application.
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                Although this walkthrough is designed for a Windows Forms Application, I was able to retrieve the necessary information from it.
+                            </Run>
+                            <LineBreak/>
+                            <LineBreak/>
+                            <Run>
+                                Accessing the files however was a bit more difficult. As far as I understand it, I could either do all the file manipulations through the provided 'Pickers' system,
+                                or have the application require administrator privilages in order to function.
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                I went with the pickers. Figuring out how they worked and implementing this consumed a large amount of the time spent on this project
+                                But any application requiring full unrestricted access to the system, or any access above what is actually necessary,                                
+                            </Run>
+                            <LineBreak/>
+                            <Run>
+                                is no bueno, even if I wrote it myself.
                             </Run>
                         </Paragraph>
                     </RichTextBlock>
